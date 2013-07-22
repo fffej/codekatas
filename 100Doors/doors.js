@@ -5,6 +5,8 @@ var createDoors = function() {
   for (var i=0;i<100;++i) {
     doors.push({});
   }
+
+  return doors;
 };
 
 var doors = createDoors();
