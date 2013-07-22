@@ -39,18 +39,28 @@ var toggle = function(door) {
   door.closed = !door.closed;
 };
 
+var visit = function(doors, step, visitor) {
+  
+};
+
 
 var main = function () {
   var doors = createDoors();
+  var door = doorAt(doors,0);
+  var count = 0;
  
   assert.equal(doorCount(doors), 100, "there should be 100 doors");
   assert(allDoorsAreClosed(doors), "all doors are closed");
 
-  var door = doorAt(doors,0);
   assert(isClosed(door), "door should be closed");
-
   toggle(door);
   assert(!isClosed(door), "door should be open");
+
+  count = 0;
+  var countingVisitor = function() { count++; };
+  visit(doors,1,countingVisitor);
+  assert.equal(count, 100, "100 doors visited");
+
 };
 
 main();
