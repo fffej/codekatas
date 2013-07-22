@@ -9,9 +9,7 @@ var createDoors = function() {
   return doors;
 };
 
-var doors = createDoors();
-
-var allDoorsAreClosed = function () {
+var allDoorsAreClosed = function (doors) {
   var allDoorsClosed = true;
   for (var door in doors) {
     allDoorsClosed = allDoorsClosed && doors[door].closed;
@@ -20,7 +18,7 @@ var allDoorsAreClosed = function () {
   return allDoorsClosed;
 };
 
-var doorCount = function() {
+var doorCount = function(doors) {
   var doorCount = 0;
   for (var door in doors) {
     doorCount++;
@@ -31,8 +29,10 @@ var doorCount = function() {
 
 
 var main = function () {
-  assert.equal(doorCount(), 100, "there should be 100 doors");
-  assert(allDoorsAreClosed(), "all doors are closed");
+  var doors = createDoors();
+ 
+  assert.equal(doorCount(doors), 100, "there should be 100 doors");
+  assert(allDoorsAreClosed(doors), "all doors are closed");
 };
 
 main();
