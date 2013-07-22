@@ -1,6 +1,13 @@
 var assert = require('assert');
 
-var doors = [];
+var createDoors = function() {
+  doors = [];
+  for (var i=0;i<100;++i) {
+    doors.push({});
+  }
+};
+
+var doors = createDoors();
 
 var allDoorsAreClosed = function () {
   var allDoorsClosed = true;
