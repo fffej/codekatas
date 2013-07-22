@@ -67,6 +67,9 @@ var main = function () {
   visit(doors,51,countingVisitor);
   assert.equal(count, 1, "Single door visited");
 
+  assert.equal(doors[51].closed, true, "door closed after visitor");
+  visit(doors,52,toggle);
+  assert.equal(doors[51].closed, false, "doors opened after visitor");
 };
 
 main();
