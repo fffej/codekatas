@@ -1,7 +1,10 @@
 var assert = require('assert');
 
 var allDoorsAreClosed = function () {
-  return false;
+  var allDoorsClosed = true;
+  for (var door in doors) {
+    allDoorsClosed = allDoorsClosed && door.closed;
+  }
 };
 
 
