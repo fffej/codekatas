@@ -45,8 +45,13 @@ var visit = function(doors, step, visitor) {
   }
 };
 
+var kata = function(doors) {
+  for (var i=1;i<=100;++i) {
+    visit(doors,i,toggle);
+  }
+};
 
-var main = function () {
+var test = function () {
   var doors = createDoors();
   var door = doorAt(doors,0);
   var count = 0;
@@ -72,4 +77,27 @@ var main = function () {
   assert.equal(doors[51].closed, false, "doors opened after visitor");
 };
 
-main();
+var kata = function () {
+  var doors = createDoors();
+  var closedDoors = [];
+  var openDoors = [];
+
+  for (var i=0;i<100;++i) {
+    visit(doors,i+1,toggle);
+  }
+
+  for (var i=0;i<100;++i) {
+    if (isClosed(doorAt(doors,i))) {
+      closedDoors.push(i+1);
+    } else {
+      openDoors.push(i+1);
+    }
+  }
+
+  console.log('Open doors: ' + openDoors);
+  console.log('Closed doors: ' + closedDoors);
+};
+
+test();
+
+kata();
