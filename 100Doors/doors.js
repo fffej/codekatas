@@ -63,6 +63,10 @@ var main = function () {
   visit(doors,1,countingVisitor);
   assert.equal(count, 100, "100 doors visited");
 
+  count = 0;
+  visit(doors,51,countingVisitor);
+  assert.equal(count, 1, "Single door visited");
+
 };
 
 main();
