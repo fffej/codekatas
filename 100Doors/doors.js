@@ -27,12 +27,21 @@ var doorCount = function(doors) {
   return doorCount;
 };
 
+var isClosed = function(door) {
+  return door.closed;
+};
+
+var doorAt = function(doors,index) {
+  return doors[index];
+};
+
 
 var main = function () {
   var doors = createDoors();
  
   assert.equal(doorCount(doors), 100, "there should be 100 doors");
   assert(allDoorsAreClosed(doors), "all doors are closed");
+  assert(isClosed(doorAt(doors,0)), "door 0 is closed");
 };
 
 main();
