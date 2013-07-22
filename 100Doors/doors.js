@@ -101,3 +101,8 @@ var kata = function () {
 test();
 
 kata();
+
+// What did I learn?
+// - Easy to write too much code
+// - JavaScript asserts as I'm using here don't give me much information as I'd like
+// - for(var x in y) doesnt do what I think when I'm dealing with arrays
