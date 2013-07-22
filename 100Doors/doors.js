@@ -3,7 +3,7 @@ var assert = require('assert');
 var createDoors = function() {
   doors = [];
   for (var i=0;i<100;++i) {
-    doors.push({});
+    doors.push({ closed: true});
   }
 
   return doors;
@@ -14,7 +14,7 @@ var doors = createDoors();
 var allDoorsAreClosed = function () {
   var allDoorsClosed = true;
   for (var door in doors) {
-    allDoorsClosed = allDoorsClosed && door.closed;
+    allDoorsClosed = allDoorsClosed && doors[door].closed;
   }
 
   return allDoorsClosed;
