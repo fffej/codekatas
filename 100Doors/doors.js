@@ -36,6 +36,7 @@ var doorAt = function(doors,index) {
 };
 
 var toggle = function(door) {
+  door.closed = !door.closed;
 };
 
 
