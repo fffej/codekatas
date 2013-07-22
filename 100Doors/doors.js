@@ -29,7 +29,7 @@ var doorCount = function() {
 
 
 var main = function () {
-  assert(doorCount(), "there should be 100 doors");
+  assert.equal(doorCount(), 100, "there should be 100 doors");
   assert(allDoorsAreClosed(), "all doors are closed");
 };
 
