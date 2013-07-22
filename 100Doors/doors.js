@@ -1,2 +1,12 @@
+var assert = require('assert');
 
-console.log('hello world.');
+var allDoorsAreClosed = function () {
+  return false;
+};
+
+
+var main = function () {
+  assert(allDoorsAreClosed(), "all doors are closed");
+};
+
+main();
