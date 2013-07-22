@@ -40,7 +40,7 @@ var toggle = function(door) {
 };
 
 var visit = function(doors, step, visitor) {
-  for(var i=0;i<doors.length;i++) {
+  for(var i=0;i<doors.length;i+=step) {
     visitor(doors[i]);
   }
 };
