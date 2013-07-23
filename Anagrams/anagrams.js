@@ -60,3 +60,4 @@ main();
 // - deepEqual
 // - substr
 // - use strict
+// - i knew what order my anagrams where in because I was forced to think :)

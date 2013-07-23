@@ -19,9 +19,11 @@ var Game = function() {
       }
       else if (ball1 === 10) {
         this.wasStrike = true;
-      } else if (ball1 + ball2 === 10) {
+      } 
+      else if (ball1 + ball2 === 10) {
         this.wasHalf = true;
-      } else {
+      } 
+      else {
         this.currentScore += (ball1 + ball2);
         this.wasHalf = this.wasStrike = false;
       }
@@ -121,3 +123,8 @@ var test = function() {
 };
 
 test();
+
+// Retro
+// - Just a quick 30 minute time boxed
+// - Got used to making 'objects'
+// - Still worked in steps that were too big
