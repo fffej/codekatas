@@ -36,6 +36,12 @@ var testScoringNonStrikeFrame = function() {
   assert.equal(9, game.currentScore);
 };
 
+var testStrike = function() {
+  var game = new Game();
+  game.bowl(10);
+  assert.equal(10, game.currentScore);
+};
+
 var test = function() {
   testInitialState();
 
