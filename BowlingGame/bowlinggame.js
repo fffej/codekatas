@@ -11,6 +11,8 @@ var Game = function() {
       ball1 = ball1|0;
       ball2 = ball2|0;
 
+      this.currentScore += (ball1 + ball2);
+
       if (ball1 === 10) {
         this.wasStrike = true;
       } else if (ball1 + ball2 === 10) {
@@ -19,7 +21,6 @@ var Game = function() {
         this.wasSpare = this.wasStrike = false;
       }
 
-      this.currentScore += (ball1 + ball2);
       this.currentFrame++;
     },
     wasStrike: false,
