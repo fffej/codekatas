@@ -6,7 +6,10 @@ var Game = function() {
   return {
     currentFrame: 1,
     isInProgress: true,
-    currentScore: 0
+    currentScore: 0,
+    bowl: function() {
+      this.currentFrame++;
+    }
   };
 };
 
