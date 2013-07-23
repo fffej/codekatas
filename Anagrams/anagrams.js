@@ -1,3 +1,5 @@
+"use strict";
+
 var assert = require('assert');
 
 var anagrams = function(word) {
@@ -53,3 +55,8 @@ var main = function() {
 test();
 
 main();
+
+// What have I learnt with this one?
+// - deepEqual
+// - substr
+// - use strict
