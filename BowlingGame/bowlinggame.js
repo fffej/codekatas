@@ -46,6 +46,12 @@ var testStrike = function() {
   assert.equal(true, game.wasStrike);
 };
 
+var testWasHalfStrike = function() {
+  var game = new Game();
+  game.bowl(2,8);
+  assert.equal(true, game.wasHalf);
+};
+
 var testStrikeScoring = function() {
   var game = new Game();
   game.bowl(10);
@@ -72,6 +78,8 @@ var test = function() {
   testStrikeAdvancesFrame();
 
   testStrikeScoring();
+
+  testWasHalfStrike();
 };
 
 test();
