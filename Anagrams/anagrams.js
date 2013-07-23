@@ -1,7 +1,9 @@
 var assert = require('assert');
 
 var anagrams = function(word) {
-  return [''];
+  if (word.length <= 1) {
+    return [word];
+  }
 };
 
 var test = function() {
