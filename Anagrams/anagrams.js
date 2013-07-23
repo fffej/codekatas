@@ -44,6 +44,12 @@ var test = function() {
 
   var threeLetterAnagrams = anagrams('abc');
   assert.deepEqual(['abc','acb','bac','bca', 'cab', 'cba'], threeLetterAnagrams);
-}
+};
+
+var main = function() {
+  console.log(anagrams('biro'));
+};
 
 test();
+
+main();
