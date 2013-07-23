@@ -90,6 +90,15 @@ var testScoreHalf = function() {
   assert.equal(21, game.currentScore);
 };
 
+var testPerfectGame = function() {
+  var game = new Game();
+  for (var i=0;i<10;++i) {
+    game.bowl(10);
+  };
+
+  assert.equal(300, game.currentScore);
+};
+
 var test = function() {
   testInitialState();
 
@@ -104,6 +113,8 @@ var test = function() {
   testStrikeScoring();
 
   testWasHalfStrike();
+
+  testPerfectGame();
 };
 
 test();
