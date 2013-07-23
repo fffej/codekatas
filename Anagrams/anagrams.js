@@ -13,6 +13,14 @@ var anagrams = function(word) {
   }
 };
 
+var drop1 = function(word) {
+  var withOneMissing = [];
+  for (var i=0;i<word.length;++i) {
+    withOneMissing.push(word.substr(0,i) + word.substr(i+1));
+  }
+  return withOneMissing;
+};
+
 var test = function() {
 
   // base case
