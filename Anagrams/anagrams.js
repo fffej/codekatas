@@ -4,7 +4,12 @@ var anagrams = function(word) {
   if (word.length <= 1) {
     return [word];
   } else {
+    var accum = [];
+    for(var i=0;i<word.length;++i) {
+      accum.push(anagrams(word[i]));
+    }
 
+    return accum;
   }
 };
 
@@ -15,7 +20,7 @@ var test = function() {
   assert.deepEqual(['a'], anagrams('a'));
 
   var twoLetterAnagrams = anagrams('ab');
-  assert.equal(1, twoLetterAnagrams.length);
+  assert.equal(2, twoLetterAnagrams.length);
 }
 
 test();
