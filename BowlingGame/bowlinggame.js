@@ -96,6 +96,9 @@ var testPerfectGame = function() {
     game.bowl(10);
   };
 
+  // bonus bowl
+  game.bowl(10);
+
   assert.equal(300, game.currentScore);
 };
 
