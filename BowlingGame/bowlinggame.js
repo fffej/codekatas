@@ -10,11 +10,15 @@ var Game = function() {
   };
 };
 
-var test = function() {
+var testInitialState = function() {
   var game = new Game();
   assert.equal(1, game.currentFrame);
   assert.equal(true, game.isInProgress);
   assert.equal(0, game.currentScore);
+};
+
+var test = function() {
+  testInitialState();
 };
 
 test();
