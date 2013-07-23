@@ -20,16 +20,24 @@ var testInitialState = function() {
   assert.equal(0, game.currentScore);
 };
 
-var testBowlingSingleFrame = function() {
+var testBowlingSingleFrameCompletesFrame = function() {
   var game = new Game();
   game.bowl(9,0);
   assert.equal(2, game.currentFrame);
 };
 
+var testScoringNonStrikeFrame = function() {
+  var game = new Game();
+  game.bowl(9,0);
+  assert.equal(9, game.currentScore);
+};
+
 var test = function() {
   testInitialState();
 
-  testBowlingSingleFrame();
+  testBowlingSingleFrameCompletesFrame();
+
+  testScoringNonStrikeFrame();
 };
 
 test();
