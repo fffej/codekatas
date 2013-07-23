@@ -13,7 +13,9 @@ var Game = function() {
 
       this.currentScore += (ball1 + ball2);
       this.currentFrame++;
-    }
+    },
+    wasStrike: false,
+    wasSpare: false
   };
 };
 
@@ -33,6 +35,7 @@ var testBowlingSingleFrameCompletesFrame = function() {
 var testScoringNonStrikeFrame = function() {
   var game = new Game();
   game.bowl(9,0);
+  assert.equal(false, game.wasStrike);
   assert.equal(9, game.currentScore);
 };
 
@@ -40,6 +43,7 @@ var testStrike = function() {
   var game = new Game();
   game.bowl(10);
   assert.equal(10, game.currentScore);
+  assert.equal(true, game.wasStrike);
 };
 
 var testStrikeScoring = function() {
