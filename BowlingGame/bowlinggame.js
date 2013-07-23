@@ -3,11 +3,14 @@
 var assert = require('assert');
 
 var bowl = function(hits) {
-  return 300;
+  
 };
 
 var test = function() {
-  assert.equal(2, bowl(1,1));
+  var game = new Game();
+  assert.equal(1, game.currentFrame);
+  assert.equal(true, game.isInProgress);
+  assert.equal(0, game.currentScore);
 };
 
 test();
