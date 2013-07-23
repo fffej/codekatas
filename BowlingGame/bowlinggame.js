@@ -11,6 +11,14 @@ var Game = function() {
       ball1 = ball1|0;
       ball2 = ball2|0;
 
+      if (ball1 === 10) {
+        this.wasStrike = true;
+      } else if (ball1 + ball2 === 10) {
+        this.wasSpare = true;
+      } else {
+        this.wasSpare = this.wasStrike = false;
+      }
+
       this.currentScore += (ball1 + ball2);
       this.currentFrame++;
     },
@@ -57,7 +65,7 @@ var testStrikeScoring = function() {
   game.bowl(10);
   game.bowl(2,3);
   
-  assert.equal(10 + 5 + 5, game.score);
+  assert.equal(10 + 5 + 5, game.currentScore);
 };
 
 var testStrikeAdvancesFrame = function() {
