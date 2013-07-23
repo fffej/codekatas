@@ -2,8 +2,12 @@
 
 var assert = require('assert');
 
-var bowl = function(hits) {
-  
+var Game = function() {
+  return {
+    currentFrame: 1,
+    isInProgress: true,
+    currentScore: 0
+  };
 };
 
 var test = function() {
