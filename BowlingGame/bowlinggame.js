@@ -42,6 +42,14 @@ var testStrike = function() {
   assert.equal(10, game.currentScore);
 };
 
+var testStrikeScoring = function() {
+  var game = new Game();
+  game.bowl(10);
+  game.bowl(2,3);
+  
+  assert.equal(10 + 5 + 5, game.score);
+};
+
 var testStrikeAdvancesFrame = function() {
   var game = new Game();
   game.bowl(10);
@@ -58,6 +66,8 @@ var test = function() {
   testStrike();
   
   testStrikeAdvancesFrame();
+
+  testStrikeScoring();
 };
 
 test();
