@@ -7,7 +7,11 @@ var Game = function() {
     currentFrame: 1,
     isInProgress: true,
     currentScore: 0,
-    bowl: function() {
+    bowl: function(ball1,ball2) {
+      ball1 = ball1|0;
+      ball2 = ball2|0;
+
+      this.currentScore += (ball1 + ball2);
       this.currentFrame++;
     }
   };
