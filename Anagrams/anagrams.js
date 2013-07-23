@@ -39,6 +39,11 @@ var test = function() {
 
   var dropLetter = drop1('abc');
   assert.deepEqual(['bc','ac','ab'], dropLetter);
+
+  assert.deepEqual(['ab','ba'], twoLetterAnagrams);
+
+  var threeLetterAnagrams = anagrams('abc');
+  assert.deepEqual(['abc','acb','bac','bca', 'cab', 'cba'], threeLetterAnagrams);
 }
 
 test();
