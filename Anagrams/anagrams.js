@@ -5,8 +5,15 @@ var anagrams = function(word) {
     return [word];
   } else {
     var accum = [];
-    for(var i=0;i<word.length;++i) {
-      accum.push(anagrams(word[i]));
+
+    var nextCases = drop1(word);
+
+    for (var i=0;i<nextCases.length;++i) {
+       var anagramsOfSubstrings = anagrams(nextCases[i]);
+
+       for(var j=0;j<anagramsOfSubstrings.length;++j) {
+         accum.push(word[i]+anagramsOfSubstrings[j]);
+       }
     }
 
     return accum;
