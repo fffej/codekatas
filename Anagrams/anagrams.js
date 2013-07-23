@@ -21,6 +21,9 @@ var test = function() {
 
   var twoLetterAnagrams = anagrams('ab');
   assert.equal(2, twoLetterAnagrams.length);
+
+  var dropLetter = drop1('abc');
+  assert.deepEqual(['bc','ac','ab'], dropLetter);
 }
 
 test();
