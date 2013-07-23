@@ -42,12 +42,22 @@ var testStrike = function() {
   assert.equal(10, game.currentScore);
 };
 
+var testStrikeAdvancesFrame = function() {
+  var game = new Game();
+  game.bowl(10);
+  assert.equal(2, game.currentFrame); 
+};
+
 var test = function() {
   testInitialState();
 
   testBowlingSingleFrameCompletesFrame();
 
   testScoringNonStrikeFrame();
+
+  testStrike();
+  
+  testStrikeAdvancesFrame();
 };
 
 test();
