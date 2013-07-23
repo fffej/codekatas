@@ -82,6 +82,14 @@ var testStrikeAdvancesFrame = function() {
   assert.equal(2, game.currentFrame); 
 };
 
+var testScoreHalf = function() {
+  var game = new Game();
+  game.bowl(2,8);
+  game.bowl(1,9);
+
+  assert.equal(21, game.currentScore);
+};
+
 var test = function() {
   testInitialState();
 
