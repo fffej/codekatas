@@ -11,19 +11,24 @@ var Game = function() {
       ball1 = ball1|0;
       ball2 = ball2|0;
 
-      this.currentScore += (ball1 + ball2);
-
-      if (ball1 === 10) {
+      if (this.wasStrike) {
+        this.currentScore += (10 + ball1 + ball2 + ball1 + ball2);
+      } 
+      else if (this.wasSpare) {
+        this.currentScore += (10 + ball1 + ball1 + ball2);
+      }
+      else if (ball1 === 10) {
         this.wasStrike = true;
       } else if (ball1 + ball2 === 10) {
-        this.wasSpare = true;
+        this.wasHalf = true;
       } else {
-        this.wasSpare = this.wasStrike = false;
+        this.currentScore += (ball1 + ball2);
+        this.wasHalf = this.wasStrike = false;
       }
 
       this.currentFrame++;
     },
-    wasStrike: false,
+    wasHalf: false,
     wasSpare: false
   };
 };
@@ -51,7 +56,7 @@ var testScoringNonStrikeFrame = function() {
 var testStrike = function() {
   var game = new Game();
   game.bowl(10);
-  assert.equal(10, game.currentScore);
+  assert.equal(0, game.currentScore);
   assert.equal(true, game.wasStrike);
 };
 
@@ -64,9 +69,11 @@ var testWasHalfStrike = function() {
 var testStrikeScoring = function() {
   var game = new Game();
   game.bowl(10);
+  assert.equal(true, game.wasStrike);
+  assert.equal(0, game.currentScore);
+
   game.bowl(2,3);
-  
-  assert.equal(10 + 5 + 5, game.currentScore);
+  assert.equal(10 + 2 + 3 + 2 + 3, game.currentScore);
 };
 
 var testStrikeAdvancesFrame = function() {
