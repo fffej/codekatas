@@ -68,6 +68,9 @@ var testAverage = function() {
 
   var zero = calcStats([0]);
   assert.equal(0, zero.average);
+
+  var three = calcStats([0,1,2]);
+  assert.equal(1, three.average);
 };
 
 var test = function() {
