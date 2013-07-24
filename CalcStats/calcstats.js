@@ -28,6 +28,9 @@ var testMinimum = function() {
 
   var singletonList = calcStats([1]);
   assert.equal(1, singletonList.minValue);
+
+  var zeroMin = calcStats([0]);
+  assert.equal(0, zeroMin.minValue);
 };
 
 var test = function() {
