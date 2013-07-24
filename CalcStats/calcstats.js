@@ -15,7 +15,7 @@ var calcStats = function(data) {
 
   var listIsOfLength0 = data.length === 0;
  
-  var min = listIsOfLength0 ? undefined : fold(data,data[0], Math.min);
+  var min = listIsOfLength0 ? undefined : data.reduce(function(x,y) { return Math.min(x,y); });
   var max = listIsOfLength0 ? undefined : fold(data,data[0], Math.max);
   var cnt = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + 1; });
 
@@ -84,3 +84,7 @@ var test = function() {
 };
 
 test();
+
+// Retrospectives
+// - using fold is nice
+// - you can use .reduce
