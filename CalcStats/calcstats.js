@@ -3,9 +3,9 @@
 var assert = require('assert');
 
 var calcStats = function(data) {
-  var min;
+  var min = data.length != 0 ? data[0] : undefined;
   for (var i=0;i<data.length;++i) {
-    min = Math.min(data[i], min) || data[i];
+    min = Math.min(data[i], min);
   }
 
   return { 
