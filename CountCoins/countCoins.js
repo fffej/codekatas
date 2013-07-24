@@ -9,8 +9,8 @@ var possibleChange = function(value,coins) {
 
   var possibleChangeVals = [];
   for(var i=0;i<coins.length;++i) {
-    if (i <= value) {
-      possibleChangeVals.push(value - i);
+    if (coins[i] <= value) {
+      possibleChangeVals.push(value - coins[i]);
     }
   }
 
