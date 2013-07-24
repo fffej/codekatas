@@ -36,7 +36,7 @@ var getChange = function(value,coins) {
     }
   }
 
-  return returnVals;
+  return sortAndUnique(returnVals);
 };
 
 var sortAndUnique = function(d) {
