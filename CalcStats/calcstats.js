@@ -16,8 +16,15 @@ var testEmptyStats = function() {
   assert.equal(undefined, stats.average);
 };
 
+var testMinimum = function() {
+  var emptyList = calcStats([]);
+    assert.equal(undefined, emptyList.minValue);
+};
+
 var test = function() {
   testEmptyStats();
+
+  testMinimum();
 };
 
 test();
