@@ -31,6 +31,9 @@ var testMinimum = function() {
 
   var zeroMin = calcStats([0]);
   assert.equal(0, zeroMin.minValue);
+
+  var multiple = calcStats([0,1,2,3,4,5]);
+  assert.equal(0, multiple.minValue);
 };
 
 var test = function() {
