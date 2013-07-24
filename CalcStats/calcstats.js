@@ -32,7 +32,6 @@ var testFold = function() {
 
 var testEmptyStats = function() {
   var stats = calcStats([]);
-  assert.equal(0, stats.count);
   assert.equal(undefined, stats.average);
 };
 
@@ -58,11 +57,16 @@ var testMinimum = function() {
   assert.equal(0, multiple.minValue);
 };
 
+var testNumberOfElements = function() {
+  assert.equal(0, calcStats([]).count);
+};
+
 var test = function() {
   testEmptyStats();
   testFold();
   testMinimum();
   testMaximum();
+  testNumberOfElements();
 };
 
 test();
