@@ -35,7 +35,12 @@ var getChange = function(value,coins) {
       }
     }
   }
+
   return returnVals;
+};
+
+var testSortAndUnique = function () {
+  assert.deepEquals([[1,2,3]], sortAndUnique([[1,2,3],[1,3,2]]));
 };
 
 var testChange = function() {
@@ -58,6 +63,7 @@ var testPossibleChange = function() {
 var test = function() {
   testThereAreFourTypesOfCoins();
   testPossibleChange();
+  testSortAndUnique();
   testChange();
 };
 
