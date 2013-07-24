@@ -22,7 +22,7 @@ var calcStats = function(data) {
   var sum = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + y; });
 
   return { 
-    average: sum / cnt,
+    average: listIsOfLength0 ? undefined : (sum / cnt),
     count: cnt,
     minValue: min,
     maxValue: max
