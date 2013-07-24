@@ -22,25 +22,25 @@ var getChange = function(value,coins) {
 
   if (value === 0) {
     return [];
-  } else {
-    var possibleChangeVals = possibleChangeFromSingleCoin(value,coins);
+  } 
+
+  var possibleChangeVals = possibleChangeFromSingleCoin(value,coins);
+  
+  var returnVals = [];
+  for (var i=0;i<possibleChangeVals.length;++i) {
+    var changeUsed = value - possibleChangeVals[i];
+    var rest = getChange(possibleChangeVals[i],coins);
     
-    var returnVals = [];
-    for (var i=0;i<possibleChangeVals.length;++i) {
-      var changeUsed = value - possibleChangeVals[i];
-      var rest = getChange(possibleChangeVals[i],coins);
-      
-      if (rest.length === 0) {
-        return [changeUsed];
-      }
-      else {
-        for (var j=0;j<rest.length;++j) {
-          returnVals.push([changeUsed].concat(rest[j]));
-        }
+    if (rest.length === 0) {
+      return [changeUsed];
+    }
+    else {
+      for (var j=0;j<rest.length;++j) {
+        returnVals.push([changeUsed].concat(rest[j]));
       }
     }
-    return returnVals;
   }
+  return returnVals;
 };
 
 var testChange = function() {
