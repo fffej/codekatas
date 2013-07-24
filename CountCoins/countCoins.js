@@ -22,6 +22,18 @@ var getChange = function(value,coins) {
 
   if (value === 0) {
     return [];
+  } else {
+    var possibleChangeVals = possibleChangeFromSingleCoin(value,coins);
+    
+    var returnVals = [];
+    for (var i=0;i<possibleChangeVals.length;++i) {
+      var changeUsed = value - possibleChangeVals[i];
+      var rest = getChange(possibleChangeVals[i],coins);
+      for (var j=0;j<rest.length;++j) {
+        returnVals.push([changeUsed].concat(rest[j]));
+      }
+    }
+    return returnVals;
   }
 };
 
