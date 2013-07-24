@@ -23,6 +23,9 @@ var testEmptyStats = function() {
 var testMaximum = function() {
   var emptyList = calcStats([]);
   assert.equal(undefined, emptyList.maxValue);
+
+  var singletonList = calcStats([1]);
+  assert.equal(1, singletonList.maxValue);
 };
 
 var testMinimum = function() {
