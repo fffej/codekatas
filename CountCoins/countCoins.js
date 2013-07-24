@@ -29,8 +29,14 @@ var getChange = function(value,coins) {
     for (var i=0;i<possibleChangeVals.length;++i) {
       var changeUsed = value - possibleChangeVals[i];
       var rest = getChange(possibleChangeVals[i],coins);
-      for (var j=0;j<rest.length;++j) {
-        returnVals.push([changeUsed].concat(rest[j]));
+      
+      if (rest.length === 0) {
+        return [changeUsed];
+      }
+      else {
+        for (var j=0;j<rest.length;++j) {
+          returnVals.push([changeUsed].concat(rest[j]));
+        }
       }
     }
     return returnVals;
