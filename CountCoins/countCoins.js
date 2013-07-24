@@ -22,6 +22,7 @@ var getChange = function(value,coins) {
 };
 
 var testChange = function() {
+  assert.equal(0, getChange(0));
   assert.equal(6, getChange(15));
 };
 
