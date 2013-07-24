@@ -16,10 +16,13 @@ var calcStats = function(data) {
 
 var testEmptyStats = function() {
   var stats = calcStats([]);
-  assert.equal(undefined, stats.minValue);
-  assert.equal(undefined, stats.maxValue);
   assert.equal(0, stats.count);
   assert.equal(undefined, stats.average);
+};
+
+var testMaximum = function() {
+  var emptyList = calcStats([]);
+  assert.equal(undefined, emptyList.maxValue);
 };
 
 var testMinimum = function() {
@@ -40,6 +43,8 @@ var test = function() {
   testEmptyStats();
 
   testMinimum();
+
+  testMaximum();
 };
 
 test();
