@@ -17,9 +17,10 @@ var calcStats = function(data) {
  
   var min = listIsOfLength0 ? undefined : fold(data,data[0], Math.min);
   var max = listIsOfLength0 ? undefined : fold(data,data[0], Math.max);
+  var cnt = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + 1; });
 
   return { 
-    count: 0,
+    count: cnt,
     minValue: min,
     maxValue: max
   };
@@ -60,6 +61,7 @@ var testMinimum = function() {
 var testNumberOfElements = function() {
   assert.equal(0, calcStats([]).count);
   assert.equal(1, calcStats([1]).count);
+  assert.equal(5, calcStats([5,6,7,8,9]).count);
 };
 
 var test = function() {
