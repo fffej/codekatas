@@ -73,3 +73,5 @@ test();
 // - using fold is nice
 // - you can use .reduce
 // - but reduce is weird, takes 4 arguments (not 2)
+// - this does make multiple passes through the list, but that's
+// easily fixed
