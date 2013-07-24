@@ -12,7 +12,6 @@ var fold = function(data, initialValue, func) {
 };
 
 var calcStats = function(data) {
-
   var min = data.length === 0 ? undefined : fold(data,data[0], Math.min);
   var max = data.length === 0 ? undefined : fold(data,data[0], Math.max);
 
@@ -21,6 +20,10 @@ var calcStats = function(data) {
     minValue: min,
     maxValue: max
   };
+};
+
+var testFold = function() {
+  assert.equal('banana', fold([], 'banana', undefined));
 };
 
 var testEmptyStats = function() {
@@ -53,6 +56,7 @@ var testMinimum = function() {
 
 var test = function() {
   testEmptyStats();
+  testFold();
   testMinimum();
   testMaximum();
 };
