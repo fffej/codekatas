@@ -19,6 +19,10 @@ var possibleChangeFromSingleCoin = function(value,coins) {
 
 var getChange = function(value,coins) {
   coins = coins || getCoins();
+
+  if (value === 0) {
+    return [];
+  }
 };
 
 var testChange = function() {
