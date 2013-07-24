@@ -17,6 +17,10 @@ var possibleChangeFromSingleCoin = function(value,coins) {
   return possibleChangeVals;
 };
 
+var testChange = function() {
+  assert.equal(6, getChange(15));
+};
+
 var testThereAreFourTypesOfCoins = function() {
   var coins = getCoins();
   assert.equal(coins.length, 4);
@@ -31,6 +35,7 @@ var testPossibleChange = function() {
 var test = function() {
   testThereAreFourTypesOfCoins();
   testPossibleChange();
+  testChange();
 };
 
 test();
