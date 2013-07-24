@@ -41,9 +41,7 @@ var testMinimum = function() {
 
 var test = function() {
   testEmptyStats();
-
   testMinimum();
-
   testMaximum();
 };
 
