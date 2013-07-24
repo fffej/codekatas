@@ -3,8 +3,14 @@
 var assert = require('assert');
 
 var calcStats = function(data) {
+  var min;
+  for (var i=0;i<data.length;++i) {
+    min = Math.min(data[i], min) || data[i];
+  }
+
   return { 
-    count: 0
+    count: 0,
+    minValue: min
   };
 };
 
