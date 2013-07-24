@@ -2,13 +2,19 @@
 
 var assert = require('assert');
 
-var calcStats = function(data) {
-  var min = data.length != 0 ? data[0] : undefined;
-  var max = data.length != 0 ? data[0] : undefined;
+var fold = function(data, initialValue, func) {
+  var x = initialValue;
   for (var i=0;i<data.length;++i) {
-    min = Math.min(data[i], min);
-    max = Math.max(data[i], max);
+    x = func(x,data[i]);
   }
+
+  return x;
+};
+
+var calcStats = function(data) {
+
+  var min = data.length === 0 ? undefined : fold(data,data[0], Math.min);
+  var max = data.length === 0 ? undefined : fold(data,data[0], Math.max);
 
   return { 
     count: 0,
