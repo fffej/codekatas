@@ -62,6 +62,7 @@ var testSortAndUnique = function () {
 var testChange = function() {
   assert.equal(0, getChange(0).length);
   assert.equal(1, getChange(1).length);
+  assert.equal(2, getChange(5).length);
   assert.equal(6, getChange(15).length);
 };
 
