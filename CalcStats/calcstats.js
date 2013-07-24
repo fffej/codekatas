@@ -17,7 +17,7 @@ var calcStats = function(data) {
  
   var min = listIsOfLength0 ? undefined : data.reduce(function(x,y) { return Math.min(x,y); });
   var max = listIsOfLength0 ? undefined : data.reduce(function(x,y) { return Math.max(x,y); });
-  var cnt = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + 1; });
+  var cnt = listIsOfLength0 ? 0 : data.reduce(function(x,y) { return  x + 1; }, 0);
 
   var sum = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + y; });
 
