@@ -13,6 +13,7 @@ var testEmptyStats = function() {
   assert.equal(undefined, stats.minValue);
   assert.equal(undefined, stats.maxValue);
   assert.equal(0, stats.count);
+  assert.equal(undefined, stats.average);
 };
 
 var test = function() {
