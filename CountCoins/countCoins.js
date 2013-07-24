@@ -1,11 +1,12 @@
 var assert = require('assert');
 
-var makeChange = function() {
-  return 1;
+var testThereAreFourTypesOfCoins = function() {
+  var coins = getCoins();
+  assert.equal(coins.length, 4);
 };
 
 var test = function() {
-  assert.equal(1, makeChange(1));
+  testThereAreFourTypesOfCoins();
 };
 
 test();
