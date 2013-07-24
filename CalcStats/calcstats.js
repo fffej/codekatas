@@ -16,7 +16,7 @@ var calcStats = function(data) {
   var listIsOfLength0 = data.length === 0;
  
   var min = listIsOfLength0 ? undefined : data.reduce(function(x,y) { return Math.min(x,y); });
-  var max = listIsOfLength0 ? undefined : fold(data,data[0], Math.max);
+  var max = listIsOfLength0 ? undefined : data.reduce(function(x,y) { return Math.max(x,y); });
   var cnt = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + 1; });
 
   var sum = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + y; });
@@ -88,3 +88,4 @@ test();
 // Retrospectives
 // - using fold is nice
 // - you can use .reduce
+// - but reduce is weird, takes 4 arguments (not 2)
