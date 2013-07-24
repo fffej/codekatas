@@ -4,13 +4,16 @@ var assert = require('assert');
 
 var calcStats = function(data) {
   var min = data.length != 0 ? data[0] : undefined;
+  var max = data.length != 0 ? data[0] : undefined;
   for (var i=0;i<data.length;++i) {
     min = Math.min(data[i], min);
+    max = Math.max(data[i], max);
   }
 
   return { 
     count: 0,
-    minValue: min
+    minValue: min,
+    maxValue: max
   };
 };
 
