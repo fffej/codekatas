@@ -38,8 +38,8 @@ var getChange = function(value,coins) {
 };
 
 var testChange = function() {
-  assert.equal(0, getChange(0));
-  assert.equal(6, getChange(15));
+  assert.equal(0, getChange(0).length);
+  assert.equal(6, getChange(15).length);
 };
 
 var testThereAreFourTypesOfCoins = function() {
