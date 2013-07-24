@@ -18,7 +18,10 @@ var testEmptyStats = function() {
 
 var testMinimum = function() {
   var emptyList = calcStats([]);
-    assert.equal(undefined, emptyList.minValue);
+  assert.equal(undefined, emptyList.minValue);
+
+  var singletonList = calcStats([1]);
+  assert.equal(1, singletonList.minValue);
 };
 
 var test = function() {
