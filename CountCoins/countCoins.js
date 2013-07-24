@@ -4,7 +4,7 @@ var getCoins = function() {
   return [1,5,10,25];
 };
 
-var possibleChange = function(value,coins) {
+var possibleChangeFromSingleCoin = function(value,coins) {
   coins = coins || getCoins();
 
   var possibleChangeVals = [];
@@ -23,7 +23,9 @@ var testThereAreFourTypesOfCoins = function() {
 };
 
 var testPossibleChange = function() {
-  assert.equal(1, possibleChange(1).length);
+  assert.equal(1, possibleChangeFromSingleCoin(1).length);
+
+  assert.equal(4, possibleChangeFromSingleCoin(100).length);
 };
 
 var test = function() {
