@@ -19,7 +19,10 @@ var calcStats = function(data) {
   var max = listIsOfLength0 ? undefined : fold(data,data[0], Math.max);
   var cnt = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + 1; });
 
+  var sum = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + y; });
+
   return { 
+    average: sum / cnt,
     count: cnt,
     minValue: min,
     maxValue: max
