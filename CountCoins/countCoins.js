@@ -17,6 +17,10 @@ var possibleChangeFromSingleCoin = function(value,coins) {
   return possibleChangeVals;
 };
 
+var getChange = function(value,coins) {
+  coins = coins || getCoins();
+};
+
 var testChange = function() {
   assert.equal(6, getChange(15));
 };
