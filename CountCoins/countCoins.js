@@ -20,12 +20,7 @@ var possibleChangeFromSingleCoin = function(value,coins) {
 var getChange = function(value,coins) {
   coins = coins || getCoins();
 
-  if (value === 0) {
-    return [];
-  } 
-
   var possibleChangeVals = possibleChangeFromSingleCoin(value,coins);
-  
   var returnVals = [];
   for (var i=0;i<possibleChangeVals.length;++i) {
     var changeUsed = value - possibleChangeVals[i];
