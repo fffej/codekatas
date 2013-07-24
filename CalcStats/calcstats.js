@@ -24,6 +24,7 @@ var calcStats = function(data) {
 
 var testFold = function() {
   assert.equal('banana', fold([], 'banana', undefined));
+  assert.equal('3', fold([1,2,3], '', function(x,y) { return y; }));
 };
 
 var testEmptyStats = function() {
