@@ -12,8 +12,11 @@ var fold = function(data, initialValue, func) {
 };
 
 var calcStats = function(data) {
-  var min = data.length === 0 ? undefined : fold(data,data[0], Math.min);
-  var max = data.length === 0 ? undefined : fold(data,data[0], Math.max);
+
+  var listIsOfLength0 = data.length === 0;
+ 
+  var min = listIsOfLength0 ? undefined : fold(data,data[0], Math.min);
+  var max = listIsOfLength0 ? undefined : fold(data,data[0], Math.max);
 
   return { 
     count: 0,
