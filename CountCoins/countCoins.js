@@ -39,8 +39,23 @@ var getChange = function(value,coins) {
   return returnVals;
 };
 
+var sortAndUnique = function(d) {
+  var result = {};
+  for (var i=0;i<d.length;++i) {
+    d[i].sort();
+    result[d[i]] = '';
+  };
+
+  var b = [];
+  for(var k in result) {
+    b.push(k.split(',').map(function(x) { return parseInt(x)}));
+  };
+
+  return b;
+};
+
 var testSortAndUnique = function () {
-  assert.deepEquals([[1,2,3]], sortAndUnique([[1,2,3],[1,3,2]]));
+  assert.deepEqual([[1,2,3]], sortAndUnique([[1,2,3],[1,3,2]]));
 };
 
 var testChange = function() {
