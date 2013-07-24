@@ -27,7 +27,7 @@ var getChange = function(value,coins) {
     var rest = getChange(possibleChangeVals[i],coins);
     
     if (rest.length === 0) {
-      return [changeUsed];
+      returnVals.push([changeUsed]);
     }
     else {
       for (var j=0;j<rest.length;++j) {
@@ -73,7 +73,7 @@ var testThereAreFourTypesOfCoins = function() {
 
 var testPossibleChange = function() {
   assert.equal(1, possibleChangeFromSingleCoin(1).length);
-
+  assert.equal(2, possibleChangeFromSingleCoin(5).length);
   assert.equal(4, possibleChangeFromSingleCoin(100).length);
 };
 
@@ -85,3 +85,5 @@ var test = function() {
 };
 
 test();
+
+console.log(getChange(15));
