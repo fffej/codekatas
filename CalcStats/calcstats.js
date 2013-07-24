@@ -59,6 +59,7 @@ var testMinimum = function() {
 
 var testNumberOfElements = function() {
   assert.equal(0, calcStats([]).count);
+  assert.equal(1, calcStats([1]).count);
 };
 
 var test = function() {
