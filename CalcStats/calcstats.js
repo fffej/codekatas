@@ -2,15 +2,6 @@
 
 var assert = require('assert');
 
-var fold = function(data, initialValue, func) {
-  var x = initialValue;
-  for (var i=0;i<data.length;++i) {
-    x = func(x,data[i]);
-  }
-
-  return x;
-};
-
 var calcStats = function(data) {
 
   var listIsOfLength0 = data.length === 0;
@@ -18,8 +9,7 @@ var calcStats = function(data) {
   var min = listIsOfLength0 ? undefined : data.reduce(function(x,y) { return Math.min(x,y); });
   var max = listIsOfLength0 ? undefined : data.reduce(function(x,y) { return Math.max(x,y); });
   var cnt = listIsOfLength0 ? 0 : data.reduce(function(x,y) { return  x + 1; }, 0);
-
-  var sum = listIsOfLength0 ? 0 : fold(data,0, function(x,y) { return x + y; });
+  var sum = listIsOfLength0 ? 0 : data.reduce(function(x,y) { return x + y; });
 
   return { 
     average: listIsOfLength0 ? undefined : (sum / cnt),
@@ -27,11 +17,6 @@ var calcStats = function(data) {
     minValue: min,
     maxValue: max
   };
-};
-
-var testFold = function() {
-  assert.equal('banana', fold([], 'banana', undefined));
-  assert.equal('3', fold([1,2,3], '', function(x,y) { return y; }));
 };
 
 var testMaximum = function() {
@@ -74,7 +59,6 @@ var testAverage = function() {
 };
 
 var test = function() {
-  testFold();
   testMinimum();
   testMaximum();
   testNumberOfElements();
