@@ -10,6 +10,7 @@ var testEmptyStats = function() {
   var stats = calcStats([]);
   assert.equal(undefined, stats.minValue);
   assert.equal(undefined, stats.maxValue);
+  assert.equal(0, stats.count);
 };
 
 var test = function() {
