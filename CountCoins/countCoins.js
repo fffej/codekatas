@@ -87,3 +87,8 @@ var test = function() {
 test();
 
 console.log(getChange(15));
+
+// Retro
+// - Can use an object as a set if you are lazy
+// - Will learn a test framework for next time as difficult to keep
+// track of test coverage (easy to forget to add something)
