@@ -3,7 +3,9 @@
 var assert = require('assert');
 
 var calcStats = function(data) {
-  return { };
+  return { 
+    count: 0
+  };
 };
 
 var testEmptyStats = function() {
