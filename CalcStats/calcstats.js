@@ -31,11 +31,6 @@ var testFold = function() {
   assert.equal('3', fold([1,2,3], '', function(x,y) { return y; }));
 };
 
-var testEmptyStats = function() {
-  var stats = calcStats([]);
-  assert.equal(undefined, stats.average);
-};
-
 var testMaximum = function() {
   var emptyList = calcStats([]);
   assert.equal(undefined, emptyList.maxValue);
@@ -64,12 +59,18 @@ var testNumberOfElements = function() {
   assert.equal(5, calcStats([5,6,7,8,9]).count);
 };
 
+var testAverage = function() {
+  var stats = calcStats([]);
+  assert.equal(undefined, stats.average);
+
+};
+
 var test = function() {
-  testEmptyStats();
   testFold();
   testMinimum();
   testMaximum();
   testNumberOfElements();
+  testAverage();
 };
 
 test();
