@@ -4,10 +4,20 @@ var bitset = function(value,bit) {
   return !!(value & (1 << bit));
 };
 
+
+
 describe('Diversion', function() {
   it('has a bit that is set', function() {
     assert(bitset(1,0));
     assert(bitset(256,8));
+  });
+
+  it('has bits that are not set', function() {
+    assert(!bitset(257,7));
+  });
+
+  it('returns the binary representation', function() {
+    assert.deepEqual([0], bitsSet(0));
   });
 
   it('bit shift operations', function() {
