@@ -82,6 +82,7 @@ describe('Diversion', function() {
     assert.equal(false, hasAdjacentElements([1]));
     assert.equal(true, hasAdjacentElements([1,1]));
     assert.equal(false, hasAdjacentElements([1,2,3]));
+    assert.equal(true, hasAdjacentElements([0,1,1,0]));
   });
 
   it('n digit numbers that don\'t have adjacent bits', function() {
