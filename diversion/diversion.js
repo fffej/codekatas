@@ -40,7 +40,7 @@ var adjacentCounts = function(bitCount) {
   var maxNum = Math.pow(2,bitCount);
   var count = 0; 
   for (var i=0;i<maxNum;++i) {
-    if (hasAdjacentElements(bitsSet(i))) {
+    if (hasAdjacentElements(bitsSet(i),1)) {
       console.log(i);
       count++;
     }
