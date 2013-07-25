@@ -4,7 +4,9 @@ var bitset = function(value,bit) {
   return !!(value & (1 << bit));
 };
 
-
+var bitsSet = function(value) {
+  return [0];
+};
 
 describe('Diversion', function() {
   it('has a bit that is set', function() {
