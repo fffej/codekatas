@@ -14,6 +14,10 @@ describe('Diversion', function() {
     assert(bitset(256,8));
   });
 
+  it('number of bits within a value', function() {
+    assert.equal(8, numberOfBits(256));
+  });
+
   it('has bits that are not set', function() {
     assert(!bitset(257,7));
   });
