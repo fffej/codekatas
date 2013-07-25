@@ -8,7 +8,7 @@ var bitsSet = function(value) {
   var bits = numberOfBits(value);
   var ret = [];
   for (var i=0;i<bits;++i) {
-    bits.push(bitset(value,i) ? 1 : 0);
+    ret.push(bitset(value,i) ? 1 : 0);
   }
   return ret;
 };
