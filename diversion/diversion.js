@@ -8,6 +8,11 @@ var bitsSet = function(value) {
   return [0];
 };
 
+var numberOfBits = function(value) {
+  var log2 = Math.log(value) / Math.LN2;
+  return (Math.pow(2,log2) >= value) ? log2 : log2 + 1;
+};
+
 describe('Diversion', function() {
   it('has a bit that is set', function() {
     assert(bitset(1,0));
