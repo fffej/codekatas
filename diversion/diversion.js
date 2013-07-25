@@ -1,3 +1,5 @@
+"use strict";
+
 var assert = require("assert");
 
 var bitset = function(value,bit) {
@@ -96,3 +98,8 @@ describe('Diversion', function() {
     assert.equal(21 + 34, adjacentCounts(8));
   });
 });
+
+// Retro
+// - mocha is awesome, particular mocha -w <filename> (though annoyingly compilation fails break it) - I should fix this
+// - bits shifting around works as I expect
+// - no base N log function but Math.log(foo) / Math.LN<X> works as you'd expect
