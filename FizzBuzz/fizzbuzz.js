@@ -46,4 +46,13 @@ describe("fizzbuzz", function() {
     assert.equal('Buzz', strFizzBuzz(5));
     assert.equal('FizzBuzz', strFizzBuzz(15));
   });
+
+  it("runs correctly", function() {
+    for (var i=1;i<=100;++i) {
+      console.log(strFizzBuzz(i));
+    }
+  });
 });
+
+// Retro
+// - Felt like this clicked more test-driven, but no concrete learnings other than that...
