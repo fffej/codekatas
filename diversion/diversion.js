@@ -43,6 +43,7 @@ describe('Diversion', function() {
   it('returns the binary representation', function() {
     assert.deepEqual([], bitsSet(0));
     assert.deepEqual([0,1], bitsSet(2));
+    assert.deepEqual([1,0,1,0,0,0,0,1], bitsSet(133));
   });
 
   it('bit shift operations', function() {
