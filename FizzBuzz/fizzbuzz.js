@@ -19,4 +19,8 @@ describe("fizzbuzz", function() {
     assert(!buzz(7));
     assert(buzz(10));
   });
+
+  it("should fizz buzz", function() {
+    assert(fizzbuzz(15));
+  });
 });
