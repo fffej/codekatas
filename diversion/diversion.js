@@ -23,6 +23,10 @@ var numberOfBits = function(value) {
   return (maxVal >= value) ? log2 : log2 + 1;
 };
 
+var hasAdjacentElements = function(arr) {
+  return false;
+};
+
 describe('Diversion', function() {
   it('has a bit that is set', function() {
     assert(bitset(1,0));
