@@ -14,6 +14,10 @@ var bitsSet = function(value) {
 };
 
 var numberOfBits = function(value) {
+  if (value === 0) {
+    return value;
+  }
+
   var log2 = Math.log(value) / Math.LN2;
   return (Math.pow(2,log2) >= value) ? log2 : log2 + 1;
 };
