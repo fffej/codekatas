@@ -15,11 +15,11 @@ var fizzbuzz = function(v) {
 
 var strFizzBuzz = function(v) {
   if (fizzbuzz(v)) {
-    return 'fizzbuzz';
+    return 'FizzBuzz';
   } else if (fizz(v)) {
-    return 'fizz';
+    return 'Fizz';
   } else if (buzz(v)) {
-    return 'buzz';
+    return 'Buzz';
   } else {
     return v + '';
   }
@@ -41,9 +41,9 @@ describe("fizzbuzz", function() {
   });
 
   it("should return correct string", function() {
-    assert.equal('fizz', strFizzBuzz(3));
+    assert.equal('Fizz', strFizzBuzz(3));
     assert.equal('1', strFizzBuzz(1));
-    assert.equal('buzz', strFizzBuzz(5));
-    assert.equal('fizzbuzz', strFizzBuzz(15));
+    assert.equal('Buzz', strFizzBuzz(5));
+    assert.equal('FizzBuzz', strFizzBuzz(15));
   });
 });
