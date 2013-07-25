@@ -24,7 +24,10 @@ var numberOfBits = function(value) {
 };
 
 var hasAdjacentElements = function(arr) {
-  return false;
+  if (arr.length < 2) {
+    return false;
+  } 
+  return true;
 };
 
 describe('Diversion', function() {
