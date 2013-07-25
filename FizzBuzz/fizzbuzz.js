@@ -16,6 +16,8 @@ var fizzbuzz = function(v) {
 var strFizzBuzz = function(v) {
   if (fizz(v)) {
     return 'fizz';
+  } else {
+    return v + '';
   }
 };
 
