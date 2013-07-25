@@ -30,6 +30,7 @@ describe('Diversion', function() {
 
   it('number of bits within a value', function() {
     assert.equal(8, numberOfBits(256));
+    assert.equal(1, numberOfBits(1));
     assert.equal(2, numberOfBits(2));
     assert.equal(0, numberOfBits(0));
   });
