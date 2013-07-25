@@ -40,8 +40,7 @@ var adjacentCounts = function(bitCount) {
   var maxNum = Math.pow(2,bitCount);
   var count = 0; 
   for (var i=0;i<maxNum;++i) {
-    if (hasAdjacentElements(bitsSet(i),1)) {
-      console.log(i);
+    if (!hasAdjacentElements(bitsSet(i),1)) {
       count++;
     }
   }
@@ -84,6 +83,7 @@ describe('Diversion', function() {
     assert.equal(true, hasAdjacentElements([1,1],1));
     assert.equal(false, hasAdjacentElements([1,2,3],0));
     assert.equal(false, hasAdjacentElements([0,1,1,0],0));
+    assert.equal(true, hasAdjacentElements([1,1],1));
     assert.equal(true, hasAdjacentElements([0,1,1,0],1));
   });
 
