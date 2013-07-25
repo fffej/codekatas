@@ -93,5 +93,6 @@ describe('Diversion', function() {
     assert.equal(13, adjacentCounts(5));
     assert.equal(21, adjacentCounts(6));
     assert.equal(34, adjacentCounts(7));
+    assert.equal(21 + 34, adjacentCounts(8));
   });
 });
