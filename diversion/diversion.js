@@ -1,12 +1,12 @@
 var assert = require("assert");
 
 var bitset = function(value,bit) {
-  return true;
+  return !!(value & (1 << bit));
 };
 
 describe('Diversion', function() {
   it('has a bit that is set', function() {
-    assert(bitset(1,1));
+    assert(bitset(1,0));
   });
 
   it('bit shift operations', function() {
