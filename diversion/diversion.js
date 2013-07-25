@@ -89,5 +89,9 @@ describe('Diversion', function() {
 
   it('n digit numbers that don\'t have adjacent bits', function() {
     assert.equal(5, adjacentCounts(3));
+    assert.equal(8, adjacentCounts(4));
+    assert.equal(13, adjacentCounts(5));
+    assert.equal(21, adjacentCounts(6));
+    assert.equal(34, adjacentCounts(7));
   });
 });
