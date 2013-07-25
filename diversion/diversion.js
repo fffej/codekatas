@@ -5,7 +5,12 @@ var bitset = function(value,bit) {
 };
 
 var bitsSet = function(value) {
-  return [0];
+  var bits = numberOfBits(value);
+  var ret = [];
+  for (var i=0;i<bits;++i) {
+    bits.push(bitset(value,i) ? 1 : 0);
+  }
+  return ret;
 };
 
 var numberOfBits = function(value) {
