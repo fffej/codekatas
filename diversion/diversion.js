@@ -19,7 +19,8 @@ var numberOfBits = function(value) {
   }
 
   var log2 = Math.log(value) / Math.LN2;
-  return (Math.pow(2,log2) >= value) ? log2 : log2 + 1;
+  var maxVal = Math.pow(2,log2);
+  return (maxVal <= value) ? log2 : log2 + 1;
 };
 
 describe('Diversion', function() {
