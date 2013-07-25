@@ -26,6 +26,7 @@ describe('Diversion', function() {
 
   it('number of bits within a value', function() {
     assert.equal(8, numberOfBits(256));
+    assert.equal(0, numberOfBits(0));
   });
 
   it('has bits that are not set', function() {
