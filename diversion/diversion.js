@@ -14,9 +14,9 @@ var bitsSet = function(value) {
 };
 
 var numberOfBits = function(value) {
-  if (value === 0) {
+  if (value <= 2) {
     return value;
-  }
+  } 
 
   var log2 = Math.log(value) / Math.LN2;
   var maxVal = Math.pow(2,log2);
