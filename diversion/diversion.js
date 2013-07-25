@@ -7,6 +7,7 @@ var bitset = function(value,bit) {
 describe('Diversion', function() {
   it('has a bit that is set', function() {
     assert(bitset(1,0));
+    assert(bitset(256,8));
   });
 
   it('bit shift operations', function() {
