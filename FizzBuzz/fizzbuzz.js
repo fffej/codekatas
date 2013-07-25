@@ -14,7 +14,9 @@ var fizzbuzz = function(v) {
 };
 
 var strFizzBuzz = function(v) {
-  if (fizz(v)) {
+  if (fizzbuzz(v)) {
+    return 'fizzbuzz';
+  } else if (fizz(v)) {
     return 'fizz';
   } else if (buzz(v)) {
     return 'buzz';
