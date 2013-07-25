@@ -11,10 +11,12 @@ var buzz = function(v) {
 
 describe("fizzbuzz", function() {
   it("should fizz", function() {
-    assert(fizz(3));    
+    assert(fizz(3)); 
+    assert(!fizz(5));   
   });
 
   it("should buzz", function() {
     assert(!buzz(7));
+    assert(buzz(10));
   });
 });
