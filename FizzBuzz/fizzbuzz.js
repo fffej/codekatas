@@ -42,5 +42,6 @@ describe("fizzbuzz", function() {
     assert.equal('fizz', strFizzBuzz(3));
     assert.equal('1', strFizzBuzz(1));
     assert.equal('buzz', strFizzBuzz(5));
+    assert.equal('fizzbuzz', strFizzBuzz(15));
   });
 });
