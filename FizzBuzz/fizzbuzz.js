@@ -36,5 +36,6 @@ describe("fizzbuzz", function() {
 
   it("should return correct string", function() {
     assert.equal('fizz', strFizzBuzz(3));
+    assert.equal('1', strFizzBuzz(1));
   });
 });
