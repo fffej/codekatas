@@ -23,13 +23,13 @@ var numberOfBits = function(value) {
   return (maxVal >= value) ? log2 : log2 + 1;
 };
 
-var hasAdjacentElements = function(arr) {
+var hasAdjacentElements = function(arr,needle) {
   if (arr.length < 2) {
     return false;
   } 
 
   for (var i=0;i<arr.length-1;++i) {
-    if (arr[i] === arr[i+1]) { 
+    if (arr[i] === arr[i+1] && arr[i] === needle) { 
       return true;
     }
   }
