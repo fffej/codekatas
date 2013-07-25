@@ -20,6 +20,7 @@ describe('Diversion', function() {
 
   it('returns the binary representation', function() {
     assert.deepEqual([0], bitsSet(0));
+    assert.deepEqual([0,1], bitsSet(2));
   });
 
   it('bit shift operations', function() {
