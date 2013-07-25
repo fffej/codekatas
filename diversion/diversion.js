@@ -58,5 +58,6 @@ describe('Diversion', function() {
 
   it('can detect adjacent elements', function() {
     assert.equal(false, hasAdjacentElements([]));
+    assert.equal(false, hasAdjacentElements([1]));
   });
 });
