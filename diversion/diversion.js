@@ -36,6 +36,18 @@ var hasAdjacentElements = function(arr) {
   return false;
 };
 
+var adjacentCounts = function(bitCount) {
+  var maxNum = Math.pow(2,bitCount);
+  var count = 0; 
+  for (var i=0;i<maxNum;++i) {
+    if (hasAdjacentElements(bitsSet(i))) {
+      console.log(i);
+      count++;
+    }
+  }
+  return count;
+};
+
 describe('Diversion', function() {
   it('has a bit that is set', function() {
     assert(bitset(1,0));
