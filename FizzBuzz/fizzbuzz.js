@@ -9,6 +9,10 @@ var buzz = function(v) {
   return v % 5 === 0;
 };
 
+var fizzbuzz = function(v) {
+  return fizz(v) && buzz(v);
+};
+
 describe("fizzbuzz", function() {
   it("should fizz", function() {
     assert(fizz(3)); 
