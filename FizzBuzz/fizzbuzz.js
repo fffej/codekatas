@@ -13,6 +13,12 @@ var fizzbuzz = function(v) {
   return fizz(v) && buzz(v);
 };
 
+var strFizzBuzz = function(v) {
+  if (fizz(v)) {
+    return 'fizz';
+  }
+};
+
 describe("fizzbuzz", function() {
   it("should fizz", function() {
     assert(fizz(3)); 
