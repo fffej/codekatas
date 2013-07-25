@@ -2,7 +2,11 @@
 var assert = require('assert');
 
 var fizz = function(v) {
-  return v % 3 == 0;
+  return v % 3 === 0;
+};
+
+var buzz = function(v) {
+  return v % 5 === 0;
 };
 
 describe("fizzbuzz", function() {
@@ -11,6 +15,6 @@ describe("fizzbuzz", function() {
   });
 
   it("should buzz", function() {
-    assert(buzz(7));
+    assert(!buzz(7));
   });
 });
