@@ -27,4 +27,8 @@ describe("fizzbuzz", function() {
   it("should fizz buzz", function() {
     assert(fizzbuzz(15));
   });
+
+  it("should return correct string", function() {
+    assert.equal('fizz', strFizzBuzz(3));
+  });
 });
