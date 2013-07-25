@@ -7,6 +7,10 @@ var fizz = function(v) {
 
 describe("fizzbuzz", function() {
   it("should fizz", function() {
-    assert(fizz(3));
+    assert(fizz(3));    
+  });
+
+  it("should buzz", function() {
+    assert(buzz(7));
   });
 });
