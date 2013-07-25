@@ -27,7 +27,13 @@ var hasAdjacentElements = function(arr) {
   if (arr.length < 2) {
     return false;
   } 
-  return true;
+
+  for (var i=0;i<arr.length-1;++i) {
+    if (arr[i] === arr[i+1]) { 
+      return true;
+    }
+  }
+  return false;
 };
 
 describe('Diversion', function() {
