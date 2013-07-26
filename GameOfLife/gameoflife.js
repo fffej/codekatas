@@ -36,10 +36,12 @@ var Grid = function(width, height) {
     width: width,
     height: height,
     at: function(x,y) {
-      return grid[y][x];
+      assert(y < grid.length);
+      assert(x < grid[0].length);
+      return grid[x][y];
     },
     set: function(x,y,v) {
-      grid[y][x] = v;
+      grid[x][y] = v;
     }
   };
 };
@@ -87,6 +89,7 @@ describe('Game of life', function() {
       assert.equal(8, grid.width);
       assert.equal(4, grid.height);
 
+      assert.equal(DEAD, grid.at(0,0));
       assert.equal(LIVE, grid.at(1,4));
       assert.equal(LIVE, grid.at(2,3));
       assert.equal(LIVE, grid.at(2,4));
