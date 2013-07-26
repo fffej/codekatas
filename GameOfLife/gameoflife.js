@@ -26,10 +26,16 @@ var createGrid = function(s) {
   return game;
 };
 
+var cellState = function(state,neighbours) {
+  if (neighbours < 2 && state === LIVE) {
+    return DEAD;
+  }
+};
+
 describe('game of life', function() {
   describe('cell', function() {
     it('dies with underpopulation', function() {
-      assert.equal(DEAD, cellState(LIVE,2));
+      assert.equal(DEAD, cellState(LIVE,1));
     });
   });
 
