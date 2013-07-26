@@ -62,6 +62,13 @@ describe('Game of life', function() {
       grid.set(0,0, LIVE);
       assert.equal(LIVE, grid.at(0,0));
     });
+
+    it('should be possible to read in a description of the grid', function() {
+      var input =  '4 8\n........\n....*...\n...**...\n........\n'
+      var grid = createFromString(input);
+      assert.equal(8, grid.width);
+      assert.equal(4, grid.height);
+    });
   });
 
   describe('cell', function() {
