@@ -29,9 +29,9 @@ var createGrid = function(s) {
 describe('game of life', function() {
   describe('cell', function() {
     it('dies with underpopulation', function() {
-      assert.equal(DEAD, cellState(ALIVE,2);
+      assert.equal(DEAD, cellState(LIVE,2));
     });
-  };
+  });
 
   describe('grid', function() {
     it('should read input', function() {
