@@ -39,6 +39,9 @@ var cellState = function(state,neighbours) {
   else if (neighbours === 3 && state === DEAD) {
     return LIVE;
   }
+  else {
+    return DEAD;
+  }
 };
 
 describe('game of life', function() {
@@ -62,8 +65,8 @@ describe('game of life', function() {
 
     it('is fully defined', function() {
       for (var i=0;i<=8;++i) {
-        assert(cellState(DEAD,i));
-        assert(cellState(LIVE,i));
+        assert(undefined !== cellState(DEAD,i));
+        assert(undefined !== cellState(LIVE,i));
       }
     });
   });
