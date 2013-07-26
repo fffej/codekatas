@@ -30,6 +30,9 @@ var cellState = function(state,neighbours) {
   if (neighbours < 2 && state === LIVE) {
     return DEAD;
   }
+  else if (neighbours > 3 && state === LIVE) {
+    return DEAD;
+  }
 };
 
 describe('game of life', function() {
