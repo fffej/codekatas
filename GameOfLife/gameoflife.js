@@ -101,6 +101,8 @@ describe('game of life', function() {
       var grid = createGrid(sampleInput);
 
       assert.equal(0, grid.neighbours(0,0));
+      assert.equal(1, grid.neighbours(3,0));
+      assert.equal(2, grid.neighbours(4,0));
     });
   });
 });
