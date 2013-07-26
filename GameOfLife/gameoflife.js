@@ -5,11 +5,13 @@ var LIVE = 1;
 var DEAD  = 0;
 
 var cellState = function(currentCellState, numberOfAliveNeighbours) {
+  var twoOrThreeNeighbours = numberOfAliveNeighbours === 2 ||
+                             numberOfAliveNeighbours === 3;
+
   if (numberOfAliveNeighbours < 2 || numberOfAliveNeighbours > 3) {
     return DEAD;
   } 
-  if (currentCellState === LIVE && 
-      (numberOfAliveNeighbours === 3 || numberOfAliveNeighbours === 2)) {
+  else if (currentCellState === LIVE && twoOrThreeNeighbours) { 
     return LIVE;
   }
 };
