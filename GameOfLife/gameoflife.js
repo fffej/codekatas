@@ -142,6 +142,12 @@ describe('game of life', function() {
       grid = createGrid(sampleInput);
       assert.equal(sampleInput, grid.to_string());
     });
+
+    it('can iterate', function() {
+      var grid = createGrid('2 2\n..\n.*\n');
+   
+      assert.equals('2 2\n..\n..\n', grid.iterate().to_string());
+    });
   });
 });
 
