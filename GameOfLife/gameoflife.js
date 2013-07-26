@@ -13,7 +13,21 @@ var createGrid = function(s) {
   var rows = rc[0] | 0; // 4
   var cols = rc[1] | 0; // 8
 
-  var game = { rows: rows, cols: cols };
+  var game = { 
+      rows: rows, 
+      cols: cols,
+      neighbours: function(c,r) {
+        var n = 0;
+        for (var i=-1;i<=1;++i) {
+          for (var j=-1;j<=1;++j) {
+            if (this[c+j] && this[c+j][r+i] === LIVE) {
+              ++n;
+            }
+          }
+        }
+        return n;
+      }
+  };
 
   for (var i=0;i<rows;++i) {
     for (var j=0;j<cols;++j) {
