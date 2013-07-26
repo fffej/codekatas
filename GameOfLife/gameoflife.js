@@ -39,6 +39,18 @@ var Game = function(r,c) {
       iterate: function() {
         var newGame = new Game(this.rows, this.cols);
 
+        for (var i=0;i<this.rows;++i) {
+          for (var j=0;j<this.cols;++j) {
+            var state = this[j][i];
+            var neighbourCount = this.neighbours(j,i);
+
+            if (newGame[j] === undefined) { 
+              newGame[j] = []; 
+            }
+            newGame[j][i] = cellState(state, neighbourCount);
+          }
+        }
+
         return newGame;
       }
   };
@@ -151,7 +163,7 @@ describe('game of life', function() {
     it('can iterate', function() {
       var grid = createGrid('2 2\n..\n.*\n');
    
-      assert.equals('2 2\n..\n..\n', grid.iterate().to_string());
+      assert.equal('2 2\n..\n..\n', grid.iterate().to_string());
     });
   });
 });
