@@ -124,6 +124,11 @@ describe('game of life', function() {
       assert.equal(3, grid.neighbours(0,1));
       assert.equal(3, grid.neighbours(1,1));
     });
+
+    it('should have a sensible printed representation', function() {
+      var grid = createGrid('1 1\n.');
+      assert.equal('1 1\n.\n', grid.to_string());
+    });
   });
 });
 
