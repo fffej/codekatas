@@ -77,6 +77,10 @@ describe('Game of life', function() {
       var grid = createFromString(input);
       assert.equal(8, grid.width);
       assert.equal(4, grid.height);
+
+      assert.equal(LIVE, grid.at(1,4));
+      assert.equal(LIVE, grid.at(2,3));
+      assert.equal(LIVE, grid.at(2,4));
     });
   });
 
