@@ -33,6 +33,9 @@ var cellState = function(state,neighbours) {
   else if (neighbours > 3 && state === LIVE) {
     return DEAD;
   }
+  else if ((neighbours === 2 || neighbours === 3) && state === LIVE) {
+    return LIVE;
+  }
 };
 
 describe('game of life', function() {
@@ -43,6 +46,11 @@ describe('game of life', function() {
 
     it('dies with overcrowding', function() {
       assert.equal(DEAD, cellState(LIVE,4));
+    });
+
+    it('maintains live if 2 or three neighbours', function() {
+      assert.equal(LIVE, cellState(LIVE,2));
+      assert.equal(LIVE, cellState(LIVE,3));
     });
   });
 
