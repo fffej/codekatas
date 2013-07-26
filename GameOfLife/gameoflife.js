@@ -15,6 +15,10 @@ var Game = function(r,c) {
         var n = 0;
         for (var i=-1;i<=1;++i) {
           for (var j=-1;j<=1;++j) {
+            if (i === 0 && j === 0) {
+              continue;
+            }
+
             if (this[c+j] && this[c+j][r+i] === LIVE) {
               ++n;
             }
@@ -106,8 +110,7 @@ describe('game of life', function() {
       var grid = createGrid(sampleInput);
 
       assert.equal(0, grid.neighbours(0,0));
-      assert.equal(1, grid.neighbours(2,0));
-      assert.equal(2, grid.neighbours(3,0));
+      assert.equal(2, grid.neighbours(3,2));
     });
   });
 });
