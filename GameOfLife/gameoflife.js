@@ -28,6 +28,8 @@ var Grid = function(width, height) {
     height: height,
     at: function(x,y) {
       return DEAD;
+    },
+    set: function(x,y,v) {
     }
   };
 };
