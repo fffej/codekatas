@@ -40,8 +40,8 @@ describe('Game of life', function() {
 
     it('should be defined for all input types', function() {
       for (var i=0;i<=8;++i) {
-        assert(undefined !== cellState(DEAD,i));
-        assert(undefined !== cellState(LIVE,i));
+        assert(undefined !== cellState(DEAD,i), 'dead with ' + i + 'neighbours');
+        assert(undefined !== cellState(LIVE,i), 'live with ' + i + 'neighbours');
       }
     });
   });
