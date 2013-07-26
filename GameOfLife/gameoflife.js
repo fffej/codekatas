@@ -36,6 +36,9 @@ var cellState = function(state,neighbours) {
   else if ((neighbours === 2 || neighbours === 3) && state === LIVE) {
     return LIVE;
   }
+  else if (neighbours === 3 && state === DEAD) {
+    return LIVE;
+  }
 };
 
 describe('game of life', function() {
