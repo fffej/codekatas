@@ -37,6 +37,10 @@ describe('game of life', function() {
     it('dies with underpopulation', function() {
       assert.equal(DEAD, cellState(LIVE,1));
     });
+
+    it('dies with overcrowding', function() {
+      assert.equal(DEAD, cellState(LIVE,4));
+    });
   });
 
   describe('grid', function() {
