@@ -51,7 +51,16 @@ var createFromString = function(str) {
   var h = hw[0] | 0;
   var w = hw[1] | 0;
 
-  return new Grid(w,h);
+  var grid = new Grid(w,h);
+
+  for (var i=0;i<h;++i) {
+    var row = lines[i+1];
+    for (var j=0;j<w;++j) {
+      grid.set(j,i,row[j] === '*' ? LIVE : DEAD);
+    }
+  }
+
+  return grid;
 };
 
 describe('Game of life', function() {
