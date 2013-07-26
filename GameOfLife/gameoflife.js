@@ -32,6 +32,7 @@ describe('game of life', function() {
       assert.equal(4, grid.rows);
 
       assert.equal(DEAD, grid[0,0]);
+      assert.equal(LIVE, grid[1,4]);
     });
   });
 });
