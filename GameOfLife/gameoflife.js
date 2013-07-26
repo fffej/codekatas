@@ -18,7 +18,8 @@ var createGrid = function(s) {
   for (var i=0;i<rows;++i) {
     for (var j=0;j<cols;++j) {
       var v = lines[1+i][j];
-      game[[j,i]] = v === '*' ? LIVE : DEAD;
+      if (game[j] === undefined) { game[j] = []; }
+      game[j][i] = v === '*' ? LIVE : DEAD;
     }
   } 
 
@@ -32,10 +33,10 @@ describe('game of life', function() {
 
       assert.equal(4, grid.rows);
 
-      assert.equal(DEAD, grid[[0,0]]);
-      assert.equal(LIVE, grid[[4,1]]);
-      assert.equal(LIVE, grid[[3,2]]);
-      assert.equal(LIVE, grid[[4,2]]);
+      assert.equal(DEAD, grid[0][0]);
+      assert.equal(LIVE, grid[4][1]);
+      assert.equal(LIVE, grid[3][2]);
+      assert.equal(LIVE, grid[4][2]);
     });
   });
 });
