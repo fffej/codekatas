@@ -37,5 +37,12 @@ describe('Game of life', function() {
     it('dead cells with exactly 3 neighbours live', function() {
       assert.equal(LIVE, cellState(DEAD,3));
     });
+
+    it('should be defined for all input types', function() {
+      for (var i=0;i<=8;++i) {
+        assert(undefined !== cellState(DEAD,i));
+        assert(undefined !== cellState(LIVE,i));
+      }
+    });
   });
 });
