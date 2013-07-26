@@ -15,6 +15,12 @@ var createGrid = function(s) {
 
   var game = { rows: rows, cols: cols };
 
+  for (var i=0;i<rows;++i) {
+    for (var j=0;j<cols;++j) {
+      game[i,j] = DEAD;
+    }
+  } 
+
   return game;
 };
 
