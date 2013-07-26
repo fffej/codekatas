@@ -52,6 +52,10 @@ describe('game of life', function() {
       assert.equal(LIVE, cellState(LIVE,2));
       assert.equal(LIVE, cellState(LIVE,3));
     });
+
+    it('becomes alive', function() {
+      assert.equal(LIVE, cellState(DEAD,3));
+    });
   });
 
   describe('grid', function() {
