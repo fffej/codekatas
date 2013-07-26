@@ -173,3 +173,9 @@ describe('game of life', function() {
   });
 });
 
+// Retrospective
+// - Painful
+// - x[1,2,3,4] doesn't do what you expect for an object indexer
+//     This is because "," is an operator that evaluates arguments in turn
+// - Getting rows and columns right is hard :)
+// - Code is too big, not very clean.
