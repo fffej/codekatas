@@ -16,6 +16,9 @@ var cellState = function(currentCellState, numberOfAliveNeighbours) {
   }
   else if (currentCellState === DEAD && numberOfAliveNeighbours === 3) {
     return LIVE;
+  } 
+  else {
+    return DEAD;
   }
 };
 
