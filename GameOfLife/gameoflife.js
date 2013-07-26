@@ -25,7 +25,10 @@ var cellState = function(currentCellState, numberOfAliveNeighbours) {
 var Grid = function(width, height) {
   return {
     width: width,
-    height: height
+    height: height,
+    at: function(x,y) {
+      return DEAD;
+    }
   };
 };
 
