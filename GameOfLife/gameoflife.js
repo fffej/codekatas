@@ -15,5 +15,9 @@ describe('Game of life', function() {
     it('fewer than two neighbours dies', function() {
       assert.equal(DEAD, cellState(ALIVE,1));
     });
+
+    it('more than 3 alive cells dies', function() {
+      assert.equal(DEAD, cellState(ALIVE,4));
+    });
   });
 });
