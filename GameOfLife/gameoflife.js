@@ -111,6 +111,18 @@ describe('game of life', function() {
 
       assert.equal(0, grid.neighbours(0,0));
       assert.equal(2, grid.neighbours(3,2));
+
+      grid = createGrid('2 2\n..\n..');
+      assert.equal(0, grid.neighbours(0,0));
+      assert.equal(0, grid.neighbours(1,0));
+      assert.equal(0, grid.neighbours(0,1));
+      assert.equal(0, grid.neighbours(1,1));
+
+      grid = createGrid('2 2\n**\n**');
+      assert.equal(3, grid.neighbours(0,0));
+      assert.equal(3, grid.neighbours(1,0));
+      assert.equal(3, grid.neighbours(0,1));
+      assert.equal(3, grid.neighbours(1,1));
     });
   });
 });
