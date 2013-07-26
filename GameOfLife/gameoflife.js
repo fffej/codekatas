@@ -37,6 +37,12 @@ describe('Game of life', function() {
       assert.equal(10, grid.width);
       assert.equal(20, grid.height);
     });
+
+    it('should be possible to read and write cells', function() {
+      var grid = new Grid(10,20);
+
+      assert.equal(DEAD, grid.at(0,0));
+    });
   });
 
   describe('cell', function() {
