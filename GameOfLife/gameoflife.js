@@ -82,6 +82,12 @@ describe('game of life', function() {
       assert.equal(LIVE, grid[3][2]);
       assert.equal(LIVE, grid[4][2]);
     });
+
+    it('should be able to get the number of live neighbours', function() {
+      var grid = createGrid(sampleInput);
+
+      assert.equal(0, grid.neighbours(0,0));
+    });
   });
 });
 
