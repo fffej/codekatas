@@ -45,6 +45,9 @@ describe('Game of life', function() {
       var grid = new Grid(10,20);
 
       assert.equal(DEAD, grid.at(0,0));
+
+      grid.set(0,0, LIVE);
+      assert.equal(LIVE, grid.at(0,0));
     });
   });
 
