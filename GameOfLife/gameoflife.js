@@ -138,6 +138,9 @@ describe('game of life', function() {
     it('should have a sensible printed representation', function() {
       var grid = createGrid('1 1\n.');
       assert.equal('1 1\n.\n', grid.to_string());
+
+      grid = createGrid(sampleInput);
+      assert.equal(sampleInput, grid.to_string());
     });
   });
 });
