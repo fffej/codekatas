@@ -6,6 +6,7 @@ var DEAD = 0;
 var LIVE = 1;
 
 var sampleInput = "4 8\n........\n....*...\n...**...\n........\n";
+var sampleOutput = "4 8\n........\n...**...\n...**...\n........\n";
 
 var Game = function(r,c) {
   var game = { 
@@ -161,9 +162,13 @@ describe('game of life', function() {
     });
 
     it('can iterate', function() {
-      var grid = createGrid('2 2\n..\n.*\n');
-   
+      var grid = createGrid('2 2\n..\n.*\n');   
       assert.equal('2 2\n..\n..\n', grid.iterate().to_string());
+    });
+
+    it('produces right output for sample input', function() {
+      var grid = createGrid(sampleInput);
+      assert.equal(sampleOutput, grid.iterate().to_string());
     });
   });
 });
