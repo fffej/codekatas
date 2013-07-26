@@ -41,6 +41,11 @@ var Grid = function(width, height) {
       return grid[x][y];
     },
     set: function(x,y,v) {
+      assert(x < grid[0].length);
+      assert(y < grid.length);
+      console.log('grid: ' + grid.length);
+      console.log('grid[x]:' + grid[x].length);
+      console.log(grid[x][y]);
       grid[x][y] = v;
     }
   };
@@ -55,10 +60,14 @@ var createFromString = function(str) {
 
   var grid = new Grid(w,h);
 
+  console.log(w + "," + h);
+
   for (var i=0;i<h;++i) {
     var row = lines[i+1];
+    assert.equal(w,row.length);
     for (var j=0;j<w;++j) {
-      grid.set(j,i,row[j] === '*' ? LIVE : DEAD);
+      console.log(w + "," + h + "," + i + "," + j);
+      grid.set(i,j,row[j] === '*' ? LIVE : DEAD);
     }
   }
 
@@ -81,6 +90,9 @@ describe('Game of life', function() {
 
       grid.set(0,0, LIVE);
       assert.equal(LIVE, grid.at(0,0));
+
+      grid.set(5,5, LIVE);
+      assert.equal(LIVE, grid.at(5,5));
     });
 
     it('should be possible to read in a description of the grid', function() {
