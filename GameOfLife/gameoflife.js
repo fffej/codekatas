@@ -1,10 +1,19 @@
 "use strict";
 var assert = require('assert');
 
+var ALIVE = 1;
+var DEAD  = 0;
+
+var cellState = function(currentCellState, numberOfAliveNeighbours) {
+  if (numberOfAliveNeighbours < 2) {
+    return DEAD;
+  }
+};
+
 describe('Game of life', function() {
   describe('cell', function() {
     it('fewer than two neighbours dies', function() {
-      assert.fail('fail!');
+      assert.equal(DEAD, cellState(ALIVE,1));
     });
   });
 });
