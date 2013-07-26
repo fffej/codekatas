@@ -59,6 +59,13 @@ describe('game of life', function() {
     it('becomes alive', function() {
       assert.equal(LIVE, cellState(DEAD,3));
     });
+
+    it('is fully defined', function() {
+      for (var i=0;i<=8;++i) {
+        assert(cellState(DEAD,i));
+        assert(cellState(LIVE,i));
+      }
+    });
   });
 
   describe('grid', function() {
