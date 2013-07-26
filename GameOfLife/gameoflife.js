@@ -23,7 +23,6 @@ var cellState = function(currentCellState, numberOfAliveNeighbours) {
 };
 
 var Grid = function(width, height) {
-
   var grid = [];
   for (var i=0;i<height;++i) {
     var row = [];
@@ -45,6 +44,16 @@ var Grid = function(width, height) {
   };
 };
 
+var createFromString = function(str) {
+  var lines = str.split('\n');
+
+  var hw = lines[0].split(' ');
+  var h = hw[0] | 0;
+  var w = hw[1] | 0;
+
+  return new Grid(w,h);
+};
+
 describe('Game of life', function() {
 
   describe('grid', function() {
@@ -64,7 +73,7 @@ describe('Game of life', function() {
     });
 
     it('should be possible to read in a description of the grid', function() {
-      var input =  '4 8\n........\n....*...\n...**...\n........\n'
+      var input = '4 8\n........\n....*...\n...**...\n........\n';
       var grid = createFromString(input);
       assert.equal(8, grid.width);
       assert.equal(4, grid.height);
