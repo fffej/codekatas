@@ -23,13 +23,24 @@ var cellState = function(currentCellState, numberOfAliveNeighbours) {
 };
 
 var Grid = function(width, height) {
+
+  var grid = [];
+  for (var i=0;i<height;++i) {
+    var row = [];
+    for (var j=0;j<width;++j) {
+      row.push(DEAD);
+    }
+    grid.push(row);
+  }
+
   return {
     width: width,
     height: height,
     at: function(x,y) {
-      return DEAD;
+      return grid[y][x];
     },
     set: function(x,y,v) {
+      grid[y][x] = v;
     }
   };
 };
