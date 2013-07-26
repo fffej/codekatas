@@ -2,6 +2,9 @@
 
 var assert = require('assert');
 
+var DEAD = 0;
+var LIVE = 1;
+
 var sampleInput = "4 8\n........\n....*...\n...**...\n........\n";
 
 var createGrid = function(s) {
@@ -10,7 +13,9 @@ var createGrid = function(s) {
   var rows = rc[0] | 0;
   var cols = rc[1] | 0;
 
-  return { rows: rows, cols: cols };
+  var game = { rows: rows, cols: cols };
+
+  return game;
 };
 
 describe('game of life', function() {
@@ -19,6 +24,8 @@ describe('game of life', function() {
       var grid = createGrid(sampleInput);
 
       assert.equal(4, grid.rows);
+
+      assert.equal(DEAD, grid[0,0]);
     });
   });
 });
