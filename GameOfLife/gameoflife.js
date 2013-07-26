@@ -35,6 +35,11 @@ var Game = function(r,c) {
           s+='\n';
         }
         return s;
+      },
+      iterate: function() {
+        var newGame = new Game(this.rows, this.cols);
+
+        return newGame;
       }
   };
   return game;
