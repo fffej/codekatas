@@ -22,6 +22,13 @@ var cellState = function(currentCellState, numberOfAliveNeighbours) {
   }
 };
 
+var Grid = function(width, height) {
+  return {
+    width: width,
+    height: height
+  };
+};
+
 describe('Game of life', function() {
 
   describe('grid', function() {
