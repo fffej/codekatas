@@ -23,6 +23,15 @@ var cellState = function(currentCellState, numberOfAliveNeighbours) {
 };
 
 describe('Game of life', function() {
+
+  describe('grid', function() {
+    it('should have a width and a height', function() {
+      var grid = new Grid(10,20);
+      assert.equal(10, grid.width);
+      assert.equal(20, grid.height);
+    });
+  });
+
   describe('cell', function() {
     it('fewer than two neighbours dies', function() {
       assert.equal(DEAD, cellState(LIVE,1));
