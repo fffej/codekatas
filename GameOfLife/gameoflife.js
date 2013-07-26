@@ -7,15 +7,10 @@ var LIVE = 1;
 
 var sampleInput = "4 8\n........\n....*...\n...**...\n........\n";
 
-var createGrid = function(s) {
-  var lines = s.split('\n');
-  var rc = lines[0].split(' ');
-  var rows = rc[0] | 0; // 4
-  var cols = rc[1] | 0; // 8
-
+var Game = function(r,c) {
   var game = { 
-      rows: rows, 
-      cols: cols,
+      rows: r, 
+      cols: c,
       neighbours: function(c,r) {
         var n = 0;
         for (var i=-1;i<=1;++i) {
@@ -28,6 +23,16 @@ var createGrid = function(s) {
         return n;
       }
   };
+  return game;
+};
+
+var createGrid = function(s) {
+  var lines = s.split('\n');
+  var rc = lines[0].split(' ');
+  var rows = rc[0] | 0; // 4
+  var cols = rc[1] | 0; // 8
+
+  var game = new Game(rows,cols);  
 
   for (var i=0;i<rows;++i) {
     for (var j=0;j<cols;++j) {
@@ -101,8 +106,8 @@ describe('game of life', function() {
       var grid = createGrid(sampleInput);
 
       assert.equal(0, grid.neighbours(0,0));
-      assert.equal(1, grid.neighbours(3,0));
-      assert.equal(2, grid.neighbours(4,0));
+      assert.equal(1, grid.neighbours(2,0));
+      assert.equal(2, grid.neighbours(3,0));
     });
   });
 });
