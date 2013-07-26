@@ -25,6 +25,16 @@ var Game = function(r,c) {
           }
         }
         return n;
+      },
+      to_string: function() {
+        var s = this.rows + ' ' + this.cols + '\n';
+        for (var i=0;i<this.rows;++i) {
+          for (var j=0;j<this.cols;++j) {
+            s+= (this[j][i] === LIVE ? '*' : '.');
+          }
+          s+='\n';
+        }
+        return s;
       }
   };
   return game;
