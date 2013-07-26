@@ -14,6 +14,9 @@ var cellState = function(currentCellState, numberOfAliveNeighbours) {
   else if (currentCellState === LIVE && twoOrThreeNeighbours) { 
     return LIVE;
   }
+  else if (currentCellState === DEAD && numberOfAliveNeighbours === 3) {
+    return LIVE;
+  }
 };
 
 describe('Game of life', function() {
