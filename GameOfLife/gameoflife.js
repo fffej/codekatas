@@ -7,6 +7,10 @@ var DEAD  = 0;
 var cellState = function(currentCellState, numberOfAliveNeighbours) {
   if (numberOfAliveNeighbours < 2 || numberOfAliveNeighbours > 3) {
     return DEAD;
+  } 
+  if (currentCellState === LIVE && 
+      (numberOfAliveNeighbours === 3 || numberOfAliveNeighbours === 2)) {
+    return LIVE;
   }
 };
 
