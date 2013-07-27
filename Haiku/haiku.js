@@ -78,6 +78,10 @@ describe('haiku', function() {
        assert.deepEqual([5,7,5], syllables(example1));
     });
 
+    it('should know the syllable counts for a haiku', function() {
+      assert(isHaikuCount([5,7,5]));
+    });
+
     it('should have an understanding of vowels', function() {
       var vowels = "aeiouy";
       for (var i=0;i<vowels.length;++i) {
