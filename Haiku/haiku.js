@@ -18,6 +18,13 @@ var syllableCount = function(word) {
   return syllables;
 };
 
+var isHaikuCount = function(ar) {
+  return ar.length === 3 && 
+         ar[0] === 5 && 
+         ar[1] === 7 && 
+         ar[2] === 5;
+};
+
 var isVowel = function(c) {
   return "aeiouy".indexOf(c) !== -1;
 };
