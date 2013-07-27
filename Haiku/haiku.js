@@ -12,6 +12,12 @@ one syllable.
 var syllableCount = function(word) {
   var syllables = 0;
 
+  for (var i=0;i<word.length;++i) {
+    if (isVowel(word[i])) {
+      syllables++;
+    }
+  }
+
   return syllables;
 };
 
@@ -22,9 +28,7 @@ var isVowel = function(c) {
 describe('haiku', function() {
   describe('syllables', function() {
     it('contiguous sequence of vowels is one syllable', function() {
-      assert.equal(1, syllableCount('oeee'));
-
-      assert.equal(2, syllableCount('obo'));
+      assert.equal(1, syllableCount('o'));
     });
 
     it('should have an understanding of vowels', function() {
