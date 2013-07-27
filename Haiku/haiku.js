@@ -15,11 +15,9 @@ var syllableCount = function(word) {
   var inSyllableRun = false;
 
   for (var i=0;i<word.length;++i) {
-    if (isVowel(word[i])) {
-      if (!inSyllableRun) {
-        syllables++;
-        inSyllableRun = true;
-      }
+    if (isVowel(word[i]) && !inSyllableRun) {
+      syllables++;
+      inSyllableRun = true;
     } else {
       inSyllableRun = false;
     }
