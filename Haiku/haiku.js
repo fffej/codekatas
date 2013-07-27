@@ -21,6 +21,8 @@ describe('haiku', function() {
   describe('syllables', function() {
     it('contiguous sequence of vowels is one syllable', function() {
       assert.equal(1, syllableCount('oeee'));
+
+      assert.equal(2, syllableCount('obo'));
     });
 
     it('should have an understanding of vowels', function() {
