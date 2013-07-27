@@ -13,7 +13,9 @@ var syllableCount = function(word) {
   return 1;
 };
 
-
+var isVowel = function(c) {
+  return "aeiouy".indexOf(c) !== -1;
+};
 
 describe('haiku', function() {
   describe('syllables', function() {
@@ -24,7 +26,7 @@ describe('haiku', function() {
     it('should have an understanding of vowels', function() {
       var vowels = "aeiouy";
       for (var i=0;i<vowels.length;++i) {
-        assert.true(isVowel(vowels[i]));
+        assert(isVowel(vowels[i]));
       }
     });
   });
