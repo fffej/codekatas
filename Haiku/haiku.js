@@ -12,9 +12,18 @@ one syllable.
 var syllableCount = function(word) {
   var syllables = 0;
 
+  var inSyllableRun = false;
+
   for (var i=0;i<word.length;++i) {
     if (isVowel(word[i])) {
-      syllables++;
+      if (inSyllableRun) {
+        //
+      } else {
+        syllables++;
+        inSyllableRun = true;
+      }
+    } else {
+      inSyllableRun = false;
     }
   }
 
