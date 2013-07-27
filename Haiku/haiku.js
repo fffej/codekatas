@@ -87,6 +87,11 @@ describe('haiku', function() {
 
     it('should know the syllable counts for a haiku', function() {
       assert(isHaikuCount([5,7,5]));
+      assert(!isHaikuCount([5,8,5]));
+    });
+
+    it('should produce the right output', function() {
+
     });
 
     it('should have an understanding of vowels', function() {
