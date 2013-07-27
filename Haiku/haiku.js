@@ -1,8 +1,6 @@
 "use strict";
 var assert = require('assert');
 
-
-
 var syllableCount = function(word) {
   var syllables = 0;
 
