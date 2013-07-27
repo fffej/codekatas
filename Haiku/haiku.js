@@ -108,6 +108,7 @@ describe('haiku', function() {
 
     it('should produce the right output', function() {
       assert.equal(expectedOutput1, process(example1));     
+      assert.equal(expectedOutput2, process(example2));
     });
 
     it('should have an understanding of vowels', function() {
