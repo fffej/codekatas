@@ -28,6 +28,11 @@ describe('haiku', function() {
       for (var i=0;i<vowels.length;++i) {
         assert(isVowel(vowels[i]));
       }
+
+      var consonants = "bcdfghjklmnpqrstvwxz";
+      for (var i=0;i<consonants.length;++i) {
+        assert(!isVowel(consonants[i]));
+      }
     });
   });
 });
