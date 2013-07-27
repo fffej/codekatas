@@ -37,6 +37,11 @@ var countSyllables = function(words) {
   return cs.reduce(function(x,y) { return x + y } );
 };
 
+var syllables = function(phrase) {
+  var lines = splitPhrase(phrase);
+  return lines.map(countSyllables);
+};
+
 describe('haiku', function() {
   describe('syllables', function() {
     it('contiguous sequence of vowels is one syllable', function() {
