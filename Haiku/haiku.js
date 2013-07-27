@@ -51,6 +51,15 @@ var syllables = function(phrase) {
   return lines.map(countSyllables);
 };
 
+var process = function(phrase) {
+  var s = syllables(phrase);
+  var isHaiku = isHaikuCount(s);
+
+  var r = s[0] + ',' + s[1] + ',' + s[2] + ',';
+  r += (isHaiku ? 'Yes' : 'No');
+  return r;
+};
+
 describe('haiku', function() {
 
   var example1 = 'happy purple frog/eating bugs in the marshes/get indigestion';
