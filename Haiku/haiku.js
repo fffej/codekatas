@@ -98,7 +98,7 @@ describe('haiku', function() {
     });
 
     it('should produce the right output', function() {
-     
+      assert.equal(expectedOutput1, process(example1));     
     });
 
     it('should have an understanding of vowels', function() {
