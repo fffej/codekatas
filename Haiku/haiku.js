@@ -67,6 +67,12 @@ describe('haiku', function() {
     
     });
 
+    it('should get syllable counts for a phrase', function() {
+      var example1 = 'happy purple frog/eating bugs in the marshes/get indigestion';
+      
+       assert.deepEqual([5,7,5], syllables(example1));
+    });
+
     it('should have an understanding of vowels', function() {
       var vowels = "aeiouy";
       for (var i=0;i<vowels.length;++i) {
