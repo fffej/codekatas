@@ -44,6 +44,7 @@ describe('haiku', function() {
     it('broken by consonants is multiple syllables', function() {
       assert.equal(2, syllableCount('aba'));
       assert.equal(3, syllableCount('banana'));
+      assert.equal(2, syllableCount('code'));
     });
 
     it('should have an understanding of vowels', function() {
