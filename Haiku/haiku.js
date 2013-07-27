@@ -26,6 +26,10 @@ var splitWords = function(words) {
   return words.split(' ');
 };
 
+var splitPhrase = function(phrase) {
+  return phrase.split('/');
+};
+
 var countSyllables = function(words) {
   var s = splitWords(words);
   var cs = s.map(syllableCount);
