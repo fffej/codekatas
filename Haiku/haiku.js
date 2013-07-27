@@ -38,6 +38,11 @@ describe('haiku', function() {
       assert.equal(1, syllableCount('o'));
       assert.equal(1, syllableCount('oa'));
       assert.equal(1, syllableCount('at'));
+      assert.equal(1, syllableCount('bab'));
+    });
+
+    it('broken by consonants is multiple syllables', function() {
+      assert.equal(2, syllableCount('aba'));
     });
 
     it('should have an understanding of vowels', function() {
