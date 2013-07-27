@@ -22,6 +22,10 @@ var isVowel = function(c) {
   return "aeiouy".indexOf(c) !== -1;
 };
 
+var splitWords = function(words) {
+  return words.split(' ');
+};
+
 describe('haiku', function() {
   describe('syllables', function() {
     it('contiguous sequence of vowels is one syllable', function() {
