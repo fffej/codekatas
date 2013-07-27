@@ -46,6 +46,10 @@ describe('haiku', function() {
                        splitWords('the quick brown fox'));
     });
 
+    it('should count syllables in a phrase', function() {
+      assert.equal(4, countSyllables('the quick brown fox'));
+    });
+
     it('should have an understanding of vowels', function() {
       var vowels = "aeiouy";
       for (var i=0;i<vowels.length;++i) {
