@@ -34,7 +34,7 @@ var countSyllables = function(words) {
   var s = splitWords(words);
   var cs = s.map(syllableCount);
 
-  return cs.reduce(function(x,y) { return x + y});
+  return cs.reduce(function(x,y) { return x + y } );
 };
 
 describe('haiku', function() {
