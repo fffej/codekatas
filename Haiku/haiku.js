@@ -64,7 +64,7 @@ describe('haiku', function() {
   var example2 = 'computer programs/the bugs try to eat my code/i will not let them';
 
   var expectedOutput1 = '5,7,5,Yes';
-  var expectedOutput2 = '5,6,5,No';    
+  var expectedOutput2 = '5,8,5,No';    
 
   describe('syllables', function() {
     it('contiguous sequence of vowels is one syllable', function() {
@@ -72,6 +72,7 @@ describe('haiku', function() {
       assert.equal(1, syllableCount('oa'));
       assert.equal(1, syllableCount('at'));
       assert.equal(1, syllableCount('bab'));
+      assert.equal(1, syllableCount('try'));
     });
 
     it('broken by consonants is multiple syllables', function() {
@@ -87,7 +88,7 @@ describe('haiku', function() {
 
     it('should count syllables in a phrase', function() {
       assert.equal(4, countSyllables('the quick brown fox'));
-      assert.equal(6, countSyllables('the bugs try to eat my code'));
+      assert.equal(8, countSyllables('the bugs try to eat my code'));
     });
 
     it('should split on / for phrases', function() {
