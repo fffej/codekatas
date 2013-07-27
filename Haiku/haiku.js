@@ -37,6 +37,11 @@ describe('haiku', function() {
       assert.equal(2, syllableCount('code'));
     });
 
+    it('should split sentences into words', function() {
+      assert.deepEqual(['the','quick','brown','fox'],
+                       splitWords('the quick brown fox'));
+    });
+
     it('should have an understanding of vowels', function() {
       var vowels = "aeiouy";
       for (var i=0;i<vowels.length;++i) {
