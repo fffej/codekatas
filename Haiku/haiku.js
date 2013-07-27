@@ -1,14 +1,6 @@
 "use strict";
 var assert = require('assert');
 
-/*
- For the purposes of this problem,
-every contiguous sequence of one or more vowels counts
-as one syllable, where the vowels are
-a, e, i, o, u, and y. Every word will contain at least
-one syllable.
-*/
-
 var syllableCount = function(word) {
   var syllables = 0;
 
