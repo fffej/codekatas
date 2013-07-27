@@ -57,6 +57,12 @@ describe('haiku', function() {
       assert.equal(4, countSyllables('the quick brown fox'));
     });
 
+    it('should split on / for phrases', function() {
+      assert.deepEqual(['one two three', 'four five', 'six seven'],
+                       splitPhrase('one two three/four five/six seven'));
+    
+    });
+
     it('should have an understanding of vowels', function() {
       var vowels = "aeiouy";
       for (var i=0;i<vowels.length;++i) {
