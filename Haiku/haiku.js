@@ -87,6 +87,7 @@ describe('haiku', function() {
 
     it('should count syllables in a phrase', function() {
       assert.equal(4, countSyllables('the quick brown fox'));
+      assert.equal(6, countSyllables('the bugs try to eat my code'));
     });
 
     it('should split on / for phrases', function() {
