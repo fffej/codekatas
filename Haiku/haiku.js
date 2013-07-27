@@ -10,7 +10,9 @@ one syllable.
 */
 
 var syllableCount = function(word) {
-  return 1;
+  var syllables = 0;
+
+  return syllables;
 };
 
 var isVowel = function(c) {
