@@ -13,10 +13,19 @@ var syllableCount = function(word) {
   return 1;
 };
 
+
+
 describe('haiku', function() {
   describe('syllables', function() {
     it('contiguous sequence of vowels is one syllable', function() {
       assert.equal(1, syllableCount('oeee'));
+    });
+
+    it('should have an understanding of vowels', function() {
+      var vowels = "aeiouy";
+      for (var i=0;i<vowels.length;++i) {
+        assert.true(isVowel(vowels[i]));
+      }
     });
   });
 });
