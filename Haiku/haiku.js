@@ -1,6 +1,8 @@
 "use strict";
 var assert = require('assert');
 
+
+
 var syllableCount = function(word) {
   var syllables = 0;
 
@@ -50,6 +52,13 @@ var syllables = function(phrase) {
 };
 
 describe('haiku', function() {
+
+  var example1 = 'happy purple frog/eating bugs in the marshes/get indigestion';
+  var example2 = 'computer programs/the bugs try to eat my code/i will not let them';
+
+  var expectedOutput1 = '5,7,5,Yes';
+  var expectedOutput2 = '5,6,5,No';    
+
   describe('syllables', function() {
     it('contiguous sequence of vowels is one syllable', function() {
       assert.equal(1, syllableCount('o'));
@@ -79,9 +88,7 @@ describe('haiku', function() {
     
     });
 
-    it('should get syllable counts for a phrase', function() {
-      var example1 = 'happy purple frog/eating bugs in the marshes/get indigestion';
-      
+    it('should get syllable counts for a phrase', function() {      
        assert.deepEqual([5,7,5], syllables(example1));
     });
 
@@ -91,7 +98,7 @@ describe('haiku', function() {
     });
 
     it('should produce the right output', function() {
-
+     
     });
 
     it('should have an understanding of vowels', function() {
