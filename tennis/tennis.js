@@ -37,6 +37,11 @@ var Game = function(player1,player2) {
         this[other] = 40;
         return;
       }
+     
+      if (this[prop] === 'A') {
+        this[prop] = WIN;
+        return;
+      }
 
       var i = pointsProgression.indexOf(this[prop]);
       this[prop] = pointsProgression[i+1];
@@ -44,6 +49,7 @@ var Game = function(player1,player2) {
       if (this[prop] === 'A' && this[other] !== 40) {
         this[prop] = pointsProgression[i+2];
       }
+      
     },
 
     withServe: function() {
@@ -79,6 +85,9 @@ describe('tennis', function() {
 
       game.againstServe();
       assert.equal('Joe 40 - Fred A', game.score());
+
+      game.againstServe();
+      assert.equal('Fred won', game.score());
     });
 
     it ('game to love', function() {
