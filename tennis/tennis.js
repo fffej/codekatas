@@ -62,6 +62,15 @@ var Game = function(player1,player2) {
   };
 };
 
+var gameAtDeuce = function() {
+  var game = new Game('Joe', 'Fred');
+  game.withServe(); game.againstServe();
+  game.withServe(); game.againstServe();
+  game.withServe(); game.againstServe();
+
+  return game;
+};
+
 describe('tennis', function() {
   describe('game', function() {
     it('starts at 0-0', function() {
@@ -70,11 +79,7 @@ describe('tennis', function() {
     });
 
     it('handles deuce', function() {
-      var game = new Game('Joe', 'Fred');
-      game.withServe(); game.againstServe();
-      game.withServe(); game.againstServe();
-      game.withServe(); game.againstServe();
-
+      var game = gameAtDeuce();
       assert.equal('Joe 40 - Fred 40', game.score());
 
       game.withServe();
