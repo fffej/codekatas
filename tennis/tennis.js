@@ -29,6 +29,10 @@ var Game = function(player1,player2) {
       var pointsProgression = [0,15,30,40,WIN];
       var i = pointsProgression.indexOf(this._withServes);
       this._withServes = pointsProgression[i+1];
+    },
+
+    againstServe: function() {
+      this._otherPoints += 15;
     }
   };
 };
@@ -59,7 +63,7 @@ describe('tennis', function() {
     it('game against server to love', function() {
       var game = new Game('Joe', 'Fred');
 
-      game.againstServer();
+      game.againstServe();
       assert.equal('Joe 0 - Fred 15', game.score());      
     });
   });
