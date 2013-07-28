@@ -7,6 +7,8 @@ var Game = function(player1,player2) {
 
   var WIN = 101; // sentinel
 
+  var pointsProgression = [0,15,30,40,WIN];
+
   var formatPlayerScore = function(player, score) {
     return player + ' ' + score;
   };
@@ -26,13 +28,13 @@ var Game = function(player1,player2) {
     },
 
     withServe: function() {
-      var pointsProgression = [0,15,30,40,WIN];
       var i = pointsProgression.indexOf(this._withServes);
       this._withServes = pointsProgression[i+1];
     },
 
     againstServe: function() {
-      this._otherPoints += 15;
+      var i = pointsProgression.indexOf(this._otherPoints);
+      this._otherPoints = pointsProgression[i+1];
     }
   };
 };
