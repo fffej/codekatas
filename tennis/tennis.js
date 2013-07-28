@@ -13,8 +13,8 @@ var Game = function() {
 describe('tennis', function() {
   describe('game', function() {
     it('starts at 0-0', function() {
-      var game = new Game();
-      assert.equal('0 - 0', game.score());
+      var game = new Game('Joe', 'Fred');
+      assert.equal('Joe 0 - Fred 0', game.score());
     });
   });
 });
