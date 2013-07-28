@@ -30,12 +30,15 @@ var Game = function(player1,player2) {
              formatPlayerScore(player2, this._otherPoints);
     },
 
+    _returnToDeuce: function() {
+      this._withServes = this._otherPoints = 40;
+    },
+
     _advancePoint: function(prop,other) {
 
       // Return to deuce
       if (this[other] === 'A' && this[prop] === 40) {
-        this[prop] = 40;
-        this[other] = 40;
+        this._returnToDeuce();
         return;
       }
      
