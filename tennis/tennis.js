@@ -8,9 +8,9 @@ var Game = function(player1,player2) {
     _otherPoints: 0,
 
     score: function() {
-      return player1 + ' ' + 0 + 
+      return player1 + ' ' + this._serverPoints + 
              ' - ' + 
-             player2 + ' ' + 0;
+             player2 + ' ' + this._otherPoints;
     },
 
     serverPoint: function() {}
