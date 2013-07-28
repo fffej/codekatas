@@ -4,9 +4,14 @@ var assert = require('assert');
 
 var Game = function(player1,player2) {
   return {
+    _serverPoints: 0,
+    _otherPoints: 0,
+
     score: function() {
       return player1 + ' 0 - ' + player2 + ' 0';
-    }
+    },
+
+    serverPoint: function() {}
   };
 };
 
