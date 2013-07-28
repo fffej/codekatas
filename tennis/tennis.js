@@ -7,7 +7,7 @@ var Game = function(player1,player2) {
 
   var WIN = 101; // sentinel
 
-  var pointsProgression = [0,15,30,40,'A',WIN];
+  var pointsProgression = [0,15,30,40,WIN];
 
   var formatPlayerScore = function(player, score) {
     return player + ' ' + score;
@@ -32,24 +32,26 @@ var Game = function(player1,player2) {
 
     _advancePoint: function(prop,other) {
 
+      // Return to deuce
       if (this[other] === 'A' && this[prop] === 40) {
         this[prop] = 40;
         this[other] = 40;
         return;
       }
      
+      // Win from advantage
       if (this[prop] === 'A') {
         this[prop] = WIN;
         return;
       }
 
+      if (this[other] === 40 && this[prop] === 40) {
+        this[prop] = 'A';
+        return;
+      }
+
       var i = pointsProgression.indexOf(this[prop]);
       this[prop] = pointsProgression[i+1];
-
-      if (this[prop] === 'A' && this[other] !== 40) {
-        this[prop] = pointsProgression[i+2];
-      }
-      
     },
 
     withServe: function() {
@@ -128,3 +130,4 @@ describe('tennis', function() {
     });
   });
 });
+
