@@ -52,6 +52,15 @@ describe('tennis', function() {
       assert.equal('Joe 0 - Fred 0', game.score());
     });
 
+    it('handles deuce', function() {
+      var game = new Game('Joe', 'Fred');
+      game.withServe(); game.againstServe();
+      game.withServe(); game.againstServe();
+      game.withServe(); game.againstServe();
+
+      assert.equal('Joe 40 - Fred 40', game.score());
+    });
+
     it ('game to love', function() {
       var game = new Game('Joe', 'Fred');
 
