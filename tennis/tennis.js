@@ -64,7 +64,10 @@ describe('tennis', function() {
       var game = new Game('Joe', 'Fred');
 
       game.againstServe();
-      assert.equal('Joe 0 - Fred 15', game.score());      
+      assert.equal('Joe 0 - Fred 15', game.score());
+
+      game.againstServe();
+      assert.equal('Joe 0 - Fred 30', game.score());
     });
   });
 });
