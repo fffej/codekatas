@@ -4,7 +4,9 @@ var assert = require('assert');
 
 var Game = function() {
   return {
-    score: '0 - 0'
+    score: function() {
+      return '0 - 0';
+    }
   };
 };
 
