@@ -36,11 +36,11 @@ var Game = function(player1,player2) {
     },
 
     withServe: function() {
-      this._advancePoint('_withServes');
+      this._advancePoint('_withServes', '_otherPoints');
     },
 
     againstServe: function() {
-      this._advancePoint('_otherPoints');
+      this._advancePoint('_otherPoints', '_withServes');
     }
   };
 };
