@@ -2,6 +2,12 @@
 
 var assert = require('assert');
 
+var Game = function() {
+  return {
+    score: '0 - 0'
+  };
+};
+
 describe('tennis', function() {
   describe('game', function() {
     it('starts at 0-0', function() {
