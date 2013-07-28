@@ -7,7 +7,7 @@ var Game = function(player1,player2) {
 
   var WIN = 101; // sentinel
 
-  var pointsProgression = [0,15,30,40,WIN];
+  var pointsProgression = [0,15,30,40,'A',WIN];
 
   var formatPlayerScore = function(player, score) {
     return player + ' ' + score;
@@ -30,9 +30,13 @@ var Game = function(player1,player2) {
              formatPlayerScore(player2, this._otherPoints);
     },
 
-    _advancePoint: function(prop) {
+    _advancePoint: function(prop,other) {
       var i = pointsProgression.indexOf(this[prop]);
       this[prop] = pointsProgression[i+1];
+
+      if (this[prop] === 'A' && this[other] !== 40) {
+        this[prop] = pointsProgression[i+2];
+      }
     },
 
     withServe: function() {
