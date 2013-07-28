@@ -34,10 +34,19 @@ var Game = function(player1,player2) {
       this._withServes = this._otherPoints = 40;
     },
 
+    _isOtherAdvantage: function(prop,other) {
+      return this[other] === 'A' && this[prop] === 40;
+    },
+
+    _isDeuce : function() {
+      return this._otherPoints === this._withServes &&
+             this._otherPoints === 40;
+    },
+
     _advancePoint: function(prop,other) {
 
       // Return to deuce
-      if (this[other] === 'A' && this[prop] === 40) {
+      if (this._isOtherAdvantage(prop,other)) {
         this._returnToDeuce();
         return;
       }
