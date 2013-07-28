@@ -2,23 +2,27 @@
 
 var assert = require('assert');
 
-var formatScore = function(player, score) {
-  return player + ' ' + score;
-};
 
 var Game = function(player1,player2) {
+
+  var WIN = 101; // sentinel
+
+  var formatPlayerScore = function(player, score) {
+    return player + ' ' + score;
+  };
+
   return {
     _serverPoints: 0,
     _otherPoints: 0,
 
     score: function() {
-      return formatScore(player1, this._serverPoints) +
+      return formatPlayerScore(player1, this._serverPoints) +
              ' - ' + 
-             formatScore(player2, this._otherPoints);
+             formatPlayerScore(player2, this._otherPoints);
     },
 
     serverPoint: function() {
-      var pointsProgression = [0,15,30,40];
+      var pointsProgression = [0,15,30,40,WIN];
       var i = pointsProgression.indexOf(this._serverPoints);
       this._serverPoints = pointsProgression[i+1];
     }
