@@ -37,8 +37,7 @@ var Game = function(player1,player2) {
     },
 
     againstServe: function() {
-      var i = pointsProgression.indexOf(this._otherPoints);
-      this._otherPoints = pointsProgression[i+1];
+      this._advancePoint('_otherPoints');
     }
   };
 };
