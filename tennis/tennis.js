@@ -43,6 +43,9 @@ describe('tennis', function() {
 
       game.serverPoint();
       assert.equal('Joe 40 - Fred 0', game.score());
+
+      game.serverPoint();
+      assert.equal('Joe won', game.score());
     });
   });
 });
