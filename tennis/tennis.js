@@ -13,7 +13,9 @@ var Game = function(player1,player2) {
              player2 + ' ' + this._otherPoints;
     },
 
-    serverPoint: function() {}
+    serverPoint: function() {
+      this._serverPoints += 15;
+    }
   };
 };
 
