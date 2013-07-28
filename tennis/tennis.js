@@ -12,23 +12,23 @@ var Game = function(player1,player2) {
   };
 
   return {
-    _serverPoints: 0,
+    _withServes: 0,
     _otherPoints: 0,
 
     score: function() {
-      if (this._serverPoints === WIN) {
-        return player + ' won';
+      if (this._withServes === WIN) {
+        return player1 + ' won';
       }
       
-      return formatPlayerScore(player1, this._serverPoints) +
+      return formatPlayerScore(player1, this._withServes) +
              ' - ' + 
              formatPlayerScore(player2, this._otherPoints);
     },
 
-    serverPoint: function() {
+    withServe: function() {
       var pointsProgression = [0,15,30,40,WIN];
-      var i = pointsProgression.indexOf(this._serverPoints);
-      this._serverPoints = pointsProgression[i+1];
+      var i = pointsProgression.indexOf(this._withServes);
+      this._withServes = pointsProgression[i+1];
     }
   };
 };
@@ -43,17 +43,23 @@ describe('tennis', function() {
     it ('game to love', function() {
       var game = new Game('Joe', 'Fred');
 
-      game.serverPoint();
+      game.withServe();
       assert.equal('Joe 15 - Fred 0', game.score());
 
-      game.serverPoint();
+      game.withServe();
       assert.equal('Joe 30 - Fred 0', game.score());      
 
-      game.serverPoint();
+      game.withServe();
       assert.equal('Joe 40 - Fred 0', game.score());
 
-      game.serverPoint();
+      game.withServe();
       assert.equal('Joe won', game.score());
+    });
+
+    it('game against server to love', function() {
+      var game = new Game('Joe', 'Fred');
+
+      
     });
   });
 });
