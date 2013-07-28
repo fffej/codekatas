@@ -2,10 +2,10 @@
 
 var assert = require('assert');
 
-var Game = function() {
+var Game = function(player1,player2) {
   return {
     score: function() {
-      return '0 - 0';
+      return player1 + ' 0 - ' + player2 + ' 0';
     }
   };
 };
