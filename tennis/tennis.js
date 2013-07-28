@@ -27,9 +27,13 @@ var Game = function(player1,player2) {
              formatPlayerScore(player2, this._otherPoints);
     },
 
+    _advancePoint: function(prop) {
+      var i = pointsProgression.indexOf(this[prop]);
+      this[prop] = pointsProgression[i+1];
+    },
+
     withServe: function() {
-      var i = pointsProgression.indexOf(this._withServes);
-      this._withServes = pointsProgression[i+1];
+      this._advancePoint('_withServes');
     },
 
     againstServe: function() {
