@@ -59,7 +59,8 @@ describe('tennis', function() {
     it('game against server to love', function() {
       var game = new Game('Joe', 'Fred');
 
-      
+      game.againstServer();
+      assert.equal('Joe 0 - Fred 15', game.score());      
     });
   });
 });
