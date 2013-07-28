@@ -20,6 +20,9 @@ var Game = function(player1,player2) {
     score: function() {
       if (this._withServes === WIN) {
         return player1 + ' won';
+      } 
+      else if (this._otherPoints === WIN) {
+        return player2 + ' won';
       }
       
       return formatPlayerScore(player1, this._withServes) +
