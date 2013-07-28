@@ -45,11 +45,13 @@ var Game = function(player1,player2) {
         return;
       }
 
+      // Advantage from deuce
       if (this[other] === 40 && this[prop] === 40) {
         this[prop] = 'A';
         return;
       }
 
+      // Move along
       var i = pointsProgression.indexOf(this[prop]);
       this[prop] = pointsProgression[i+1];
     },
