@@ -67,6 +67,9 @@ describe('tennis', function() {
       game.withServe();
       assert.equal('Joe A - Fred 40', game.score());
 
+      game.againstServe();
+      assert.equal('Joe 40 - Fred 40', game.score());
+
       game.withServe();
       assert.equal('Joe won', game.score());
     });
