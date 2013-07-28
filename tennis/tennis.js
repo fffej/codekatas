@@ -58,7 +58,7 @@ var Game = function(player1,player2) {
       }
 
       // Advantage from deuce
-      if (this[other] === 40 && this[prop] === 40) {
+      if (this._isDeuce()) {
         this[prop] = 'A';
         return;
       }
