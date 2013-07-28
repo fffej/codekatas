@@ -16,6 +16,10 @@ var Game = function(player1,player2) {
     _otherPoints: 0,
 
     score: function() {
+      if (this._serverPoints === WIN) {
+        return player + ' won';
+      }
+      
       return formatPlayerScore(player1, this._serverPoints) +
              ' - ' + 
              formatPlayerScore(player2, this._otherPoints);
