@@ -18,7 +18,9 @@ var Game = function(player1,player2) {
     },
 
     serverPoint: function() {
-      this._serverPoints += 15;
+      var pointsProgression = [0,15,30,40];
+      var i = pointsProgression.indexOf(this._serverPoints);
+      this._serverPoints = pointsProgression[i+1];
     }
   };
 };
