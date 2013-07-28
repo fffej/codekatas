@@ -2,15 +2,19 @@
 
 var assert = require('assert');
 
+var formatScore = function(player, score) {
+  return player + ' ' + score;
+};
+
 var Game = function(player1,player2) {
   return {
     _serverPoints: 0,
     _otherPoints: 0,
 
     score: function() {
-      return player1 + ' ' + this._serverPoints + 
+      return formatScore(player1, this._serverPoints) +
              ' - ' + 
-             player2 + ' ' + this._otherPoints;
+             formatScore(player2, this._otherPoints);
     },
 
     serverPoint: function() {
