@@ -32,9 +32,12 @@ describe('tennis', function() {
 
     it ('game to love', function() {
       var game = new Game('Joe', 'Fred');
+
       game.serverPoint();
-  
       assert.equal('Joe 15 - Fred 0', game.score());
+
+      game.serverPoint();
+      assert.equal('Joe 30 - Fred 0', game.score());      
     });
   });
 });
