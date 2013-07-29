@@ -10,7 +10,9 @@ var Grid = function(h, w) {
 };
 
 var createGridFromString = function(str) {
+  var lines = str.split('\n');
 
+  return new Grid(1,2);
 };
 
 describe('minefield', function() {
