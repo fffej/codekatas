@@ -9,6 +9,10 @@ var Grid = function(h, w) {
   };
 };
 
+var createGridFromString = function(str) {
+
+};
+
 describe('minefield', function() {
   var sampleGrid = '3 4\n*...\n..*.\n....';
 
