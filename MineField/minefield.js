@@ -11,8 +11,9 @@ var Grid = function(h, w) {
 
 var createGridFromString = function(str) {
   var lines = str.split('\n');
+  var hw = lines[0].split(' ');
 
-  return new Grid(1,2);
+  return new Grid(hw[0]|0,hw[1]|0);
 };
 
 describe('minefield', function() {
