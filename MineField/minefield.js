@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 
-var Grid = function(w,h) {
+var Grid = function(h, w) {
   return {
     width: w,
     height: h
@@ -16,8 +16,8 @@ describe('minefield', function() {
     it('should be able to create a grid', function() {
       var grid = new Grid(5,6);
 
-      assert.equal(grid.width, 5);
-      assert.equal(grid.height,6);
+      assert.equal(grid.width, 6);
+      assert.equal(grid.height,5);
     });
 
     it('should be able to create a grid from a string', function() {
