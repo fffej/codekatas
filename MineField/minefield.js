@@ -57,6 +57,7 @@ describe('minefield', function() {
       var grid = createGridFromString(sampleGrid);
 
       assert(grid.isMine(0,0));
+      assert(!grid.isMine(0,1));
     });
   });
 });
