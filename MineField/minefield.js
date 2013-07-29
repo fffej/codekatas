@@ -95,5 +95,11 @@ describe('minefield', function() {
       assert.equal(1, grid.surroundingMines(0,1));
       assert.equal(2, grid.surroundingMines(1,0));
     });
+
+    it('formats the output sensibly', function() {
+      var grid = createGridFromString(sampleGrid);
+
+      assert.equal(sampleOutput, grid.toString());
+    });
   });
 });
