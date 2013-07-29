@@ -15,6 +15,10 @@ var Grid = function(h, w) {
 
     isMine: function(r,c) {
       return this._mines.indexOf(r + ',' + c) !== -1;
+    },
+
+    surroundingMines: function(r,c) {
+      return 0;
     }
   };
 };
