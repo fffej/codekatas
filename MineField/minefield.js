@@ -65,5 +65,11 @@ describe('minefield', function() {
       assert(grid.isMine(2,1));
       assert(!grid.isMine(0,1));
     });
+
+    it('knows the surrounding number of mines', function() {
+      var grid = createGridFromString(sampleGrid);
+
+      assert.equal(0, grid.surroundingMines(0,2));
+    });
   });
 });
