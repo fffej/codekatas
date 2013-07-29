@@ -120,3 +120,8 @@ describe('minefield', function() {
     });
   });
 });
+
+// Retro
+// Decided to not need a grid, instead using a list of where the mines
+// are. This was suprisingly much simpler to implemetn than the usual
+// 2D array type approach I've used for this kata
