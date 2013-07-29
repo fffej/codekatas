@@ -64,6 +64,7 @@ var createGridFromString = function(str) {
 
 describe('minefield', function() {
   var sampleGrid = '3 4\n*...\n..*.\n....';
+  var sampleOutput = '*211\n12*1\n0111\n';
 
   describe('grid', function() {
     it('should be able to create a grid', function() {
