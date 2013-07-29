@@ -37,6 +37,22 @@ var Grid = function(h, w) {
       }
 
       return count;
+    },
+
+    toString: function() {
+      var s = '';
+      for (var i=0;i<this.height;++i) {
+        for (var j=0;j<this.width;++j) {
+          if (this.isMine(j,i)) {
+            s += '*';
+          } else {
+            s += this.surroundingMines(j,i);
+          }
+        }
+        s += '\n';
+      }
+
+      return s;
     }
   };
 };
