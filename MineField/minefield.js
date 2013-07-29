@@ -18,7 +18,25 @@ var Grid = function(h, w) {
     },
 
     surroundingMines: function(r,c) {
-      return 0;
+
+      var count = 0;
+
+      for (var i=-1;i<=1;++i) {
+        for (var j=-1;j<=1;++j) {
+          if (i === 0 && j === 0) {
+            continue;
+          } 
+  
+          var x = r + i;
+          var y = c + j;
+
+          if (this.isMine(x,y)) {
+            count++;
+          }
+        }
+      }
+
+      return count;
     }
   };
 };
