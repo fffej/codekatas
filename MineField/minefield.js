@@ -93,6 +93,7 @@ describe('minefield', function() {
 
       assert.equal(0, grid.surroundingMines(0,2));
       assert.equal(1, grid.surroundingMines(0,1));
+      assert.equal(2, grid.surroundingMines(1,0));
     });
   });
 });
