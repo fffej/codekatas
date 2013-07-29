@@ -5,7 +5,15 @@ var assert = require('assert');
 var Grid = function(h, w) {
   return {
     width: w,
-    height: h
+    height: h,
+
+    addMine: function(r,c) {
+
+    },
+
+    isMine: function(r,c) {
+      return true;
+    }
   };
 };
 
