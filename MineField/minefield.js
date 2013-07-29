@@ -14,7 +14,6 @@ var Grid = function(h, w) {
     },
 
     isMine: function(r,c) {
-      console.log(this._mines);
       return this._mines.indexOf(r + ',' + c) !== -1;
     }
   };
@@ -32,6 +31,9 @@ var createGridFromString = function(str) {
     var row = lines[i+1];
     for (var j=0;j<width;++j) {
       var isMine = row[j] === '*';
+      if (isMine) {
+        grid.addMine(j,i);
+      }
     }
   }
 
