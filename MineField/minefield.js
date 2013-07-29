@@ -12,8 +12,19 @@ var Grid = function(h, w) {
 var createGridFromString = function(str) {
   var lines = str.split('\n');
   var hw = lines[0].split(' ');
+  var height = hw[0] | 0;
+  var width = hw[1] | 0;
 
-  return new Grid(hw[0]|0,hw[1]|0);
+  for (var i=0;i<height;++i) {
+    var row = lines[i+1];
+    for (var j=0;j<width;++j) {
+      var isMine = row[j] === '*';
+    }
+  }
+
+  var grid = new Grid(hw[0]|0,hw[1]|0);
+
+  return grid;
 };
 
 describe('minefield', function() {
