@@ -4,15 +4,18 @@ var assert = require('assert');
 
 var Grid = function(h, w) {
   return {
+    _mines: [],    
+
     width: w,
     height: h,
 
     addMine: function(r,c) {
-
+      this._mines.push(r + ',' + c);
     },
 
     isMine: function(r,c) {
-      return true;
+      console.log(this._mines);
+      return this._mines.indexOf(r + ',' + c) !== -1;
     }
   };
 };
@@ -23,14 +26,14 @@ var createGridFromString = function(str) {
   var height = hw[0] | 0;
   var width = hw[1] | 0;
 
+  var grid = new Grid(hw[0]|0,hw[1]|0);
+
   for (var i=0;i<height;++i) {
     var row = lines[i+1];
     for (var j=0;j<width;++j) {
       var isMine = row[j] === '*';
     }
   }
-
-  var grid = new Grid(hw[0]|0,hw[1]|0);
 
   return grid;
 };
