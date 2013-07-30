@@ -2,6 +2,13 @@
 
 var assert = require('assert');
 
+var Reversi = function() {
+  return {
+    width: 8,
+    height: 8
+  };
+};
+
 describe('reversi', function() {
 
   describe('game', function() {
