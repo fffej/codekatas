@@ -6,7 +6,13 @@ var WHITE = 1;
 var BLACK = 2;
 
 var reversiFromString = function(s) {
+  var lines = s.split('\n');
 
+  return {
+    turn: function() {
+      return lines[8] === 'B' ? BLACK : WHITE;
+    }
+  }
 };
 
 describe('reversi', function() {
