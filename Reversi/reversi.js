@@ -60,12 +60,20 @@ describe('reversi', function() {
       assert.equal(BLACK, game.turn());
     });
 
-    it('should be able to act on tokens', function() {
+    it('should be able to visit black squares', function() {
       var game = reversiFromString(sampleInput);
+
       var b = 0;
       game.onBlack(function() { b++; });
-
       assert.equal(2, b, "visited two black tokens");
+    });
+
+    it('should be able to visit white squares', function() {
+      var game = reversiFromString(sampleInput);
+
+      var w = 0;
+      game.onWhite(function() { w++; });
+      assert.equal(2, w, "visited two white tokens");
     });
   });
 
