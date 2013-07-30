@@ -12,7 +12,9 @@ var isCapture = function(s, c) {
     return -1;
   }
 
-  
+  while (i !== -1) {
+    i = s.indexOf(c,i + 1);
+  }  
 };
 
 var reversiFromString = function(s) {
