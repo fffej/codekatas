@@ -9,6 +9,7 @@ var isBlank = function(c) { return c === '.'; };
 var isBlack = function(c) { return c === 'B'; };
 var isWhite = function(c) { return c === 'W'; };
 var opposite = function(c) { return isBlack(c) ? 'W' : 'B'; };
+var isOpposite = function(c,t) { return c === opposite(t); };
 
 var capturableIndices = function(s, c) {
 
@@ -17,16 +18,21 @@ var capturableIndices = function(s, c) {
     return [];
   }
 
+  var validIndexes = [];
+
   while (i !== -1) {
     // Is there one after?
     i = s.indexOf(c,i + 1);
 
-    for (var c = i + 1; c < s.length; ++c) {
-      if (isBlank(s[c])) {
-        return [c];
+    for (var x = i + 1; x < s.length; ++x) {
+      if (isBlank(s[x])) {
+        validIndexes.push(x);
+        break;
       }
     }
   }  
+
+  return validIndexes;
 };
 
 var reversiFromString = function(s) {
