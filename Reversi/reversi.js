@@ -25,6 +25,10 @@ describe('reversi', function() {
                        '........\n' +
                        'B\n';
 
+    var drive = function(input) {
+
+    };
+
     it('should produce the expected output', function() {
       assert.equal(sampleOutput, drive(sampleInput));
     });
