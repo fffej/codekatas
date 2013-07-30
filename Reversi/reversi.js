@@ -17,6 +17,26 @@ var Reversi = function() {
 
 describe('reversi', function() {
 
+  var sampleInput = '........\n' +
+                    '........\n' +
+                    '........\n' +
+                    '...BW...\n' +
+                    '...WB...\n' +
+                    '........\n' +
+                    '........\n' +
+                    '........\n' +
+                    'B\n';
+ 
+  var sampleOutput = '........\n' +
+                     '........\n' +
+                     '....0...\n' +
+                     '...BW0..\n' +
+                     '..0WB...\n' +
+                     '...0....\n' +
+                     '........\n' +
+                     '........\n' +
+                     'B\n';
+
   describe('game', function() {
     it('should be self-describing', function() {
       var game = new Reversi();
@@ -34,25 +54,6 @@ describe('reversi', function() {
 
   describe('acceptance test', function() {
 
-    var sampleInput = '........\n' +
-                      '........\n' +
-                      '........\n' +
-                      '...BW...\n' +
-                      '...WB...\n' +
-                      '........\n' +
-                      '........\n' +
-                      '........\n' +
-                      'B\n';
- 
-    var sampleOutput = '........\n' +
-                       '........\n' +
-                       '....0...\n' +
-                       '...BW0..\n' +
-                       '..0WB...\n' +
-                       '...0....\n' +
-                       '........\n' +
-                       '........\n' +
-                       'B\n';
 
     var drive = function(input) {
 
