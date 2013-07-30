@@ -5,6 +5,10 @@ var assert = require('assert');
 var WHITE = 1;
 var BLACK = 2;
 
+var isCapture = function(s, c) {
+  return -1;
+};
+
 var reversiFromString = function(s) {
   var lines = s.split('\n');
 
