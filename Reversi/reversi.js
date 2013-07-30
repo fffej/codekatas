@@ -104,7 +104,7 @@ describe('reversi', function() {
     });
 
     it('there needs to be at least one of the right color', function() {
-      assert.equal(-1, capturableIndices('...BB...','W'));
+      assert.equal([], capturableIndices('...BB...','W'));
     });
 
     it('can describe a simple capture', function() {
