@@ -62,7 +62,8 @@ describe('reversi', function() {
 
 
     var drive = function(input) {
-
+      var game = reversiFromString(input);
+      return game.possibleMoves();
     };
 
     it('should produce the expected output', function() {
