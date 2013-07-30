@@ -32,31 +32,9 @@ var capturableIndices = function(s, c) {
 var reversiFromString = function(s) {
   var lines = s.split('\n');
 
-  var black = [];
-  var white = [];
-
-  for (var i=0;i<8;++i) {
-    var row = lines[i];
-    for (var j=0;j<8;++j) {
-      if (isBlack(row[j])) {
-        black.push([i,j]);
-      } else if (isWhite(row[j])) {
-        white.push([i,j]);
-      }
-    }
-  }
-
   return {
     turn: function() {
       return lines[8] === 'B' ? BLACK : WHITE;
-    },
-
-    onBlack: function(f) {
-      black.forEach(f);
-    },
-
-    onWhite: function(f) {
-      white.forEach(f);
     }
   }
 };
@@ -91,24 +69,13 @@ describe('reversi', function() {
       assert.equal(BLACK, game.turn());
     });
 
-    it('should be able to visit black squares', function() {
-      var b = 0;
-      game.onBlack(function() { b++; });
-      assert.equal(2, b, "visited two black tokens");
-    });
-
-    it('should be able to visit white squares', function() {
-      var w = 0;
-      game.onWhite(function() { w++; });
-      assert.equal(2, w, "visited two white tokens");
-    });
-
     it('there needs to be at least one of the right color', function() {
       assert.deepEqual([], capturableIndices('...BB...','W'));
     });
 
     it('can describe a simple capture', function() {
       assert.deepEqual([0], capturableIndices('.WB', 'B'));
+      assert.deepEqual([2], capturableIndices('BW.', 'B'));
     });
   });
 
