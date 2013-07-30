@@ -7,10 +7,12 @@ var BLACK = 2;
 
 var isCapture = function(s, c) {
 
-  if (-1 === s.indexOf(c)) {
+  var i = s.indexOf(c);
+  if (-1 === i) {
     return -1;
   }
 
+  
 };
 
 var reversiFromString = function(s) {
