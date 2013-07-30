@@ -16,7 +16,9 @@ var reversiFromString = function(s) {
     for (var j=0;j<8;++j) {
       if (row[j] === 'B') {
         black.push([i,j]);
-      } 
+      } else if (row[j] === 'W') {
+        white.push([i,j]);
+      }
     }
   }
 
@@ -27,6 +29,10 @@ var reversiFromString = function(s) {
 
     onBlack: function(f) {
       black.forEach(f);
+    },
+
+    onWhite: function(f) {
+      white.forEach(f);
     }
   }
 };
