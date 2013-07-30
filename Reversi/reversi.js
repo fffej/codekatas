@@ -13,6 +13,7 @@ var isCapture = function(s, c) {
   }
 
   while (i !== -1) {
+    // Is there one after?
     i = s.indexOf(c,i + 1);
   }  
 };
