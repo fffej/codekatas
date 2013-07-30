@@ -31,9 +31,9 @@ var reversiFromString = function(s) {
   for (var i=0;i<8;++i) {
     var row = lines[i];
     for (var j=0;j<8;++j) {
-      if (row[j] === 'B') {
+      if (isBlack(row[j])) {
         black.push([i,j]);
-      } else if (row[j] === 'W') {
+      } else if (isWhite(row[j])) {
         white.push([i,j]);
       }
     }
