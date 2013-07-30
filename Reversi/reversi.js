@@ -2,10 +2,16 @@
 
 var assert = require('assert');
 
+var WHITE = 1;
+var BLACK = 2;
+
 var Reversi = function() {
   return {
     width: 8,
-    height: 8
+    height: 8,
+    turn: function() {
+      return WHITE;
+    }
   };
 };
 
