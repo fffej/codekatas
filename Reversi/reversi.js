@@ -5,6 +5,7 @@ var assert = require('assert');
 var WHITE = 1;
 var BLACK = 2;
 
+var isBlank = function(c) { return c === '.'; };
 var isBlack = function(c) { return c === 'B'; };
 var isWhite = function(c) { return c === 'W'; };
 var opposite = function(c) { return isBlack(c) ? 'W' : 'B'; };
@@ -19,6 +20,12 @@ var isCapture = function(s, c) {
   while (i !== -1) {
     // Is there one after?
     i = s.indexOf(c,i + 1);
+
+    for (var c = i + 1; c < s.length; ++c) {
+      if (isBlank(s[c])) {
+        return c;
+      }
+    }
   }  
 };
 
