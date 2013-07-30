@@ -43,6 +43,14 @@ describe('reversi', function() {
 
       assert.equal(BLACK, game.turn());
     });
+
+    it('should be able to act on tokens', function() {
+      var game = reversiFromString(sampleInput);
+      var b = 0;
+      game.onBlack(function() { b++; });
+
+      assert.equal(2, b, "visited two black tokens");
+    });
   });
 
   describe('acceptance test', function() {
