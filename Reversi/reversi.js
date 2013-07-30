@@ -108,7 +108,7 @@ describe('reversi', function() {
     });
 
     it('can describe a simple capture', function() {
-      assert.equal(0, capturableIndices('.WB', 'B'));
+      assert.equal([0], capturableIndices('.WB', 'B'));
     });
   });
 
