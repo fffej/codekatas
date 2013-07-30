@@ -15,7 +15,15 @@ describe('reversi', function() {
                       '........\n' +
                       'B\n';
  
-    var sampleOutput = '';
+    var sampleOutput = '........\n' +
+                       '........\n' +
+                       '....0...\n' +
+                       '...BW0..\n' +
+                       '..0WB...\n' +
+                       '...0....\n' +
+                       '........\n' +
+                       '........\n' +
+                       'B\n';
 
     it('should produce the expected output', function() {
       assert.equal(sampleOutput, drive(sampleInput));
