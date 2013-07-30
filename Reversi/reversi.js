@@ -90,6 +90,10 @@ describe('reversi', function() {
     it('there needs to be at least one of the right color', function() {
       assert.equal(-1, isCapture('...BB...','W'));
     });
+
+    it('can describe a simple capture', function() {
+      assert.equal(0, isCapture('.WB', 'B'));
+    });
   });
 
   describe('acceptance test', function() {
