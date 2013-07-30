@@ -14,7 +14,7 @@ var capturableIndices = function(s, c) {
 
   var i = s.indexOf(c);
   if (-1 === i) {
-    return -1;
+    return [];
   }
 
   while (i !== -1) {
@@ -23,7 +23,7 @@ var capturableIndices = function(s, c) {
 
     for (var c = i + 1; c < s.length; ++c) {
       if (isBlank(s[c])) {
-        return c;
+        return [c];
       }
     }
   }  
@@ -104,11 +104,11 @@ describe('reversi', function() {
     });
 
     it('there needs to be at least one of the right color', function() {
-      assert.equal([], capturableIndices('...BB...','W'));
+      assert.deepEqual([], capturableIndices('...BB...','W'));
     });
 
     it('can describe a simple capture', function() {
-      assert.equal([0], capturableIndices('.WB', 'B'));
+      assert.deepEqual([0], capturableIndices('.WB', 'B'));
     });
   });
 
