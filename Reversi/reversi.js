@@ -50,6 +50,12 @@ describe('reversi', function() {
 
       assert.equal(WHITE, game.turn());
     });
+
+    it('should be able to read in board', function() {
+      var game = reversiFromString(sampleInput);
+
+      assert.equal(BLACK, game.turn());
+    });
   });
 
   describe('acceptance test', function() {
