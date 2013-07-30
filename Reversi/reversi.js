@@ -5,6 +5,10 @@ var assert = require('assert');
 var WHITE = 1;
 var BLACK = 2;
 
+var reversiFromString = function(s) {
+
+};
+
 var Reversi = function() {
   return {
     width: 8,
@@ -38,19 +42,6 @@ describe('reversi', function() {
                      'B\n';
 
   describe('game', function() {
-    it('should be self-describing', function() {
-      var game = new Reversi();
-
-      assert.equal(8, game.width);
-      assert.equal(8, game.height);
-    });
-
-    it('should have a notion of turn', function() {
-      var game = new Reversi();
-
-      assert.equal(WHITE, game.turn());
-    });
-
     it('should be able to read in board', function() {
       var game = reversiFromString(sampleInput);
 
@@ -59,7 +50,6 @@ describe('reversi', function() {
   });
 
   describe('acceptance test', function() {
-
 
     var drive = function(input) {
       var game = reversiFromString(input);
