@@ -8,9 +8,25 @@ var BLACK = 2;
 var reversiFromString = function(s) {
   var lines = s.split('\n');
 
+  var black = [];
+  var white = [];
+
+  for (var i=0;i<8;++i) {
+    var row = lines[i];
+    for (var j=0;j<8;++j) {
+      if (row[j] === 'B') {
+        black.push([i,j]);
+      } 
+    }
+  }
+
   return {
     turn: function() {
       return lines[8] === 'B' ? BLACK : WHITE;
+    },
+
+    onBlack: function(f) {
+      black.forEach(f);
     }
   }
 };
