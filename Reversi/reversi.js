@@ -9,16 +9,6 @@ var reversiFromString = function(s) {
 
 };
 
-var Reversi = function() {
-  return {
-    width: 8,
-    height: 8,
-    turn: function() {
-      return WHITE;
-    }
-  };
-};
-
 describe('reversi', function() {
 
   var sampleInput = '........\n' +
