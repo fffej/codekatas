@@ -5,6 +5,10 @@ var assert = require('assert');
 var WHITE = 1;
 var BLACK = 2;
 
+var isBlack = function(c) { return c === 'B'; };
+var isWhite = function(c) { return c === 'W'; };
+var opposite = function(c) { return isBlack(c) ? 'W' : 'B'; };
+
 var isCapture = function(s, c) {
 
   var i = s.indexOf(c);
