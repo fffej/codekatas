@@ -78,6 +78,10 @@ describe('reversi', function() {
       game.onWhite(function() { w++; });
       assert.equal(2, w, "visited two white tokens");
     });
+
+    it('should be able to describe possible captures', function() {
+      assert.equal(5, isCapture('...BW...','B'));
+    });
   });
 
   describe('acceptance test', function() {
