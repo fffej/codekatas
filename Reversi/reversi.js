@@ -3,6 +3,16 @@
 var assert = require('assert');
 
 describe('reversi', function() {
+
+  describe('game', function() {
+    it('should be self-describing', function() {
+      var game = new Reversi();
+
+      assert.equal(8, game.width);
+      assert.equal(8, game.height);
+    });
+  });
+
   describe('acceptance test', function() {
 
     var sampleInput = '........\n' +
