@@ -18,6 +18,12 @@ describe('reversi', function() {
       assert.equal(8, game.width);
       assert.equal(8, game.height);
     });
+
+    it('should have a notion of turn', function() {
+      var game = new Reversi();
+
+      assert.equal(WHITE, game.turn());
+    });
   });
 
   describe('acceptance test', function() {
