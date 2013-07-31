@@ -24,7 +24,7 @@ var CellCollection = function(cells) {
     },
 
     validMove: function(idx) {
-
+      return false;
     }
   };
 };
