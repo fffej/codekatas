@@ -82,6 +82,12 @@ describe('reversi', function() {
       var cellCollection = createCellCollection('........');
       assert.equal(8, cellCollection.length);
     });
+
+    it('can test for valid moves', function() {
+      var cellCollection = createCellCollection('...');
+
+      assert.equal(false, cellCollection[0].validMove());
+    });
   });
 
   it('has a concept of a board', function() {
