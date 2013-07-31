@@ -69,9 +69,11 @@ var Cell = function(c) {
     isWhite: function() { return c === 'W'; },
     isEmpty: function() { return c === '.'; },
 
-    opposite: function() {
-      if (this.isBlack()) { return new Cell('W'); }
-      if (this.isWhite()) { return new Cell('B'); }
+    opposite: function(other) {
+      if (this.isBlack() && other.isWhite()) { return true; }
+      if (this.isWhite() && other.isBlack()) { return true; }
+
+      return false;
     }
   };
 };
