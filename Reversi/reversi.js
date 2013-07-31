@@ -91,10 +91,10 @@ describe('reversi', function() {
 
   it('knows opposites', function() {
     var black = cellFrom('B');
-    assert(black.opposite().isWhite());
-
     var white = cellFrom('W');
-    assert(white.opposite().isBlack());
+
+    assert.equal(true, black.opposite(white));
+    assert.equal(true, white.opposite(black));
   });
 
   describe('collections of cells', function() {
