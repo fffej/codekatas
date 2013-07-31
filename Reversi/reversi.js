@@ -140,6 +140,9 @@ describe('reversi', function() {
     it('can test for a simple capture', function() {
       var cellCollection = createCellCollection('BW.');
       assert(cellCollection.validMove(2,'B'));
+
+      cellCollection = createCellCollection('.WB');
+      assert(cellCollection.validMove(0,'B'));
     });
   });
 
