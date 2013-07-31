@@ -5,6 +5,16 @@ var cellFrom = function(c) {
   return new Cell(c);
 };
 
+var createCellCollection = function(s) {
+  var cells = [];
+
+  for (var i=0;i<s.length;++i) {
+    cells.push(cellFrom(s[i]));
+  }
+
+  return cells;
+};
+
 var Cell = function(c) {
   return {
     isBlack: function() { return c === 'B'; },
