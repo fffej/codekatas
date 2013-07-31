@@ -97,9 +97,14 @@ describe('reversi', function() {
       assert.equal(8, cellCollection.length);
     });
 
-    it('can test for valid moves', function() {
+    it('simple no valid move', function() {
       var cellCollection = createCellCollection('...');
       assert.equal(false, cellCollection.validMove(0));
+    });
+
+    it('can test for a simple capture', function() {
+      var cellCollection = createCellCollection('BW.');
+      assert(cellCollection.validMove(2,'B'));
     });
   });
 
