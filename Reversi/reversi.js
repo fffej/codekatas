@@ -1,7 +1,15 @@
 "use strict";
 var assert = require('assert');
 
+
+
 describe('reversi', function() {
+
+  it('basic predicates', function() {
+    assert(isBlack('B'));
+    assert(isWhite('W'));
+    assert(isEmpty('.'));
+  });
  
   var exampleInput = '........\n' +
                      '........\n' +
