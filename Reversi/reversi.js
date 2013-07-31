@@ -9,7 +9,12 @@ var Cell = function(c) {
   return {
     isBlack: function() { return c === 'B'; },
     isWhite: function() { return c === 'W'; },
-    isEmpty: function() { return c === '.'; }
+    isEmpty: function() { return c === '.'; },
+
+    opposite: function() {
+      if (this.isBlack()) { return new Cell('W'); }
+      if (this.isWhite()) { return new Cell('B'); }
+    }
   };
 };
 
