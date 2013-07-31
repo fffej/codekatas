@@ -24,7 +24,14 @@ var createBoard = function(s) {
     rows.push(createCellCollection(lines[i]));
   }
 
-  return rows;
+  return new Board(rows);
+};
+
+var Board = function(rows) {
+  return {
+    rows: 8,
+    cols: 8
+  };
 };
 
 var Cell = function(c) {
