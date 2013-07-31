@@ -87,6 +87,8 @@ describe('reversi', function() {
 
     assert(board.at(3,3).isBlack());
     assert(board.at(3,4).isWhite());
+
+    assert(board.turn().isBlack());
   });
  
   var exampleInput = '........\n' +
