@@ -53,6 +53,10 @@ describe('reversi', function() {
     var cellCollection = createCellCollection('........');
     assert.equal(8, cellCollection.length);
   });
+
+  it('has a concept of a board', function() {
+    var board = createBoard(exampleInput);
+  });
  
   var exampleInput = '........\n' +
                      '........\n' +
