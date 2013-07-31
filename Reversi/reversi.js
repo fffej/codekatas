@@ -28,9 +28,15 @@ var createBoard = function(s) {
 };
 
 var Board = function(rows) {
+
+  var _rowData = rows; 
+
   return {
     rows: 8,
-    cols: 8
+    cols: 8,
+    at: function(r,c) {
+      return _rowData[r][c];
+    }
   };
 };
 
@@ -79,8 +85,8 @@ describe('reversi', function() {
     assert.equal(8,board.rows);
     assert.equal(8,board.cols);
 
-    assert(board.at(4,4).isBlack());
-    assert(board.at(5,4).isWhite());
+    assert(board.at(3,3).isBlack());
+    assert(board.at(3,4).isWhite());
   });
  
   var exampleInput = '........\n' +
