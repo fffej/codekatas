@@ -30,6 +30,18 @@ var CellCollection = function(cells) {
         return false;
       }
 
+      var target = cellFrom(whoseMove);
+
+      var oneEncountered = false;
+      for (var i=idx-1;i>=0;i--) {
+        if (cells[i].opposite(target)) {
+          oneEncountered = true;
+        }
+        else if (cells[i].same(target)) {
+          return oneEncountered;
+        }
+      }
+
       return false;
     }
   };
@@ -74,6 +86,13 @@ var Cell = function(c) {
       if (this.isWhite() && other.isBlack()) { return true; }
 
       return false;
+    },
+
+    same: function(other) {
+      var isBlack = this.isBlack() && other.isBlack();
+      var isWhite = this.isWhite() && other.isWhite();
+
+      return isBlack || isWhite;
     }
   };
 };
