@@ -38,6 +38,12 @@ describe('reversi', function() {
     var white = cellFrom('W');
     assert(white.opposite().isBlack());
   });
+
+  it('can deal with collections', function() {
+    var cellCollection = createCellCollection('........');
+
+    assert.equal(8, cellCollection.length);
+  });
  
   var exampleInput = '........\n' +
                      '........\n' +
