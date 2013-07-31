@@ -110,6 +110,7 @@ describe('reversi', function() {
                       'B\n';
 
   var drive = function(input) {
+    var board = createBoard(input);
     return 'not done yet';
   };
 
