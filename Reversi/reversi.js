@@ -68,6 +68,9 @@ describe('reversi', function() {
 
   it('has a concept of a board', function() {
     var board = createBoard(exampleInput);
+
+    assert.equal(8,board.rows);
+    assert.equal(8,board.cols);
   });
  
   var exampleInput = '........\n' +
