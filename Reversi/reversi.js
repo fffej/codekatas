@@ -25,6 +25,14 @@ describe('reversi', function() {
     assert(wCell.isWhite());
     assert(eCell.isEmpty());
   });
+
+  it('knows opposites', function() {
+    var black = cellFrom('B');
+    assert(black.opposite().isWhite());
+
+    var white = cellFrom('W');
+    assert(white.opposite().isBlack());
+  });
  
   var exampleInput = '........\n' +
                      '........\n' +
