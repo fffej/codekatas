@@ -24,10 +24,10 @@ var createBoard = function(s) {
     rows.push(createCellCollection(lines[i]));
   }
 
-  return new Board(rows);
+  return new Board(rows,lines[8][0]);
 };
 
-var Board = function(rows) {
+var Board = function(rows,t) {
 
   var _rowData = rows; 
 
@@ -36,6 +36,9 @@ var Board = function(rows) {
     cols: 8,
     at: function(r,c) {
       return _rowData[r][c];
+    },
+    turn: function() {
+      return cellFrom(t);
     }
   };
 };
