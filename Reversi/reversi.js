@@ -15,6 +15,18 @@ var createCellCollection = function(s) {
   return cells;
 };
 
+var createBoard = function(s) {
+  var lines = s.split('\n');
+
+  var rows = [];
+
+  for (var i=0;i<lines.length;++i) {
+    rows.push(createCellCollection(lines[i]));
+  }
+
+  return rows;
+};
+
 var Cell = function(c) {
   return {
     isBlack: function() { return c === 'B'; },
