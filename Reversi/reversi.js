@@ -30,6 +30,8 @@ var CellCollection = function(cells) {
         return false;
       }
 
+      
+
       return false;
     }
   };
@@ -105,7 +107,7 @@ describe('reversi', function() {
 
     it('simple no valid move', function() {
       var cellCollection = createCellCollection('...');
-      assert.equal(false, cellCollection.validMove(0));
+      assert.equal(false, cellCollection.validMove(0, 'B'));
     });
 
     it('can test for a simple capture', function() {
