@@ -12,7 +12,21 @@ var createCellCollection = function(s) {
     cells.push(cellFrom(s[i]));
   }
 
-  return cells;
+  return new CellCollection(cells);
+};
+
+var CellCollection = function(cells) {
+  return {
+    length: cells.length,
+
+    at: function(i) {
+      return cells[i];
+    },
+
+    validMove: function(idx) {
+
+    }
+  };
 };
 
 var createBoard = function(s) {
@@ -35,7 +49,7 @@ var Board = function(rows,t) {
     rows: 8,
     cols: 8,
     at: function(r,c) {
-      return _rowData[r][c];
+      return _rowData[r].at(c)
     },
     turn: function() {
       return cellFrom(t);
