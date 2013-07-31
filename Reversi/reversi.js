@@ -118,6 +118,14 @@ describe('reversi', function() {
     assert.equal(true, white.opposite(black));
   });
 
+  it('knows same', function() {
+    var black = cellFrom('B');
+    var white = cellFrom('W');
+
+    assert(black.same(black));
+    assert.equal(false, black.same(white));
+  });
+
   describe('collections of cells', function() {
     it('can create', function() {
       var cellCollection = createCellCollection('........');
