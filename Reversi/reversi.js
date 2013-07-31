@@ -77,9 +77,11 @@ describe('reversi', function() {
     assert(white.opposite().isBlack());
   });
 
-  it('can deal with collections', function() {
-    var cellCollection = createCellCollection('........');
-    assert.equal(8, cellCollection.length);
+  describe('collections of cells', function() {
+    it('can create', function() {
+      var cellCollection = createCellCollection('........');
+      assert.equal(8, cellCollection.length);
+    });
   });
 
   it('has a concept of a board', function() {
