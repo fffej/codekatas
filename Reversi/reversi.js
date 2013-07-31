@@ -42,6 +42,16 @@ var CellCollection = function(cells) {
         }
       }
 
+      oneEncountered = false;
+      for (var i=idx+1;i<cells.length;++i) {
+        if (cells[i].opposite(target)) {
+          oneEncountered = true;
+        }  
+        else if (cells[i].same(target)) {
+          return oneEncountered;
+        }
+      }
+
       return false;
     }
   };
