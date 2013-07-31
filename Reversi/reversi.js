@@ -1,6 +1,18 @@
 "use strict";
 var assert = require('assert');
 
+var cellFrom = function(c) {
+  return new Cell(c);
+};
+
+var Cell = function(c) {
+  return {
+    isBlack: function() { return c === 'B'; },
+    isWhite: function() { return c === 'W'; },
+    isEmpty: function() { return c === '.'; }
+  };
+};
+
 describe('reversi', function() {
 
   it('basic predicates', function() {
