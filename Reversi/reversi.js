@@ -24,6 +24,12 @@ var CellCollection = function(cells) {
     },
 
     validMove: function(idx) {
+
+      // Non empty cells obviously aren't valid
+      if (!cells[idx].isEmpty()) {
+        return false;
+      }
+
       return false;
     }
   };
