@@ -51,7 +51,6 @@ describe('reversi', function() {
 
   it('can deal with collections', function() {
     var cellCollection = createCellCollection('........');
-
     assert.equal(8, cellCollection.length);
   });
  
