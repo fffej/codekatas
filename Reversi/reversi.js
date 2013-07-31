@@ -85,8 +85,7 @@ describe('reversi', function() {
 
     it('can test for valid moves', function() {
       var cellCollection = createCellCollection('...');
-
-      assert.equal(false, cellCollection[0].validMove());
+      assert.equal(false, cellCollection.validMove(0));
     });
   });
 
