@@ -49,27 +49,22 @@ var CellCollection = function(cells) {
       var target = cellFrom(whoseMove);
 
       var oneEncountered = false;
-      this._moveLeft(idx, function(c) {
+      var isMatch = function(c) {
         if (c.opposite(target)) {
           oneEncountered = true;
         } else if (c.same(target)) {
           return true;
         }
-      });
+      };
+
+      this._moveLeft(idx, isMatch);
 
       if (oneEncountered) {
         return true;
       }
 
       oneEncountered = false;
-      this._moveRight(idx, function(c) {
-        if (c.opposite(target)) {
-          oneEncountered = true;
-        }  
-        else if (c.same(target)) {
-          return true;
-        }
-      });
+      this._moveRight(idx, isMatch);
 
       return oneEncountered;
     }
