@@ -48,6 +48,7 @@ var CellCollection = function(cells) {
 
       var target = cellFrom(whoseMove);
 
+      // TODO refactor one encountered out
       var oneEncountered = false;
       var isMatch = function(c) {
         if (c.opposite(target)) {
