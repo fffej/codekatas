@@ -23,6 +23,14 @@ var CellCollection = function(cells) {
       return cells[i];
     },
 
+    _moveLeft: function(idx, fn) {
+      for (var i=idx-1;i>=0;i--) {
+        if (fn(cells[i])) {
+          break;
+        }
+      }
+    },
+
     validMove: function(idx, whoseMove) {
 
       // Non empty cells obviously aren't valid
@@ -33,14 +41,13 @@ var CellCollection = function(cells) {
       var target = cellFrom(whoseMove);
 
       var oneEncountered = false;
-      for (var i=idx-1;i>=0;i--) {
-        if (cells[i].opposite(target)) {
+      this._moveLeft(idx, function(c) {
+        if (c.opposite(target)) {
           oneEncountered = true;
+        } else if (c.same(target)) {
+          return true;
         }
-        else if (cells[i].same(target)) {
-           break;
-        }
-      }
+      });
 
       if (oneEncountered) {
         return true;
