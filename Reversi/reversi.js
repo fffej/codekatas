@@ -32,15 +32,18 @@ var CellCollection = function(cells) {
 
       var target = cellFrom(whoseMove);
 
-      // TODO REFACTOR THIS CRAP TOMORROW!
       var oneEncountered = false;
       for (var i=idx-1;i>=0;i--) {
         if (cells[i].opposite(target)) {
           oneEncountered = true;
         }
         else if (cells[i].same(target)) {
-          return oneEncountered;
+           break;
         }
+      }
+
+      if (oneEncountered) {
+        return true;
       }
 
       oneEncountered = false;
@@ -49,11 +52,11 @@ var CellCollection = function(cells) {
           oneEncountered = true;
         }  
         else if (cells[i].same(target)) {
-          return oneEncountered;
+          break;
         }
       }
 
-      return false;
+      return oneEncountered;
     }
   };
 };
