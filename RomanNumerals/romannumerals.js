@@ -34,6 +34,11 @@ describe('Roman Numerals', function() {
       assert.equal('I', romanLetter.symbol());
     });
 
+    it('roman alphabet consists of letters', function() {
+      var romanAlphabet = new RomanAlphabet();
+      assert.equal(31, romanAlphabet.count());
+    });
+
     describe('Acceptance Test', function() {
       it('meets acceptance criteria', function() {
         assert.equal("MCMXC", toRomanNumeral(1990));
