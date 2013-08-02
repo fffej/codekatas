@@ -53,7 +53,7 @@ var RomanAlphabet = function() {
     largestMatchingSymbol: function(num) {
       var n = num | 0;
       for (var i=letters.length-1;i>=0;i--) {
-        if (letters[i].value() < n) {
+        if (letters[i].value() <= n) {
           return letters[i].symbol();
         }
       }
