@@ -92,6 +92,10 @@ describe('Roman Numerals', function() {
       assert.equal('XX', romanAlphabet.largestMatchingSymbol(20));
     });
 
+    it('roman alphabet can find symbols', function() {
+      assert.equal('XXI', romanAlphabet.symbolFor(21));
+    });
+
     describe('Acceptance Test', function() {
       it('meets acceptance criteria', function() {
         assert.equal("MCMXC", toRomanNumeral(1990));
