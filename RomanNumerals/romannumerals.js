@@ -49,6 +49,16 @@ var RomanAlphabet = function() {
   ];
 
   return {
+
+    largestMatchingSymbol: function(num) {
+      var n = num | 0;
+      for (var i=letters.length-1;i>=0;i--) {
+        if (letters[i].value() < n) {
+          return letters[i].symbol();
+        }
+      }
+    },
+  
     symbolFor: function(num) {
       var n = num | 0;
       for (var i=0;i<letters.length;++i) {
