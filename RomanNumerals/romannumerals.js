@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var toRomanNumeral = function(str) {
-
+  return new RomanAlphabet().symbolFor(str);
 };
 
 var RomanLetter = function(value,symbol) {
