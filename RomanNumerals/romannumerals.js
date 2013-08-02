@@ -18,7 +18,12 @@ var toRomanNumeral = function(str) {
 
 };
 
-var RomanLetter = function() {};
+var RomanLetter = function(symbol,value) {
+  return {
+    value: function() { return value; },
+    symbol: function() { return symbol; }
+  };
+};
 
 describe('Roman Numerals', function() {
   describe('basics', function() {
