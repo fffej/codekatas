@@ -77,6 +77,11 @@ describe('Roman Numerals', function() {
       assert.equal("M", romanAlphabet.symbolFor(1000));
     });
 
+    it('roman alphabet can compute unknown', function() {
+      var romanAlphabet = new RomanAlphabet();
+      assert.equal('XX', romanAlphabet.largestMatchingSymbol(21));
+    });
+
     describe('Acceptance Test', function() {
       it('meets acceptance criteria', function() {
         assert.equal("MCMXC", toRomanNumeral(1990));
