@@ -54,13 +54,14 @@ var RomanAlphabet = function() {
       var n = num | 0;
       for (var i=letters.length-1;i>=0;i--) {
         if (letters[i].value() <= n) {
-          return letters[i].symbol();
+          return letters[i];
         }
       }
     },
   
     symbolFor: function(num) {
       var n = num | 0;
+
       for (var i=0;i<letters.length;++i) {
         if (letters[i].value() === n) {
           return letters[i].symbol();
@@ -88,8 +89,8 @@ describe('Roman Numerals', function() {
     });
 
     it('roman alphabet can find largest defined symbol', function() {
-      assert.equal('XX', romanAlphabet.largestMatchingSymbol(21));
-      assert.equal('XX', romanAlphabet.largestMatchingSymbol(20));
+      assert.equal('XX', romanAlphabet.largestMatchingSymbol(21).symbol());
+      assert.equal('XX', romanAlphabet.largestMatchingSymbol(20).symbol());
     });
 
     it('roman alphabet can find symbols', function() {
