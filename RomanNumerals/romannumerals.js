@@ -6,7 +6,7 @@ var toRomanNumeral = function(str) {
 
 };
 
-var RomanLetter = function(symbol,value) {
+var RomanLetter = function(value,symbol) {
   return {
     value: function() { return value; },
     symbol: function() { return symbol; }
@@ -49,7 +49,14 @@ var RomanAlphabet = function() {
   ];
 
   return {
-    count: function() { return letters.length; }
+    symbolFor: function(num) {
+      var n = num | 0;
+      for (var i=0;i<letters.length;++i) {
+        if (letters[i].value() === n) {
+          return letters[i].symbol();
+        }
+      }
+    }
   }
 };
 
@@ -57,7 +64,7 @@ describe('Roman Numerals', function() {
   describe('basics', function() {
 
     it('roman letters have a symbol and value', function() {
-      var romanLetter = new RomanLetter('I',1);  
+      var romanLetter = new RomanLetter(1,'I');  
       assert.equal(1, romanLetter.value());
       assert.equal('I', romanLetter.symbol());
     });
