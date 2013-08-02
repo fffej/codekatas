@@ -73,6 +73,8 @@ var RomanAlphabet = function() {
 describe('Roman Numerals', function() {
   describe('basics', function() {
 
+    var romanAlphabet = new RomanAlphabet();
+
     it('roman letters have a symbol and value', function() {
       var romanLetter = new RomanLetter(1,'I');  
       assert.equal(1, romanLetter.value());
@@ -80,15 +82,12 @@ describe('Roman Numerals', function() {
     });
 
     it('roman alphabet consists of letters', function() {
-      var romanAlphabet = new RomanAlphabet();
-
       assert.equal("I", romanAlphabet.symbolFor(1));
       assert.equal("V", romanAlphabet.symbolFor(5));
       assert.equal("M", romanAlphabet.symbolFor(1000));
     });
 
     it('roman alphabet can find largest defined symbol', function() {
-      var romanAlphabet = new RomanAlphabet();
       assert.equal('XX', romanAlphabet.largestMatchingSymbol(21));
       assert.equal('XX', romanAlphabet.largestMatchingSymbol(20));
     });
