@@ -25,6 +25,24 @@ var RomanLetter = function(symbol,value) {
   };
 };
 
+var RomanAlphabet = function() {
+  var letters = [
+    new RomanLetter(1,'I'),
+    new RomanLetter(2,'II'),
+    new RomanLetter(3,'III'),
+    new RomanLetter(4,'IV'),
+    new RomanLetter(5,'V'),
+    new RomanLetter(6,'VI'),
+    new RomanLetter(7, 'VII'),
+    new RomanLetter(8, 'VIII'),
+    new RomanLetter(9, 'IX')
+  ];
+
+  return {
+    count: function() { return letters.length; }
+  }
+};
+
 describe('Roman Numerals', function() {
   describe('basics', function() {
 
