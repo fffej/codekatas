@@ -62,11 +62,14 @@ var RomanAlphabet = function() {
     symbolFor: function(num) {
       var n = num | 0;
 
-      for (var i=0;i<letters.length;++i) {
-        if (letters[i].value() === n) {
-          return letters[i].symbol();
-        }
+      var sym = '';
+      while (n !== 0) {
+        var largest = this.largestMatchingSymbol(n);
+        n = n - largest.value();
+        sym += largest.symbol();
       }
+
+      return sym;
     }
   }
 };
