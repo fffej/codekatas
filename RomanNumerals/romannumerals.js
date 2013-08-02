@@ -2,6 +2,10 @@
 
 var assert = require('assert');
 
+var toRomanNumeral = function(str) {
+
+};
+
 describe('Roman Numerals', function() {
   describe('Acceptance Test', function() {
     it('meets acceptance criteria', function() {
