@@ -218,3 +218,7 @@ describe('super market', function() {
     });
   });
 });
+
+// TODO
+// Learnt about beforeEach and splice
+// Would have made an offer apply for every item and applied in order
