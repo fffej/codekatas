@@ -85,6 +85,17 @@ describe('super market', function() {
     });
   });
 
+  describe('receipt', function() {
+    it('consists of items and a total price', function() {
+      var receipt = new Receipt();
+      receipt.record('2 x Beans', 45);
+      receipt.record('4 x Shoes', 10);
+
+      assert.equal(2, receipt.items());
+      assert.equal(55, receipt.total());
+    });
+  });
+
   describe('register', function() {
     it('totals the price of items', function() {
       var register = new Register();
