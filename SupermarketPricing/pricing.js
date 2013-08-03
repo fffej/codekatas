@@ -69,7 +69,12 @@ var Receipt = function() {
 var Unit = function(item) {
   return {
     applies: function(basket) {
-      return numberOfItemsMatchingInBasket(item, basket) >= 1;
+      if (numberOfItemsMatchingInBasket(item, basket) >= 1) {
+        receipt.record(item.name(), item.unitPrice());
+        return true;
+      } else {
+        return false;
+      }
     }
   };
 };
@@ -77,7 +82,12 @@ var Unit = function(item) {
 var BuyOneGetOneFree = function(item) {
   return {
     applies: function(basket) {
-      return numberOfItemsMatchingInBasket(item,basket) >= 2;
+      if (numberOfItemsMatchingInBasket(item,basket) >= 2) {
+        receipt.record("BOGOF " + item.name(), item.unitPrice());
+        return true;
+      } else {
+        return false;
+      }
     }
   };
 };
@@ -136,16 +146,18 @@ describe('super market', function() {
  
     var item;
     var price;
-    var receipt = {
-      record: function(item_, price_) {
-        item = item_;
-        price = price_;
-      }
-    };
+    var receipt;
  
     beforeEach(function() {
       item = undefined;
       price = undefined;
+      receipt = {
+        record: function(item_, price_) {
+          console.log("RECORDING");
+          item = item_;
+          price = price_;
+        }
+      };
     });
 
     it('unit offer', function() {
