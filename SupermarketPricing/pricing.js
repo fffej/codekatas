@@ -44,6 +44,21 @@ var BuyOneGetOneFree = function(item) {
   };
 };
 
+var ThreeForTwo = function(item) {
+  return {
+    applies: function(basket) {
+      var count = 0;
+      for (var i=0;i<basket.length;++i) {
+        if (basket[i].name() === item.name()) {
+          count++;
+        }
+      }
+
+      return count >= 3;    
+    }
+  }
+};
+
 describe('super market', function() {
 
   var beans = new Item('beans', 45);
