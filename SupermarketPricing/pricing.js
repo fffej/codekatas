@@ -28,18 +28,21 @@ var Register = function() {
   };
 };
 
+var numberOfItemsMatchingInBasket = function(item, basket) {
+  var count = 0;
+  for (var i=0;i<basket.length;++i) {
+    if (basket[i].name() === item.name()) {
+      count++;
+    }
+  }
+ 
+  return count;
+};
+
 var BuyOneGetOneFree = function(item) {
   return {
     applies: function(basket) {
-      var count = 0;
-
-      for (var i=0;i<basket.length;++i) {
-        if (basket[i].name() === item.name()) {
-          count++;
-        }
-      }
-
-      return count >= 2;
+      return numberOfItemsMatchingInBasket(item,basket) >= 2;
     }
   };
 };
@@ -47,14 +50,7 @@ var BuyOneGetOneFree = function(item) {
 var ThreeForTwo = function(item) {
   return {
     applies: function(basket) {
-      var count = 0;
-      for (var i=0;i<basket.length;++i) {
-        if (basket[i].name() === item.name()) {
-          count++;
-        }
-      }
-
-      return count >= 3;    
+      return numberOfItemsMatchingInBasket(item,basket) >= 3;
     }
   }
 };
