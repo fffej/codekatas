@@ -10,6 +10,21 @@ var Item = function(name, price) {
   }
 };
 
+var Register = function() {
+  
+  var runningSum = 0;
+
+  return {
+     price: function(item) {
+       runningSum += item.unitPrice();
+     },
+
+     total: function() {
+       return runningSum;
+     } 
+  };
+};
+
 describe('super market', function() {
   describe('item', function() {
     it('have a unit price', function() {
