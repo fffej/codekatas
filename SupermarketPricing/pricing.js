@@ -4,6 +4,9 @@ var assert = require('assert');
 
 var Item = function(name, price) {
   return {
+    name: function() {
+      return name;
+    },
     unitPrice: function() {
       return price;
     }
@@ -22,6 +25,22 @@ var Register = function() {
      total: function() {
        return runningSum;
      } 
+  };
+};
+
+var BuyOneGetOneFree = function(item) {
+  return {
+    applies: function(basket) {
+      var count = 0;
+
+      for (var i=0;i<basket.length;++i) {
+        if (basket[i].name() === item.name()) {
+          count++;
+        }
+      }
+
+      return count >= 2;
+    }
   };
 };
 
