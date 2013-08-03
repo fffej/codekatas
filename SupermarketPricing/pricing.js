@@ -133,21 +133,36 @@ describe('super market', function() {
   });
 
   describe('offer', function() {
+ 
+    var item;
+    var price;
+    var receipt = {
+      record: function(item_, price_) {
+        item = item_;
+        price = price_;
+      }
+    };
+ 
+    beforeEach(function() {
+      item = undefined;
+      price = undefined;
+    });
+
     it('unit offer', function() {
       var offer = new Unit(beans);
-      assert(offer.applies([beans]));
+      assert(offer.applies([beans], receipt));
     });
 
 
     it('buy-one-get-one-free', function() {
       var offer = new BuyOneGetOneFree(beans);
-      assert(offer.applies([beans, beans]));
+      assert(offer.applies([beans, beans], receipt));
     });
 
     it('3 for 2', function() {
       var offer = new ThreeForTwo(beans);
       assert.equal(false, offer.applies([beans,beans]));
-      assert(offer.applies([beans,beans,beans]));
+      assert(offer.applies([beans,beans,beans], receipt));
     });
   });
 });
