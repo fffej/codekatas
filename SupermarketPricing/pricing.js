@@ -16,7 +16,24 @@ var Item = function(name, price) {
 var Basket = function() {
   var items = [];
   return {
-  
+    add: function(item) {
+      items.push(item);
+    },
+
+    count: function() { return items.length; },
+
+    remove: function(item) {
+      var idx = -1;
+      for (var i=0;i<items.length;++i) {
+        if (items[i].name() === item.name()) {
+          idx = i;
+          break;
+        }
+      } 
+      if (idx !== -1) {
+        items.splice(idx, 1);
+      }
+    }
   };
 };
 
