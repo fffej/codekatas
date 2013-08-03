@@ -74,6 +74,16 @@ describe('super market', function() {
 
       assert.equal(90, register.total());
     });
+
+    it('knows of offers', function() {
+      var register = new Register();
+      register.insertOffer(new BuyOneGetOneFree(beans));
+
+      register.price(beans);
+      register.price(beans);
+
+      assert.equal(45, register.total());
+    });
   });
 
   describe('offer', function() {
