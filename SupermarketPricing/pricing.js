@@ -17,10 +17,11 @@ var Register = function() {
   
   var runningSum = 0;
   var offers = [];
+  var items = [];
 
   return {
      price: function(item) {
-       runningSum += item.unitPrice();
+       items.push(item);
      },
 
      insertOffer: function(offer) {
@@ -28,6 +29,11 @@ var Register = function() {
      },
 
      total: function() {
+       var runningSum = 0;
+       for (var i=0;i<items.length;++i) {
+         runningSum += items[i].unitPrice();
+       }
+
        return runningSum;
      } 
   };
