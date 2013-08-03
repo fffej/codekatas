@@ -13,6 +13,13 @@ var Item = function(name, price) {
   }
 };
 
+var Basket = function() {
+  var items = [];
+  return {
+  
+  };
+};
+
 var Register = function() {
   
   var runningSum = 0;
