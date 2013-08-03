@@ -98,6 +98,12 @@ describe('super market', function() {
   });
 
   describe('offer', function() {
+    it('unit offer', function() {
+      var offer = new Unit(beans);
+      assert(offer.applies(beans));
+    });
+
+
     it('buy-one-get-one-free', function() {
       var offer = new BuyOneGetOneFree(beans);
       assert(offer.applies([beans, beans]));
