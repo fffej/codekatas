@@ -50,6 +50,22 @@ var numberOfItemsMatchingInBasket = function(item, basket) {
   return count;
 };
 
+var Receipt = function() {
+  var items = [];
+  var total = 0;
+
+  return {
+    items: function() { return items; },
+
+    total: function() { return total; },
+
+    record: function(description, price) {
+      items.push(description + ' : ' + price);
+      total += price;
+    },
+  };
+};
+
 var Unit = function(item) {
   return {
     applies: function(basket) {
@@ -91,7 +107,7 @@ describe('super market', function() {
       receipt.record('2 x Beans', 45);
       receipt.record('4 x Shoes', 10);
 
-      assert.equal(2, receipt.items());
+      assert.equal(2, receipt.items().length);
       assert.equal(55, receipt.total());
     });
   });
