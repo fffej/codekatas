@@ -151,18 +151,20 @@ describe('super market', function() {
     it('unit offer', function() {
       var offer = new Unit(beans);
       assert(offer.applies([beans], receipt));
+      assert.equal(45, price);
     });
 
 
     it('buy-one-get-one-free', function() {
       var offer = new BuyOneGetOneFree(beans);
       assert(offer.applies([beans, beans], receipt));
+      assert.equal(45, price);
     });
 
     it('3 for 2', function() {
       var offer = new ThreeForTwo(beans);
-      assert.equal(false, offer.applies([beans,beans]));
       assert(offer.applies([beans,beans,beans], receipt));
+      assert.equal(90, price);
     });
   });
 });
