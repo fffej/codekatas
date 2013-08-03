@@ -16,10 +16,15 @@ var Item = function(name, price) {
 var Register = function() {
   
   var runningSum = 0;
+  var offers = [];
 
   return {
      price: function(item) {
        runningSum += item.unitPrice();
+     },
+
+     insertOffer: function(offer) {
+       offers.push(offer);
      },
 
      total: function() {
