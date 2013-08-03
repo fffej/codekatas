@@ -50,6 +50,14 @@ var numberOfItemsMatchingInBasket = function(item, basket) {
   return count;
 };
 
+var Unit = function(item) {
+  return {
+    applies: function(basket) {
+      return numberOfItemsMatchingInBasket(item, basket) >= 1;
+    }
+  };
+};
+
 var BuyOneGetOneFree = function(item) {
   return {
     applies: function(basket) {
@@ -100,7 +108,7 @@ describe('super market', function() {
   describe('offer', function() {
     it('unit offer', function() {
       var offer = new Unit(beans);
-      assert(offer.applies(beans));
+      assert(offer.applies([beans]));
     });
 
 
