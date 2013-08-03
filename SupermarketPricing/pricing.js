@@ -26,20 +26,30 @@ var Register = function() {
 };
 
 describe('super market', function() {
+
+  var beans = new Item('beans', 45);
+  var batteries = new Item('batteries', 60);
+
   describe('item', function() {
     it('have a unit price', function() {
-      var item = new Item('beans', 45);
-      assert.equal(45, item.unitPrice());
+      assert.equal(45, beans.unitPrice());
     });
   });
 
   describe('register', function() {
     it('totals the price of items', function() {
       var register = new Register();
-      register.price(new Item('beans', 45));
-      register.price(new Item('food', 45));
+      register.price(beans);
+      register.price(beans);
 
       assert.equal(90, register.total());
+    });
+  });
+
+  describe('offer', function() {
+    it('buy-one-get-one-free', function() {
+      var offer = new BuyOneGetOneFree(beans);
+      assert(offer.applies([beans, beans]));
     });
   });
 });
