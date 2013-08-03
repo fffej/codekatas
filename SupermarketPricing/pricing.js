@@ -17,4 +17,14 @@ describe('super market', function() {
       assert.equal(45, item.unitPrice());
     });
   });
+
+  describe('register', function() {
+    it('totals the price of items', function() {
+      var register = new Register();
+      register.price(new Item('beans', 45));
+      register.price(new Item('food', 45));
+
+      assert.equal(90, register.total());
+    });
+  });
 });
