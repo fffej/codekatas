@@ -116,6 +116,18 @@ describe('super market', function() {
     });
   });
 
+  describe('basket', function() {
+    it('can keep track of items', function() {
+      var basket = new Basket();
+      basket.add(beans);
+
+      assert.equal(1, basket.count());
+
+      basket.remove(beans);
+      assert.equal(0, basket.count());
+    });
+  });
+
   describe('receipt', function() {
     it('consists of items and a total price', function() {
       var receipt = new Receipt();
