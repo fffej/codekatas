@@ -68,7 +68,7 @@ var Receipt = function() {
 
 var Unit = function(item) {
   return {
-    applies: function(basket) {
+    applies: function(basket, receipt) {
       if (numberOfItemsMatchingInBasket(item, basket) >= 1) {
         receipt.record(item.name(), item.unitPrice());
         return true;
@@ -81,7 +81,7 @@ var Unit = function(item) {
 
 var BuyOneGetOneFree = function(item) {
   return {
-    applies: function(basket) {
+    applies: function(basket, receipt) {
       if (numberOfItemsMatchingInBasket(item,basket) >= 2) {
         receipt.record("BOGOF " + item.name(), item.unitPrice());
         return true;
@@ -94,8 +94,13 @@ var BuyOneGetOneFree = function(item) {
 
 var ThreeForTwo = function(item) {
   return {
-    applies: function(basket) {
-      return numberOfItemsMatchingInBasket(item,basket) >= 3;
+    applies: function(basket, receipt) {
+      if (numberOfItemsMatchingInBasket(item,basket) >= 3) {
+        receipt.record("3 for 2 " + item.name(), 2 * item.unitPrice());
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };
@@ -143,17 +148,14 @@ describe('super market', function() {
   });
 
   describe('offer', function() {
- 
-    var item;
-    var price;
-    var receipt;
- 
+
+    var item, price, receipt;
+
     beforeEach(function() {
       item = undefined;
       price = undefined;
       receipt = {
         record: function(item_, price_) {
-          console.log("RECORDING");
           item = item_;
           price = price_;
         }
