@@ -70,5 +70,11 @@ describe('super market', function() {
       var offer = new BuyOneGetOneFree(beans);
       assert(offer.applies([beans, beans]));
     });
+
+    it('3 for 2', function() {
+      var offer = new ThreeForTwo(beans);
+      assert.equal(false, offer.applies([beans,beans]));
+      assert(offer.applies([beans,beans,beans]));
+    });
   });
 });
