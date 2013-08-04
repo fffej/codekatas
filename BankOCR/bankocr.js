@@ -169,6 +169,13 @@ describe('bank', function() {
     });
   });
 
+  describe('checksum', function() {
+    it('valid', function() {
+      var sum = checkSum([3,4,5,8,8,2,8,6,5]);
+      assert.equal(0, sum);
+    });
+  });
+
   describe('number', function() {
     it('recognizes all numbers', function() {
       var nums = [zero,one,two,three,four,five,six,seven,eight,nine];
