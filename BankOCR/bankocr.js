@@ -21,12 +21,15 @@ var createNumber = function(str) {
 
   return {
     value: function() { 
-      if (lines[0] === ' _ ') {
+      if (lines[0] === ' _ ' && lines[1] !== ' _|') {
         return 0;
       } else if (lines[1] === '  |') {
         return 1;
+      } else if (lines[1] === ' _|') {
+        return 2;
+      } else {
+        console.log(lines[1]);
       }
-      console.log(lines[1]);
     }
   };
 };
