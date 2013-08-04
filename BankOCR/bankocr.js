@@ -102,5 +102,13 @@ describe('bank', function() {
        var num = createNumber(one);
        assert.equal(1, num.value());
     });
+
+    it('two string', function() {
+      var two = ' _ \n'+
+                ' _|\n'+
+                '|_ \n';
+
+      assert.equal(2, createNumber(two).value());
+    });
   });
 });
