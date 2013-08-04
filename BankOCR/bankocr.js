@@ -18,17 +18,29 @@ var three = ' _ \n'+
             ' _|\n'+
             ' _|\n';
 
-var four;
+var four = '   \n' +
+           '|_|\n' +
+           '  |\n';
 
-var five;
+var five = ' _ \n' +
+           '|_ \n' +
+           ' _|\n';
 
-var six;
+var six = ' _ \n' +
+          '|_ \n' +
+          '|_|\n';
 
-var seven;
+var seven = ' _ \n' +
+            '  |\n' +
+            '  |\n';
 
-var eight;
+var eight = ' _ \n' +
+            '|_|\n' +
+            '|_|\n';
 
-var nine;
+var nine = ' _ \n' +
+           '|_|\n' +
+           '  |\n';
 
 var createAccountFrom = function(str) {
   if (isValidAccountNumber(str)) {
@@ -47,7 +59,9 @@ var createNumber = function(str) {
 
   var lines = str.split('\n');
 
-  var possibleValues = [zero,one,two,three];
+  var possibleValues = [zero,one,two,
+                       three,four,five,six,
+                       seven,eight,nine];
 
   return {
     value: function() { 
