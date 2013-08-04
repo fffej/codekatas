@@ -146,6 +146,7 @@ describe('bank', function() {
 
     it("describes validility", function() {
       assert(isValidAccountNumber(useCase1));
+      assert(isValidAccountNumber(useCase2));
     });
   });
 
