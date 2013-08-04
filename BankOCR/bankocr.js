@@ -15,6 +15,11 @@ var createAccountFrom = function(str) {
   }
 };
 
+var createNumber = function(str) {
+  return {
+    value: function() { return 0; }
+  };
+};
 
 
 var isValidAccountNumber = function(str) {
