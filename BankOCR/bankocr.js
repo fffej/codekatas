@@ -66,4 +66,15 @@ describe('bank', function() {
       assert(createAccountFrom(useCase1));
     });
   });
+
+  describe('number', function() {
+    it('zero string', function() {
+      var zero = ' _ \n' +
+                 '| |\n' +
+                 '|_|\n';
+
+      var num = new Num(zero);
+      assert.equal(0, num.value());
+    });
+  });
 });
