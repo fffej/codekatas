@@ -44,8 +44,30 @@ var nine = ' _ \n' +
 
 var createAccountFrom = function(str) {
   if (isValidAccountNumber(str)) {
-    var AccountNumber = function() {
 
+    var lines = str.split('\n');
+    var numbers = [];
+
+    for (var i=0;i<9;++i) {
+      var start = i*3;
+
+      var numberInput = lines[0].substr(start,3) + '\n' +
+                        lines[1].substr(start,3) + '\n' +
+                        lines[2].substr(start,3) + '\n';
+
+      numbers.push(createNumber(numberInput));
+    }
+
+    var AccountNumber = function() {
+      return {
+        toString: function() {
+          var s = '';
+          for (var i=0;i<9;++i) {
+            s += '' + numbers[i].value();
+          }
+          return s;
+        }
+      }
     };
 
     return new AccountNumber();
