@@ -23,4 +23,11 @@ describe('bank', function() {
       }
     });
   });
+
+  describe('account numbers', function() {
+    it('is not created from a invalid input format', function() {
+      assert.equal(undefined, createAccountFrom('12345'));
+      assert.equal(undefined, createAccountFrom());
+    });
+  });
 });
