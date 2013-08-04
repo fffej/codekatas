@@ -93,8 +93,7 @@ describe('bank', function() {
                  '| |\n' +
                  '|_|\n';
 
-      var num = createNumber(zero);
-      assert.equal(0, num.value());
+      assert.equal(0, createNumber(zero).value());
     });
 
     it('one string', function() {
@@ -102,8 +101,7 @@ describe('bank', function() {
                 '  |\n' + 
                 '  |\n';
 
-       var num = createNumber(one);
-       assert.equal(1, num.value());
+       assert.equal(1, createNumber(one).value());
     });
 
     it('two string', function() {
