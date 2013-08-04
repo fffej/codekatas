@@ -18,7 +18,6 @@ var three = ' _ \n'+
             ' _|\n'+
             ' _|\n';
 
-
 var createAccountFrom = function(str) {
   if (isValidAccountNumber(str)) {
     var AccountNumber = function() {
@@ -111,20 +110,11 @@ describe('bank', function() {
   });
 
   describe('number', function() {
-    it('zero string', function() {
-      assert.equal(0, createNumber(zero).value());
-    });
-
-    it('one string', function() {
-       assert.equal(1, createNumber(one).value());
-    });
-
-    it('two string', function() {
-      assert.equal(2, createNumber(two).value());
-    });
-
-    it ('three string', function() {
-      assert.equal(3, createNumber(three).value());
+    it('recognizes all numbers', function() {
+      var nums = [zero,one,two,three,four,five,six,seven,eight,nine];
+      for (var i=0;i<nums.length;++i) {
+        assert.equal(i, createNumber(nums[i]).value());
+      }
     });
   });
 });
