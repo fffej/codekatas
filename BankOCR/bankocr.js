@@ -45,6 +45,10 @@ describe('bank', function() {
         assert.equal(27, lines[i].length);
       }
     });
+
+    it("describes validility", function() {
+      assert(isValidAccountNumber(useCase1));
+    });
   });
 
   describe('account numbers', function() {
