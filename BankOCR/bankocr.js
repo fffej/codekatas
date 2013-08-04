@@ -36,14 +36,22 @@ var createNumber = function(str) {
 
   var lines = str.split('\n');
 
+  var possibleValues = [zero,one,two,three];
+
   return {
     value: function() { 
-      if (lines[0] === ' _ ' && lines[1] !== ' _|') {
-        return 0;
-      } else if (lines[1] === '  |') {
-        return 1;
-      } else if (lines[1] === ' _|') {
-        return 2;
+      var lines = str.split('\n');
+
+      for (var i=0;i<possibleValues.length;++i) {
+        var matchingLines = possibleValues[i].split('\n');
+        var match = true;
+        for (var j=0;j<3;++j) {
+          match = match && lines[j] === matchingLines[j];
+        }
+
+        if (match) {
+          return i;
+        }
       }
     }
   };
