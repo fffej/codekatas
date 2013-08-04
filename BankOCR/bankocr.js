@@ -2,6 +2,29 @@
 
 var assert = require('assert');
 
+var createAccountFrom = function(str) {
+  if (isValidAccountNumber(str)) {
+
+  } else {
+    return undefined;
+  }
+};
+
+var isValidAccountNumber = function(str) {
+  if (!str) {
+    return false;
+  }
+
+  var lines = str.split('\n');
+  if (lines.length !== 4) {
+    return false;
+  }
+
+  return lines[0].length === 27 && 
+         lines[1].length === 27 && 
+         lines[2].length === 27;
+};
+
 describe('bank', function() {
 
   var useCase1 = ' _  _  _  _  _  _  _  _  _ \n' + 
