@@ -16,8 +16,18 @@ var createAccountFrom = function(str) {
 };
 
 var createNumber = function(str) {
+
+  var lines = str.split('\n');
+
   return {
-    value: function() { return 0; }
+    value: function() { 
+      if (lines[0] === ' _ ') {
+        return 0;
+      } else if (lines[1] === '  |') {
+        return 1;
+      }
+      console.log(lines[1]);
+    }
   };
 };
 
@@ -85,9 +95,9 @@ describe('bank', function() {
     });
 
     it('one string', function() {
-      var one = '  \n' +
-                ' |\n' + 
-                ' |\n';
+      var one = '   \n' +
+                '  |\n' + 
+                '  |\n';
 
        var num = createNumber(one);
        assert.equal(1, num.value());
