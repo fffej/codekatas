@@ -77,6 +77,13 @@ var createAccountFrom = function(str) {
 
 var checkSum = function(arr) {
   assert.equal(9, arr.length);
+
+  var sum = 0;
+  for (var i=0;i<arr.length;++i) {
+    var positionName = 9-i;
+    sum = (positionName * i);
+  }
+  return sum % 11 === 0;
 };
 
 var createNumber = function(str) {
