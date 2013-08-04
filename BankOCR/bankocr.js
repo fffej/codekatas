@@ -83,5 +83,14 @@ describe('bank', function() {
       var num = createNumber(zero);
       assert.equal(0, num.value());
     });
+
+    it('one string', function() {
+      var one = '  \n' +
+                ' |\n' + 
+                ' |\n';
+
+       var num = createNumber(one);
+       assert.equal(1, num.value());
+    });
   });
 });
