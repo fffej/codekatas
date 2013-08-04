@@ -111,5 +111,13 @@ describe('bank', function() {
 
       assert.equal(2, createNumber(two).value());
     });
+
+    it ('three string', function() {
+      var three = ' _ \n'+
+                  ' _|\n'+
+                  ' _|\n';
+
+      assert.equal(3, createNumber(three).value());
+    });
   });
 });
