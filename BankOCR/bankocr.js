@@ -56,5 +56,9 @@ describe('bank', function() {
       assert.equal(undefined, createAccountFrom('12345'));
       assert.equal(undefined, createAccountFrom());
     });
+
+    it('is created from a valid input format', function() {
+      assert(createAccountFrom(useCase1));
+    });
   });
 });
