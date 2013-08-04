@@ -162,6 +162,9 @@ describe('bank', function() {
     it('can extract numbers', function() {
       var allZeros = createAccountFrom(useCase1);
       assert.equal('000000000', allZeros.toString());
+
+      var oneToNine = createAccountFrom(useCase2);
+      assert.equal('123456789', oneToNine.toString());
     });
   });
 
