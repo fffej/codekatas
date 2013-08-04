@@ -125,6 +125,11 @@ describe('bank', function() {
                  '|_||_||_||_||_||_||_||_||_|\n' +
                  '';
 
+  var useCase2 = '    _  _     _  _  _  _  _ \n' +
+                 '  | _| _||_||_ |_   ||_||_|\n' +
+                 '  ||_  _|  | _||_|  ||_| _|\n' +
+                 '';
+
   describe('input format', function() {
     it("consists of four lines", function() {
       var input = useCase1;
@@ -155,10 +160,8 @@ describe('bank', function() {
     });
 
     it('can extract numbers', function() {
-      var accountNumber = createAccountFrom(useCase1);
-      for (var i=0;i<9;++i) {
-        assert.equal('000000000', accountNumber.toString());
-      }
+      var allZeros = createAccountFrom(useCase1);
+      assert.equal('000000000', allZeros.toString());
     });
   });
 
