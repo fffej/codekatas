@@ -15,6 +15,8 @@ var createAccountFrom = function(str) {
   }
 };
 
+
+
 var isValidAccountNumber = function(str) {
   if (!str) {
     return false;
@@ -73,7 +75,7 @@ describe('bank', function() {
                  '| |\n' +
                  '|_|\n';
 
-      var num = new Num(zero);
+      var num = createNumber(zero);
       assert.equal(0, num.value());
     });
   });
