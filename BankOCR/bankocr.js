@@ -48,9 +48,7 @@ var createAccountFrom = function(str) {
     var lines = str.split('\n');
     var numbers = [];
 
-    for (var i=0;i<9;++i) {
-      var start = i*3;
-
+    for (var start=0;start<27;start+=3) {
       var numberInput = lines[0].substr(start,3) + '\n' +
                         lines[1].substr(start,3) + '\n' +
                         lines[2].substr(start,3) + '\n';
