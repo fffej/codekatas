@@ -2,6 +2,23 @@
 
 var assert = require('assert');
 
+var zero = ' _ \n' +
+           '| |\n' +
+           '|_|\n';
+
+var one = '   \n' +
+          '  |\n' + 
+          '  |\n';
+
+var two = ' _ \n'+
+          ' _|\n'+
+          '|_ \n';
+
+var three = ' _ \n'+
+            ' _|\n'+
+            ' _|\n';
+
+
 var createAccountFrom = function(str) {
   if (isValidAccountNumber(str)) {
     var AccountNumber = function() {
@@ -27,8 +44,6 @@ var createNumber = function(str) {
         return 1;
       } else if (lines[1] === ' _|') {
         return 2;
-      } else {
-        console.log(lines[1]);
       }
     }
   };
@@ -89,34 +104,18 @@ describe('bank', function() {
 
   describe('number', function() {
     it('zero string', function() {
-      var zero = ' _ \n' +
-                 '| |\n' +
-                 '|_|\n';
-
       assert.equal(0, createNumber(zero).value());
     });
 
     it('one string', function() {
-      var one = '   \n' +
-                '  |\n' + 
-                '  |\n';
-
        assert.equal(1, createNumber(one).value());
     });
 
     it('two string', function() {
-      var two = ' _ \n'+
-                ' _|\n'+
-                '|_ \n';
-
       assert.equal(2, createNumber(two).value());
     });
 
     it ('three string', function() {
-      var three = ' _ \n'+
-                  ' _|\n'+
-                  ' _|\n';
-
       assert.equal(3, createNumber(three).value());
     });
   });
