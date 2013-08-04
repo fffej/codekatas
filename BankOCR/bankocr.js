@@ -4,8 +4,13 @@ var assert = require('assert');
 
 var createAccountFrom = function(str) {
   if (isValidAccountNumber(str)) {
+    var AccountNumber = function() {
 
+    };
+
+    return new AccountNumber();
   } else {
+
     return undefined;
   }
 };
