@@ -75,6 +75,10 @@ var createAccountFrom = function(str) {
   }
 };
 
+var checkSum = function(arr) {
+  assert.equal(9, arr.length);
+};
+
 var createNumber = function(str) {
 
   var lines = str.split('\n');
