@@ -18,6 +18,18 @@ var three = ' _ \n'+
             ' _|\n'+
             ' _|\n';
 
+var four;
+
+var five;
+
+var six;
+
+var seven;
+
+var eight;
+
+var nine;
+
 var createAccountFrom = function(str) {
   if (isValidAccountNumber(str)) {
     var AccountNumber = function() {
