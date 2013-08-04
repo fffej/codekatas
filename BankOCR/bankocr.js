@@ -133,6 +133,13 @@ describe('bank', function() {
     it('is created from a valid input format', function() {
       assert(createAccountFrom(useCase1));
     });
+
+    it('can extract numbers', function() {
+      var accountNumber = createAccountFrom(useCase1);
+      for (var i=0;i<9;++i) {
+        assert.equal('000000000', accountNumber.toString());
+      }
+    });
   });
 
   describe('number', function() {
