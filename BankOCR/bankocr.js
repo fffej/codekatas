@@ -40,7 +40,7 @@ var eight = ' _ \n' +
 
 var nine = ' _ \n' +
            '|_|\n' +
-           '  |\n';
+           ' _|\n';
 
 var createAccountFrom = function(str) {
   if (isValidAccountNumber(str)) {
