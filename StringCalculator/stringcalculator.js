@@ -90,7 +90,7 @@ suite('String calculator', function() {
 
     test('appropriate message', function() {
       assert.throws(function() { calc.add('-1'); }, function(err) {
-          if (/negatives not allowed/.test(err)) {
+          if (/negatives not allowed/.test(err) && err.message.indexOf('-1') !== -1) {
             return true;
           }
       });
