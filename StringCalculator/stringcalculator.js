@@ -79,6 +79,10 @@ suite('String calculator', function() {
     test('different delimiters', function() {
       assert.equal(6, calc.add("//q\n1q2q3"));
     });
+
+    test('disallow negatives', function() {
+      assert.throws(function() { calc.add('-1'); }, Error);
+    });
   });
 });
 
