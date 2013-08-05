@@ -57,6 +57,10 @@ suite('String calculator', function() {
     test('multiple numbers', function() {
       assert.equal(6, calc.add('1,2,3'));
     });
+
+    test('allow new lines', function() {
+      assert.equal(2, calc.add('1\n1'));
+    });
   });
 });
 
