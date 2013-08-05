@@ -12,6 +12,9 @@ var StringCalculator = function() {
       if (-1 === str.indexOf(",")) {
         return str|0;
       }
+
+      var nums = str.split(',');
+      return (nums[0]|0) + (nums[1]|0);
     }
   };
 };
@@ -43,7 +46,7 @@ suite('String calculator', function() {
 
     test('multiple numbers', function() {
       assert.equal(2, calc.add('1,1'));
-      assert.equal(101, calc.add('999,2'));
+      assert.equal(1001, calc.add('999,2'));
     });
   });
 });
