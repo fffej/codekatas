@@ -48,6 +48,10 @@ suite('String calculator', function() {
       assert.equal(2, calc.add('1,1'));
       assert.equal(1001, calc.add('999,2'));
     });
+
+    test('multiple numbers', function() {
+      assert.equal(6, calc.add('1,2,3'));
+    });
   });
 });
 
