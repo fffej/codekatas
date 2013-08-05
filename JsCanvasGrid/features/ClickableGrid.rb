@@ -1,6 +1,10 @@
 require "rubygems"
 require "watir-webdriver"
 
+Given /^that I have started the server$/ do
+  pending 
+end
+
 Given /^that I have gone to the page$/ do
   @browser = Watir::Browser.new
   @browser.goto 'index.html'
