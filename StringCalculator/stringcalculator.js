@@ -87,6 +87,14 @@ suite('String calculator', function() {
     test('disallow negatives', function() {
       assert.throws(function() { calc.add('-1'); }, Error);
     });
+
+    test('appropriate message', function() {
+      assert.throws(function() { calc.add('-1'); }, function(err) {
+          if (/negatives not allowed/.test(err)) {
+            return true;
+          }
+      });
+    });
   });
 });
 
