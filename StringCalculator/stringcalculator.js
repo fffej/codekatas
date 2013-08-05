@@ -13,18 +13,23 @@ var StringCalculator = function() {
 };
 
 suite('String calculator', function() {
-  suite('#add', function() {
+
+  suite('creation', function() {
     test('can create', function() {
       assert(new StringCalculator());
     });
+  });
+
+  suite('#add', function() {
+
+    var calc = new StringCalculator();
 
     test('can add', function() {
-      var calc = new StringCalculator();
       assert(calc.add);
     });
 
     test('empty string returns 0', function() {
-      assert.equal(0, new StringCalculator().add(''));
+      assert.equal(0, calc.add(''));
     });
   });
 });
