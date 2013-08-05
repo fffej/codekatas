@@ -62,6 +62,10 @@ suite('String calculator', function() {
     test('allow mixture', function() {
       assert.equal(6, calc.add('1,2\n3'));
     });
+
+    test('different delimiters', function() {
+      assert.equal(6, calc.add("//q\n1q2q3"));
+    });
   });
 });
 
