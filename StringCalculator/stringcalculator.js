@@ -11,6 +11,11 @@ suite('String calculator', function() {
     test('can create', function() {
       assert(new StringCalculator());
     });
+
+    test('can add', function() {
+      var calc = new StringCalculator();
+      assert(calc.add);
+    });
   });
 });
 
