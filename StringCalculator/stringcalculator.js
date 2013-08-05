@@ -115,3 +115,5 @@ suite('String calculator', function() {
 
 // Learnings
 // - use "mocha -u tdd <foo>"
+// - regexs in JavaScript
+// - shift
