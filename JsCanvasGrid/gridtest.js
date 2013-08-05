@@ -3,6 +3,13 @@
 var assert = require('assert');
 var g = require('./grid.js');
 
+describe('grid view', function() {
+  it('is created from a grid', function() {
+    var gridView = new g.GridView(new g.Grid(5,6));
+    assert(gridView);
+  });
+});
+
 describe('grid', function() {
   it('has a width and height', function() {
     var grid = new g.Grid(5,6);

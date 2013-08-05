@@ -3,6 +3,10 @@
 var On  = 1;
 var Off = 0;
 
+var GridView = function(grid) {
+
+};
+
 var Grid = function(w,h) {
 
   var grid = [];
@@ -30,3 +34,4 @@ var Grid = function(w,h) {
 exports.Grid = Grid;
 exports.On = On;
 exports.Off = Off;
+exports.GridView = GridView;
