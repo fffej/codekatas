@@ -9,8 +9,21 @@ var StringCalculator = function() {
         return 0;
       }
 
-      str = str.replace(/(\n)+/g, ',');
-      var nums = str.split(',');
+      // extract out delimiter
+      var nums;
+      if (str.indexOf('//') === 0) {
+        var lines = str.split('\n');
+        var delim = lines[0].substr(2);
+        lines.shift();
+        str = lines.join();
+
+        nums = str.split(delim);
+      }
+      else {
+        str = str.replace(/(\n)+/g, ',');
+        nums = str.split(',');
+      }
+      
       var sum = 0;
       for (var i=0;i<nums.length;++i) {
         sum += (nums[i]|0);
