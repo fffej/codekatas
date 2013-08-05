@@ -3,7 +3,9 @@
 var assert = require('assert');
 
 var StringCalculator = function() {
-  return {};
+  return {
+    add: function() {}
+  };
 };
 
 suite('String calculator', function() {
