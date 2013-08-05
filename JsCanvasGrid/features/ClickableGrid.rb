@@ -1,5 +1,5 @@
 require "rubygems"
-require "watir"
+require "watir-webdriver"
 
 Given /^that I have gone to the page$/ do
   # @browser = Wait::Chrome.new
