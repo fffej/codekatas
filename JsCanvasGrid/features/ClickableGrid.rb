@@ -2,9 +2,8 @@ require "rubygems"
 require "watir-webdriver"
 
 Given /^that I have gone to the page$/ do
-  # @browser = Wait::Chrome.new
-  # @browser.goto("index.html")
-  pending
+  @browser = Watir::Browser.new
+  @browser.goto 'index.html'
 end
 
 When /^I click \((\d+),(\d+)\) in the grid$/ do |arg1, arg2|
