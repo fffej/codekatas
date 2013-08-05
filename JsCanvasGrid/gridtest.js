@@ -10,4 +10,9 @@ describe('grid', function() {
     assert.equal(5, grid.width());
     assert.equal(6, grid.height());
   });
+
+  it('each cell is initally \'off\'', function() {
+    var grid = new g.Grid(5,6);
+    assert.equal(g.Off, grid.state(3,3));
+  });
 });
