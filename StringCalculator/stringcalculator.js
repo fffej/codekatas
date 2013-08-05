@@ -40,6 +40,11 @@ suite('String calculator', function() {
       assert.equal(0, calc.add('0'));
       assert.equal(101, calc.add('101'));
     });
+
+    test('multiple numbers', function() {
+      assert.equal(2, calc.add('1,1'));
+      assert.equal(101, calc.add('999,2'));
+    });
   });
 });
 
