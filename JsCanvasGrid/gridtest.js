@@ -15,4 +15,14 @@ describe('grid', function() {
     var grid = new g.Grid(5,6);
     assert.equal(g.Off, grid.state(3,3));
   });
+
+  it('each cell can be toggled', function() {
+    var grid = new g.Grid(5,6);
+
+    assert.equal(g.Off, grid.state(3,3));
+    grid.toggle(3,3);
+    assert.equal(g.On, grid.state(3,3));
+    grid.toggle(3,3);
+    assert.equal(g.Off, grid.state(3,3));
+  });
 });
