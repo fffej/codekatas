@@ -18,6 +18,10 @@ suite('String calculator', function() {
       var calc = new StringCalculator();
       assert(calc.add);
     });
+
+    test('empty string returns 0', function() {
+      assert.equal(0, calc.add(''));
+    });
   });
 });
 
