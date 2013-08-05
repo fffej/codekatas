@@ -4,7 +4,11 @@ var assert = require('assert');
 
 var StringCalculator = function() {
   return {
-    add: function() {}
+    add: function(str) {
+      if (str === '') {
+        return 0;
+      }
+    }
   };
 };
 
@@ -20,7 +24,7 @@ suite('String calculator', function() {
     });
 
     test('empty string returns 0', function() {
-      assert.equal(0, calc.add(''));
+      assert.equal(0, new StringCalculator().add(''));
     });
   });
 });
