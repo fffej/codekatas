@@ -26,7 +26,11 @@ var StringCalculator = function() {
       
       var sum = 0;
       for (var i=0;i<nums.length;++i) {
-        sum += (nums[i]|0);
+        var num = (nums[i]|0);
+        if (num < 0) { 
+          throw new Error(); 
+        }
+        sum += num;
       }
 
       return sum;
