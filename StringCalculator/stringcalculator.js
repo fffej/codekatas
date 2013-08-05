@@ -28,7 +28,7 @@ var StringCalculator = function() {
       for (var i=0;i<nums.length;++i) {
         var num = (nums[i]|0);
         if (num < 0) { 
-          throw new Error('negatives not allowed'); 
+          throw new Error('negatives not allowed: ' + num); 
         }
         sum += num;
       }
