@@ -31,6 +31,11 @@ suite('String calculator', function() {
     test('empty string returns 0', function() {
       assert.equal(0, calc.add(''));
     });
+
+    test('single numbers return identity', function() {
+      assert.equal(0, calc.add('0'));
+      assert.equal(101, calc.add('101'));
+    });
   });
 });
 
