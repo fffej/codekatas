@@ -95,6 +95,16 @@ suite('String calculator', function() {
           }
       });
     });
+
+    test('appropriate messages', function() {
+      assert.throws(function() { calc.add('-1\n-2'); }, function(err) {
+          if (/negatives not allowed/.test(err) && 
+              err.message.indexOf('-1') !== -1 &&
+              err.message.indexOf('-2') !== -1) {
+            return true;
+          }
+      });
+    });
   });
 });
 
