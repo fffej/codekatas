@@ -58,6 +58,10 @@ suite('String calculator', function() {
     test('allow new lines', function() {
       assert.equal(2, calc.add('1\n1'));
     });
+
+    test('allow mixture', function() {
+      assert.equal(6, calc.add('1,2\n3'));
+    });
   });
 });
 
