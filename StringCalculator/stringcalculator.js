@@ -44,7 +44,7 @@ suite('String calculator', function() {
       assert.equal(101, calc.add('101'));
     });
 
-    test('multiple numbers', function() {
+    test('two numbers', function() {
       assert.equal(2, calc.add('1,1'));
       assert.equal(1001, calc.add('999,2'));
     });
