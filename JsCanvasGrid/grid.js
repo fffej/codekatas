@@ -1,9 +1,11 @@
 // Daft contortion to avoid strict mode problems
 var exportFn = function (grid,on,off,gridview) {
-  exports.Grid = grid;
-  exports.On = on;
-  exports.Off = off;
-  exports.GridView = gridview;
+  if (typeof(exports) !== 'undefined') {
+    exports.Grid = grid;
+    exports.On = on;
+    exports.Off = off;
+    exports.GridView = gridview;
+  }
 };
 
 (function() {
