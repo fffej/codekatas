@@ -25,12 +25,17 @@ var StringCalculator = function() {
       }
       
       var sum = 0;
+      var invalid = [];
       for (var i=0;i<nums.length;++i) {
         var num = (nums[i]|0);
         if (num < 0) { 
-          throw new Error('negatives not allowed: ' + num); 
+          invalid.push(num);
         }
         sum += num;
+      }
+
+      if (invalid.length !== 0) {
+        throw new Error('negatives not allowed: ' + invalid);
       }
 
       return sum;
