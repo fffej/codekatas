@@ -9,10 +9,7 @@ var StringCalculator = function() {
         return 0;
       }
 
-      if (-1 === str.indexOf(",")) {
-        return str|0;
-      }
-
+      str = str.replace(/(\n)+/g, ',');
       var nums = str.split(',');
       var sum = 0;
       for (var i=0;i<nums.length;++i) {
