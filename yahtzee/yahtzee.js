@@ -2,11 +2,12 @@
 
 var assert = require('assert');
 
-var Game = function() {
-
-  var dice = [];
-  for (var i=0;i<5;++i) {
-    dice.push(1 + (Math.random() * 6 | 0));
+var Game = function(dice) {
+  if (!dice) {
+    dice = [];
+    for (var i=0;i<5;++i) {
+      dice.push(1 + (Math.random() * 6 | 0));
+    }
   }
 
   return {
@@ -74,7 +75,7 @@ describe('yahtzee', function() {
     });
 
     it('always accept chance', function() {
-      assert.equal(1 + 2 + 3 + 4 + 5, new Game(1,2,3,4,5).score(new Chance()));
+      assert.equal(1 + 2 + 3 + 4 + 5, new Game([1,2,3,4,5]).score(new Chance()));
     });
   });
 });
