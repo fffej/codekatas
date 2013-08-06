@@ -40,7 +40,18 @@ var Single = function(n) {
   }
 };
 
-var Pair = function() {};
+var Pair = function() {
+  return { 
+    score: function(nums) {
+      for (var i=6;i>=1;i--) {
+        if (nums.filter(isN(i)).length >= 2) {
+          return 2 * i;
+        }
+      }
+      return 0;
+    }
+  };
+};
 var TwoPairs = function() {};
 var ThreeOfAKind = function() {};
 var FourOfAKind = function() {};
@@ -96,7 +107,7 @@ describe('yahtzee', function() {
 
     it('pair', function() {
       assert.equal(12, new Game([6,6,1,2,3]).score(new Pair()));
-      assert.equal(0,  new Game([1,1,1,1,1]).score(new Pair()));
+      assert.equal(0,  new Game([1,2,3,4,5]).score(new Pair()));
     });
   });
 });
