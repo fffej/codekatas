@@ -3,9 +3,15 @@
 var assert = require('assert');
 
 var Yahtzee = function() {
+
+  var dice = [];
+  for (var i=0;i<5;++i) {
+    dice.push(1 + (Math.random() * 6 | 0));
+  }
+
   return {
     dice: function() {
-      return [];
+      return dice;
     }
   };
 };
@@ -16,7 +22,7 @@ describe('yahtzee', function() {
       var yahtzee = new Yahtzee();
       assert(yahtzee);
 
-      assert.equal(6, yahtzee.dice().length);
+      assert.equal(5, yahtzee.dice().length);
     });
   });
 });
