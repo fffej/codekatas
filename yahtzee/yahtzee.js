@@ -30,7 +30,6 @@ var Chance = function() {
     }
   };
 };
-var Yahtzee = function() {};
 
 var Single = function(n) {
   return {
@@ -97,6 +96,15 @@ var FourOfAKind = function() {
     }
   }
 };
+
+var Yahtzee = function() {
+  return {
+    score: function(nums) {
+      return nOfAKind(5,nums) ? 50 : 0;
+    }
+  }
+};
+
 var SmallStraight = function() {};
 var LargeStraight = function() {};
 var FullHouse = function() {};
