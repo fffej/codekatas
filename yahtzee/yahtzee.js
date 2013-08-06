@@ -29,4 +29,10 @@ describe('yahtzee', function() {
       }
     });
   });
+
+  describe('categories', function() {
+    it('should have 15 categories', function() {
+      assert.equal(15, categories.length);
+    });
+  });
 });
