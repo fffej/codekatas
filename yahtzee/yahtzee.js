@@ -14,12 +14,18 @@ var Game = function() {
       return dice;
     },
     score: function(category) {
-      return true;
+      return category.score(dice);
     }
   };
 };
 
-var Chance = function() {};
+var Chance = function() {
+  return {
+    score: function(nums) {
+      return nums.reduce(function(x,y) { return x + y; },0);
+    }
+  };
+};
 var Yahtzee = function() {};
 var Single = function(n) {};
 var Pair = function() {};
