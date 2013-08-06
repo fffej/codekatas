@@ -82,7 +82,10 @@ var smallStraight = function(nums) {
   return matchesGoal(nums,[1,2,3,4,5]) ? 15 : 0;
 };
 
-var LargeStraight = function() {};
+var largeStraight = function(nums) {
+  return matchesGoal(nums,[2,3,4,5,6]) ? 20 : 0;
+};
+
 var FullHouse = function() {};
 
 var categories = [
@@ -99,7 +102,7 @@ var categories = [
   threeOfAKind,
   fourOfAKind,
   smallStraight,
-  new LargeStraight(),
+  largeStraight,
   new FullHouse()
 ];
 
