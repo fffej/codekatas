@@ -74,7 +74,7 @@ describe('yahtzee', function() {
     });
 
     it('always accept chance', function() {
-      assert(new Game().score(new Chance()) > 0);
+      assert.equal(1 + 2 + 3 + 4 + 5, new Game(1,2,3,4,5).score(new Chance()));
     });
   });
 });
