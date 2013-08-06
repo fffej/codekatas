@@ -28,7 +28,13 @@ var Chance = function() {
   };
 };
 var Yahtzee = function() {};
-var Single = function(n) {};
+var Single = function(n) {
+  return {
+    score: function(nums) {
+      return nums.filter(function(x) { return x === n; }).reduce(function(x,y) { return x + y; },0);
+    }
+  }
+};
 var Pair = function() {};
 var TwoPairs = function() {};
 var ThreeOfAKind = function() {};
@@ -79,8 +85,8 @@ describe('yahtzee', function() {
     });
 
     it('single works', function() {
-      assert.equal(1, new Game[1,2,3,4,5].score(new Single(1)));
-      assert.equal(0, new Game[1,2,3,4,5].score(new Single(6)));
+      assert.equal(1, new Game([1,2,3,4,5]).score(new Single(1)));
+      assert.equal(0, new Game([1,2,3,4,5]).score(new Single(6)));
     });
   });
 });
