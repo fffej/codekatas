@@ -21,6 +21,7 @@ var Game = function(dice) {
 };
 
 var strictAdd = function(x,y) { return x + y; };
+var isN = function(x) { return function(z) { return x === z; }; };
 
 var Chance = function() {
   return {
@@ -34,7 +35,7 @@ var Yahtzee = function() {};
 var Single = function(n) {
   return {
     score: function(nums) {
-      return nums.filter(function(x) { return x === n; }).reduce(strictAdd,0);
+      return nums.filter(isN(n)).reduce(strictAdd,0);
     }
   }
 };
