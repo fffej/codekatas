@@ -166,5 +166,10 @@ describe('yahtzee', function() {
       assert.equal(12, new Game([3,3,3,3,0]).score(new FourOfAKind()));
       assert.equal(0, new Game([3,3,1,3,0]).score(new FourOfAKind()));
     });
+
+    it('yahtzee', function() {
+      assert.equal(50, new Game([1,1,1,1,1]).score(new Yahtzee()));
+      assert.equal(0 , new Game([1,2,3,4,5]).score(new Yahtzee()));
+    });
   });
 });
