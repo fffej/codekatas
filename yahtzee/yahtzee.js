@@ -67,7 +67,11 @@ var TwoPairs = function() {
         }
       }
 
-      return pairs.reduce(strictAdd,0);
+      if (pairs.length === 2) {
+        return pairs[0] + pairs[1];
+      } else { 
+        return 0;
+      }
     }
   };
 };
