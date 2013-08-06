@@ -75,7 +75,18 @@ var TwoPairs = function() {
     }
   };
 };
-var ThreeOfAKind = function() {};
+var ThreeOfAKind = function() {
+  return { 
+    score: function(nums) {
+      for (var i=6;i>=1;i--) {
+        if (nums.filter(isN(i)).length >= 3) {
+          return 3 * i;
+        }
+      }
+      return 0;
+    }
+  };
+};
 var FourOfAKind = function() {};
 var SmallStraight = function() {};
 var LargeStraight = function() {};
@@ -138,7 +149,7 @@ describe('yahtzee', function() {
     });
 
     it('three of a kind', function() {
-      assert.equal(12, new Game([3,3,3,3,1,2]).score(new ThreeOfAKind()));
+      assert.equal(9, new Game([3,3,3,3,1,2]).score(new ThreeOfAKind()));
       assert.equal(0, new Game([1,2,3,4,5]).score(new ThreeOfAKind()));
     });
   });
