@@ -23,6 +23,10 @@ describe('yahtzee', function() {
       assert(yahtzee);
 
       assert.equal(5, yahtzee.dice().length);
+
+      for(var d=0;d<5;d++) {
+        assert(yahtzee.dice()[d] > 0 && yahtzee.dice()[d] < 7);
+      }
     });
   });
 });
