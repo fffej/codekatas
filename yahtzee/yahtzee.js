@@ -3,7 +3,11 @@
 var assert = require('assert');
 
 var Yahtzee = function() {
-  return {};
+  return {
+    dice: function() {
+      return [];
+    }
+  };
 };
 
 describe('yahtzee', function() {
