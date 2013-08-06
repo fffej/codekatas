@@ -68,16 +68,20 @@ var fourOfAKind = function(nums) { return nOfAKind(4,nums); };
 
 var yahtzee = function(nums) { return nOfAKind(5,nums) ? 50 : 0; };
 
-var smallStraight = function(nums) {
+var matchesGoal = function(nums,goal) {
   var s = nums.sort();
-  var goal = [1,2,3,4,5];
   for (var i=0;i<5;++i) {
     if (s[i] !== goal[i]) {
-      return 0;
+      return false;
     }
   }
-  return 15;
+  return true;
 };
+
+var smallStraight = function(nums) {
+  return matchesGoal(nums,[1,2,3,4,5]) ? 15 : 0;
+};
+
 var LargeStraight = function() {};
 var FullHouse = function() {};
 
