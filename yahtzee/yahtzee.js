@@ -12,6 +12,9 @@ var Game = function() {
   return {
     dice: function() {
       return dice;
+    },
+    score: function(category) {
+      return true;
     }
   };
 };
