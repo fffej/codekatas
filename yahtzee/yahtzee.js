@@ -86,7 +86,22 @@ var largeStraight = function(nums) {
   return matchesGoal(nums,[2,3,4,5,6]) ? 20 : 0;
 };
 
-var FullHouse = function() {};
+var fullHouse = function(nums) {
+  var sorted = nums.sort();
+
+  var firstTwoSame = sorted[0] === sorted[1];
+  var lastThreeSame = sorted[2] === sorted[3] && sorted[3] === sorted[4];
+
+  var firstThreeSame = sorted[0] === sorted[1] && sorted[1] === sorted[2];
+  var lastTwoSame = sorted[3] === sorted[4];
+ 
+  if ((firstTwoSame && lastThreeSame) || (firstThreeSame && lastTwoSame)) {
+    return nums.reduce(strictAdd,0);
+  }
+  else {
+    return 0;
+  }
+};
 
 var categories = [
   chance,
@@ -103,7 +118,7 @@ var categories = [
   fourOfAKind,
   smallStraight,
   largeStraight,
-  new FullHouse()
+  fullHouse
 ];
 
 describe('yahtzee', function() {
