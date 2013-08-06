@@ -15,7 +15,7 @@ var Game = function(dice) {
       return dice;
     },
     score: function(category) {
-      return category.score(dice);
+      return category(dice);
     }
   };
 };
@@ -23,45 +23,32 @@ var Game = function(dice) {
 var strictAdd = function(x,y) { return x + y; };
 var isN = function(x) { return function(z) { return x === z; }; };
 
-var Chance = function() {
-  return {
-    score: function(nums) {
-      return nums.reduce(strictAdd,0);
-    }
+var chance = function(nums) {
+  return nums.reduce(strictAdd,0);
+};
+
+var single = function(n) {
+  return function(nums) {
+    return nums.filter(isN(n)).reduce(strictAdd,0);
   };
 };
 
-var Single = function(n) {
-  return {
-    score: function(nums) {
-      return nums.filter(isN(n)).reduce(strictAdd,0);
+var twoPairs = function(nums) {
+  var pairs = [];
+   for (var i=6;i>=1;i--) {
+    var matchingI = nums.filter(isN(i)).length;
+     if (matchingI === 4) {
+      return 4 * i;
+    } else if (matchingI >= 2) {
+      pairs.push(2*i);
     }
   }
-};
-
-var TwoPairs = function() {
-  return {
-    score: function(nums) {
-      var pairs = [];
-
-      for (var i=6;i>=1;i--) {
-        var matchingI = nums.filter(isN(i)).length;
-
-        if (matchingI === 4) {
-          return 4 * i;
-        } else if (matchingI >= 2) {
-          pairs.push(2*i);
-        }
-      }
-
-      if (pairs.length === 2) {
-        return pairs[0] + pairs[1];
-      } else { 
-        return 0;
-      }
-    }
-  };
-};
+   if (pairs.length === 2) {
+    return pairs[0] + pairs[1];
+  } else { 
+    return 0;
+  }
+};  
 
 
 var nOfAKind = function(n, nums) {
@@ -73,55 +60,31 @@ var nOfAKind = function(n, nums) {
   return 0;
 };
 
-var Pair = function() {
-  return { 
-    score: function(nums) {
-      return nOfAKind(2,nums);
-    }
-  };
-};
+var pair = function(nums) { return nOfAKind(2,nums); };
 
-var ThreeOfAKind = function() {
-  return { 
-    score: function(nums) {
-      return nOfAKind(3,nums);
-    }
-  };
-};
+var threeOfAKind = function(nums) { return nOfAKind(3,nums); };
 
-var FourOfAKind = function() {
-  return {
-    score: function(nums) {
-      return nOfAKind(4,nums); 
-    }
-  }
-};
+var fourOfAKind = function(nums) { return nOfAKind(4,nums); };
 
-var Yahtzee = function() {
-  return {
-    score: function(nums) {
-      return nOfAKind(5,nums) ? 50 : 0;
-    }
-  }
-};
+var yahtzee = function(nums) { return nOfAKind(5,nums) ? 50 : 0; };
 
 var SmallStraight = function() {};
 var LargeStraight = function() {};
 var FullHouse = function() {};
 
 var categories = [
-  new Chance(),
-  new Yahtzee(),
-  new Single(1),
-  new Single(2),
-  new Single(3),
-  new Single(4),
-  new Single(5),
-  new Single(6),
-  new Pair(),
-  new TwoPairs(),
-  new ThreeOfAKind(),
-  new FourOfAKind(),
+  chance,
+  yahtzee,
+  single(1),
+  single(2),
+  single(3),
+  single(4),
+  single(5),
+  single(6),
+  pair,
+  twoPairs,
+  threeOfAKind,
+  fourOfAKind,
   new SmallStraight(),
   new LargeStraight(),
   new FullHouse()
@@ -147,37 +110,37 @@ describe('yahtzee', function() {
     });
 
     it('always accept chance', function() {
-      assert.equal(1 + 2 + 3 + 4 + 5, new Game([1,2,3,4,5]).score(new Chance()));
+      assert.equal(1 + 2 + 3 + 4 + 5, new Game([1,2,3,4,5]).score(chance));
     });
 
     it('single works', function() {
-      assert.equal(1, new Game([1,2,3,4,5]).score(new Single(1)));
-      assert.equal(0, new Game([1,2,3,4,5]).score(new Single(6)));
+      assert.equal(1, new Game([1,2,3,4,5]).score(single(1)));
+      assert.equal(0, new Game([1,2,3,4,5]).score(single(6)));
     });
 
     it('pair', function() {
-      assert.equal(12, new Game([6,6,1,2,3]).score(new Pair()));
-      assert.equal(0,  new Game([1,2,3,4,5]).score(new Pair()));
+      assert.equal(12, new Game([6,6,1,2,3]).score(pair));
+      assert.equal(0,  new Game([1,2,3,4,5]).score(pair));
     });
 
     it('two pairs', function() {
-      assert.equal(12 + 10, new Game([6,6,5,5,1]).score(new TwoPairs()));
-      assert.equal(0, new Game([6,6,5,3,1]).score(new TwoPairs()));
+      assert.equal(12 + 10, new Game([6,6,5,5,1]).score(twoPairs));
+      assert.equal(0, new Game([6,6,5,3,1]).score(twoPairs));
     });
 
     it('three of a kind', function() {
-      assert.equal(9, new Game([3,3,3,3,1,2]).score(new ThreeOfAKind()));
-      assert.equal(0, new Game([1,2,3,4,5]).score(new ThreeOfAKind()));
+      assert.equal(9, new Game([3,3,3,3,1,2]).score(threeOfAKind));
+      assert.equal(0, new Game([1,2,3,4,5]).score(threeOfAKind));
     });
 
     it('four of a kind', function() {
-      assert.equal(12, new Game([3,3,3,3,0]).score(new FourOfAKind()));
-      assert.equal(0, new Game([3,3,1,3,0]).score(new FourOfAKind()));
+      assert.equal(12, new Game([3,3,3,3,0]).score(fourOfAKind));
+      assert.equal(0, new Game([3,3,1,3,0]).score(fourOfAKind));
     });
 
     it('yahtzee', function() {
-      assert.equal(50, new Game([1,1,1,1,1]).score(new Yahtzee()));
-      assert.equal(0 , new Game([1,2,3,4,5]).score(new Yahtzee()));
+      assert.equal(50, new Game([1,1,1,1,1]).score(yahtzee));
+      assert.equal(0 , new Game([1,2,3,4,5]).score(yahtzee));
     });
   });
 });
