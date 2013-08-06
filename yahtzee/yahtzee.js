@@ -40,23 +40,6 @@ var Single = function(n) {
   }
 };
 
-var Pair = function() {
-  return { 
-    score: function(nums) {
-      return nOfAKind(2,nums);
-    }
-  };
-};
-
-var nOfAKind = function(n, nums) {
-  for (var i=6;i>=1;i--) {
-    if (nums.filter(isN(i)).length >= n) {
-       return n * i;
-    }
-  }
-  return 0;
-};
-
 var TwoPairs = function() {
   return {
     score: function(nums) {
@@ -80,6 +63,25 @@ var TwoPairs = function() {
     }
   };
 };
+
+
+var nOfAKind = function(n, nums) {
+  for (var i=6;i>=1;i--) {
+    if (nums.filter(isN(i)).length >= n) {
+       return n * i;
+    }
+  }
+  return 0;
+};
+
+var Pair = function() {
+  return { 
+    score: function(nums) {
+      return nOfAKind(2,nums);
+    }
+  };
+};
+
 var ThreeOfAKind = function() {
   return { 
     score: function(nums) {
@@ -87,6 +89,7 @@ var ThreeOfAKind = function() {
     }
   };
 };
+
 var FourOfAKind = function() {};
 var SmallStraight = function() {};
 var LargeStraight = function() {};
