@@ -130,6 +130,7 @@ describe('yahtzee', function() {
 
     it('two pairs', function() {
       assert.equal(12 + 10, new Game([6,6,5,5,1]).score(new TwoPairs()));
+      assert.equal(0, new Game([6,6,5,3,1]).score(new TwoPairs()));
     });
   });
 });
