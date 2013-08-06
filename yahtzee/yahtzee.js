@@ -20,21 +20,25 @@ var Game = function(dice) {
   };
 };
 
+var strictAdd = function(x,y) { return x + y; };
+
 var Chance = function() {
   return {
     score: function(nums) {
-      return nums.reduce(function(x,y) { return x + y; },0);
+      return nums.reduce(strictAdd,0);
     }
   };
 };
 var Yahtzee = function() {};
+
 var Single = function(n) {
   return {
     score: function(nums) {
-      return nums.filter(function(x) { return x === n; }).reduce(function(x,y) { return x + y; },0);
+      return nums.filter(function(x) { return x === n; }).reduce(strictAdd,0);
     }
   }
 };
+
 var Pair = function() {};
 var TwoPairs = function() {};
 var ThreeOfAKind = function() {};
