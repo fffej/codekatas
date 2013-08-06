@@ -96,6 +96,7 @@ describe('yahtzee', function() {
 
     it('pair', function() {
       assert.equal(12, new Game([6,6,1,2,3]).score(new Pair()));
+      assert.equal(0,  new Game([1,1,1,1,1]).score(new Pair()));
     });
   });
 });
