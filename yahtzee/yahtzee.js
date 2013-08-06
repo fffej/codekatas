@@ -142,5 +142,10 @@ describe('yahtzee', function() {
       assert.equal(50, new Game([1,1,1,1,1]).score(yahtzee));
       assert.equal(0 , new Game([1,2,3,4,5]).score(yahtzee));
     });
+
+    it('small straight', function() {
+      assert.equal(15, new Game([1,2,3,4,5]).score(smallStraight));
+      assert.equal(0, new Game([1,2,3,4,6]).score(smallStraight));
+    });
   });
 });
