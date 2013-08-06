@@ -68,7 +68,16 @@ var fourOfAKind = function(nums) { return nOfAKind(4,nums); };
 
 var yahtzee = function(nums) { return nOfAKind(5,nums) ? 50 : 0; };
 
-var SmallStraight = function() {};
+var smallStraight = function(nums) {
+  var s = nums.sort();
+  var goal = [1,2,3,4,5];
+  for (var i=0;i<5;++i) {
+    if (s[i] !== goal[i]) {
+      return 0;
+    }
+  }
+  return 15;
+};
 var LargeStraight = function() {};
 var FullHouse = function() {};
 
@@ -85,7 +94,7 @@ var categories = [
   twoPairs,
   threeOfAKind,
   fourOfAKind,
-  new SmallStraight(),
+  smallStraight,
   new LargeStraight(),
   new FullHouse()
 ];
