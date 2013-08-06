@@ -168,5 +168,9 @@ describe('yahtzee', function() {
       assert.equal(20, new Game([2,3,4,5,6]).score(largeStraight));
       assert.equal(0, new Game([1,2,3,4,6]).score(largeStraight));
     });
+
+    it('full house', function() {
+      assert.equal(3*6 + 2*5, new Game([5,6,6,6,5]).score(fullHouse));
+    });
   });
 });
