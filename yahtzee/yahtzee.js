@@ -52,7 +52,25 @@ var Pair = function() {
     }
   };
 };
-var TwoPairs = function() {};
+var TwoPairs = function() {
+  return {
+    score: function(nums) {
+      var pairs = [];
+
+      for (var i=6;i>=1;i--) {
+        var matchingI = nums.filter(isN(i)).length;
+
+        if (matchingI === 4) {
+          return 4 * i;
+        } else if (matchingI >= 2) {
+          pairs.push(2*i);
+        }
+      }
+
+      return pairs.reduce(strictAdd,0);
+    }
+  };
+};
 var ThreeOfAKind = function() {};
 var FourOfAKind = function() {};
 var SmallStraight = function() {};
