@@ -90,7 +90,13 @@ var ThreeOfAKind = function() {
   };
 };
 
-var FourOfAKind = function() {};
+var FourOfAKind = function() {
+  return {
+    score: function(nums) {
+      return nOfAKind(4,nums); 
+    }
+  }
+};
 var SmallStraight = function() {};
 var LargeStraight = function() {};
 var FullHouse = function() {};
