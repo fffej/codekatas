@@ -136,5 +136,10 @@ describe('yahtzee', function() {
       assert.equal(12 + 10, new Game([6,6,5,5,1]).score(new TwoPairs()));
       assert.equal(0, new Game([6,6,5,3,1]).score(new TwoPairs()));
     });
+
+    it('three of a kind', function() {
+      assert.equal(12, new Game([3,3,3,3,1,2]).score(new ThreeOfAKind()));
+      assert.equal(0, new Game([1,2,3,4,5]).score(new ThreeOfAKind()));
+    });
   });
 });
