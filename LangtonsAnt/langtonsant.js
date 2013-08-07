@@ -42,6 +42,13 @@ var Ant = function() {
     orientation: function() { return orientations[i]; },
     turnLeft: function() { 
       i = (i + 1) % 4;
+    },
+    turnRight: function() {
+      if (i - 1 < 0) {
+        i = 3;
+      } else {
+        i = i - 1;
+      }
     }
   };
 };
