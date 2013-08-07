@@ -128,7 +128,12 @@ describe('langtons ant', function() {
     });
 
     it('renders', function() {
-      assert.equal('OOO\nO-O\nOOO\n',new Grid(3,3,new Ant(1,1)).render());
+      var ant = new Ant(1,1);
+
+      assert.equal('OOO\nO-O\nOOO\n',new Grid(3,3,ant).render());
+
+      ant.march();
+      assert.equal('OOO\nO-O\nOOO\n',new Grid(3,3,ant).render());
     });
   });
 
