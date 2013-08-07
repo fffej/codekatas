@@ -27,7 +27,12 @@ var Cell = function() {
   };
 };
 
-var Grid = function(w,h) {
+var Grid = function(w,h,ant) {
+
+  var width = w;
+  var height = h;
+  var ant = ant || new Ant();
+
   return {
     ant: function() { return {}; } 
   };
@@ -98,7 +103,7 @@ describe('langtons ant', function() {
     });
 
     it('renders', function() {
-      assert.equal('OOO\nO-O\nOOO',new Grid(3,3,1,1).render());
+      assert.equal('OOO\nO-O\nOOO',new Grid(3,3,new Ant(1,1)).render());
     });
   });
 
