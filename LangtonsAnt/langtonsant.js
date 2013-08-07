@@ -27,12 +27,17 @@ describe('langtons ant', function() {
     assert(new Cell());
   });
 
-
   it('cells start white', function() {
     assert.equal(White, new Cell().value());
   });
 
   it('cells toggle to black', function() {
     assert.equal(Black, new Cell().flip().value());
+  });
+
+  describe('has a grid', function() {
+    it('is created from a width and height', function() {
+      assert(new Grid(10,10));
+    });
   });
 });
