@@ -47,6 +47,7 @@ var Ant = function(x,y) {
     orientation: function() { return orientations[i]; },
     turnLeft: function() { 
       i = (i + 1) % 4;
+      return this;
     },
     turnRight: function() {
       if (i - 1 < 0) {
@@ -54,6 +55,7 @@ var Ant = function(x,y) {
       } else {
         i = i - 1;
       }
+      return this;
     },
     on: function(cell) {
       if (cell.value() === White) {
@@ -68,6 +70,7 @@ var Ant = function(x,y) {
       var dx = delta[i];
       px += dx[0];
       py += dx[1];
+      return this;
     }
   };
 };
@@ -167,7 +170,7 @@ describe('langtons ant', function() {
       assert.equal(5, ant.x());
       assert.equal(4, ant.y());
 
-      ant.turnRight(); ant.turnRight(); ant.march();
+      ant.turnRight().turnRight().march();
       assert.equal(5, ant.x());
       assert.equal(5, ant.y());
     });
