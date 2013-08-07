@@ -2,8 +2,12 @@
 
 var assert = require('assert');
 
+var White = 0;
+
 var Cell = function() {
-  return {};
+  return {
+    value: function() { return White; }
+  };
 }
 
 describe('langtons ant', function() {
