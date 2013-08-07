@@ -133,7 +133,7 @@ describe('langtons ant', function() {
       assert.equal('OOO\nO-O\nOOO\n',new Grid(3,3,ant).render());
 
       ant.march();
-      assert.equal('OOO\nO-O\nOOO\n',new Grid(3,3,ant).render());
+      assert.equal('O-O\nOOO\nOOO\n',new Grid(3,3,ant).render());
     });
   });
 
