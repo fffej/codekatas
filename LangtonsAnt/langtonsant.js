@@ -42,7 +42,24 @@ var Grid = function(w,h,ant) {
   }
 
   return {
-    ant: function() { return ant; } 
+    ant: function() { return ant; },
+    render: function() {
+      var output = '';
+      for (var i=0;i<h;++i) {
+        var row = '';
+        for (var j=0;j<w;++j) {
+          var cell = cells[i][j];
+          if (ant.x() === j && ant.y() === i) {
+            row += '-';
+          } else {
+            row = row + (cell.value() === Black ? 'X' : 'O');
+          }
+        }
+
+        output = output + row + "\n";
+      }
+      return output;
+    }
   };
 };
 
@@ -111,7 +128,7 @@ describe('langtons ant', function() {
     });
 
     it('renders', function() {
-      assert.equal('OOO\nO-O\nOOO',new Grid(3,3,new Ant(1,1)).render());
+      assert.equal('OOO\nO-O\nOOO\n',new Grid(3,3,new Ant(1,1)).render());
     });
   });
 
