@@ -20,4 +20,7 @@ describe('langtons ant', function() {
     assert.equal(White, new Cell().value());
   });
 
+  it('cells toggle to black', function() {
+    assert.equal(Black, new Cell().flip().value());
+  });
 });
