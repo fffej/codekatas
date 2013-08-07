@@ -5,6 +5,8 @@ var assert = require('assert');
 var White = 0;
 var Black = 1;
 
+var Up = 8;
+
 var Cell = function() {
 
   var state = White;
@@ -29,7 +31,9 @@ var Grid = function(w,h) {
 };
 
 var Ant = function() {
-  return {};
+  return {
+    orientation: function() { return Up; }
+  };
 };
 
 describe('langtons ant', function() {
