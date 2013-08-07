@@ -3,10 +3,22 @@
 var assert = require('assert');
 
 var White = 0;
+var Black = 1;
 
 var Cell = function() {
+
+  var state = White;
+
   return {
-    value: function() { return White; }
+    value: function() { return state; },
+    flip: function() {
+      if (state === White) {
+        state = Black;
+      } else {
+        state = White;
+      }
+      return this;
+    }
   };
 }
 
