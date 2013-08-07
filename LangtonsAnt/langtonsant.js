@@ -33,12 +33,17 @@ var Grid = function(w,h) {
   };
 };
 
-var Ant = function() {
+var Ant = function(x,y) {
 
   var orientations = [Up, Left, Down, Right];
+  var delta = [[0,-1],[-1,0], [0,1],[1,]];
+  var px = x || 0;
+  var py = y || 0;
   var i = 0;
 
   return {
+    x: function() { return px; },
+    y: function() { return py; },
     orientation: function() { return orientations[i]; },
     turnLeft: function() { 
       i = (i + 1) % 4;
@@ -58,6 +63,11 @@ var Ant = function() {
         this.turnLeft();
         cell.flip();
       }
+    },
+    march: function() {
+      var dx = delta[i];
+      px += dx[0];
+      py += dx[1];
     }
   };
 };
