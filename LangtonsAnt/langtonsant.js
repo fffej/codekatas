@@ -59,6 +59,10 @@ describe('langtons ant', function() {
     it('exists', function() {
       assert(new Ant());
     });
+
+    it('has an orientation', function() {
+      assert.equal(Up, (new Ant().orientation()));
+    });
   });
   
 });  
