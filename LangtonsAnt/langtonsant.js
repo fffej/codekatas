@@ -28,6 +28,10 @@ var Grid = function(w,h) {
   };
 };
 
+var Ant = function() {
+  return {};
+};
+
 describe('langtons ant', function() {
   it('has cells', function() {
     assert(new Cell());
