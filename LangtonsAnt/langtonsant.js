@@ -51,5 +51,10 @@ describe('langtons ant', function() {
     });
   });
 
+  describe('ant', function() {
+    it('exists', function() {
+      assert(new Ant());
+    });
+  });
   
 });  
