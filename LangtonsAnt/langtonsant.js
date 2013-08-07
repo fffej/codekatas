@@ -43,6 +43,11 @@ var Grid = function(w,h,ant) {
 
   return {
     ant: function() { return ant; },
+    iterate: function() {
+      ant.on(cells[ant.x()][ant.y()]);
+      ant.march();
+    },
+
     render: function() {
       var output = '';
       for (var i=0;i<h;++i) {
@@ -66,7 +71,7 @@ var Grid = function(w,h,ant) {
 var Ant = function(x,y) {
 
   var orientations = [Up, Left, Down, Right];
-  var delta = [[0,-1],[-1,0], [0,1],[1,]];
+  var delta = [[0,-1],[-1,0], [0,1],[1,0]];
   var px = x || 0;
   var py = y || 0;
   var i = 0;
@@ -100,6 +105,7 @@ var Ant = function(x,y) {
       var dx = delta[i];
       px += dx[0];
       py += dx[1];
+
       return this;
     }
   };
@@ -131,16 +137,13 @@ describe('langtons ant', function() {
       var ant = new Ant(1,1);
 
       assert.equal('OOO\nO-O\nOOO\n',new Grid(3,3,ant).render());
-
-      ant.march();
-      assert.equal('O-O\nOOO\nOOO\n',new Grid(3,3,ant).render());
     });
 
     it('moves the ant', function() {
       var grid = new Grid(3,3, new Ant(1,1));
       grid.iterate();
 
-      assert.equal('O-O\nOOO\nOOO\n',new Grid(3,3,ant).render());
+      assert.equal('OOO\nOX-\nOOO\n',grid.render());
     });
   });
 
