@@ -166,9 +166,11 @@ describe('langtons ant', function() {
 
       assert.equal(5, ant.x());
       assert.equal(4, ant.y());
+
+      ant.turnRight(); ant.turnRight(); ant.march();
+      assert.equal(5, ant.x());
+      assert.equal(5, ant.y());
     });
   });
-
-
-  
+ 
 });  
