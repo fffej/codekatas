@@ -135,6 +135,13 @@ describe('langtons ant', function() {
       ant.march();
       assert.equal('O-O\nOOO\nOOO\n',new Grid(3,3,ant).render());
     });
+
+    it('moves the ant', function() {
+      var grid = new Grid(3,3, new Ant(1,1));
+      grid.iterate();
+
+      assert.equal('O-O\nOOO\nOOO\n',new Grid(3,3,ant).render());
+    });
   });
 
   describe('ant', function() {
