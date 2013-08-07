@@ -6,6 +6,9 @@ var White = 0;
 var Black = 1;
 
 var Up = 8;
+var Left = 16;
+var Down = 24;
+var Right = 32;
 
 var Cell = function() {
 
@@ -31,8 +34,15 @@ var Grid = function(w,h) {
 };
 
 var Ant = function() {
+
+  var orientations = [Up, Left, Down, Right];
+  var i = 0;
+
   return {
-    orientation: function() { return Up; }
+    orientation: function() { return orientations[i]; },
+    turnLeft: function() { 
+      i = (i + 1) % 4;
+    }
   };
 };
 
