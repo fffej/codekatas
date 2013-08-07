@@ -33,8 +33,16 @@ var Grid = function(w,h,ant) {
   var height = h;
   var ant = ant || new Ant();
 
+  var cells = [];
+  for (var i=0;i<h;++i) {
+    cells[i] = [];
+    for (var j=0;j<w;++j) {
+      cells[i][j] = new Cell();
+    }
+  }
+
   return {
-    ant: function() { return {}; } 
+    ant: function() { return ant; } 
   };
 };
 
