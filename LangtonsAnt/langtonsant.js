@@ -119,7 +119,7 @@ describe('langtons ant', function() {
       assert.equal(Left, ant.orientation());
     });
 
-    it('performs an an action on a cell', function() {
+    it('performs an an action on a white cell', function() {
       var ant = new Ant();
 
       var called = false;
@@ -130,6 +130,11 @@ describe('langtons ant', function() {
       ant.on(cell);
 
       assert.equal(true, called);
+      assert.equal(Right, ant.orientation());
+    });
+
+    it('performs an action on a black cell', function() {
+
     });
   });
   
