@@ -96,6 +96,10 @@ describe('langtons ant', function() {
     it('has an ant', function() {
       assert(new Grid(10,10).ant());
     });
+
+    it('renders', function() {
+      assert.equal('OOO\nO-O\nOOO',new Grid(3,3,1,1).render());
+    });
   });
 
   describe('ant', function() {
@@ -177,3 +181,4 @@ describe('langtons ant', function() {
   });
  
 });  
+
