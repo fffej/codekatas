@@ -20,7 +20,13 @@ var Cell = function() {
       return this;
     }
   };
-}
+};
+
+var Grid = function(w,h) {
+  return {
+
+  };
+};
 
 describe('langtons ant', function() {
   it('has cells', function() {
