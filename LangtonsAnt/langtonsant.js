@@ -91,6 +91,21 @@ describe('langtons ant', function() {
       ant.turnLeft();
       assert.equal(Right, ant.orientation());
     });
+
+    it('can turn right', function() {
+      var ant = new Ant();
+      assert.equal(Up, ant.orientation());
+  
+      ant.turnRight();
+      assert.equal(Right, ant.orientation());
+
+      ant.turnRight();
+      assert.equal(Down, ant.orientation());
+
+      ant.turnRight();
+      assert.equal(Left, ant.orientation());
+    });
+
   });
   
 });  
