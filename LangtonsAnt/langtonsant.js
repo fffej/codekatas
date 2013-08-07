@@ -49,6 +49,12 @@ var Ant = function() {
       } else {
         i = i - 1;
       }
+    },
+    on: function(cell) {
+      if (cell.value() === White) {
+        this.turnRight();
+        cell.flip();
+      }
     }
   };
 };
