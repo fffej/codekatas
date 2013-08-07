@@ -45,5 +45,11 @@ describe('langtons ant', function() {
     it('is created from a width and height', function() {
       assert(new Grid(10,10));
     });
+
+    it('has an ant', function() {
+      assert(new Grid(10,10).ant());
+    });
   });
+
+  
 });
