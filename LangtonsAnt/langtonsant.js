@@ -24,7 +24,7 @@ var Cell = function() {
 
 var Grid = function(w,h) {
   return {
-
+    ant: function() { return {}; } 
   };
 };
 
@@ -52,4 +52,4 @@ describe('langtons ant', function() {
   });
 
   
-});
+});  
