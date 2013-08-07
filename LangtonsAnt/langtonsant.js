@@ -54,6 +54,9 @@ var Ant = function() {
       if (cell.value() === White) {
         this.turnRight();
         cell.flip();
+      } else {
+        this.turnLeft();
+        cell.flip();
       }
     }
   };
@@ -145,6 +148,14 @@ describe('langtons ant', function() {
 
       assert.equal(true, called);
       assert.equal(Left, ant.orientation());
+    });
+
+    it('has a position', function() {
+      var ant = new Ant(5,5);
+      ant.march();
+
+      assert.equal(5, ant.x());
+      assert.equal(4, ant.y());
     });
   });
 
