@@ -28,5 +28,9 @@ describe('string calculator', function() {
     it('returns the empty string for 0', function() {
       assert.equal(0, stringCalculator.add(''));
     });
+
+    it('is identity for a single number', function() {
+      assert.equal(123, stringCalculator.add('123'));
+    });
   });
 });
