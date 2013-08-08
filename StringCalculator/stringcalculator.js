@@ -5,10 +5,6 @@ var assert = require('assert');
 var StringCalculator = function() {
   return {
     add: function(s) {
-      if (s === '') {
-        return 0;
-      }
-
       var tokens = s.split(',');
       var sum = 0;
       for (var i=0;i<tokens.length;++i) {
