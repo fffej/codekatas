@@ -29,7 +29,8 @@ var StringCalculator = function() {
   };
 
   var shouldIgnore = function(n) { return n > 1000; };
-
+  var isIllegal = function(n) { return n < 0; };
+  
   return {
     add: function(s) {
 
@@ -45,11 +46,12 @@ var StringCalculator = function() {
         if (shouldIgnore(num)) {
           continue;
         }
+     
+        if (isIllegal(num)) {
+          illegal.push(num);
+        }
 
         sum += num;
-        if (num < 0) { 
-          illegal.push(num);
-        } 
       }
 
       if (illegal.length !== 0) {
