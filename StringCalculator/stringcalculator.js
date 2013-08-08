@@ -8,15 +8,28 @@ var StringCalculator = function() {
     return x.replace('\n', ',');
   };
 
-  var tokenize = function(x) {
-    return x.split(',');
+  var tokenize = function(x,delim) {
+    return x.split(delim);
+  };
+
+  var isCustomDelimiter = function(x) {
+     if (x.indexOf('//') === 0) {
+       return x.substr(2,1);
+     } else {
+       return ',';
+     }
+  };
+
+  var stripDelimiter = function(x) {
+    return (x.indexOf('//') === 0) ? x.substr(4) : x;
   };
 
   return {
     add: function(s) {
-      s = replaceNewlinesWithCommas(s);
-   
-      var tokens = tokenize(s);
+
+      var delimiter = isCustomDelimiter(s);
+      s = replaceNewlinesWithCommas(stripDelimiter(s));
+      var tokens = tokenize(s, delimiter);
       var sum = 0;
       for (var i=0;i<tokens.length;++i) {
         sum += tokens[i]|0;
