@@ -18,4 +18,13 @@ describe('string calculator', function() {
   it('has an add method', function() {
     assert(new StringCalculator().add);
   });
+
+  describe('add', function() {
+
+    var stringCalculator = new StringCalculator();
+    
+    it('returns the empty string for 0', function() {
+      assert.equal(0, stringcalculator.add(''));
+    });
+  });
 });
