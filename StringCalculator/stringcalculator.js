@@ -44,5 +44,9 @@ describe('string calculator', function() {
     it('adds all numbers', function() {
       assert.equal(6, stringCalculator.add('1,2,3'));
     });
+
+    it('treats newlines as delimiters', function() {
+      assert.equal(4, stringCalculator.add('1\n3'));
+    });
   });
 });
