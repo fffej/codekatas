@@ -13,15 +13,21 @@ var StringCalculator = function() {
   };
 
   var isCustomDelimiter = function(x) {
+     var delimEnd = x.indexOf('\n');
      if (x.indexOf('//') === 0) {
-       return x.substr(2,1);
+       return x.substr(2,delimEnd-2);
      } else {
        return ',';
      }
   };
 
   var stripDelimiter = function(x) {
-    return (x.indexOf('//') === 0) ? x.substr(4) : x;
+    var delimEnd = x.indexOf('\n');
+    if (x.indexOf('//') === 0) { 
+      return x.substr(delimEnd+1);
+    } else {
+      return x;
+    }
   };
 
   var tidyString = function(x) {
