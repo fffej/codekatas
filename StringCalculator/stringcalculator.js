@@ -55,5 +55,9 @@ describe('string calculator', function() {
     it('treats newlines as delimiters', function() {
       assert.equal(4, stringCalculator.add('1\n3'));
     });
+
+    it('supports custom delimiters', function() {
+      assert.equal(5, stringCalculator.add('//q\n1q4'));
+    });
   });
 });
