@@ -24,11 +24,15 @@ var StringCalculator = function() {
     return (x.indexOf('//') === 0) ? x.substr(4) : x;
   };
 
+  var tidyString = function(x) {
+    return replaceNewlinesWithCommas(stripDelimiter(x));
+  };
+
   return {
     add: function(s) {
 
       var delimiter = isCustomDelimiter(s);
-      s = replaceNewlinesWithCommas(stripDelimiter(s));
+      s = tidyString(s);
       var tokens = tokenize(s, delimiter);
       var sum = 0;
       for (var i=0;i<tokens.length;++i) {
