@@ -40,5 +40,9 @@ describe('string calculator', function() {
     it('adds two numbers', function() {
       assert.equal(4, stringCalculator.add('1,3'));
     });
+
+    it('adds all numbers', function() {
+      assert.equal(6, stringCalculator.add('1,2,3'));
+    });
   });
 });
