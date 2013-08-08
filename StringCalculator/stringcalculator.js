@@ -101,5 +101,9 @@ describe('string calculator', function() {
         return x.message.indexOf('-1,-2') >= 0;
       });
     });
+
+    it('numbers greater than 1000 ignored', function() {
+      assert.equal(5, stringCalculator.add('5,1005'));
+    });
   });
 });
