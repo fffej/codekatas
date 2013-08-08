@@ -3,8 +3,15 @@
 var assert = require('assert');
 
 var StringCalculator = function() {
+
+  var replaceNewlinesWithCommas = function(x) {
+    return x.replace('\n', ',');
+  };
+
   return {
     add: function(s) {
+      s = replaceNewlinesWithCommas(s);
+   
       var tokens = s.split(',');
       var sum = 0;
       for (var i=0;i<tokens.length;++i) {
