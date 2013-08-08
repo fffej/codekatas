@@ -113,5 +113,9 @@ describe('string calculator', function() {
     it('numbers greater than 1000 ignored', function() {
       assert.equal(5, stringCalculator.add('5,1005'));
     });
+
+    it('supports multiple delimiters', function() {
+      assert.equal(4, stringCalculator.add('//**\n1**3'));
+    });
   });
 });
