@@ -28,6 +28,8 @@ var StringCalculator = function() {
     return replaceNewlinesWithCommas(stripDelimiter(x));
   };
 
+  var shouldIgnore = function(n) { return n > 1000; };
+
   return {
     add: function(s) {
 
@@ -40,7 +42,7 @@ var StringCalculator = function() {
 
       for (var i=0;i<tokens.length;++i) {
         var num = tokens[i]|0;
-        if (num > 1000) {
+        if (shouldIgnore(num)) {
           continue;
         }
 
