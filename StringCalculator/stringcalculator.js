@@ -9,8 +9,16 @@ var StringCalculator = function() {
         return 0;
       }
 
-      return s|0;
+      var tokens = s.split(',');
+      var sum = 0;
+      for (var i=0;i<tokens.length;++i) {
+        sum += tokens[i]|0;
+      }
+
+      return sum;
     }
+
+    
   };
 };
 
