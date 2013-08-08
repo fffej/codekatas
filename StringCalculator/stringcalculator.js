@@ -34,5 +34,9 @@ describe('string calculator', function() {
     it('is identity for a single number', function() {
       assert.equal(123, stringCalculator.add('123'));
     });
+
+    it('adds two numbers', function() {
+      assert.equal(4, stringCalculator.add('1,3'));
+    });
   });
 });
