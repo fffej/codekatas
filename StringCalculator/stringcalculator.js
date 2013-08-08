@@ -8,6 +8,8 @@ var StringCalculator = function() {
       if (s === '') {
         return 0;
       }
+
+      return s|0;
     }
   };
 };
