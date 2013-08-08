@@ -3,7 +3,11 @@
 var assert = require('assert');
 
 var StringCalculator = function() {
-  return {};
+  return {
+    add: function() {
+
+    }
+  };
 };
 
 describe('string calculator', function() {
