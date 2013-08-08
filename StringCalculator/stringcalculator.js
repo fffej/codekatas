@@ -4,8 +4,10 @@ var assert = require('assert');
 
 var StringCalculator = function() {
   return {
-    add: function() {
-
+    add: function(s) {
+      if (s === '') {
+        return 0;
+      }
     }
   };
 };
@@ -24,7 +26,7 @@ describe('string calculator', function() {
     var stringCalculator = new StringCalculator();
     
     it('returns the empty string for 0', function() {
-      assert.equal(0, stringcalculator.add(''));
+      assert.equal(0, stringCalculator.add(''));
     });
   });
 });
