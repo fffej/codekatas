@@ -13,8 +13,6 @@ var StringCalculator = function() {
 
       return sum;
     }
-
-    
   };
 };
 
