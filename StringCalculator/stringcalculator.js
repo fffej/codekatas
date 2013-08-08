@@ -40,10 +40,14 @@ var StringCalculator = function() {
 
       for (var i=0;i<tokens.length;++i) {
         var num = tokens[i]|0;
+        if (num > 1000) {
+          continue;
+        }
+
         sum += num;
         if (num < 0) { 
           illegal.push(num);
-        }
+        } 
       }
 
       if (illegal.length !== 0) {
