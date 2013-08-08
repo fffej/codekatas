@@ -86,5 +86,11 @@ describe('string calculator', function() {
     it('disallows negatives', function() {
       assert.throws(function() { stringCalculator.add('-1'); });
     });
+
+    it('reports all', function() {
+      assert.throws(function() { stringCalculator.add('-1\n-2'); }, function(x) { 
+        return x.message.indexOf('-1\n-2') > 0;
+      });
+    });
   });
 });
