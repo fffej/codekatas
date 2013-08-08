@@ -8,11 +8,15 @@ var StringCalculator = function() {
     return x.replace('\n', ',');
   };
 
+  var tokenize = function(x) {
+    return x.split(',');
+  };
+
   return {
     add: function(s) {
       s = replaceNewlinesWithCommas(s);
    
-      var tokens = s.split(',');
+      var tokens = tokenize(s);
       var sum = 0;
       for (var i=0;i<tokens.length;++i) {
         sum += tokens[i]|0;
