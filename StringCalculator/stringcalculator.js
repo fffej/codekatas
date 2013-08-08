@@ -36,7 +36,9 @@ var StringCalculator = function() {
       var tokens = tokenize(s, delimiter);
       var sum = 0;
       for (var i=0;i<tokens.length;++i) {
-        sum += tokens[i]|0;
+        var num = tokens[i]|0;
+        sum += num;
+        if (num < 0) { throw new Error(); }
       }
 
       return sum;
