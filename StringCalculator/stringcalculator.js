@@ -35,10 +35,19 @@ var StringCalculator = function() {
       s = tidyString(s);
       var tokens = tokenize(s, delimiter);
       var sum = 0;
+
+      var illegal = [];
+
       for (var i=0;i<tokens.length;++i) {
         var num = tokens[i]|0;
         sum += num;
-        if (num < 0) { throw new Error(); }
+        if (num < 0) { 
+          illegal.push(num);
+        }
+      }
+
+      if (illegal.length !== 0) {
+        throw new Error(illegal);
       }
 
       return sum;
@@ -89,7 +98,7 @@ describe('string calculator', function() {
 
     it('reports all', function() {
       assert.throws(function() { stringCalculator.add('-1\n-2'); }, function(x) { 
-        return x.message.indexOf('-1\n-2') > 0;
+        return x.message.indexOf('-1,-2') >= 0;
       });
     });
   });
