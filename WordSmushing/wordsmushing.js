@@ -5,7 +5,7 @@ var assert = require('assert');
 var canSmush = function(a,b) {
   if (a === '') { return false; }
 
-  if (b.indexOf(a) !== -1) {
+  if (b.indexOf(a) === 0) {
     return true;
   } else {
     return canSmush(a.substr(1), b);
