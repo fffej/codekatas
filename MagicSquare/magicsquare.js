@@ -46,6 +46,10 @@ var createElementsOfGrid = function(size) {
 };
 
 var MagicSquare = function(size) {
+
+  var UP = 1, LEFT = 2, RIGHT = 3, DOWN = 4;
+
+
   var counter = 1;
   var fill = function(x,y) { return counter++; };
 
