@@ -49,15 +49,10 @@ var MagicSquare = function(size) {
 
   var UP = 1, LEFT = 2, RIGHT = 3, DOWN = 4;
 
-
-  var counter = 1;
-  var fill = function(x,y) { return counter++; };
-
   var isBlank = function(x,y) { return x === (size-1) && y === (size-1); };
 
   var elements = createElementsOfGrid(size);
   var fill = function(x,y) { var n = elements.shift(); return n; };
-
 
   var grid = fillGrid(size, fill, isBlank);
 
