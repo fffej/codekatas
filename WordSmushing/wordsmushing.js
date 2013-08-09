@@ -27,7 +27,7 @@ var smush = function(a,b) {
   return a.substr(0,smushIndex(a,b)) + b;
 };
 
-var getNewArguments = function(args,i,j) {
+var tryReduceArguments = function(args,i,j) {
   if (canSmush(args[i], args[j])) {
     var newArgs = [];
     newArgs.push(smush(args[i],args[j]));
@@ -58,7 +58,7 @@ var multiSmush = function() {
           continue;
         }
            
-        var posArgs = getNewArguments(arguments,i,j);
+        var posArgs = tryReduceArguments(arguments,i,j);
         if (posArgs) {
           nextSetOfArguments.push(posArgs);
         }
@@ -95,6 +95,7 @@ describe('word smushing', function() {
 
     it('shouldn\'t', function() {
       assert(!canSmush('be','to'));
+      assert(!canSmush('never','anger'));
     });
   });
 
