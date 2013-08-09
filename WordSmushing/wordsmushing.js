@@ -14,7 +14,7 @@ var smush = function(a,b) {
 
 describe('word smushing', function() {
   describe('can smush', function() {
-    it('should', function() {
+    it('should deal with single character smushes', function() {
       assert(canSmush('it','to'));
     });
 
@@ -28,10 +28,15 @@ describe('word smushing', function() {
       assert.throws(function() { smush('be','to'); });
     });
 
-
     it('joins together when 1 character overlaps', function() {
       var smushed = smush('it', 'to');
       assert.equal('ito', smushed);
     });
+
+    it('should deal with multiple overlaps', function() {
+      var smushed = smush('bea', 'ear');
+      assert.equal('bear', smushed);  
+    });
+
   });
 });
