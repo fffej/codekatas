@@ -16,4 +16,8 @@ describe('magic square', function() {
   it('can be shuffled', function() {
     assert(new MagicSquare().shuffle);
   });
+
+  it('can be display', function() {
+    assert.equal('123\n456\n78*\n',new MagicSquare().display());
+  });
 });
