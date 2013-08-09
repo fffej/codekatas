@@ -62,4 +62,12 @@ describe('word smushing', function() {
       assert.equal('testinginger',smushed);
     });
   });
+
+  describe('multiple smushings', function() {
+    it('can join together', function() {
+      var smushed = multiSmush('minutes', 'testing', 'ginger');
+ 
+      assert.equal('minutestinginger', smushed);
+    });
+  });
 });
