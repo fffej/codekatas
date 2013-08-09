@@ -56,6 +56,10 @@ var MagicSquare = function(size) {
 
   var grid = fillGrid(size, fill, isBlank);
 
+
+  var onNearEdge = function(i) { return (i === size-1); };
+  var onFarEdge =  function(i) { return i === 0; };
+
   return {
     
     display: function() {
@@ -95,25 +99,26 @@ var MagicSquare = function(size) {
       return true;
     },
 
+
     validMoves: function() {
       var validMoves = [];
 
       for (var i=0;i<size;++i) {
         for (var j=0;j<size;++j) {
           if (grid[i][j] === '*') {
-            if (j !== size-1) {
+            if (onFarEdge(j)) {
               validMoves.push(UP);
             }
 
-            if (j !== 0) {
+            if (onNearEdge(j)) {
               validMoves.push(DOWN); 
             }
 
-            if (i !== 0) {
+            if (onNearEdge(i)) {
               validMoves.push(LEFT);
             }
 
-            if (i !== size-1) {
+            if (onFarEdge(i)) {
               validMoves.push(RIGHT);
             }
             break;
