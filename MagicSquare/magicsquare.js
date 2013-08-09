@@ -12,4 +12,8 @@ describe('magic square', function() {
   it('exists', function() {
     assert(new MagicSquare(3));
   });
+
+  it('can be shuffled', function() {
+    assert(new MagicSquare.shuffle);
+  });
 });
