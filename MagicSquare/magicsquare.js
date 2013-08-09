@@ -91,6 +91,7 @@ var MagicSquare = function(size) {
     makeMove: function(move) {
       var blankPos = findBlank();
 
+      console.log('MOVE =' + move);
       switch (move) {
         case MovesEnum.UP:
           this.swap(blankPos, { x: blankPos.x, y: blankPos.y - 1});
@@ -99,7 +100,12 @@ var MagicSquare = function(size) {
           this.swap(blankPos, { x: blankPos.x, y: blankPos.y + 1});
           break;
         case MovesEnum.LEFT:
+          this.swap(blankPos, { x: blankPos.x + 1, y: blankPos.y});
+          console.log('SWAPPED');
+	  break;
         case MovesEnum.RIGHT:
+          this.swap(blankPos, { x: blankPos.x - 1, y: blankPos.y});
+          break;
       }
     },
 
@@ -142,19 +148,19 @@ var MagicSquare = function(size) {
         for (var j=0;j<size;++j) {
           if (grid[i][j] === '*') {
             if (onFarEdge(j)) {
-              validMoves.push(MovesEnum.UP);
+              validMoves.push(MovesEnum.Up);
             }
 
             if (onNearEdge(j)) {
-              validMoves.push(MovesEnum.DOWN); 
+              validMoves.push(MovesEnum.Down); 
             }
 
             if (onNearEdge(i)) {
-              validMoves.push(MovesEnum.LEFT);
+              validMoves.push(MovesEnum.Left);
             }
 
             if (onFarEdge(i)) {
-              validMoves.push(MovesEnum.RIGHT);
+              validMoves.push(MovesEnum.Right);
             }
             break;
           }
@@ -200,13 +206,19 @@ describe('magic square', function() {
   it('moves make sense', function() {
     var sq = new MagicSquare(3);
   
-    assert(sq.validMoves().indexOf(MovesEnum.UP) !== -1);
-    assert(sq.validMoves().indexOf(MovesEnum.RIGHT) !== -1);
+    assert(sq.validMoves().indexOf(MovesEnum.Up) !== -1);
+    assert(sq.validMoves().indexOf(MovesEnum.Right) !== -1);
   });
 
-  it('can make a move', function() {
+  it('can make a move up', function() {
     var sq = new MagicSquare(3);
-    sq.makeMove(MovesEnum.UP);
+    sq.makeMove(MovesEnum.Up);
     assert.equal('123\n45*\n786\n', sq.display());
+  });
+
+  it('can make a move left', function() {
+    var sq = new MagicSquare(3);
+    sq.makeMove(MovesEnum.Left);
+    assert.equal('123\n456\n7*8\n', sq.display());
   });
 });
