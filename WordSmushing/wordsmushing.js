@@ -17,8 +17,7 @@ var smushIndex = function(a,b) {
 
   if (b.indexOf(a) === 0) {
     return 0;
-  }
-  else {
+  } else {
     return 1 + smushIndex(a.substr(1),b);
   }
 };
@@ -56,6 +55,11 @@ describe('word smushing', function() {
     it('should smush multiple overlaps', function() {
       var smushed = smush('bea', 'ear');
       assert.equal('bear', smushed);
+    });
+
+    it('should perform with test data', function() {
+      var smushed = smush('testing', 'ginger');
+      assert.equal('testinginger',smushed);
     });
   });
 });
