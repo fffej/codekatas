@@ -27,6 +27,22 @@ var smush = function(a,b) {
   return a.substr(0,smushIndex(a,b)) + b;
 };
 
+var getNewArguments = function(args,i,j) {
+  if (canSmush(args[i], args[j])) {
+    var newArgs = [];
+    newArgs.push(smush(args[i],args[j]));
+
+    for (var k=0;k<args.length;++k) {
+      if (k !== i && k !== j) {
+        newArgs.push(args[k]);
+      }
+    }
+    return newArgs;
+  } else {
+    return undefined;
+  }
+};
+
 var multiSmush = function() {
   if (arguments.length === 1) {
     return arguments[0];
@@ -40,31 +56,23 @@ var multiSmush = function() {
         if (i === j) {
           continue;
         }
-
-        if (canSmush(arguments[i], arguments[j])) {
-          var newArgs = [];
-          newArgs.push(smush(arguments[i],arguments[j]));
-
-          for (var k=0;k<n;++k) {
-            if (k !== i && k !== j) {
-              newArgs.push(arguments[k]);
-            }
-          }
-
-          nextSetOfArguments.push(newArgs);
+           
+        var posArgs = getNewArguments(arguments,i,j);
+        if (posArgs) {
+          nextSetOfArguments.push(posArgs);
         }
       }
     }
 
     // Now I've got every set of possible arguments
-    if (newArgs.length === 0) {
+    if (nextSetOfArguments.length === 0) {
       throw new Error('simply doesnt smush');
     }
 
     var results = [];
-    for (var i=0;i<newArgs.length;++i) {
+    for (var i=0;i<nextSetOfArguments.length;++i) {
       try {
-        results.push(multiSmush.apply(null,newArgs));
+        results.push(multiSmush.apply(null,nextSetOfArguments[i]));
       }
       catch(err) {
         console.log('ignored');
