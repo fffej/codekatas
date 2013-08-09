@@ -6,6 +6,8 @@ var canSmush = function(a,b) {
   return (a[a.length-1] === b[0]);
 };
 
+
+
 describe('word smushing', function() {
   describe('can smush', function() {
     it('should', function() {
@@ -18,5 +20,9 @@ describe('word smushing', function() {
   });
 
   describe('smush together', function() {
+    it('joins together when 1 character overlaps', function() {
+      var smushed = smush('it', 'to');
+      assert.equal('ito', smushed);
+    });
   });
 });
