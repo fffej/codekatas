@@ -27,8 +27,11 @@ var smush = function(a,b) {
   return a.substr(0,smushIndex(a,b)) + b;
 };
 
-var multiSmush = function(args) {
-
+var multiSmush = function() {
+  if (arguments.length === 1) {
+    return arguments[0];
+  } else {
+  }
 };
 
 describe('word smushing', function() {
@@ -68,6 +71,11 @@ describe('word smushing', function() {
   });
 
   describe('multiple smushings', function() {
+    it('supports multiple arguments', function() {
+      var smushed = multiSmush('eff');
+      assert.equal('eff', smushed);
+    });
+
     it('can join together', function() {
       var smushed = multiSmush('minutes', 'testing', 'ginger');
  
