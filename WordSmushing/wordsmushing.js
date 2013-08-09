@@ -27,6 +27,10 @@ var smush = function(a,b) {
   return a.substr(0,smushIndex(a,b)) + b;
 };
 
+var multiSmush = function(args) {
+
+};
+
 describe('word smushing', function() {
   describe('can smush', function() {
     it('should deal with single character smushes', function() {
