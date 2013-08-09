@@ -33,9 +33,14 @@ var MagicSquare = function(size) {
       var counter = 1;
       for (var i=0;i<size;++i) {
         for (var j=0;j<size;++j) {
+          if (i === (size-1) && j === (size-1)) {
+            return grid[i][j] === '*';
+          }
           if (grid[i][j] !== counter) {
+            console.log(i+','+j+','+counter);
             return false;
           }
+          counter++;
         }
       }
       return true;
@@ -59,7 +64,11 @@ describe('magic square', function() {
   it('is solved without shuffling', function() {
     var square = new MagicSquare(3);
     assert(square.solved());
+  });
     
+  it('is not solved after shuffling', function() {
+    var square = new MagicSquare(3);
+
     // Small chance the shuffle could magically come back?
     square.shuffle();
     assert(!square.solved());
