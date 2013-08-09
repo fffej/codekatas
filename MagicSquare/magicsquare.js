@@ -58,15 +58,6 @@ var MagicSquare = function(size) {
   var grid = fillGrid(size, fill, isBlank);
 
   return {
-    shuffle: function() {
-      var blankX = (Math.random() * size)|0;
-      var blankY = (Math.random() * size)|0;
- 
-      var isBlank = function(x,y) { return x === blankX && y === blankY; };
-      shuffle(elements);
-
-      grid = fillGrid(size, fill, isBlank);
-    },
     
     display: function() {
       var s = '';
@@ -77,6 +68,16 @@ var MagicSquare = function(size) {
         s+='\n';
       }
       return s;
+    },
+
+    shuffle: function() {
+      var blankX = (Math.random() * size)|0;
+      var blankY = (Math.random() * size)|0;
+ 
+      var isBlank = function(x,y) { return x === blankX && y === blankY; };
+      shuffle(elements);
+
+      grid = fillGrid(size, fill, isBlank);
     },
     
     solved: function() {
