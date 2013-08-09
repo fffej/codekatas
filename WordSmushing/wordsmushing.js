@@ -22,6 +22,11 @@ describe('word smushing', function() {
   });
 
   describe('smush together', function() {
+    it('wont smush unsmushable', function() {
+      assert.throws(function() { smush('be','to'); });
+    });
+
+
     it('joins together when 1 character overlaps', function() {
       var smushed = smush('it', 'to');
       assert.equal('ito', smushed);
