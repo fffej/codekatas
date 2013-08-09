@@ -44,4 +44,13 @@ describe('magic square', function() {
   it('can be display', function() {
     assert.equal('123\n456\n78*\n',new MagicSquare(3).display());
   });
+
+  it('is solved without shuffling', function() {
+    var square = new MagicSquare(3);
+    assert(square.solved());
+    
+    // Small chance the shuffle could magically come back?
+    square.shuffle();
+    assert(!square.solved());
+  });
 });
