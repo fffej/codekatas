@@ -28,6 +28,17 @@ var MagicSquare = function(size) {
         s+='\n';
       }
       return s;
+    },
+    solved: function() {
+      var counter = 1;
+      for (var i=0;i<size;++i) {
+        for (var j=0;j<size;++j) {
+          if (grid[i][j] !== counter) {
+            return false;
+          }
+        }
+      }
+      return true;
     }
   };
 };
