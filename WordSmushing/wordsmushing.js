@@ -1,0 +1,11 @@
+"use strict";
+
+var assert = require('assert');
+
+describe('word smushing', function() {
+  describe('can smush', function() {
+    it('should', function() {
+      assert(smush('it','to'));
+    });
+  });
+});
