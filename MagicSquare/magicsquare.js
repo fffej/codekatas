@@ -92,18 +92,17 @@ var MagicSquare = function(size) {
       var blankPos = findBlank();
 
       switch (move) {
-        case MovesEnum.UP:
+        case MovesEnum.Up:
           this.swap(blankPos, { x: blankPos.x, y: blankPos.y - 1});
           break;
-        case MovesEnum.DOWN:
+        case MovesEnum.Down:
           this.swap(blankPos, { x: blankPos.x, y: blankPos.y + 1});
           break;
-        case MovesEnum.LEFT:
-          this.swap(blankPos, { x: blankPos.x + 1, y: blankPos.y});
-          console.log('SWAPPED');
-	  break;
-        case MovesEnum.RIGHT:
+        case MovesEnum.Left:
           this.swap(blankPos, { x: blankPos.x - 1, y: blankPos.y});
+	  break;
+        case MovesEnum.Right:
+          this.swap(blankPos, { x: blankPos.x + 1, y: blankPos.y});
           break;
       }
     },
