@@ -2,6 +2,13 @@
 
 var assert = require('assert');
 
+var MovesEnum = {
+  Up: 0,
+  Down: 1,
+  Left: 2,
+  Right: 3
+};
+
 // Canned fisher yates shuffle from bost.ocks.org/mike/shuffle
 var shuffle = function(array) {
   var m = array.length, t, i;
@@ -46,8 +53,6 @@ var createElementsOfGrid = function(size) {
 };
 
 var MagicSquare = function(size) {
-
-  var UP = 1, LEFT = 2, RIGHT = 3, DOWN = 4;
 
   var isBlank = function(x,y) { return x === (size-1) && y === (size-1); };
 
@@ -107,19 +112,19 @@ var MagicSquare = function(size) {
         for (var j=0;j<size;++j) {
           if (grid[i][j] === '*') {
             if (onFarEdge(j)) {
-              validMoves.push(UP);
+              validMoves.push(MovesEnum.UP);
             }
 
             if (onNearEdge(j)) {
-              validMoves.push(DOWN); 
+              validMoves.push(MovesEnum.DOWN); 
             }
 
             if (onNearEdge(i)) {
-              validMoves.push(LEFT);
+              validMoves.push(MovesEnum.LEFT);
             }
 
             if (onFarEdge(i)) {
-              validMoves.push(RIGHT);
+              validMoves.push(MovesEnum.RIGHT);
             }
             break;
           }
@@ -165,6 +170,7 @@ describe('magic square', function() {
   it('moves make sense', function() {
     var sq = new MagicSquare(3);
   
-    assert(sq.validMoves().indexOf(UP) !== -1);
+    assert(sq.validMoves().indexOf(MovesEnum.UP) !== -1);
+    assert(sq.validMoves().indexOf(MovesEnum.RIGHT) !== -1);
   });
 });
