@@ -12,10 +12,20 @@ var canSmush = function(a,b) {
   }
 };
 
-var smush = function(a,b) {
+var smushIndex = function(a,b) {
   if (!canSmush(a,b)) throw Error('unsmushable');
 
-  return a + b.substr(1);
+  if (b.indexOf(a) === 0) {
+    return 0;
+  }
+  else {
+    return 1 + smushIndex(a.substr(1),b);
+  }
+};
+
+var smush = function(a,b) {
+  if (!canSmush(a,b)) throw Error('unsmushable');
+  return a.substr(0,smushIndex(a,b)) + b;
 };
 
 describe('word smushing', function() {
