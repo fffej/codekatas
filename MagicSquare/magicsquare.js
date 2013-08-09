@@ -65,6 +65,16 @@ var MagicSquare = function(size) {
   var onNearEdge = function(i) { return (i === size-1); };
   var onFarEdge =  function(i) { return i === 0; };
 
+  var findBlank = function() {
+    for (var i=0;i<size;++i) {
+      for (var j=0;j<size;++j) {
+        if (grid[i][j] === '*') {
+          return { x: i, y: j };
+        }
+      }
+    }
+  };
+
   return {
     
     display: function() {
@@ -78,8 +88,19 @@ var MagicSquare = function(size) {
       return s;
     },
 
-    makeMove: function() {
+    makeMove: function(move) {
+      var blankPos = findBlank();
 
+      switch (move) {
+        case MovesEnum.UP:
+          swap(blankPos, { x: blankPos.x, y: blankPos.y - 1});
+          break;
+        case MovesEnum.DOWN:
+          swap(blankPos, { x: blankPos.x, y: blankPos.y + 1});
+          break;
+        case MovesEnum.LEFT:
+        case MovesEnum.RIGHT:
+      }
     },
 
     shuffle: function() {
