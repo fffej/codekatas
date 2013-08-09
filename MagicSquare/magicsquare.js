@@ -97,7 +97,20 @@ var MagicSquare = function(size) {
     },
 
     validMoves: function() {
-      return [];
+      var validMoves = [];
+
+      for (var i=0;i<size;++i) {
+        for (var j=0;j<size;++j) {
+          if (grid[i][j] === '*') {
+            validMoves.push(UP);
+            validMoves.push(DOWN);
+            validMoves.push(LEFT);
+            validMoves.push(RIGHT);
+            break;
+          }
+        }
+      }
+      return validMoves;
     }
   };
 };
