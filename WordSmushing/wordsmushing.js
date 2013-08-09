@@ -3,7 +3,13 @@
 var assert = require('assert');
 
 var canSmush = function(a,b) {
-  return (a[a.length-1] === b[0]);
+  if (a === '') { return false; }
+
+  if (b.indexOf(a) !== -1) {
+    return true;
+  } else {
+    return canSmush(a.substr(1), b);
+  }
 };
 
 var smush = function(a,b) {
