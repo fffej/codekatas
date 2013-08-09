@@ -7,6 +7,8 @@ var canSmush = function(a,b) {
 };
 
 var smush = function(a,b) {
+  if (!canSmush(a,b)) throw Error('unsmushable');
+
   return a + b.substr(1);
 };
 
