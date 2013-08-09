@@ -122,4 +122,10 @@ describe('magic square', function() {
     square.shuffle();
     assert(!square.solved());
   });
+
+  it('can make a move', function() {
+    var sq = new MagicSquare(3);
+
+    assert.equal(2, sq.validMoves().length);
+  });
 });
