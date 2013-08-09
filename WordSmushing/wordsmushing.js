@@ -13,7 +13,7 @@ var canSmush = function(a,b) {
 };
 
 var smushIndex = function(a,b) {
-  if (!canSmush(a,b)) throw Error('unsmushable');
+  if (!canSmush(a,b)) throw Error('unsmushable:' + a + ":" + b);
 
   if (b.indexOf(a) === 0) {
     return 0;
@@ -44,6 +44,7 @@ var getNewArguments = function(args,i,j) {
 };
 
 var multiSmush = function() {
+
   if (arguments.length === 1) {
     return arguments[0];
   } else {
@@ -75,7 +76,6 @@ var multiSmush = function() {
         results.push(multiSmush.apply(null,nextSetOfArguments[i]));
       }
       catch(err) {
-        console.log('ignored');
       }
     }
 
