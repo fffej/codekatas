@@ -2,6 +2,25 @@
 
 var assert = require('assert');
 
+// Canned fisher yates shuffle from bost.ocks.org/mike/shuffle
+var shuffle = function(array) {
+  var m = array.length, t, i;
+
+  // While there remain elements to shuffle¡­
+  while (m) {
+
+    // Pick a remaining element¡­
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+};
+
 var fillGrid = function(size, fill, isBlank) {
   var grid = [];
   for (var i=0;i<size;++i) {
@@ -18,17 +37,35 @@ var fillGrid = function(size, fill, isBlank) {
   return grid;
 };
 
+var createElementsOfGrid = function(size) {
+  var elements = [];
+  for (var i=1;i<size*size;++i) {
+    elements.push(i);
+  }
+  return elements;
+};
+
 var MagicSquare = function(size) {
   var counter = 1;
   var fill = function(x,y) { return counter++; };
 
   var isBlank = function(x,y) { return x === (size-1) && y === (size-1); };
 
+  var elements = createElementsOfGrid(size);
+  var fill = function(x,y) { var n = elements.shift(); return n; };
+
+
   var grid = fillGrid(size, fill, isBlank);
 
   return {
     shuffle: function() {
+      var blankX = (Math.random() * size)|0;
+      var blankY = (Math.random() * size)|0;
+ 
+      var isBlank = function(x,y) { return x === blankX && y === blankY; };
+      shuffle(elements);
 
+      grid = fillGrid(size, fill, isBlank);
     },
     
     display: function() {
@@ -50,7 +87,6 @@ var MagicSquare = function(size) {
             return grid[i][j] === '*';
           }
           if (grid[i][j] !== counter) {
-            console.log(i+','+j+','+counter);
             return false;
           }
           counter++;
