@@ -78,6 +78,10 @@ var MagicSquare = function(size) {
       return s;
     },
 
+    makeMove: function() {
+
+    },
+
     shuffle: function() {
       var blankX = (Math.random() * size)|0;
       var blankY = (Math.random() * size)|0;
