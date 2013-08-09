@@ -11,5 +11,9 @@ describe('word smushing', function() {
     it('should', function() {
       assert(smush('it','to'));
     });
+
+    it('shouldn\'t', function() {
+      assert(!smush('be','to'));
+    });
   });
 });
