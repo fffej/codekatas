@@ -101,10 +101,21 @@ var MagicSquare = function(size) {
       for (var i=0;i<size;++i) {
         for (var j=0;j<size;++j) {
           if (grid[i][j] === '*') {
-            validMoves.push(UP);
-            validMoves.push(DOWN);
-            validMoves.push(LEFT);
-            validMoves.push(RIGHT);
+            if (j !== size-1) {
+              validMoves.push(UP);
+            }
+
+            if (j !== 0) {
+              validMoves.push(DOWN); 
+            }
+
+            if (i !== 0) {
+              validMoves.push(LEFT);
+            }
+
+            if (i !== size-1) {
+              validMoves.push(RIGHT);
+            }
             break;
           }
         }
