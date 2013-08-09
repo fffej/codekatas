@@ -94,6 +94,10 @@ var MagicSquare = function(size) {
         }
       }
       return true;
+    },
+
+    validMoves: function() {
+      return [];
     }
   };
 };
