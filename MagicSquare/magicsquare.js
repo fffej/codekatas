@@ -220,3 +220,8 @@ describe('magic square', function() {
     assert.equal('123\n456\n7*8\n', sq.display());
   });
 });
+
+// What did I learn (or remphasize)
+// - How to better fake enums in JavaScript
+// - Do EXACTLY ONE THING for each test, otherwise you get in a pickle
+// - Be consistent, cos the type system (capitalization of Enums for example)
