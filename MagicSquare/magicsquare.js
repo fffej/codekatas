@@ -69,7 +69,7 @@ var MagicSquare = function(size) {
     for (var i=0;i<size;++i) {
       for (var j=0;j<size;++j) {
         if (grid[i][j] === '*') {
-          return { x: i, y: j };
+          return { x: j, y: i };
         }
       }
     }
@@ -93,10 +93,10 @@ var MagicSquare = function(size) {
 
       switch (move) {
         case MovesEnum.UP:
-          swap(blankPos, { x: blankPos.x, y: blankPos.y - 1});
+          this.swap(blankPos, { x: blankPos.x, y: blankPos.y - 1});
           break;
         case MovesEnum.DOWN:
-          swap(blankPos, { x: blankPos.x, y: blankPos.y + 1});
+          this.swap(blankPos, { x: blankPos.x, y: blankPos.y + 1});
           break;
         case MovesEnum.LEFT:
         case MovesEnum.RIGHT:
@@ -129,6 +129,11 @@ var MagicSquare = function(size) {
       return true;
     },
 
+    swap: function(p, q) {
+      var temp = grid[p.y][p.x];
+      grid[p.y][p.x] = grid[q.y][q.x];
+      grid[q.y][q.x] = temp;
+    },
 
     validMoves: function() {
       var validMoves = [];
