@@ -91,7 +91,6 @@ var MagicSquare = function(size) {
     makeMove: function(move) {
       var blankPos = findBlank();
 
-      console.log('MOVE =' + move);
       switch (move) {
         case MovesEnum.UP:
           this.swap(blankPos, { x: blankPos.x, y: blankPos.y - 1});
@@ -147,19 +146,19 @@ var MagicSquare = function(size) {
       for (var i=0;i<size;++i) {
         for (var j=0;j<size;++j) {
           if (grid[i][j] === '*') {
-            if (onFarEdge(j)) {
+            if (onNearEdge(j)) {
               validMoves.push(MovesEnum.Up);
             }
 
-            if (onNearEdge(j)) {
+            if (onFarEdge(j)) {
               validMoves.push(MovesEnum.Down); 
             }
 
-            if (onNearEdge(i)) {
+            if (onFarEdge(i)) {
               validMoves.push(MovesEnum.Left);
             }
 
-            if (onFarEdge(i)) {
+            if (onNearEdge(i)) {
               validMoves.push(MovesEnum.Right);
             }
             break;
