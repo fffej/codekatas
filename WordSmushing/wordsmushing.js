@@ -2,6 +2,10 @@
 
 var assert = require('assert');
 
+var smush = function(a,b) {
+  return true;
+};
+
 describe('word smushing', function() {
   describe('can smush', function() {
     it('should', function() {
