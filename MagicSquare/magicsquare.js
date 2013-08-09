@@ -173,4 +173,10 @@ describe('magic square', function() {
     assert(sq.validMoves().indexOf(MovesEnum.UP) !== -1);
     assert(sq.validMoves().indexOf(MovesEnum.RIGHT) !== -1);
   });
+
+  it('can make a move', function() {
+    var sq = new MagicSquare(3);
+    sq.makeMove(MovesEnum.UP);
+    assert.equal('123\n45*\n786\n', sq.display());
+  });
 });
