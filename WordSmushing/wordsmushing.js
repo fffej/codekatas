@@ -18,6 +18,10 @@ describe('word smushing', function() {
       assert(canSmush('it','to'));
     });
 
+    it('should deal with multiple overlaps', function() {
+      assert(canSmush('bea', 'ear'));
+    });
+
     it('shouldn\'t', function() {
       assert(!canSmush('be','to'));
     });
@@ -32,11 +36,5 @@ describe('word smushing', function() {
       var smushed = smush('it', 'to');
       assert.equal('ito', smushed);
     });
-
-    it('should deal with multiple overlaps', function() {
-      var smushed = smush('bea', 'ear');
-      assert.equal('bear', smushed);  
-    });
-
   });
 });
