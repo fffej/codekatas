@@ -156,7 +156,7 @@ describe('magic square', function() {
     assert(!square.solved());
   });
 
-  it('can make a move', function() {
+  it('can define valid moves', function() {
     var sq = new MagicSquare(3);
 
     assert.equal(2, sq.validMoves().length);
