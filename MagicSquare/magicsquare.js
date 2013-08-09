@@ -161,4 +161,10 @@ describe('magic square', function() {
 
     assert.equal(2, sq.validMoves().length);
   });
+
+  it('moves make sense', function() {
+    var sq = new MagicSquare(3);
+  
+    assert(sq.validMoves().indexOf(UP) !== -1);
+  });
 });
