@@ -31,6 +31,45 @@ var multiSmush = function() {
   if (arguments.length === 1) {
     return arguments[0];
   } else {
+    var n = arguments.length;
+
+    var nextSetOfArguments = [];
+
+    for (var i=0;i<n;++i) {
+      for (var j=0;j<n;++j) {
+        if (i === j) {
+          continue;
+        }
+
+        if (canSmush(arguments[i], arguments[j])) {
+          var newArgs = [];
+          newArgs.push(smush(arguments[i],arguments[j]));
+
+          for (var k=0;k<n;++k) {
+            if (k !== i && k !== j) {
+              newArgs.push(arguments[k]);
+            }
+          }
+
+          nextSetOfArguments.push(newArgs);
+        }
+      }
+    }
+
+    // Now I've got every set of possible arguments
+    if (newArgs.length === 0) {
+      throw new Error('simply doesnt smush');
+    }
+
+    var results = [];
+    for (var i=0;i<newArgs.length;++i) {
+      try {
+        results.push(multiSmush.apply(null,newArgs));
+      }
+      catch(err) {}
+    }
+
+    return results[0];
   }
 };
 
@@ -78,8 +117,7 @@ describe('word smushing', function() {
 
     it('can join together', function() {
       var smushed = multiSmush('minutes', 'testing', 'ginger');
- 
-      assert.equal('minutestinginger', smushed);
+       assert.equal('minutestinginger', smushed);
     });
   });
 });
