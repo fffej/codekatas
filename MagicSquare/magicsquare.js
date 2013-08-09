@@ -2,23 +2,35 @@
 
 var assert = require('assert');
 
-var MagicSquare = function(size) {
-
+var fillGrid = function(size, fill, isBlank) {
   var grid = [];
-  var counter = 1;
-
   for (var i=0;i<size;++i) {
     var row = [];
     for (var j=0;j<size;++j) {
-      row.push(counter++);
+      if (isBlank(i,j)) {
+        row.push('*');
+      } else {
+        row.push(fill(i,j));
+      }
     }
     grid.push(row);
   }
+  return grid;
+};
 
-  grid[size-1][size-1] = '*';
+var MagicSquare = function(size) {
+  var counter = 1;
+  var fill = function(x,y) { return counter++; };
+
+  var isBlank = function(x,y) { return x === (size-1) && y === (size-1); };
+
+  var grid = fillGrid(size, fill, isBlank);
 
   return {
-    shuffle: function() {},
+    shuffle: function() {
+
+    },
+    
     display: function() {
       var s = '';
       for (var i=0;i<size;++i) {
@@ -29,6 +41,7 @@ var MagicSquare = function(size) {
       }
       return s;
     },
+    
     solved: function() {
       var counter = 1;
       for (var i=0;i<size;++i) {
