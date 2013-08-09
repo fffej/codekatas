@@ -66,7 +66,9 @@ var multiSmush = function() {
       try {
         results.push(multiSmush.apply(null,newArgs));
       }
-      catch(err) {}
+      catch(err) {
+        console.log('ignored');
+      }
     }
 
     return results[0];
@@ -118,6 +120,29 @@ describe('word smushing', function() {
     it('can join together', function() {
       var smushed = multiSmush('minutes', 'testing', 'ginger');
        assert.equal('minutestinginger', smushed);
+    });
+
+    it('works?', function() {
+      var smushed = multiSmush(
+	  'never', 
+	  'eat', 
+	  'peas', 
+	  'in', 
+	  'anger', 
+	  'on', 
+	  'vertical', 
+	  'seating', 
+	  'for',
+	  'they', 
+	  'easily', 
+	  'form', 
+	  'germs', 
+	  'like', 
+	  'german', 
+	  'measles', 
+	  'and', 
+	  'mange');
+      console.log(smushed);
     });
   });
 });
