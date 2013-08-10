@@ -1,5 +1,17 @@
 "use strict";
 
+var sortBy = function(f) {
+  return function(x,y) {
+    if (f(x) > f(y)) {
+      return 1;
+    } else if (f(x) < f(y)) {
+      return -1;
+    } else {  
+      return 0;
+    }
+  };
+};
+
 var Strategy = {
   BruteForce: function(possibleArgs) {
     return possibleArgs;
@@ -7,15 +19,7 @@ var Strategy = {
   Beam: function(width, scoreFn) {
     return function() {
       var args = Array.prototype.slice.call(arguments,0);
-      args.sort(function(x,y) {
-        if (scoreFn(x) > scoreFn(y)) {
-          return 1;
-        } else if (scoreFn(x) < scoreFn(y)) {
-          return -1;
-        } else {  
-          return 0;
-        }
-      });
+      args.sort(sortBy(scoreFn));
 
       return args.slice(0,width);
     };
