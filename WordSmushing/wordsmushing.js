@@ -10,6 +10,26 @@ var smush2 = function(a,b) {
   }
 };
 
+var smush = function() {
+  var n = arguments.length;
+ 
+  if (n == 0) {
+    return "";
+  } else if (n == 1) {
+    return arguments[0];
+  } else {
+    var x = arguments[0];
+    var y = arguments[1];
+
+    var rest = [smush2(x,y)];
+    for (var i=2;i<n;++i) {
+      rest.push(arguments[i]);
+    }
+
+    return smush.apply(null,rest);
+  }
+};
+
 describe('word smushing', function() {
   describe('two work smushing', function() {
     it('should smush two equal words', function() {
