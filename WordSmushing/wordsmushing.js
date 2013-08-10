@@ -43,6 +43,12 @@ var score = function() {
   return sum;
 };
 
+var selectMinimumAccordingToScoreFn = function(xs) {
+  return xs.reduce(function(x,y) {
+      return score(y) < score(x) ? y : x;
+    },xs[0]);
+};
+
 var minimalSmush = function() {
   var n = arguments.length;
 
