@@ -130,5 +130,15 @@ describe('word smushing', function() {
       var smushed = minimalSmush('to', 'it');
       assert.equal('ito', smushed);
     });
+
+    it('works with a longer example', function() {
+      var smushed = minimalSmush(
+        'testing', 
+        'ginger', 
+        'german', 
+        'minutes');
+
+      assert.equal('minutestingingerman', smushed);
+    });
   });
 });
