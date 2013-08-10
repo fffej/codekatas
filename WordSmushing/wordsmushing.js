@@ -1,4 +1,5 @@
 "use strict";
+var assert = require('assert');
 
 var sortBy = function(f) {
   return function(x,y) {
@@ -24,8 +25,6 @@ var Strategy = {
     };
   }
 };
-
-var assert = require('assert');
 
 var smush2 = function(a,b) {
   if (b.indexOf(a) === 0) {
