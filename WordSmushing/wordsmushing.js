@@ -114,6 +114,13 @@ describe('word smushing', function() {
       var result = Strategy.BruteForce.apply(null,args);
       assert.equal(args.length, result.length);
     });
+
+    it('is a beam search', function() {
+      var args = ['abcdef','abcde', 'abcd','abc', 'ab', 'a'];
+
+      var result = Strategy.Beam(2).apply(null, args); 
+      assert.equal(2, result.length);
+    });
   });
 
   describe('scoring function', function() {
