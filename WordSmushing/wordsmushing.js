@@ -4,7 +4,7 @@ var Strategy = {
   BruteForce: function(possibleArgs) {
     return possibleArgs;
   },
-  Beam: function(width) {
+  Beam: function(width, scoreFn) {
     return function(possibleArgs) {
       var result = [];
       var c = 0;
