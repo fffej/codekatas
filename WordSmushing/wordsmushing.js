@@ -221,3 +221,8 @@ describe('word smushing', function() {
     });
   });
 });
+
+// Learnings
+// - Felt a little artificial driving towards a beam search
+// - Easy to get confused with var args stuff
+// - Nice emergence of the strategy pattern (from PAIP)
