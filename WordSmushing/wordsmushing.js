@@ -5,11 +5,21 @@ var Strategy = {
     return possibleArgs;
   },
   Beam: function(width, scoreFn) {
-    return function(possibleArgs) {
+    return function() {
+      var args = Array.prototype.slice.call(arguments,0);
+      args.sort(function(x,y) {
+        if (scoreFn(x) > scoreFn(y)) {
+          return 1;
+        } else if (scoreFn(x) < scoreFn(y)) {
+          return -1;
+        } else {  
+          return 0;
+        }
+      });
       var result = [];
       var c = 0;
-      for (var i=0;i<possibleArgs.length;++i) {
-        result.push(possibleArgs[i]);
+      for (var i=0;i<args.length;++i) {
+        result.push(args[i]);
         c++;
         if (c === width) {
           return result;
@@ -132,7 +142,7 @@ describe('word smushing', function() {
     it('is a beam search', function() {
       var args = ['abcdef','abcde', 'abcd','abc', 'ab', 'a'];
 
-      var result = Strategy.Beam(2).apply(null, args); 
+      var result = Strategy.Beam(2, score).apply(null, args); 
       assert.equal(2, result.length);
     });
 
