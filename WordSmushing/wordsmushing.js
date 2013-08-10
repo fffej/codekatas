@@ -3,6 +3,20 @@
 var Strategy = {
   BruteForce: function(possibleArgs) {
     return possibleArgs;
+  },
+  Beam: function(width) {
+    return function(possibleArgs) {
+      var result = [];
+      var c = 0;
+      for (var i=0;i<possibleArgs.length;++i) {
+        result.push(possibleArgs[i]);
+        c++;
+        if (c === width) {
+          return result;
+        }
+      }
+      return result;
+    };
   }
 };
 
