@@ -108,6 +108,14 @@ var minimalSmush = function() {
 
 describe('word smushing', function() {
 
+  describe('strategy', function() {
+    it('is a brute force strategy', function() {
+      var args = [['a','b'],['c','d']];
+      var result = Strategy.BruteForce.apply(null,args);
+      assert.equal(args.length, result.length);
+    });
+  });
+
   describe('scoring function', function() {
     it('is just length of args summed', function() {
       assert.equal(10, score('fives', 'a','duck'));
