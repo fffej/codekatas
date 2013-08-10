@@ -5,8 +5,9 @@ var assert = require('assert');
 var smush = function(a,b) {
   if (b.indexOf(a) === 0) {
     return b;
+  } else {
+    return a[0] + smush(a.substr(1), b);
   }
-  return a[0] + smush(a.substr(1), b);
 };
 
 describe('word smushing', function() {
