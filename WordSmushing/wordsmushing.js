@@ -36,6 +36,13 @@ var smush = function() {
 };
 
 describe('word smushing', function() {
+
+  describe('scoring function', function() {
+    it('is just length of args summed', function() {
+      assert.equal(10, score('five', 'a','duck'));
+    });
+  });
+
   describe('two work smushing', function() {
     it('should smush two equal words', function() {
       var smushed = smush2('to','to');
