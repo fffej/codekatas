@@ -43,6 +43,45 @@ var score = function() {
   return sum;
 };
 
+var minimalSmush = function() {
+  var n = arguments.length;
+
+  if (n == 0) {
+    return ;
+  } else if (n == 1) {
+    return arguments[0];
+  } else {
+    
+    var allPossibilities = [];
+
+    for (var i=0;i<n;++i) {
+      for (var j=0;j<n;++j) {
+        if (j == i) {
+          continue;
+        }
+
+        var x = arguments[i];
+        var y = arguments[j];
+  
+        var rest = [smush(x,y)];
+        for (var k=0;k<n;++k) {
+          if (k !== i && k !== j) {
+            rest.push(arguments[k]);
+          }
+        }
+
+        allPossibilities.push(rest);
+      }
+    }
+
+    var everything = allPossibilities.map(function(args) {
+      return smush.apply(null, args);
+    });
+    
+    return everything;
+  }
+};
+
 describe('word smushing', function() {
 
   describe('scoring function', function() {
