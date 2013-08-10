@@ -3,9 +3,10 @@
 var assert = require('assert');
 
 var smush = function(a,b) {
-  if (a === b) {
-    return a;
+  if (b.indexOf(a) === 0) {
+    return b;
   }
+
 };
 
 describe('word smushing', function() {
