@@ -20,5 +20,10 @@ describe('word smushing', function() {
       var smushed = smush('it', 'to');
       assert.equal('ito', smushed);
     });
+
+    it('should be conjunction  when doesn\'t smush', function() {
+      var unsmushed = smush('be', 'at');
+      assert.equal('beat', unsmushed);
+    });
   });
 });
