@@ -1,7 +1,7 @@
 "use strict";
 
 var Strategy = {
-
+  BruteForce: function() {}
 };
 
 var assert = require('assert');
