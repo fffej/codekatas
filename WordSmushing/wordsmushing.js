@@ -6,7 +6,7 @@ var smush = function(a,b) {
   if (b.indexOf(a) === 0) {
     return b;
   }
-
+  return a[0] + smush(a.substr(1), b);
 };
 
 describe('word smushing', function() {
