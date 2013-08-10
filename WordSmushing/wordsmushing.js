@@ -20,7 +20,6 @@ var Strategy = {
     return function() {
       var args = Array.prototype.slice.call(arguments,0);
       args.sort(sortBy(scoreFn));
-
       return args.slice(0,width);
     };
   }
@@ -201,6 +200,18 @@ describe('word smushing', function() {
     it('works with a longer example', function() {
       var smushed = minimalSmush(
         Strategy.BruteForce,
+        'testing', 
+        'ginger', 
+        'german', 
+        'minutes'
+        );
+
+      assert.equal('minutestingingerman', smushed);
+    });
+
+    it('still works with a beam search', function() {
+      var smushed = minimalSmush(
+        Strategy.Beam(3,score),
         'testing', 
         'ginger', 
         'german', 
