@@ -16,16 +16,8 @@ var Strategy = {
           return 0;
         }
       });
-      var result = [];
-      var c = 0;
-      for (var i=0;i<args.length;++i) {
-        result.push(args[i]);
-        c++;
-        if (c === width) {
-          return result;
-        }
-      }
-      return result;
+
+      return args.slice(0,width);
     };
   }
 };
