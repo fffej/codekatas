@@ -27,4 +27,12 @@ describe('word smushing', function() {
       assert.equal('beat', unsmushed);
     });
   });
+
+  describe('three word smushing', function() {
+    it('should work for minimal example', function() {
+      var smushed = smush('minutes','testing', 'ginger');
+
+      assert.equal('minutestinginger', smushed);
+    });
+  });
 });
