@@ -35,11 +35,19 @@ var smush = function() {
   }
 };
 
+var score = function() {
+  var sum = 0;
+  for (var i=0;i<arguments.length;++i) {
+     sum += arguments[i].length;
+  }
+  return sum;
+};
+
 describe('word smushing', function() {
 
   describe('scoring function', function() {
     it('is just length of args summed', function() {
-      assert.equal(10, score('five', 'a','duck'));
+      assert.equal(10, score('fives', 'a','duck'));
     });
   });
 
