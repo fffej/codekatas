@@ -78,7 +78,9 @@ var minimalSmush = function() {
       return smush.apply(null, args);
     });
     
-    return everything;
+    return everything.reduce(function(x,y) {
+      return y.length < x.length ? y : x;
+    },everything[0]);
   }
 };
 
