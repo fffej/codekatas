@@ -10,6 +10,18 @@ var smush2 = function(a,b) {
   }
 };
 
+var dropArguments = function(args) {
+  var x = args[0];
+  var y = args[1];
+ 
+  var rest = [smush2(x,y)];
+  for (var i=2;i<args.length;++i) {
+    rest.push(args[i]);
+  }
+
+  return rest;
+}
+
 var smush = function() {
   var n = arguments.length;
  
@@ -18,14 +30,7 @@ var smush = function() {
   } else if (n == 1) {
     return arguments[0];
   } else {
-    var x = arguments[0];
-    var y = arguments[1];
-
-    var rest = [smush2(x,y)];
-    for (var i=2;i<n;++i) {
-      rest.push(arguments[i]);
-    }
-
+    var rest = dropArguments(arguments);
     return smush.apply(null,rest);
   }
 };
