@@ -10,7 +10,7 @@ var smush2 = function(a,b) {
   }
 };
 
-var dropArguments = function(args) {
+var nextArguments = function(args) {
   var x = args[0];
   var y = args[1];
  
@@ -30,7 +30,7 @@ var smush = function() {
   } else if (n == 1) {
     return arguments[0];
   } else {
-    var rest = dropArguments(arguments);
+    var rest = nextArguments(arguments);
     return smush.apply(null,rest);
   }
 };
@@ -56,7 +56,6 @@ describe('word smushing', function() {
   describe('three word smushing', function() {
     it('should work for minimal example', function() {
       var smushed = smush('minutes','testing', 'ginger');
-
       assert.equal('minutestinginger', smushed);
     });
   });
