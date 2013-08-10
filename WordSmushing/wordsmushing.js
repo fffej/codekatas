@@ -74,4 +74,11 @@ describe('word smushing', function() {
       assert.equal('minutestinginger', smushed);
     });
   });
+
+  describe('finds minimal smush', function() {
+    it('works with simple example', function() {
+      var smushed = minimalSmush('to', 'it');
+      assert.equal('ito', smushed);
+    });
+  });
 });
