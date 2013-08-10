@@ -80,6 +80,7 @@ var minimalSmush = function() {
 
   // Drop the first argument (which is a strategy)
   var n = arguments.length - 1;
+  var selection = arguments[0];
   var args = [];
   for (var i=1;i<arguments.length;++i) {
     args.push(arguments[i]);
@@ -91,7 +92,7 @@ var minimalSmush = function() {
     return args[0];
   } else {
     
-    var allPossibilities = allFutureArguments(args);
+    var allPossibilities = selection(allFutureArguments(args));
 
     var everything = allPossibilities.map(function(args) {
       return smush.apply(null, args);
