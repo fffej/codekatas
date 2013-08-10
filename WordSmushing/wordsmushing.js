@@ -49,6 +49,29 @@ var selectMinimumAccordingToScoreFn = function(xs) {
     },xs[0]);
 };
 
+var allFutureArguments = function(args) {
+  var allPossibilities = [];
+  var n = args.length;
+  for (var i=0;i<n;++i) {
+    for (var j=0;j<n;++j) {
+      if (j == i) {
+        continue;
+      }
+      var x = args[i];
+      var y = args[j];
+
+      var rest = [smush(x,y)];
+      for (var k=0;k<n;++k) {
+        if (k !== i && k !== j) {
+          rest.push(args[k]);
+        }
+      }
+      allPossibilities.push(rest);
+    }
+  }
+  return allPossibilities;
+};
+
 var minimalSmush = function() {
   var n = arguments.length;
 
@@ -58,27 +81,7 @@ var minimalSmush = function() {
     return arguments[0];
   } else {
     
-    var allPossibilities = [];
-
-    for (var i=0;i<n;++i) {
-      for (var j=0;j<n;++j) {
-        if (j == i) {
-          continue;
-        }
-
-        var x = arguments[i];
-        var y = arguments[j];
-  
-        var rest = [smush(x,y)];
-        for (var k=0;k<n;++k) {
-          if (k !== i && k !== j) {
-            rest.push(arguments[k]);
-          }
-        }
-
-        allPossibilities.push(rest);
-      }
-    }
+    var allPossibilities = allFutureArguments(arguments);
 
     var everything = allPossibilities.map(function(args) {
       return smush.apply(null, args);
