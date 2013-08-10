@@ -2,28 +2,28 @@
 
 var assert = require('assert');
 
-var smush = function(a,b) {
+var smush2 = function(a,b) {
   if (b.indexOf(a) === 0) {
     return b;
   } else {
-    return a[0] + smush(a.substr(1), b);
+    return a[0] + smush2(a.substr(1), b);
   }
 };
 
 describe('word smushing', function() {
   describe('two work smushing', function() {
     it('should smush two equal words', function() {
-      var smushed = smush('to','to');
+      var smushed = smush2('to','to');
       assert.equal('to', smushed);
     });
 
     it('should smush two letter words', function() {
-      var smushed = smush('it', 'to');
+      var smushed = smush2('it', 'to');
       assert.equal('ito', smushed);
     });
 
     it('should be conjunction  when doesn\'t smush', function() {
-      var unsmushed = smush('be', 'at');
+      var unsmushed = smush2('be', 'at');
       assert.equal('beat', unsmushed);
     });
   });
