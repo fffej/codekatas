@@ -136,6 +136,17 @@ describe('word smushing', function() {
   });
 
   describe('finds minimal smush', function() {
+    it('uses the strategy', function() {
+      var used = false;
+      var strategy = function(x) { 
+        used = true;
+        return x;
+      };
+
+      var smushed = minimalSmush(strategy,'to', 'it');
+      assert(used);
+    });
+
     it('works with simple example', function() {
       var smushed = minimalSmush(Strategy.BruteForce,'to', 'it');
       assert.equal('ito', smushed);
