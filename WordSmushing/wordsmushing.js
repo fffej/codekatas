@@ -127,16 +127,18 @@ describe('word smushing', function() {
 
   describe('finds minimal smush', function() {
     it('works with simple example', function() {
-      var smushed = minimalSmush('to', 'it');
+      var smushed = minimalSmush(Strategy.BruteForce,'to', 'it');
       assert.equal('ito', smushed);
     });
 
     it('works with a longer example', function() {
       var smushed = minimalSmush(
+        Strategy.BruteForce,
         'testing', 
         'ginger', 
         'german', 
-        'minutes');
+        'minutes'
+        );
 
       assert.equal('minutestingingerman', smushed);
     });
