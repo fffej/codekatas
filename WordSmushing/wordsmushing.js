@@ -1,5 +1,9 @@
 "use strict";
 
+var Strategy = {
+
+};
+
 var assert = require('assert');
 
 var smush2 = function(a,b) {
