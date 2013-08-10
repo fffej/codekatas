@@ -135,6 +135,14 @@ describe('word smushing', function() {
       var result = Strategy.Beam(2).apply(null, args); 
       assert.equal(2, result.length);
     });
+
+    it('beam search detects based on scoring function', function() {
+      var args = ['abcdef','abcde', 'abcd','abc', 'ab', 'a'];
+      var result = Strategy.Beam(2,score).apply(null, args); 
+
+      assert.equal('a', result[0]);
+      assert.equal('ab', result[1]);
+    });
   });
 
   describe('scoring function', function() {
