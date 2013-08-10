@@ -79,7 +79,7 @@ var minimalSmush = function() {
     });
     
     return everything.reduce(function(x,y) {
-      return y.length < x.length ? y : x;
+      return score(y) < score(x) ? y : x;
     },everything[0]);
   }
 };
