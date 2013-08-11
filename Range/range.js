@@ -47,5 +47,13 @@ describe('range', function() {
     it('is created', function() {
       assert(defaultRangeForTests);
     });
+
+    it('minimum', function() {
+      assert.equal(2, defaultRangeForTests.minimum());
+    });
+
+    it('maximum', function() {
+      assert.equal(3, defaultRangeForTests.maximum());
+    });
   });
 });
