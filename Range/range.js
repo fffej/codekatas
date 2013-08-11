@@ -28,5 +28,10 @@ describe('range', function() {
       var range = createClosedInterval(1,4);
       assert.equal(1, range.minimum());
     });
+
+    it('maximum', function() {
+      var range = createClosedInterval(1,4);
+      assert.equal(4, range.maximum());
+    });
   });
 });
