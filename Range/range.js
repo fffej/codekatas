@@ -6,6 +6,10 @@ var Range = function() {
   
 };
 
+var createdCloseRange = function(from,to) {
+  return new Range();
+};
+
 describe('range', function() {
   describe('creation', function() {
     it('exists', function() {
