@@ -21,5 +21,10 @@ describe('range', function() {
     it('is created', function() {
       assert(createCloseRange(1,4));
     });
+
+    it('minimum', function() {
+      var range = createCloseRange(1,4);
+      assert.equal(2, range.minimum());
+    });
   });
 });
