@@ -21,18 +21,19 @@ describe('range', function() {
   });
 
   describe('closed intervals', function() {
+ 
+    var defaultRangeForTests = createClosedInterval(1,4);
+
     it('is created', function() {
-      assert(createClosedInterval(1,4));
+      assert(defaultRangeForTests);
     });
 
     it('minimum', function() {
-      var range = createClosedInterval(1,4);
-      assert.equal(1, range.minimum());
+      assert.equal(1, defaultRangeForTests.minimum());
     });
 
     it('maximum', function() {
-      var range = createClosedInterval(1,4);
-      assert.equal(4, range.maximum());
+      assert.equal(4, defaultRangeForTests.maximum());
     });
   });
 });
