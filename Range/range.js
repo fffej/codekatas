@@ -62,7 +62,7 @@ describe('range', function() {
     });
   });
 
-  describe('range contains', function() {
+  describe('closed range contains', function() {
     it('correctly contains', function() {
       var range = createClosedInterval(1,100);
 
