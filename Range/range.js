@@ -13,6 +13,10 @@ var createClosedInterval = function(from,to) {
   return new ClosedInterval(from, to);
 };
 
+var createOpenInterval = function() {
+
+};
+
 describe('range', function() {
   describe('creation', function() {
     it('exists', function() {
@@ -34,6 +38,14 @@ describe('range', function() {
 
     it('maximum', function() {
       assert.equal(4, defaultRangeForTests.maximum());
+    });
+  });
+
+  describe('open intervals', function() {
+    var defaultRangeForTests = createOpenInterval(1,4);
+
+    it('is created', function() {
+      assert(defaultRangeForTests);
     });
   });
 });
