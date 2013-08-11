@@ -56,4 +56,14 @@ describe('range', function() {
       assert.equal(3, defaultRangeForTests.maximum());
     });
   });
+
+  describe('range contains', function() {
+    it('correctly contains', function() {
+      var range = createClosedInterval(1,100);
+
+      assert(range.contains(1));
+      assert(range.contains(50));
+      assert(range.contains(100));
+    });
+  });
 });
