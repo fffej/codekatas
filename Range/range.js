@@ -115,3 +115,9 @@ describe('range', function() {
     });
   });
 });
+
+// TODO
+// I learnt that I didn't know what I was doing.  I was returning
+// completley anonymous objects with properties
+// Instead, I should be assigning those properties to the "this"
+// object and therefore making things make sense.
