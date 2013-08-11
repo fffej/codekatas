@@ -4,7 +4,8 @@ var assert = require('assert');
 
 var ClosedInterval = function(from,to) {
   return {
-    minimum: function() { return from; }
+    minimum: function() { return from; },
+    maximum: function() { return to; }
   };
 };
 
