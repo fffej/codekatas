@@ -76,6 +76,10 @@ describe('range', function() {
       assert.equal(false, range.contains(0));
       assert.equal(false, range.contains(101));
     });
+
+    it('can contain smaller ranges', function() {
+      assert(range.contains(createClosedInterval(2,99)));
+    });
   });
 
   describe('open range contains', function() {
