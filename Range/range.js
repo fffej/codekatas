@@ -3,15 +3,27 @@
 var assert = require('assert');
 
 var ClosedInterval = function(from,to) {
-  return {
-    contains: function(a) {
-      return a >= from && a <= to;
-    },
 
-    maximum: function() { return to; },
+  this.contains = function(a) {
+      if (a instanceof ClosedInterval) {
+        var min = a.minimum();
+        var max = a.maximum();
 
-    minimum: function() { return from; }
+        return this.contains(min) && this.contains(max);
+      } else {
+        return a >= from && a <= to;
+      }
   };
+
+  this.maximum = function() {
+    return to;
+  };
+
+  this.minimum = function() {
+    return from;
+  };
+
+  return this;
 };
 
 var createClosedInterval = function(from,to) {
