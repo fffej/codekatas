@@ -2,12 +2,14 @@
 
 var assert = require('assert');
 
-var Range = function() {
-  
+var Range = function(from,to) {
+  return {
+    minimum: function() { return from; }
+  };
 };
 
 var createCloseRange = function(from,to) {
-  return new Range();
+  return new Range(from+1, to-1);
 };
 
 describe('range', function() {
