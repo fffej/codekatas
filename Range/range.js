@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var Range = function() {
-
+  
 };
 
 describe('range', function() {
@@ -15,7 +15,7 @@ describe('range', function() {
 
   describe('closed intervals', function() {
     it('is created', function() {
-      assert(Range.createdCloseRange(1,4));
+      assert(createdCloseRange(1,4));
     });
   });
 });
