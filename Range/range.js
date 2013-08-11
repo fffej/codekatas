@@ -13,8 +13,8 @@ var createClosedInterval = function(from,to) {
   return new ClosedInterval(from, to);
 };
 
-var createOpenInterval = function() {
-
+var createOpenInterval = function(from,to) {
+  return new ClosedInterval(from+1, to-1);
 };
 
 describe('range', function() {
