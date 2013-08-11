@@ -70,5 +70,11 @@ describe('range', function() {
       assert(range.contains(50));
       assert(range.contains(100));
     });
+
+    it('correctly doesn\'t contain', function() {
+      var range = createClosedInterval(1,100);
+      assert.equal(false, range.contains(0));
+      assert.equal(false, range.contains(101));
+    });
   });
 });
