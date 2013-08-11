@@ -12,4 +12,10 @@ describe('range', function() {
       assert(new Range);
     });
   });
+
+  describe('closed intervals', function() {
+    it('is created', function() {
+      assert(Range.createdCloseRange(1,4));
+    });
+  });
 });
