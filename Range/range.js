@@ -6,7 +6,7 @@ var Range = function() {
   
 };
 
-var createdCloseRange = function(from,to) {
+var createCloseRange = function(from,to) {
   return new Range();
 };
 
@@ -19,7 +19,7 @@ describe('range', function() {
 
   describe('closed intervals', function() {
     it('is created', function() {
-      assert(createdCloseRange(1,4));
+      assert(createCloseRange(1,4));
     });
   });
 });
