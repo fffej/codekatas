@@ -2,31 +2,31 @@
 
 var assert = require('assert');
 
-var Range = function(from,to) {
+var ClosedInterval = function(from,to) {
   return {
     minimum: function() { return from; }
   };
 };
 
-var createCloseRange = function(from,to) {
-  return new Range(from+1, to-1);
+var createClosedInterval = function(from,to) {
+  return new ClosedInterval(from, to);
 };
 
 describe('range', function() {
   describe('creation', function() {
     it('exists', function() {
-      assert(new Range);
+      assert(new ClosedInterval);
     });
   });
 
   describe('closed intervals', function() {
     it('is created', function() {
-      assert(createCloseRange(1,4));
+      assert(createClosedInterval(1,4));
     });
 
     it('minimum', function() {
-      var range = createCloseRange(1,4);
-      assert.equal(2, range.minimum());
+      var range = createClosedInterval(1,4);
+      assert.equal(1, range.minimum());
     });
   });
 });
