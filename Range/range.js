@@ -5,7 +5,7 @@ var assert = require('assert');
 var ClosedInterval = function(from,to) {
   return {
     contains: function(a) {
-      return true;
+      return a >= from && a <= to;
     },
 
     maximum: function() { return to; },
