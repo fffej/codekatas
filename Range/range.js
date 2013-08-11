@@ -92,6 +92,11 @@ describe('range', function() {
     it('can contain smaller ranges', function() {
       assert(range.contains(createClosedInterval(2,99)));
     });
+
+    it('doesnt contain larger ranges', function() {
+      assert(!range.contains(createClosedInterval(-1,101)));
+      assert(!range.contains(createClosedInterval(2,333)));
+    });
   });
 
   describe('open range contains', function() {
