@@ -18,6 +18,13 @@ describe('yahtzee', function() {
        var roll = dice.roll();
        assert(roll >= 1 && roll <= 6);       
      });
+
+     it('stays the same until the next roll', function() {
+       var dice = new Dice();
+
+       var v = dice.roll();
+       assert.equal(v, dice.value());
+     });
    });
 
    describe('score', function() {
