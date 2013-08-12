@@ -13,6 +13,25 @@ var largestString = function(words) {
 
 var eliminateSubstrings = function(words) {
   var rest = [];
+  var n = words.length;
+
+  for (var i=0;i<n;++i) {
+    var subString = false;
+    for (var j=0;j<n;++j) {
+      if (i == j) { 
+        continue;
+      }
+
+      if (words[j].indexOf(words[i]) !== -1) {
+        subString = true;
+      }
+    }
+
+    if (!subString) {
+      rest.push(words[i]);
+    }
+  }
+
 
   return rest;
 };
