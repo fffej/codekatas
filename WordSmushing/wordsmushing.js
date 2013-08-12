@@ -27,5 +27,10 @@ describe('word smushing', function() {
       var smushed = smush2('to', 'it');
       assert.equal('toit', smushed);
     });
+
+    it('aligns smushes', function() {
+      var smushed = smush2('it','to');
+      assert.equal('ito', smushed);
+    });
   });
 });
