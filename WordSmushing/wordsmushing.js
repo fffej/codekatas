@@ -23,7 +23,7 @@ var smushWords = function(words) {
   if (n === 2) {
     return smush(words[0], words[1]);
   } else {
-    throw Error('writing too much code');
+    return undefined;
   }
 };
 
@@ -54,6 +54,11 @@ describe('word smushing', function() {
       var smushed = smushWords(['testing','ginger']);
 
       assert.equal('testinginger', smushed);
+    });
+
+    it('should choose first pair based on overlap', function() {
+      var smushed = smushWords(['orange','gherkin','gerg']);
+      assert.equal(0, smushed.indexOf('orangerg'));
     });
   });
 });
