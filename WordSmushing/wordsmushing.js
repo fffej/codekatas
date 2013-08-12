@@ -42,6 +42,31 @@ var bestSmush = function(words) {
   return best;
 };
 
+var simplifyArguments = function(words) {
+  var args = [];
+
+  // O(N^2)
+  for (var i=0;i<words.length;++i) {
+    var isSubString = false;
+    for (var j=0;j<words.length;++j) {
+      if (j === i) {
+        continue;
+      }
+      
+      if (words[j].indexOf(words[i]) !== -1) {
+        isSubString = true;
+        break;
+      }
+    }
+
+    if (!isSubString) {
+      args.push(words[i]);
+    }
+  }
+
+  return args;
+};
+
 var getRest = function(words, n, m) {
   var rest = [];
   for (var i=0;i<words.length;++i) {
@@ -115,11 +140,6 @@ describe('word smushing', function() {
     it('works greedily', function() {
       var smushed = smushWords(words);
       assert.equal('minutestingingerman', smushed);
-    });
-
-    it('doesnt solve everything', function() {
-      var smushed = smushWords(['hats', 'at', 'atside', 'deft']);
-      assert.equal('athatsideft', smushed);
     });
   });
 });
