@@ -4,7 +4,7 @@ var assert = require('assert');
 
 var Dice = function() {
   this.roll = function() {
-    return Math.random() * 6 + 1;
+    return (Math.random() * 6 + 1)|0;
   };
 
   return this;
@@ -17,6 +17,12 @@ describe('yahtzee', function() {
        
        var roll = dice.roll();
        assert(roll >= 1 && roll <= 6);       
+     });
+   });
+
+   describe('score', function() {
+     it('exists', function() {
+       assert(new Score(1,1,1,1,1));
      });
    });
 });
