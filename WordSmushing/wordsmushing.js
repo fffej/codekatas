@@ -56,7 +56,6 @@ var getRest = function(words, n, m) {
 };
 
 var smushWords = function(words) {
-  // Will a greedy match work?
   var n = words.length;
   if (n === 2) {
     return smush(words[0], words[1]);
@@ -113,7 +112,6 @@ describe('word smushing', function() {
     it('doesnt solve everything', function() {
       var smushed = smushWords(['hats', 'at', 'atside', 'deft']);
       assert.equal('athatsideft', smushed);
-//                    hatsideat
     });
   });
 });
