@@ -6,7 +6,7 @@ var smush = function(a,b) {
   var c = smush2(a,b);
   var d = smush2(b,a);
 
-  return c.length > d.length ? d : c;
+  return c.length >= d.length ? d : c;
 };
 
 var smush2 = function(a,b) {
@@ -108,6 +108,12 @@ describe('word smushing', function() {
     it('works greedily', function() {
       var smushed = smushWords(words);
       assert.equal('minutestingingerman', smushed);
+    });
+
+    it('doesnt solve everything', function() {
+      var smushed = smushWords(['hats', 'at', 'atside', 'deft']);
+      assert.equal('athatsideft', smushed);
+//                    hatsideat
     });
   });
 });
