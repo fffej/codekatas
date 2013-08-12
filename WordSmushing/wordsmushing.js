@@ -23,6 +23,7 @@ var bestSmush = function(words) {
     score: -1,
     result: undefined
   };
+
   for (var i=0;i<n;++i) {
     for (var j=0;j<n;++j) {
       if (i === j) {
@@ -87,6 +88,11 @@ describe('word smushing', function() {
     it('should choose first pair based on overlap', function() {
       var smushed = smushWords(['orange','gherkin','gerg']);
       assert.equal(0, smushed.indexOf('orangerg'));
+    });
+
+    it('works greedily', function() {
+      var smushed = smushWords(words);
+      assert.equal('minutestingingerman', smushed);
     });
   });
 });
