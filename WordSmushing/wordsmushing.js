@@ -92,7 +92,7 @@ describe('word smushing', function() {
 
   describe('preprocess arguments', function() {
     it('should remove words that are substrings', function() {
-      var processed = process(['testing', 'test']);
+      var processed = simplifyArguments(['testing', 'test']);
       assert.equal('testing', processed[0]);
       assert.equal(1, processed.length);
     });
