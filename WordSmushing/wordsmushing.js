@@ -11,6 +11,12 @@ var largestString = function(words) {
   }
 };
 
+var eliminateSubstrings = function(words) {
+  var rest = [];
+
+  return rest;
+};
+
 describe('words smushing', function() {
   describe('largest string', function() {
     it('is not defined for 0 length arrays', function() {
