@@ -12,5 +12,9 @@ describe('words smushing', function() {
     it('is not defined for 0 length arrays', function() {
       assert(!largestString([]));
     });
+
+    it('returns the length of the longest string', function() {
+      assert.equal(5, largestString['a','b','bc','defgh']);
+    });
   });
 });
