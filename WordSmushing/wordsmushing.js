@@ -18,7 +18,13 @@ var smush2 = function(a,b) {
 };
 
 var smushWords = function(words) {
-
+  // Will a greedy match work?
+  var n = words.length;
+  if (n === 2) {
+    return smush(words[0], words[1]);
+  } else {
+    throw Error('writing too much code');
+  }
 };
 
 describe('word smushing', function() {
