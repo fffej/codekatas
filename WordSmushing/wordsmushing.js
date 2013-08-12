@@ -17,6 +17,10 @@ var smush2 = function(a,b) {
   }
 };
 
+var smushWords = function(words) {
+
+};
+
 describe('word smushing', function() {
   describe('base cases', function() {
     it('should find the minimal smush', function() {
@@ -34,6 +38,16 @@ describe('word smushing', function() {
     it('aligns smushes', function() {
       var smushed = smush2('it','to');
       assert.equal('ito', smushed);
+    });
+  });
+
+  describe('small values', function() {
+    var words = ['testing', 'ginger', 'german', 'minutes'];
+
+    it('should find a minimal solution', function() {
+      var smushed = smushWords(words);
+
+      assert.equal('minutestingingerman', smushed);
     });
   });
 });
