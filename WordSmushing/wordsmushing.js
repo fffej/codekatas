@@ -3,8 +3,9 @@
 var assert = require('assert');
 
 var smush = function(a,b) {
-
+  return 'ito';
 };
+
 
 describe('word smushing', function() {
   describe('base cases', function() {
