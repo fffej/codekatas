@@ -19,10 +19,7 @@ var smush2 = function(a,b) {
 
 var bestSmush = function(words) {
   var n = words.length;
-  var best = { 
-    score: -1,
-    result: undefined
-  };
+  var best = { score: -1 };
 
   for (var i=0;i<n;++i) {
     for (var j=0;j<n;++j) {
