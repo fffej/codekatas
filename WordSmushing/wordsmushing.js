@@ -17,13 +17,41 @@ var smush2 = function(a,b) {
   }
 };
 
+var bestSmush = function(words) {
+  var n = words.length;
+  var best = { 
+    score: -1,
+    result: undefined
+  };
+  for (var i=0;i<n;++i) {
+    for (var j=0;j<n;++j) {
+      if (i === j) {
+        continue;
+      }
+
+      var len = (words[i] + words[j]).length;
+      var smushed = smush(words[i], words[j]);
+      var score = len - smushed.length;
+      if (score > best.score) {
+        best.score = score;
+        best.result = smushed;
+      }
+    }
+  }
+  
+  return best;
+};
+
 var smushWords = function(words) {
   // Will a greedy match work?
   var n = words.length;
   if (n === 2) {
     return smush(words[0], words[1]);
   } else {
-    return undefined;
+
+    var best = bestSmush(words);
+
+    return best.result;
   }
 };
 
