@@ -36,11 +36,26 @@ var bestSmush = function(words) {
       if (score > best.score) {
         best.score = score;
         best.result = smushed;
+        best.arg1 = i;
+        best.arg2 = j;
       }
     }
   }
   
   return best;
+};
+
+var getRest = function(words, n, m) {
+  var rest = [];
+  for (var i=0;i<words.length;++i) {
+    if (i ===n || i === m) {
+      continue;
+    }
+
+    rest.push(words[i]);
+  }
+
+  return rest;
 };
 
 var smushWords = function(words) {
@@ -52,7 +67,10 @@ var smushWords = function(words) {
 
     var best = bestSmush(words);
 
-    return best.result;
+    var rest = getRest(words, best.arg1, best.arg2);
+    rest.push(best.result);
+
+    return smushWords(rest);
   }
 };
 
