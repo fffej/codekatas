@@ -3,7 +3,10 @@
 var assert = require('assert');
 
 var smush = function(a,b) {
-  return 'ito';
+  var c = smush2(a,b);
+  var d = smush2(b,a);
+
+  return c.length > d.length ? d : c;
 };
 
 var smush2 = function(a,b) {
