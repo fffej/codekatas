@@ -3,8 +3,15 @@
 var assert = require('assert');
 
 var add = function(str) {
-  str = str.replace('\n',',');
-  var numbers = str.split(',');
+  var delimiter = customDelimiter(str);
+  if (delimiter) {
+    str = str.substr(str.indexOf('\n'));
+  } else {
+    delimiter = ',';
+  }
+
+  str = str.replace('\n',delimiter);
+  var numbers = str.split(delimiter);
   return numbers.reduce(function(x,y) {
     return x + (y|0);
   }, 0);
