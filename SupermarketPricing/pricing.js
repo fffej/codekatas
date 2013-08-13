@@ -23,6 +23,10 @@ var Basket = function() {
     return items;
   };
 
+  this.itemsMatching = function() {
+    return [];
+  };
+
   return this;
 };
 
@@ -78,6 +82,13 @@ describe('shopping basket', function() {
       );
 
       assert.equal(0, items.length);
+    });
+
+    it('returns results', function() {
+      var basket = new Basket();
+      basket.add(new Item('beans'));
+
+      assert.equal(1, basket.itemsMatching(description('beans')));
     });
   });
 
