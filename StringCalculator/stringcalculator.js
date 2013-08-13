@@ -54,8 +54,15 @@ describe('string calculator', function() {
     });
 
     it('should identify custom delimiters', function() {
-      assert.equal('q', customDelimiter('//q\n1q2'));
-      assert.equal(',', customDelimiter('1\n2'));
+      var delim = customDelimiter('//q\n1q2');
+      assert.equal('q', delim.separator);
+      assert.equal('1q2', delim.line);
+    });
+
+    it('should return default separator', function() {
+      var delim = customDelimiter('1,2');
+      assert.equal(',', delim.separator);
+      assert.equal('1,2', delim.line);
     });
 
     it('should add using the custom delimiter', function() {
