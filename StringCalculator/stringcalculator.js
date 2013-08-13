@@ -34,5 +34,9 @@ describe('string calculator', function() {
     it('should add a variable number of commas', function() {
       assert.equal(10, calculator.add('1,2,3,4'));
     });
+
+    it('should also consider \\n a separate', function() {
+      assert.equal(10, calculator.add('6\n4'));
+    });
   });
 });
