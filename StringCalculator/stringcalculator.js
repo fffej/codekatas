@@ -91,8 +91,8 @@ describe('string calculator', function() {
           calculator.add('-1,-2');
         },
         function(e) {
-          assert(e.message.indexOf('-1') !== -1, 'num not found');
-          assert(e.message.indexOf('-2') !== -2);
+          assert(e.message.indexOf('-1') !== -1, '-1 not found');
+          assert(e.message.indexOf('-2') !== -2, '-2 not found');
         }
       );
     });
