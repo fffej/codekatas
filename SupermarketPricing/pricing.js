@@ -35,6 +35,15 @@ var Checkout = function() {
   return this;
 };
 
+var Unit = function(item,price) {
+
+  this.applies = function(basket) {
+    return true;
+  };
+
+  return this;
+};
+
 describe('shopping basket', function() {
   describe('item', function() {
     it('exists', function() {
