@@ -70,4 +70,16 @@ describe('shopping basket', function() {
       assert.equal(0, checkout.price(new Basket()));
     });
   });
+
+  describe('offers', function() {
+    it('unit', function() {
+      var beans = new Item('beans');
+      var basket = new Basket();
+      var unit = new Unit(beans, 50);      
+
+      basket.add(beans);
+
+      assert(unit.applies(basket));
+    });
+  });
 });
