@@ -39,5 +39,10 @@ describe('string calculator', function() {
     it('should also consider \\n a separate', function() {
       assert.equal(10, calculator.add('6\n4'));
     });
+
+    it('should identify custom delimiters', function() {
+      assert.equal('q', customDelimiter('//q\n1q2'));
+      assert(!customDelimiter('1\n2'));
+    })
   });
 });
