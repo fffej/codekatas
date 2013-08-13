@@ -30,5 +30,9 @@ describe('string calculator', function() {
     it('should add numbers separaetd by commas', function() {
       assert.equal(101, calculator.add('77,24'));
     });
+
+    it('should add a variable number of commas', function() {
+      assert.equal(10, calculator.add('1,2,3,4'));
+    });
   });
 });
