@@ -24,7 +24,10 @@ var StringCalculator = function() {
 
 var customDelimiter = function(str) {
   if (str.indexOf('//') === 0) {
-    return str[2];
+    return {
+      line: str.substr(str.indexOf('\n')+1),
+      separator: str[2]
+    };
   }
 };
 
