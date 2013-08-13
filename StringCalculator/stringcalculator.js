@@ -9,6 +9,10 @@ var add = function(str) {
   var nums = numbers.map(function(x) { return x | 0; });
 
   var illegal = nums.filter(function(x) { return x < 0; });
+  if (illegal.length > 0) {
+    throw new Error('Negative numbers unsupported: ' + illegal);
+  }
+
 
   return nums.reduce(function(x,y) {
     if (y < 0) {
@@ -95,8 +99,11 @@ describe('string calculator', function() {
           calculator.add('-1,-2');
         },
         function(e) {
-          assert(e.message.indexOf('-1') !== -1, '-1 not found');
-          assert(e.message.indexOf('-2') !== -2, '-2 not found');
+          var msg = e.message;
+          
+          assert(msg.indexOf('-1') !== -1,'-1 found');
+          assert(msg.indexOf('-2') !== -1,'-2 found');
+          return true;
         }
       );
     });
