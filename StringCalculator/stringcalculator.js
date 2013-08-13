@@ -75,5 +75,12 @@ describe('string calculator', function() {
     it('should add using the custom delimiter', function() {
       assert.equal(3, calculator.add('//q\n1q2'));
     });
+
+    it('should not support negative numbers', function() {
+      assert.throws(function() {
+          calculator.add('-1');
+        });
+  
+    });
   });
 });
