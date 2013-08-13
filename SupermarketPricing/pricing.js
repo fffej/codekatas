@@ -125,3 +125,5 @@ describe('shopping basket', function() {
     });
   });
 });
+
+// LA Story is on.
