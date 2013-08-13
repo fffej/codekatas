@@ -4,14 +4,9 @@ var assert = require('assert');
 
 var add = function(str) {
   var delimiter = customDelimiter(str);
-  if (delimiter) {
-    str = str.substr(str.indexOf('\n'));
-  } else {
-    delimiter = ',';
-  }
 
-  str = str.replace('\n',delimiter);
-  var numbers = str.split(delimiter);
+  str = delimiter.line.replace('\n',delimiter.separator);
+  var numbers = str.split(delimiter.separator);
   return numbers.reduce(function(x,y) {
     return x + (y|0);
   }, 0);
@@ -27,6 +22,11 @@ var customDelimiter = function(str) {
     return {
       line: str.substr(str.indexOf('\n')+1),
       separator: str[2]
+    };
+  } else {
+    return {
+      line: str,
+      separator: ','
     };
   }
 };
