@@ -84,7 +84,17 @@ describe('string calculator', function() {
       assert.throws(function() {
           calculator.add('-1');
         });
-  
+    });
+
+    it('should include all numbers in the message', function() {
+      assert.throws(function() {
+          calculator.add('-1,-2');
+        },
+        function(e) {
+          assert(e.message.indexOf('-1') !== -1);
+          assert(e.message.indexOf('-2') !== -2);
+        }
+      );
     });
   });
 });
