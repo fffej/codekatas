@@ -3,11 +3,26 @@
 var assert = require('assert');
 
 var Item = function(desc) {
+
+  var items = [];
+
   this.description = desc;
+
   return this;
 };
 
 var Basket = function() {
+
+  var items = [];
+
+  this.add = function(item) {
+    items.push(item);
+  };
+
+  this.empty = function() {
+    return items;
+  };
+
   return this;
 };
 
