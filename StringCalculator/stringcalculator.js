@@ -120,3 +120,7 @@ describe('string calculator', function() {
     });
   });
 });
+
+// What did I learn this time?
+// MOAR objects and clearer definition of responsibility has
+// benefits even at this scale.
