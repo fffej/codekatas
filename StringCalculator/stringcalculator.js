@@ -7,6 +7,9 @@ var add = function(str) {
   var numbers = this.tokenize(str, delimiter);
 
   var nums = numbers.map(function(x) { return x | 0; });
+
+  var illegal = nums.filter(function(x) { return x < 0; });
+
   return nums.reduce(function(x,y) {
     if (y < 0) {
       throw new Error('Negative numbers not supported');
