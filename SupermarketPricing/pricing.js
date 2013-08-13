@@ -26,6 +26,10 @@ var Basket = function() {
   return this;
 };
 
+var Checkout = function() {
+  return this;
+};
+
 describe('shopping basket', function() {
   describe('item', function() {
     it('exists', function() {
