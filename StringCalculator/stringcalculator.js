@@ -23,5 +23,9 @@ describe('string calculator', function() {
     it('should return a single digit', function() {
       assert.equal(99, calculator.add('99'));
     });
+
+    it('should add numbers separaetd by commas', function() {
+      assert.equal('101', calculator.add('77,24'));
+    });
   });
 });
