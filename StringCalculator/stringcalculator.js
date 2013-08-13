@@ -15,9 +15,6 @@ var add = function(str) {
 
 
   return nums.reduce(function(x,y) {
-    if (y < 0) {
-      throw new Error('Negative numbers not supported');
-    }
     return x + y;
   }, 0);
 };
