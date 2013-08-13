@@ -3,7 +3,10 @@
 var assert = require('assert');
 
 var add = function(str) {
-  return str|0;
+  var numbers = str.split(',');
+  return numbers.reduce(function(x,y) {
+    return x + (y|0);
+  }, 0);
 };
 
 var StringCalculator = function() {
@@ -25,7 +28,7 @@ describe('string calculator', function() {
     });
 
     it('should add numbers separaetd by commas', function() {
-      assert.equal('101', calculator.add('77,24'));
+      assert.equal(101, calculator.add('77,24'));
     });
   });
 });
