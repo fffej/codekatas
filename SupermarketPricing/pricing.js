@@ -67,6 +67,18 @@ describe('shopping basket', function() {
 
       assert.equal(1, basket.contents().length);
     });
+
+    it('can be queried', function() {
+      var basket = new Basket();
+
+      var items = basket.itemsMatching(
+        function(x) {
+          return false;
+        }
+      );
+
+      assert.equal(0, items.length);
+    });
   });
 
   describe('checkout', function() {
