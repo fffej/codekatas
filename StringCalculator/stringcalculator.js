@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var add = function(str) {
-  return 0;
+  return str|0;
 };
 
 var StringCalculator = function() {
