@@ -91,7 +91,7 @@ describe('string calculator', function() {
           calculator.add('-1,-2');
         },
         function(e) {
-          assert(e.message.indexOf('-1') !== -1);
+          assert(e.message.indexOf('-1') !== -1, 'num not found');
           assert(e.message.indexOf('-2') !== -2);
         }
       );
