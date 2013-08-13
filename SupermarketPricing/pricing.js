@@ -11,6 +11,12 @@ var Item = function(desc) {
   return this;
 };
 
+var description = function(desc) {
+  return function(x) {
+    return x.description === desc;
+  };
+};
+
 var Basket = function() {
 
   var items = [];
@@ -23,8 +29,8 @@ var Basket = function() {
     return items;
   };
 
-  this.itemsMatching = function() {
-    return [];
+  this.itemsMatching = function(x) {
+    return items.filter(x);
   };
 
   return this;
@@ -86,9 +92,13 @@ describe('shopping basket', function() {
 
     it('returns results', function() {
       var basket = new Basket();
-      basket.add(new Item('beans'));
+      var beans = new Item('beans');
+      basket.add(beans);
 
-      assert.equal(1, basket.itemsMatching(description('beans')));
+      assert.deepEqual(
+        [beans], 
+        basket.itemsMatching(description('beans'))
+      );
     });
   });
 
