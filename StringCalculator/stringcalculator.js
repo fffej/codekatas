@@ -10,17 +10,19 @@ var supported = function(x) {
   return x < 1000;
 };
 
+var coerceToNum = function(x) {
+  return x|0;
+};
+
 var add = function(str) {
   var delimiter = customDelimiter(str);
   var numbers = this.tokenize(str, delimiter);
 
-  var nums = numbers.map(function(x) { return x | 0; }).filter(supported);
-  
+  var nums = numbers.map(coerceToNum).filter(supported);
   var illegal = nums.filter(unsupported);
   if (illegal.length > 0) {
     throw new Error('Negative numbers unsupported: ' + illegal);
   }
-
 
   return nums.reduce(function(x,y) {
     return x + y;
