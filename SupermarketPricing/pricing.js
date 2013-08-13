@@ -19,7 +19,7 @@ var Basket = function() {
     items.push(item);
   };
 
-  this.empty = function() {
+  this.contents = function() {
     return items;
   };
 
@@ -47,7 +47,7 @@ describe('shopping basket', function() {
       var basket = new Basket();
       basket.add(new Item('Shoes'));
 
-      assert.equal(1, basket.empty().length);
+      assert.equal(1, basket.contents().length);
     });
   });
 });
