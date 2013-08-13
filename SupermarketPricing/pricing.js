@@ -27,5 +27,12 @@ describe('shopping basket', function() {
     it('exists', function() {
       assert(new Basket());
     });
+
+    it('items can be added', function() {
+      var basket = new Basket();
+      basket.add(new Item('Shoes'));
+
+      assert.equal(1, basket.empty().length);
+    });
   });
 });
