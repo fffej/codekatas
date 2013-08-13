@@ -27,6 +27,11 @@ var Basket = function() {
 };
 
 var Checkout = function() {
+
+  this.price = function(basket) {
+    return 0;
+  };
+
   return this;
 };
 
