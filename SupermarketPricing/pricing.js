@@ -3,6 +3,7 @@
 var assert = require('assert');
 
 var Item = function(desc) {
+  this.description = desc;
   return this;
 };
 
