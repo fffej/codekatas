@@ -18,4 +18,10 @@ describe('shopping basket', function() {
       assert.equal('banana', item.description);
     });
   });
+
+  describe('basket', function() {
+    it('exists', function() {
+      assert(new Basket());
+    });
+  });
 });
