@@ -2,8 +2,13 @@
 
 var assert = require('assert');
 
-var StringCalculator = function() {
+var add = function(str) {
+  return 0;
+};
 
+var StringCalculator = function() {
+  this.add = add;
+  return this;
 };
 
 describe('string calculator', function() {
