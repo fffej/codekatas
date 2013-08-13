@@ -108,5 +108,9 @@ describe('string calculator', function() {
         }
       );
     });
+
+    it('should ignore numbers > 1000', function() {
+      assert.equal(2, calculator.add('2,1001'));
+    });
   });
 });
