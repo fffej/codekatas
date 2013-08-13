@@ -55,7 +55,7 @@ describe('string calculator', function() {
 
     it('should identify custom delimiters', function() {
       assert.equal('q', customDelimiter('//q\n1q2'));
-      assert(!customDelimiter('1\n2'));
+      assert.equal(',', customDelimiter('1\n2'));
     });
 
     it('should add using the custom delimiter', function() {
