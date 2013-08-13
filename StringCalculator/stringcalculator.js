@@ -15,6 +15,12 @@ var StringCalculator = function() {
   return this;
 };
 
+var customDelimiter = function(str) {
+  if (str.indexOf('//') === 0) {
+    return str[2];
+  }
+};
+
 describe('string calculator', function() {
   describe('simple add', function() {
 
