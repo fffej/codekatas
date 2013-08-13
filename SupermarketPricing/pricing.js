@@ -59,5 +59,10 @@ describe('shopping basket', function() {
     it('exists', function() {
       assert(new Checkout());
     });
+
+    it('prices an empty basket at zero', function() {
+      var checkout = new Checkout();
+      assert.equal(0, checkout.price(new Basket()));
+    });
   });
 });
