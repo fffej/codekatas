@@ -50,4 +50,10 @@ describe('shopping basket', function() {
       assert.equal(1, basket.contents().length);
     });
   });
+
+  describe('checkout', function() {
+    it('exists', function() {
+      assert(new Checkout());
+    });
+  });
 });
