@@ -4,16 +4,20 @@ var assert = require('assert');
 
 var add = function(str) {
   var delimiter = customDelimiter(str);
-
-  str = delimiter.line.replace('\n',delimiter.separator);
-  var numbers = str.split(delimiter.separator);
+  var numbers = this.tokenize(str, delimiter);
   return numbers.reduce(function(x,y) {
     return x + (y|0);
   }, 0);
 };
 
+var tokenize = function(str, delimiter) {
+  var s = delimiter.line.replace('\n', delimiter.separator);
+  return s.split(delimiter.separator);
+};
+
 var StringCalculator = function() {
   this.add = add;
+  this.tokenize = tokenize;
   return this;
 };
 
