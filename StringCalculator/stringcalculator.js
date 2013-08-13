@@ -5,8 +5,10 @@ var assert = require('assert');
 var add = function(str) {
   var delimiter = customDelimiter(str);
   var numbers = this.tokenize(str, delimiter);
-  return numbers.reduce(function(x,y) {
-    var n = y|0;
+
+  var nums = numbers.map(function(x) { return x | 0; });
+  return nums.reduce(function(x,y) {
+    var n = y;
     if (n < 0) {
       throw new Error('Negative numbers not supported');
     }
