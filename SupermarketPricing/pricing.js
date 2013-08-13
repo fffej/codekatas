@@ -7,6 +7,10 @@ var Item = function(desc) {
   return this;
 };
 
+var Basket = function() {
+  return this;
+};
+
 describe('shopping basket', function() {
   describe('item', function() {
     it('exists', function() {
