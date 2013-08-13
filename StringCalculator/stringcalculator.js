@@ -19,5 +19,9 @@ describe('string calculator', function() {
     it('should return 0 for empty string', function() {
       assert.equal(0, calculator.add(''));     
     });
+
+    it('should return a single digit', function() {
+      assert.equal(99, calculator.add('99'));
+    });
   });
 });
