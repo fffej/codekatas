@@ -18,7 +18,16 @@ var overlap = function(x, y) {
   return 0;
 };
 
+
 describe('word smushing', function() {
+
+  describe('words worth considering', function() {
+    it('should only consider words that are important', function() {
+      var worthy = worthyWords(['baab','aa', 'cc']);
+      assert.deepEqual(['baab','cc'], worthy);
+    });
+  });
+
   describe('substring', function() {
     it('x is a substring of y', function() {
       assert(sub('bana', 'banana'));
