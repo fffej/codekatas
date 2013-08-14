@@ -47,6 +47,20 @@ var worthyWords = function(words) {
   return worthyWords;
 };
 
+
+var overlapTable = function(words) {
+  var n = words.length;
+  var a = new Array(n);
+  for (var i=0;i<n;++i) {
+    a[i] = new Array(n);
+    for (var j=0;j<n;++j) {
+      a[i][j] = overlap(words[i], words[j]);
+    }
+  }
+
+  return a;
+};
+
 describe('word smushing', function() {
 
   describe('table of overlaps', function() {
