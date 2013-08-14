@@ -18,6 +18,12 @@ var overlap = function(x, y) {
   return 0;
 };
 
+var smush = function(x,y) {
+  var n = overlap(x,y);
+
+  return x + y.substr(n);
+};
+
 
 var worthyWords = function(words) {
   var n = words.length;
@@ -49,47 +55,12 @@ var worthyWords = function(words) {
 };
 
 
-var overlapTable = function(words) {
-  var n = words.length;
-  var a = new Array(n);
-  for (var i=0;i<n;++i) {
-    a[i] = new Array(n);
-    for (var j=0;j<n;++j) {
-      a[i][j] = overlap(words[i], words[j]);
-    }
-  }
-
-  return a;
-};
-
 var joinWords = function(words) {
   // Filter out those words that get solved by free
   words = worthyWords(words);
 };
 
 describe('word smushing', function() {
-
-  describe('table of overlaps', function() {
-    it('should be identity', function() {
-      var words = ['aa','bb','cc'];
-      assert.deepEqual([ [1,0,0],
-                         [0,1,0],
-                         [0,0,1] ], overlapTable(words));
-    });
-
-    it('should make sense', function() {
-      var words = [
-        'testing',
-        'ginger', 
-        'german',
-        'minutes'
-      ];
-      assert.deepEqual([ [0,0,0,0],
-                         [3,0,0,0],
-                         [0,0,0,3],
-                         [1,1,0,0] ], overlapTable(words));
-    });
-  });
 
   describe('words worth considering', function() {
     it('should only consider words that are important', function() {
@@ -119,6 +90,10 @@ describe('word smushing', function() {
 
     it('doesn\'t', function() {
       assert.equal(0, overlap('jef', 'john'));
+    });
+
+    it('smushes', function() {
+      assert.equal('jeffish', smush('jeff', 'ffish'));
     });
   });
 });
