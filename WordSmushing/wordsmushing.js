@@ -75,17 +75,10 @@ var createTable = function(words) {
   return table;
 };
 
-var getMin = function(ret,c) {
-  if (ret.length === 0 || ret.length > c.length) {
-    return c;
-  }
-
-  // Arbitrary pick
-  if (ret.length === c.length && ret > c) {
-    return c;
-  }
-
-  return ret;
+var getMin = function(a,b) {
+  if (a === '') { return b; }
+  if (a.length < b.length) { return a; }
+  else { return b; }
 };
 
 var solve = function(table, d, words, state, tail) {
