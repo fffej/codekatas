@@ -64,7 +64,7 @@ var overlapTable = function(words) {
 describe('word smushing', function() {
 
   describe('table of overlaps', function() {
-    it('should', function() {
+    it('should be identity', function() {
       var words = ['aa','bb','cc'];
       assert.deepEqual([ [1,0,0],
                          [0,1,0],
