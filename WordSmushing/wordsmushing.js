@@ -49,6 +49,15 @@ var worthyWords = function(words) {
 
 describe('word smushing', function() {
 
+  describe('table of overlaps', function() {
+    it('should', function() {
+      var words = ['aa','bb','cc'];
+      assert.deepEqual([ [1,0,0],
+                         [0,1,0],
+                         [0,0,1] ], overlapTable(words));
+    });
+  });
+
   describe('words worth considering', function() {
     it('should only consider words that are important', function() {
       var worthy = worthyWords(['baab','aa', 'cc']);
