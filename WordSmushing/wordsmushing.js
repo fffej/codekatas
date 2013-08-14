@@ -88,7 +88,7 @@ var getMin = function(ret,c) {
   return ret;
 };
 
-var solve = function(table, d, words,state,tail) {
+var solve = function(table, d, words, state, tail) {
   if (state === 0) {
     return "";
   }
@@ -105,10 +105,7 @@ var solve = function(table, d, words,state,tail) {
   var n = words.length;
 
   for (var i=0;i<n;++i) {
-    var bitset = state & (1 << i);
-    if (bitset && i !== tail) {
-      var bitToTurnOff = ~(1 << tail);
-
+    if (state & (1 << i) && i !== tail) {
       ret = getMin(
         ret,
         solve(
