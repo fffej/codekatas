@@ -44,13 +44,13 @@ var worthyWords = function(words) {
     }
   }
 
+  worthyWords.sort();
   return worthyWords;
 };
 
 
 var overlapTable = function(words) {
   var n = words.length;
-  words.sort();
   var a = new Array(n);
   for (var i=0;i<n;++i) {
     a[i] = new Array(n);
@@ -60,6 +60,11 @@ var overlapTable = function(words) {
   }
 
   return a;
+};
+
+var joinWords = function(words) {
+  // Filter out those words that get solved by free
+  words = worthyWords(words);
 };
 
 describe('word smushing', function() {
