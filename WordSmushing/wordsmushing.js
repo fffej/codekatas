@@ -94,6 +94,7 @@ describe('word smushing', function() {
 
     it('smushes', function() {
       assert.equal('jeffish', smush('jeff', 'ffish'));
+      assert.equal('abcd', smush('ab','cd'));
     });
   });
 });
