@@ -37,5 +37,9 @@ describe('word smushing', function() {
       assert.equal(1, overlap('testing', 'ginger'));
       assert.equal(3, overlap('testing', 'ingot'));
     });
+
+    it('doesn\'t', function() {
+      assert.equal(0, overlap('jef', 'john'));
+    });
   });
 });
