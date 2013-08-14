@@ -34,6 +34,8 @@ describe('word smushing', function() {
   describe('overlap', function() {
     it ('overlaps', function() {
       assert.equal(2, overlap('jeff', 'ffish'));
+      assert.equal(1, overlap('testing', 'ginger'));
+      assert.equal(3, overlap('testing', 'ingot'));
     });
   });
 });
