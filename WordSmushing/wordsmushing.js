@@ -75,12 +75,81 @@ var createTable = function(words) {
   return table;
 };
 
+var getMin = function(ret,c) {
+  if (ret.length === 0 || ret.length > c.length) {
+    return c;
+  }
+
+  // Arbitrary pick
+  if (ret.length === c.length && ret > c) {
+    return c;
+  }
+
+  return ret;
+};
+
+var solve = function(table, d, words,state,tail) {
+  var ret;
+  var n = words.length;
+
+  if (state === 0) {
+    return "";
+  }
+
+  if (state === (1 << tail)) {
+    return words[tail];
+  }
+
+  console.log("STATE: " + state);
+  console.log("TAIL:  " + tail);
+  if (d[state][tail].length !== 0) {
+    return d[state][tail];
+  }
+
+  for (var i=0;i<n;++i) {
+    if (state & (1 << i) && i != tail) {
+
+      var recursive = solve(
+        table,
+        d,
+        words,
+        state & (~(1 << tail)),
+        i);
+
+      ret = getMin(ret,recursive) + table[i][tail]);  
+    }
+  }
+
+  d[state][tail] = ret;
+  return ret;
+};
+
 var joinWords = function(words) {
   // Filter out those words that get solved by free
   words = worthyWords(words);
 
   var table = createTable(words);
+
+  var n = words.length;
+
+  // Initial solution table
+  var d = new Array(1 << n);
+  for (var i=0;i<(1 << n);++i) {
+    d[i] = new Array(n);
+    for (var j=0;j<n;++j) {
+      d[i][j] = '';
+    }
+  }
+
+  var ret = '';
+  for (var i=0;i<n;++i) {
+    ret = getMin(ret, solve(table, d, words, (1 << n) - 1, i));
+  }
+
+  return ret;
 };
+
+console.log(joinWords(['abc','def','ghi']));
 
 describe('word smushing', function() {
 
