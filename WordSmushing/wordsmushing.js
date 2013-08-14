@@ -89,9 +89,6 @@ var getMin = function(ret,c) {
 };
 
 var solve = function(table, d, words,state,tail) {
-  var ret = '';
-  var n = words.length;
-
   if (state === 0) {
     return "";
   }
@@ -104,18 +101,23 @@ var solve = function(table, d, words,state,tail) {
     return d[state][tail];
   }
 
+  var ret = '';
+  var n = words.length;
+
   for (var i=0;i<n;++i) {
     var bitset = state & (1 << i);
     if (bitset && i !== tail) {
       var bitToTurnOff = ~(1 << tail);
-      var recursive = solve(
-        table,
-        d,
-        words,
-        state & bitToTurnOff,
-        i);
 
-      ret = getMin(ret,recursive + table[i][tail]);  
+      ret = getMin(
+        ret,
+        solve(
+          table,
+          d,
+          words,
+          state & (~(1 << tail)),
+          i
+         ) + table[i][tail]);
     }
   }
 
@@ -123,15 +125,7 @@ var solve = function(table, d, words,state,tail) {
   return ret;
 };
 
-var joinWords = function(words) {
-  // Filter out those words that get solved by free
-  words = worthyWords(words);
-
-  var table = createTable(words);
-
-  var n = words.length;
-
-  // Initial solution table
+var createJumpTable = function(n) {
   var d = new Array(1 << n);
   for (var i=0;i<(1 << n);++i) {
     d[i] = new Array(n);
@@ -140,6 +134,18 @@ var joinWords = function(words) {
     }
   }
 
+  return d;
+};
+
+var joinWords = function(words) {
+  // Filter out those words that get solved by free
+  words = worthyWords(words);
+
+  var n = words.length;
+  var table = createTable(words);
+  var d = createJumpTable(n);
+
+  // Initial solution table
   var ret = '';
   for (var i=0;i<n;++i) {
     ret = getMin(ret, solve(table, d, words, (1 << n) - 1, i));
@@ -152,7 +158,7 @@ describe('word smushing', function() {
 
   describe('joining words', function() {
    it('should work for two words', function() {
-     assert.equal('abcdef', joinWords(['abc','def']));
+     assert.equal('abcdef', joinWords(['abc','def','ghi']));
    });
   });
 
