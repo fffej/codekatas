@@ -5,6 +5,19 @@ var sub = function(x,y) {
   return y.indexOf(x) !== -1;
 };
 
+var overlap = function(x, y) {
+  var xn = x.length;
+  var yn = y.length;
+  var max = Math.min(xn, yn);
+  for (var i=max-1;i>=1;i--) {
+    if (x.substr(xn - i, i) === y.substr(0,i)) {
+      return i;
+    }
+  }
+
+  return 0;
+};
+
 describe('word smushing', function() {
   describe('substring', function() {
     it('x is a substring of y', function() {
