@@ -19,6 +19,34 @@ var overlap = function(x, y) {
 };
 
 
+var worthyWords = function(words) {
+  var n = words.length;
+
+  var hash = new Array(n);
+
+  for (var i=0;i<n;++i) {
+    hash[i] = false;
+    for (var j=0;j<n;j++) {
+      if (i !== j) {
+        if (sub(words[i], words[j])) {
+          if (words[i] !== words[j] || i < j) {
+            hash[i] = true;
+          }
+        }
+      }
+    }
+  }
+
+  var worthyWords = [];
+  for (var i=0;i<n;++i) {
+    if (!hash[i]) {
+      worthyWords.push(words[i]);
+    }
+  }
+
+  return worthyWords;
+};
+
 describe('word smushing', function() {
 
   describe('words worth considering', function() {
