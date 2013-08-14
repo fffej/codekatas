@@ -54,13 +54,46 @@ var worthyWords = function(words) {
   return worthyWords;
 };
 
+var createTable = function(words) {
+  var n = words.length;
+  var table = new Array(n);
+  for (var i=0;i<n;++i) {
+    table[i] = new Array(n);
+  }
+
+  for (var i=0;i<n;++i) {
+    for (var j=0;j<n;++j) {
+      if (i === j) {
+        table[i][j] = '';
+        continue;
+      }
+ 
+      table[i][j] = smush(words[i],words[j]);
+    }
+  }
+
+  return table;
+};
 
 var joinWords = function(words) {
   // Filter out those words that get solved by free
   words = worthyWords(words);
+
+  var table = createTable(words);
 };
 
 describe('word smushing', function() {
+
+  describe('table', function() {
+    it('makes sense', function() {
+      var table = createTable(['german','ginger','testing']);
+      assert.deepEqual([
+          ['',   'germanginger', 'germantesting'],
+          ['gingerman',   '',    'gingertesting'],
+          ['testingerman','testinginger', '']
+         ], table);
+    });
+  });
 
   describe('words worth considering', function() {
     it('should only consider words that are important', function() {
