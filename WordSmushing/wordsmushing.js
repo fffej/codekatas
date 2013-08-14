@@ -32,6 +32,8 @@ describe('word smushing', function() {
   });
 
   describe('overlap', function() {
-    assert.equal(2, overlap('jeff', 'ffish'));
+    it ('overlaps', function() {
+      assert.equal(2, overlap('jeff', 'ffish'));
+    });
   });
 });
