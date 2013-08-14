@@ -89,7 +89,7 @@ var getMin = function(ret,c) {
 };
 
 var solve = function(table, d, words,state,tail) {
-  var ret;
+  var ret = '';
   var n = words.length;
 
   if (state === 0) {
@@ -100,23 +100,22 @@ var solve = function(table, d, words,state,tail) {
     return words[tail];
   }
 
-  console.log("STATE: " + state);
-  console.log("TAIL:  " + tail);
   if (d[state][tail].length !== 0) {
     return d[state][tail];
   }
 
   for (var i=0;i<n;++i) {
-    if (state & (1 << i) && i != tail) {
-
+    var bitset = state & (1 << i);
+    if (bitset && i !== tail) {
+      var bitToTurnOff = ~(1 << tail);
       var recursive = solve(
         table,
         d,
         words,
-        state & (~(1 << tail)),
+        state & bitToTurnOff,
         i);
 
-      ret = getMin(ret,recursive) + table[i][tail]);  
+      ret = getMin(ret,recursive + table[i][tail]);  
     }
   }
 
@@ -149,9 +148,13 @@ var joinWords = function(words) {
   return ret;
 };
 
-console.log(joinWords(['abc','def','ghi']));
-
 describe('word smushing', function() {
+
+  describe('joining words', function() {
+   it('should work for two words', function() {
+     assert.equal('abcdef', joinWords(['abc','def']));
+   });
+  });
 
   describe('table', function() {
     it('makes sense', function() {
@@ -200,3 +203,4 @@ describe('word smushing', function() {
     });
   });
 });
+
