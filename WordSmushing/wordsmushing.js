@@ -12,5 +12,9 @@ describe('word smushing', function() {
       assert(sub('banana', 'banana'));
       assert(sub('ana', 'banana'));
     });
+
+    it('x is not a substring of y', function() {
+      assert(!sub('jeff', 'john'));
+    });
   });
 });
