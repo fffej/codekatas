@@ -50,6 +50,7 @@ var worthyWords = function(words) {
 
 var overlapTable = function(words) {
   var n = words.length;
+  words.sort();
   var a = new Array(n);
   for (var i=0;i<n;++i) {
     a[i] = new Array(n);
@@ -78,10 +79,10 @@ describe('word smushing', function() {
         'german',
         'minutes'
       ];
-      assert.deepEqual([ [0,1,1,0],
-                         [0,0,3,0],
-                         [0,0,0,0],
-                         [3,0,0,0] ], overlapTable(words));
+      assert.deepEqual([ [0,0,0,0],
+                         [3,0,0,0],
+                         [0,0,0,3],
+                         [1,1,0,0] ], overlapTable(words));
     });
   });
 
