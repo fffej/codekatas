@@ -70,6 +70,19 @@ describe('word smushing', function() {
                          [0,1,0],
                          [0,0,1] ], overlapTable(words));
     });
+
+    it('should make sense', function() {
+      var words = [
+        'testing',
+        'ginger', 
+        'german',
+        'minutes'
+      ];
+      assert.deepEqual([ [0,1,1,0],
+                         [0,0,3,0],
+                         [0,0,0,0],
+                         [3,0,0,0] ], overlapTable(words));
+    });
   });
 
   describe('words worth considering', function() {
