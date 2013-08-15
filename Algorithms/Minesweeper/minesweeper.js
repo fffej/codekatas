@@ -29,5 +29,12 @@ describe('minesweeper', function() {
       assert.equal(3,grid.height);
       assert.equal(5,grid.width);
     });
+
+    it('has a grid', function() {
+      var grid = new Minesweeper(grid2);
+      assert(grid.at(0,0));
+      assert(grid.at(1,0));
+      assert(!grid.at(2,0));
+    });
   });
 });
