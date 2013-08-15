@@ -73,6 +73,7 @@ describe('minesweeper', function() {
       var grid = new Minesweeper(grid1);
       assert.equal('*', grid.val(0,0));
       assert.equal('2', grid.val(1,1));
+      assert.equal(0,   grid.val(3,3));
     });
   });
 });
