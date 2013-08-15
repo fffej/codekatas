@@ -52,10 +52,18 @@ describe('minesweeper', function() {
   var grid1 = '4 4\n*...\n....\n.*..\n....\n';
   var grid2 = '3 5\n**...\n.....\n.*...\n';
 
+  var expected1 = '*100\n2210\n1*10\n1110\n';
+  var expected2 = '**100\n33200\n1*100\n';
+
   describe('can be created from string', function() {
     it('can create from string', function() {
       var grid = new Minesweeper(grid1);
       assert(grid);
+    });
+
+    it('works', function() {
+      assert.equal(expected1, new Minesweeper(grid1).toString());
+      assert.equal(expected2, new Minesweeper(grid2).toString());
     });
 
     it('width and height are read correctly', function() {
