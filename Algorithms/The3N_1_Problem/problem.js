@@ -56,6 +56,13 @@ describe('3n + 1', function() {
     });
   });
 
+  describe('table stores all values', function() {
+    it('keeps score', function() {
+      var chain = new Chain();
+      assert.equal(16, chain.cycleLength(22));
+    });
+  });
+
   describe('memoizer', function() {
     it('memoizes', function() {
       var callCount = 0;
