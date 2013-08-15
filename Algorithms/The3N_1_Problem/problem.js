@@ -32,4 +32,18 @@ describe('3n + 1', function() {
       assert.equal(16, cycleLength(22));
     });
   });
+
+  describe('memoizer', function() {
+    it('memoizes', function() {
+      var callCount = 0;
+
+      var memoed = memo(function(n) { callCount++; return n; });
+
+      memoed(8);
+      assert.equal(1, callCount);
+
+      memoed(8);
+      assert.equal(1, callCount);
+    });
+  });
 });
