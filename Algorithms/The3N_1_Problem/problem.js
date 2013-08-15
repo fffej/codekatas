@@ -16,7 +16,7 @@ var basic = function(n) {
 };
 
 var cycleLength = function(n) {
-  var c = 1
+  var c = 1;
   while (n !== 1) {
     c++;
     if (n % 2 === 0) {
