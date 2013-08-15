@@ -107,6 +107,11 @@ describe('3n + 1', function() {
       assert.equal(15, chain.cycleLength(11));
       assert.equal(originalCallCount, callCount);
     });
+
+    it('can calculate the max in range', function() {
+      var chain = new Chain();
+      assert.equal(20, chain.max(1,10));
+    });
   });
 
   describe('memoizer', function() {
