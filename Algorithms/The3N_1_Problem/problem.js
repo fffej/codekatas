@@ -118,7 +118,10 @@ describe('3n + 1', function() {
 
     it('can calculate the max in range', function() {
       var chain = new Chain();
-      assert.equal(20, chain.max(100,200));
+      assert.equal(20, chain.max(1,10));
+      assert.equal(125, chain.max(100,200));
+      assert.equal(89, chain.max(201,210));
+      assert.equal(174, chain.max(900,1000));
     });
   });
 
