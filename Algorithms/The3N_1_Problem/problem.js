@@ -35,6 +35,14 @@ var Chain = function() {
     return (n % 2 === 0) ? n/2 : (n*3+1);
   };
 
+  this.max = function(x,y) {
+    var longest = 0;
+    for (var i=x;i<=y;++i) {
+      longest = Math.max(longest, this.cycleLength(i));
+    }
+    return longest;
+  };
+
   this.cycleLength = function(n) {
     var c = 1;
     var org = n;
@@ -110,7 +118,7 @@ describe('3n + 1', function() {
 
     it('can calculate the max in range', function() {
       var chain = new Chain();
-      assert.equal(20, chain.max(1,10));
+      assert.equal(20, chain.max(100,200));
     });
   });
 
