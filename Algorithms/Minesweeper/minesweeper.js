@@ -10,13 +10,16 @@ var Minesweeper = function(s) {
   this.height = x;
   this.width = y;
 
-  var grid = new Array(y);
-  for (var i=0;i<y;++i) {
-    grid[i] = new Array(x);
+  var grid = new Array(x);
+  for (var i=0;i<x;++i) {
+    grid[i] = new Array(y);
+    for (var j=0;j<y;++j) {
+      grid[i][j] = lines[i+1][j] === '*';
+    }
   }
 
   this.at = function(i,j) {
-    return grid[i][j];
+    return grid[j][i];
   };
 
   return this;
@@ -24,7 +27,7 @@ var Minesweeper = function(s) {
 
 describe('minesweeper', function() {
 
-  var grid1 = '4 4\n*...\n....\n....\n.*..\n';
+  var grid1 = '4 4\n*...\n....\n..*.\n....\n';
   var grid2 = '3 5\n**...\n.....\n.*...\n';
 
   describe('can be created from string', function() {
