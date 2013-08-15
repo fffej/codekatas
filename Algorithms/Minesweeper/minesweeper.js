@@ -26,6 +26,20 @@ var Minesweeper = function(s) {
     if (this.at(i,j)) {
       return '*';
     }
+
+    var count = 0;
+    for (var dx=-1;dx<=1;++dx) {
+      for (var dy=-1;dy<=1;++dy) {
+        if (dx === 0 && dy === 0) {
+          continue;
+        }
+        if (this.at(i + dx, j + dy)) {
+          count++;
+        }
+      }
+    }
+ 
+    return count;
   };
 
   return this;
