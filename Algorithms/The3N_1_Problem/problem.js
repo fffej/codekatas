@@ -31,17 +31,29 @@ var Chain = function() {
 
   this.table = {};
 
+  this.next = function(n) {
+    return (n % 2 === 0) ? n/2 : (n*3+1);
+  };
+
   this.cycleLength = function(n) {
     var c = 1;
+    var org = n;
+
     while (n !== 1) {
       c++;
-      if (n % 2 === 0) {
-        n /= 2;
-      } else {
-        n = n * 3 + 1;
-      }
+      n = this.next(n);
     }
-    return c;    
+
+    this.table[org] = c;
+
+    var n = org;
+    while (n !== 1) {
+      c--;
+      n = this.next(n);
+      this.table[n] = c;
+    }
+
+    return this.table[org];    
   };
 
   return this;
@@ -68,8 +80,8 @@ describe('3n + 1', function() {
       var chain = new Chain();
       chain.cycleLength(22);
 
-      assert.equal(16, chain.table[22]);
-      assert.equal(15, chain.table[11]);
+      assert.equal(16, chain.table[22], '22');
+      assert.equal(15, chain.table[11], '11');
     });
   });
 
