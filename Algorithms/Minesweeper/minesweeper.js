@@ -24,6 +24,18 @@ var Minesweeper = function(s) {
     } 
   };
 
+  this.toString = function() {
+    var s = '';
+
+    for (var i=0;i<this.height;++i) {
+      for (var j=0;j<this.width;++j) {
+        s+= this.val(j,i);
+      }
+      s+='\n';
+    }
+    return s;
+  };
+
   this.val = function(i,j) {
     if (this.at(i,j)) {
       return '*';
