@@ -22,6 +22,12 @@ var Minesweeper = function(s) {
     return grid[j][i];
   };
 
+  this.val = function(i,j) {
+    if (this.at(i,j)) {
+      return '*';
+    }
+  };
+
   return this;
 };
 
