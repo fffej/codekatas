@@ -123,6 +123,11 @@ describe('3n + 1', function() {
       assert.equal(89, chain.max(201,210));
       assert.equal(174, chain.max(900,1000));
     });
+
+    it('handles big numbers', function() {
+      var chain = new Chain();
+      assert.equal(525, chain.max(1,1000000));
+    });
   });
 
   describe('memoizer', function() {
