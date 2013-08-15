@@ -1,6 +1,11 @@
 "use strict";
 var assert = require('assert');
 
+var Minesweeper = function(s) {
+
+  return this;
+};
+
 describe('minesweeper', function() {
 
   var grid1 = '4 4\n*...\n....\n....\n.*..\n';
