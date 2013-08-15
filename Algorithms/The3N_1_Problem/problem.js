@@ -19,6 +19,20 @@ var cycleLength = function(n) {
   return basic(n).length;
 };
 
+
+var memo = function(f) {
+
+  var table = {};
+  return function(n) {
+    if (!table[n]) {
+      table[n] = f(n);
+    }
+
+    return table[n];
+  };
+};
+
+
 describe('3n + 1', function() {
   describe('basics', function() {
     it('returns all values', function() {
