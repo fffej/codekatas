@@ -50,7 +50,11 @@ var Chain = function() {
     while (n !== 1) {
       c--;
       n = this.next(n);
-      this.table[n] = c;
+      if (!this.table[n]) {
+        this.table[n] = c;
+      } else {
+        break;
+      }
     }
 
     return this.table[org];    
