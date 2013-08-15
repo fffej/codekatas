@@ -2,6 +2,13 @@
 var assert = require('assert');
 
 var Minesweeper = function(s) {
+  var lines = s.split('\n');
+  var xy = lines[0].split(' ');
+  var x = xy[0] | 0;
+  var y = xy[1] | 0;
+
+  this.height = x;
+  this.width = y;
 
   return this;
 };
