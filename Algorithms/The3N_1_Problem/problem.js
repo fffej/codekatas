@@ -40,7 +40,11 @@ var Chain = function() {
     var org = n;
 
     while (n !== 1) {
+      if (this.table[n]) {
+        return (c-1) + this.table[n];
+      }      
       c++;
+      
       n = this.next(n);
     }
 
