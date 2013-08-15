@@ -10,6 +10,15 @@ var Minesweeper = function(s) {
   this.height = x;
   this.width = y;
 
+  var grid = new Array(y);
+  for (var i=0;i<y;++i) {
+    grid[i] = new Array(x);
+  }
+
+  this.at = function(i,j) {
+    return grid[i][j];
+  };
+
   return this;
 };
 
