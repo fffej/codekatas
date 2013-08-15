@@ -15,20 +15,6 @@ var basic = function(n) {
   return values;
 };
 
-var cycleLength = function(n) {
-  var c = 1;
-  while (n !== 1) {
-    c++;
-    if (n % 2 === 0) {
-      n /= 2;
-    } else {
-      n = n * 3 + 1;
-    }
-  }
-  return c;
-};
-
-
 var memo = function(f) {
 
   var table = {};
@@ -66,10 +52,6 @@ describe('3n + 1', function() {
         [22,11,34,17,52,26,13,40,20,10,5,16,8,4,2,1],
         basic(22)
       );
-    });
-
-    it('calculates the cycle length', function() {
-      assert.equal(16, cycleLength(22));
     });
   });
 
