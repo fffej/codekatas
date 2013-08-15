@@ -60,6 +60,14 @@ describe('3n + 1', function() {
       var chain = new Chain();
       assert.equal(16, chain.cycleLength(22));
     });
+
+    it('stores intermediate values', function() {
+      var chain = new Chain();
+      chain.cycleLength(22);
+
+      assert.equal(16, chain.table[22]);
+      assert.equal(15, chain.table[11]);
+    });
   });
 
   describe('memoizer', function() {
