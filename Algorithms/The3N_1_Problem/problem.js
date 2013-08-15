@@ -28,6 +28,9 @@ var memo = function(f) {
 };
 
 var Chain = function() {
+
+  this.table = {};
+
   this.cycleLength = function(n) {
     var c = 1;
     while (n !== 1) {
