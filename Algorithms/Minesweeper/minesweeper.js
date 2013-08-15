@@ -19,7 +19,9 @@ var Minesweeper = function(s) {
   }
 
   this.at = function(i,j) {
-    return grid[j][i];
+    if (grid[j]) {
+      return grid[j][i];
+    } 
   };
 
   this.val = function(i,j) {
@@ -47,7 +49,7 @@ var Minesweeper = function(s) {
 
 describe('minesweeper', function() {
 
-  var grid1 = '4 4\n*...\n....\n..*.\n....\n';
+  var grid1 = '4 4\n*...\n....\n.*..\n....\n';
   var grid2 = '3 5\n**...\n.....\n.*...\n';
 
   describe('can be created from string', function() {
