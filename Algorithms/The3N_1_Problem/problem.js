@@ -23,5 +23,9 @@ describe('3n + 1', function() {
         basic(22)
       );
     });
+
+    it('calculates the cycle length', function() {
+      assert.equal(16, cycleLength(22));
+    });
   });
 });
