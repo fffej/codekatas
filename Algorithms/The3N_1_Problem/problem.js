@@ -41,6 +41,23 @@ var memo = function(f) {
   };
 };
 
+var Chain = function() {
+  this.cycleLength = function(n) {
+    var c = 1;
+    while (n !== 1) {
+      c++;
+      if (n % 2 === 0) {
+        n /= 2;
+      } else {
+        n = n * 3 + 1;
+      }
+    }
+    return c;    
+  };
+
+  return this;
+};
+
 
 describe('3n + 1', function() {
   describe('basics', function() {
