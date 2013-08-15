@@ -87,6 +87,19 @@ describe('3n + 1', function() {
       assert.equal(16, chain.table[22], '22');
       assert.equal(15, chain.table[11], '11');
     });
+
+    it('does not recalculate values', function() {
+      var chain = new Chain();
+      var oldNext = chain.next;
+      var callCount = 0;
+      chain.next = function(n) {
+        callCount++;
+        return oldNext(n);
+      }
+
+      assert.equal(16, chain.cycleLength(22));
+      assert(16, callCount);
+    });
   });
 
   describe('memoizer', function() {
