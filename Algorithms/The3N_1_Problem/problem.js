@@ -15,6 +15,10 @@ var basic = function(n) {
   return values;
 };
 
+var cycleLength = function(n) {
+  return basic(n).length;
+};
+
 describe('3n + 1', function() {
   describe('basics', function() {
     it('returns all values', function() {
