@@ -48,5 +48,11 @@ describe('minesweeper', function() {
       assert(grid.at(1,0));
       assert(!grid.at(2,0));
     });
+
+    it('says surrounding mines', function() {
+      var grid = new Minesweeper(grid1);
+      assert.equal('*', grid.val(0,0));
+      assert.equal('2', grid.val(1,1));
+    });
   });
 });
