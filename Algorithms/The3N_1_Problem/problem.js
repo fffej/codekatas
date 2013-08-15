@@ -98,7 +98,10 @@ describe('3n + 1', function() {
       }
 
       assert.equal(16, chain.cycleLength(22));
-      assert(16, callCount);
+      var originalCallCount = callCount;
+
+      assert.equal(15, chain.cycleLength(11));
+      assert.equal(originalCallCount, callCount);
     });
   });
 
