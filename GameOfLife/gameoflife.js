@@ -32,8 +32,14 @@ var Cell = function(cellState) {
 
 var InfiniteGrid = function() {
 
+  var cells = [];
+
   this.liveCells = function() {
-    return [];
+    return cells;
+  };
+
+  this.addCell = function(cell, pos) {
+    cells.push(cell);
   };
 
   return this;
