@@ -12,9 +12,10 @@ var Cell = function(cellState) {
   this.isAlive = function() { return !this.isDead(); };
 
   this.nextState = function(numOfLiveNeighbours) {
-    if (this.isAlive() && numOfLiveNeighbours < 2) {
+    if (this.isAlive() && (numOfLiveNeighbours < 2 || numOfLiveNeighbours > 3)) {
       cellState = CellState.DEAD;
     }
+
 
     return this;
   };
