@@ -42,6 +42,8 @@ var InfiniteGrid = function() {
     cells.push(cell);
   };
 
+  
+
   return this;
 };
 
@@ -72,6 +74,12 @@ describe('game of life', function() {
         g.addCell(new Cell(CellState.ALIVE), {x: 0, y: 0});
 
         assert.equal(1, g.liveCells().length);
+      });
+
+      it('cells have neighbours', function() {
+        var g = grid();
+        var neighbours = g.liveNeighbours( {x : 0, y: 0 });
+        assert.equal(0, neighbours.length);
       });
     });
   });
