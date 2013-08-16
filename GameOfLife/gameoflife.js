@@ -60,6 +60,13 @@ describe('game of life', function() {
       it('has a collection of live cells', function() {
         assert.equal(0, grid().liveCells().length);
       });
+
+      it('cells can be added externally', function() {
+        var g = grid();
+        g.addCell(new Cell(CellState.ALIVE), {x: 0, y: 0});
+
+        assert.equal(1, g.liveCells().length);
+      });
     });
   });
 
