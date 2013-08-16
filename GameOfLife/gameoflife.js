@@ -44,6 +44,10 @@ describe('game of life', function() {
       it('live to dead less than two neighbours', function() {
         assert(liveCell().nextState(1).isDead());
       });
+
+      it('live to dead more than three neighbours', function() {
+        assert(liveCell().nextState(4).isDead());
+      });
     });
   });
 });
