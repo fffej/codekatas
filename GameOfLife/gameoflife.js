@@ -30,6 +30,10 @@ var Cell = function(cellState) {
   return this;
 };
 
+var InfiniteGrid = function() {
+  return this;
+};
+
 describe('game of life', function() {
   describe('states', function() {
     it('dead or alive', function() {
