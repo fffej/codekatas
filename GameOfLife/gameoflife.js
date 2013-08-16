@@ -6,6 +6,10 @@ var CellState = {
   ALIVE: 1
 };
 
+var Cell = function(cellState) {
+  return this;
+};
+
 describe('game of life', function() {
   describe('states', function() {
     it('dead or alive', function() {
