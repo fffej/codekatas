@@ -18,6 +18,8 @@ var Cell = function(cellState) {
   this.nextState = function(numOfLiveNeighbours) {
     if (this.isAlive() && overOrUnderPopulated(numOfLiveNeighbours)) {
       cellState = CellState.DEAD;
+    } else if (this.isDead() && numOfLiveNeighbours === 3) {
+      cellState = CellState.ALIVE;
     }
 
     return this;
@@ -44,6 +46,7 @@ describe('game of life', function() {
     describe('transitions', function() {
 
       var liveCell = function() { return new Cell(CellState.ALIVE); };
+      var deadCell = function() { return new Cell(CellState.DEAD); };
 
       it('live to dead less than two neighbours', function() {
         assert(liveCell().nextState(1).isDead());
