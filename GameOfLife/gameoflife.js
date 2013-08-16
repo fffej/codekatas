@@ -24,5 +24,14 @@ describe('game of life', function() {
       assert(new Cell(CellState.DEAD));
       assert(new Cell(CellState.ALIVE));
     });
+
+    describe('transitions', function() {
+
+      var liveCell = function() { return new Cell(CellState.ALIVE); };
+
+      it('live to dead less than two neighbours', function() {
+        assert(liveCell().nextState(1).isDead());
+      });
+    });
   });
 });
