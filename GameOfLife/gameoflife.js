@@ -1,7 +1,7 @@
 "use strict";
 var assert = require('assert');
 
-var Cell = {
+var CellState = {
   DEAD: 0,
   ALIVE: 1
 };
@@ -9,9 +9,9 @@ var Cell = {
 describe('game of life', function() {
   describe('states', function() {
     it('dead or alive', function() {
-      assert(Cell.DEAD !== undefined);
-      assert(Cell.ALIVE);
-      assert(Cell.DEAD !== Cell.ALIVE);
+      assert(CellState.DEAD !== undefined);
+      assert(CellState.ALIVE);
+      assert(CellState.DEAD !== CellState.ALIVE);
     });
   });
 });
