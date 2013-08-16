@@ -57,6 +57,10 @@ describe('game of life', function() {
         assert(liveCell().nextState(2).isAlive());
         assert(liveCell().nextState(3).isAlive());
       });
+
+      it('dead cells become alive with three neighbours', function() {
+        assert(deadCell().nextState(3).isAlive());
+      });
     });
   });
 });
