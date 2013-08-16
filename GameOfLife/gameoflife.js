@@ -64,6 +64,14 @@ describe('game of life', function() {
       it('dead cells become alive with three neighbours', function() {
         assert(deadCell().nextState(3).isAlive());
       });
+
+      it('is immutable', function() {
+        var liveCell = new Cell(CellState.ALIVE);
+        var nextState = liveCell.nextState(1);
+  
+        assert(liveCell.isAlive());
+        assert(nextState.isDead());
+      });
     });
   });
 });
