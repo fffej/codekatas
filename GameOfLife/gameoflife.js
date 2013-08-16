@@ -39,6 +39,12 @@ describe('game of life', function() {
     });
   });
 
+  describe('infinite grid', function() {
+    it('exists!', function() {
+      assert(new InfiniteGrid());
+    });
+  });
+
   describe('cells', function() {
     it('cells exist', function() {
       assert(new Cell(CellState.DEAD));
