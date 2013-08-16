@@ -16,13 +16,15 @@ var Cell = function(cellState) {
   this.isAlive = function() { return !this.isDead(); };
 
   this.nextState = function(numOfLiveNeighbours) {
+    var next = cellState;
+
     if (this.isAlive() && overOrUnderPopulated(numOfLiveNeighbours)) {
-      cellState = CellState.DEAD;
+      next = CellState.DEAD;
     } else if (this.isDead() && numOfLiveNeighbours === 3) {
-      cellState = CellState.ALIVE;
+      next = CellState.ALIVE;
     }
 
-    return this;
+    return new Cell(next);
   }
 
   return this;
