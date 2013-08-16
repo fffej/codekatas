@@ -8,17 +8,20 @@ var CellState = {
 
 var Cell = function(cellState) {
  
+  var overOrUnderPopulated = function(n) {
+    return n < 2 || n > 3;
+  };
+
   this.isDead = function() { return cellState === CellState.DEAD; };
   this.isAlive = function() { return !this.isDead(); };
 
   this.nextState = function(numOfLiveNeighbours) {
-    if (this.isAlive() && (numOfLiveNeighbours < 2 || numOfLiveNeighbours > 3)) {
+    if (this.isAlive() && overOrUnderPopulated(numOfLiveNeighbours)) {
       cellState = CellState.DEAD;
     }
 
-
     return this;
-  };
+  }
 
   return this;
 };
