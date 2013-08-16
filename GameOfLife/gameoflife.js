@@ -7,6 +7,18 @@ var CellState = {
 };
 
 var Cell = function(cellState) {
+ 
+  this.isDead = function() { return cellState === CellState.DEAD; };
+  this.isAlive = function() { return !this.isDead(); };
+
+  this.nextState = function(numOfLiveNeighbours) {
+    if (this.isAlive() && numOfLiveNeighbours < 2) {
+      cellState = CellState.DEAD;
+    }
+
+    return this;
+  };
+
   return this;
 };
 
