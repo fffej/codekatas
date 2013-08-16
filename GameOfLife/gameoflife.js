@@ -31,6 +31,11 @@ var Cell = function(cellState) {
 };
 
 var InfiniteGrid = function() {
+
+  this.liveCells = function() {
+    return [];
+  };
+
   return this;
 };
 
@@ -53,7 +58,7 @@ describe('game of life', function() {
       var grid = function() { return new InfiniteGrid(); };
 
       it('has a collection of live cells', function() {
-        assert.equal(0, grid.liveCells().length);
+        assert.equal(0, grid().liveCells().length);
       });
     });
   });
