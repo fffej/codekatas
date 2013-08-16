@@ -47,6 +47,15 @@ describe('game of life', function() {
     it('exists!', function() {
       assert(new InfiniteGrid());
     });
+
+    describe('behaviour', function() {
+
+      var grid = function() { return new InfiniteGrid(); };
+
+      it('has a collection of live cells', function() {
+        assert.equal(0, grid.liveCells().length);
+      });
+    });
   });
 
   describe('cells', function() {
