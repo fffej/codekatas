@@ -42,7 +42,9 @@ var InfiniteGrid = function() {
     cells.push(cell);
   };
 
-  
+  this.liveNeighbours = function(pos) {
+    return [];
+  };
 
   return this;
 };
