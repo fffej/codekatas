@@ -14,4 +14,11 @@ describe('game of life', function() {
       assert(CellState.DEAD !== CellState.ALIVE);
     });
   });
+
+  describe('transitions', function() {
+    it('cells exist', function() {
+      assert(new Cell(CellState.DEAD));
+      assert(new Cell(CellState.ALIVE));
+    });
+  });
 });
