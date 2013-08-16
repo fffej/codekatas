@@ -19,7 +19,7 @@ describe('game of life', function() {
     });
   });
 
-  describe('transitions', function() {
+  describe('cells', function() {
     it('cells exist', function() {
       assert(new Cell(CellState.DEAD));
       assert(new Cell(CellState.ALIVE));
