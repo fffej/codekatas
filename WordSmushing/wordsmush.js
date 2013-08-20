@@ -12,7 +12,10 @@ var smush2 = function(a,b) {
 
 var smush = function() {
   if (arguments.length === 2) {
-    return smush2(arguments[0], arguments[1]);
+    var resultA = smush2(arguments[0], arguments[1]);
+    var resultB = smush2(arguments[1], arguments[0]);
+
+    return resultA.length > resultB.length ? resultB : resultA;
   }
 };
 
@@ -29,7 +32,7 @@ describe('word smush', function() {
 
   describe('minimal solution', function() {
     it('should find the minimal solution for two words', function() {
-      assert.equal('boing', smush('ing', 'bo'));
+      assert.equal('boing', smush('ing', 'boi'));
     });
   });
 });
