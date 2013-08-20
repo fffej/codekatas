@@ -20,4 +20,10 @@ describe('word smush', function() {
       assert.equal('find', smush2('fin', 'ind'));
     });
   });
+
+  describe('minimal solution', function() {
+    it('should find the minimal solution for two words', function() {
+      assert.equal('boing', smush('ing', 'bo'));
+    });
+  });
 });
