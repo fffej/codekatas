@@ -11,5 +11,9 @@ describe('word smush', function() {
     it('should concatenate words with no overlaps', function() {
       assert.equal("catdog", smush2("cat", "dog"));
     });
+
+    it('should skip adjacent characters', function() {
+      assert.equal('find', smush2('fin', 'ind'));
+    });
   });
 });
