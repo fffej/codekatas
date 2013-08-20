@@ -10,6 +10,12 @@ var smush2 = function(a,b) {
   return a[0] + smush2(a.substr(1), b);
 };
 
+var smush = function() {
+  if (arguments.length === 2) {
+    return smush2(arguments[0], arguments[1]);
+  }
+};
+
 describe('word smush', function() {
   describe('smush two works', function() {
     it('should concatenate words with no overlaps', function() {
