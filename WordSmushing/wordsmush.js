@@ -3,10 +3,6 @@
 var assert = require('assert');
 
 var smush2 = function(a,b) {
-  if (a === '') { 
-    return b;
-  }
-
   if (b.indexOf(a) === 0) {
     return b;
   } 
