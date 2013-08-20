@@ -9,9 +9,9 @@ var smush2 = function(a,b) {
 
   if (b.indexOf(a) === 0) {
     return b;
-  } else {
-    return a[0] + smush2(a.substr(1), b);
-  }
+  } 
+
+  return a[0] + smush2(a.substr(1), b);
 };
 
 describe('word smush', function() {
