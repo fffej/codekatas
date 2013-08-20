@@ -38,5 +38,9 @@ describe('word smush', function() {
     it('should find the minimal solution for two words', function() {
       assert.equal('boing', smush('ing', 'boi'));
     });
+
+    it('should find the best solution for three words', function() {
+      assert.equal('minutestinginger', smush('ginger', 'testing', 'minutes'));
+    });
   });
 });
