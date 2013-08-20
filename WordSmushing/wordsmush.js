@@ -10,12 +10,16 @@ var smush2 = function(a,b) {
   return a[0] + smush2(a.substr(1), b);
 };
 
+var best = function(x,y) {
+  return x.length > y.length ? y : x;
+};
+
 var smush = function() {
   if (arguments.length === 2) {
     var resultA = smush2(arguments[0], arguments[1]);
     var resultB = smush2(arguments[1], arguments[0]);
 
-    return resultA.length > resultB.length ? resultB : resultA;
+    return best(resultA, resultB);
   }
 };
 
