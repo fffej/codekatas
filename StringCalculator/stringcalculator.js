@@ -4,12 +4,18 @@ var assert = require('assert');
 
 var sumArrayOfStringsAsInts = function(n) {
     var sum = 0;
+
+    var errors = [];
+
     for (var i=0;i<n.length;++i) {
       if ((n[i]|0) < 0) {
-        throw Error('Negatives not allowed');
+        errors.push(n[i]|0);
       }
       sum += n[i]|0;
     }
+    
+    if (errors.length) { throw Error('negatives not allowed: ' + errors); }
+   
     return sum;
 };
 
