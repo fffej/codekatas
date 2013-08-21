@@ -34,7 +34,9 @@ var hasCustomDelimiter = function(s) {
 var getDelimiter = function(s) {
   if (hasCustomDelimiter(s)) {
     return { delimiter: s.substr(2, s.indexOf('\n') - 2) };
-  }
+  } 
+
+  return { delimiter: ',' };
 };
 
 describe('string calculator', function() {
