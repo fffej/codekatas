@@ -112,5 +112,9 @@ describe('string calculator', function() {
         stringCalculator.add('1,-2,3');
       });
     });
+
+    it('lists all negatives', function() {
+      assert.throws(function() { stringCalculator.add('-1,-2,-3'); }, function(e) { return e.message.indexOf('-1,-2,-3') !== -1; });
+    });
   });
 });
