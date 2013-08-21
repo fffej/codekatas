@@ -2,18 +2,22 @@
 
 var assert = require('assert');
 
+var sumArrayOfStringsAsInts = function(n) {
+    var sum = 0;
+    for (var i=0;i<n.length;++i) {
+      sum += n[i]|0;
+    }
+    return sum;
+};
+
 var StringCalculator = function() {
   StringCalculator.prototype.add = function(s) { 
     if (s.length === 0) {
       return 0;
     }
 
-    var n = s.split(',');
-    var sum = 0;
-    for (var i=0;i<n.length;++i) {
-      sum += n[i]|0;
-    }
-    return sum;
+    return sumArrayOfStringsAsInts(s.split(','));
+
   };
   return this;
 };
