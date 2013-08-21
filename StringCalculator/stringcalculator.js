@@ -12,7 +12,10 @@ var sumArrayOfStringsAsInts = function(n) {
       if (num < 0) {
         errors.push(num);
       }
-      sum += num;
+
+      if (num < 1000) {
+        sum += num;
+      }
     }
     
     if (errors.length) { throw Error('negatives not allowed: ' + errors); }
