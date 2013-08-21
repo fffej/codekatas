@@ -100,5 +100,9 @@ describe('string calculator', function() {
     it('handles new lines as separators', function() {
       assert.equal(1+2+3, stringCalculator.add('1\n2\n3'));
     });
+
+    it('supports delimiters', function() {
+      assert.equal(1+2+3, stringCalculator.add('//q\n1q2q3'));
+    });
   });
 });
