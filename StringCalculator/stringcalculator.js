@@ -24,5 +24,9 @@ describe('string calculator', function() {
     it('0 args', function() {
       assert.equal(0, stringCalculator.add(''));
     });
+
+    it('1 arg', function() {
+      assert.equal(55, stringCalculator.add('55'));
+    });
   });
 });
