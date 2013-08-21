@@ -10,15 +10,18 @@ var sumArrayOfStringsAsInts = function(n) {
     return sum;
 };
 
+var tokenize = function(s) {
+  s = s.replace(/\n/g, ',');
+  return s.split(',');
+};
+
 var StringCalculator = function() {
   StringCalculator.prototype.add = function(s) { 
     if (s.length === 0) {
       return 0;
     }
 
-    s = s.replace(/\n/g, ',');
-    return sumArrayOfStringsAsInts(s.split(','));
-
+    return sumArrayOfStringsAsInts(tokenize(s));
   };
   return this;
 };
