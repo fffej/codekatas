@@ -59,6 +59,11 @@ describe('string calculator', function() {
       var s = getDelimiter('//q\n1q2q3');
       assert('q', s.delimiter);
     });
+
+    it('returns default delimiters', function() {
+      var s = getDelimiter('1,2,3');
+      assert(',', s.delimiter);
+    });
   });
 
   describe('add method', function() {
