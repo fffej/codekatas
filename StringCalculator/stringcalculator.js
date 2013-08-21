@@ -48,6 +48,11 @@ describe('string calculator', function() {
     it('ignores normal delimters', function() {
       assert(!hasCustomDelimiter('1,2,3'));
     });
+
+    it('returns delimiter', function() {
+      var s = getDelimiter('//q\n1q2q3');
+      assert('q', s.delimiter);
+    });
   });
 
   describe('add method', function() {
