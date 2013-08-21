@@ -104,5 +104,11 @@ describe('string calculator', function() {
     it('supports delimiters', function() {
       assert.equal(1+2+3, stringCalculator.add('//q\n1q2q3'));
     });
+
+    it('dislikes negatives', function() {
+      assert.throws(function() {
+        stringCalculator.add('1,-2,3');
+      });
+    });
   });
 });
