@@ -10,9 +10,9 @@ var sumArrayOfStringsAsInts = function(n) {
     return sum;
 };
 
-var tokenize = function(s) {
-  s = s.replace(/\n/g, ',');
-  return s.split(',');
+var tokenize = function(s, delim) {
+  s = s.replace(/\n/g, delim);
+  return s.split(delim);
 };
 
 var StringCalculator = function() {
@@ -21,7 +21,9 @@ var StringCalculator = function() {
       return 0;
     }
 
-    var tokens = tokenize(s);
+    
+
+    var tokens = tokenize(s,',');
     return sumArrayOfStringsAsInts(tokens);
   };
   return this;
