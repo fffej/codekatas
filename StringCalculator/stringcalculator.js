@@ -21,7 +21,8 @@ var StringCalculator = function() {
       return 0;
     }
 
-    return sumArrayOfStringsAsInts(tokenize(s));
+    var tokens = tokenize(s);
+    return sumArrayOfStringsAsInts(tokens);
   };
   return this;
 };
