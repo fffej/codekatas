@@ -130,5 +130,9 @@ describe('string calculator', function() {
     it('numbers > 1000 ignored', function() {
       assert.equal(0, stringCalculator.add('1001'));
     });
+
+    it('supports delims of any length', function() {
+      assert.equal(6, stringCalculator.add('//[***]\n1***2***3'));
+    });
   });
 });
