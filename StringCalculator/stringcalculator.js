@@ -123,5 +123,9 @@ describe('string calculator', function() {
     it('lists all negatives', function() {
       assert.throws(function() { stringCalculator.add('-1,-2,-3'); }, function(e) { return e.message.indexOf('-1,-2,-3') !== -1; });
     });
+
+    it('numbers > 1000 ignored', function() {
+      assert.equal(0, stringCalculator.add('1001'));
+    });
   });
 });
