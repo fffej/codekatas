@@ -8,10 +8,11 @@ var sumArrayOfStringsAsInts = function(n) {
     var errors = [];
 
     for (var i=0;i<n.length;++i) {
-      if ((n[i]|0) < 0) {
-        errors.push(n[i]|0);
+      var num = n[i]|0;
+      if (num < 0) {
+        errors.push(num);
       }
-      sum += n[i]|0;
+      sum += num;
     }
     
     if (errors.length) { throw Error('negatives not allowed: ' + errors); }
