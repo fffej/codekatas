@@ -66,6 +66,11 @@ describe('string calculator', function() {
       var s = getDelimiter('1,2,3');
       assert(',', s.delimiter);
     });
+ 
+    it('consumes some of the string', function() {
+      assert.equal('1,2,3', getDelimiter('1,2,3').line);
+      assert.equal('1q2q3', getDelimiter('//q\n1q2q3').line);
+    });
   });
 
   describe('add method', function() {
