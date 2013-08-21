@@ -16,6 +16,7 @@ var StringCalculator = function() {
       return 0;
     }
 
+    s = s.replace(/\n/g, ',');
     return sumArrayOfStringsAsInts(s.split(','));
 
   };
