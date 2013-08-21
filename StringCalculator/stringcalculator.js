@@ -36,6 +36,16 @@ describe('string calculator', function() {
     assert(new StringCalculator().add);
   });
 
+  describe('delimiters', function() {
+    it('knows about custom delimters', function() {
+      assert(hasCustomDelimter('//q\n1q2q3'));
+    });
+
+    it('ignores normal delimters', function() {
+      assert(!hasCustomDelimter('1,2,3'));
+    });
+  });
+
   describe('add method', function() {
     var stringCalculator = new StringCalculator();
 
