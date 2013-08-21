@@ -5,6 +5,9 @@ var assert = require('assert');
 var sumArrayOfStringsAsInts = function(n) {
     var sum = 0;
     for (var i=0;i<n.length;++i) {
+      if ((n[i]|0) < 0) {
+        throw Error('Negatives not allowed');
+      }
       sum += n[i]|0;
     }
     return sum;
@@ -22,7 +25,6 @@ var StringCalculator = function() {
     }
 
     var result = getDelimiter(s);
-
     var tokens = tokenize(result.line,result.delimiter);
     return sumArrayOfStringsAsInts(tokens);
   };
