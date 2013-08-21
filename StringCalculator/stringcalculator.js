@@ -8,7 +8,12 @@ var StringCalculator = function() {
       return 0;
     }
 
-    return s|0;
+    var n = s.split(',');
+    var sum = 0;
+    for (var i=0;i<n.length;++i) {
+      sum += n[i]|0;
+    }
+    return sum;
   };
   return this;
 };
