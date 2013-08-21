@@ -3,7 +3,9 @@
 var assert = require('assert');
 
 var StringCalculator = function() {
-  StringCalculator.prototype.add = function() { };
+  StringCalculator.prototype.add = function() { 
+    return 0;
+  };
   return this;
 };
 
