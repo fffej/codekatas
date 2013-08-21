@@ -31,6 +31,12 @@ var hasCustomDelimiter = function(s) {
   return s.indexOf('//') === 0;
 };
 
+var getDelimiter = function(s) {
+  if (hasCustomDelimiter(s)) {
+    return { delimiter: s.substr(2, s.indexOf('\n') - 2) };
+  }
+};
+
 describe('string calculator', function() {
   it('exists', function() {
     assert(new StringCalculator());
