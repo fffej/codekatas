@@ -11,6 +11,10 @@ var sumArrayOfStringsAsInts = function(n) {
 };
 
 var tokenize = function(s) {
+  if (s.indexOf('//') === 0) {
+    throw Error('oh dear');
+  } 
+
   s = s.replace(/\n/g, ',');
   return s.split(',');
 };
