@@ -21,9 +21,9 @@ var StringCalculator = function() {
       return 0;
     }
 
-    
+    var result = getDelimiter(s);
 
-    var tokens = tokenize(s,',');
+    var tokens = tokenize(result.line,result.delimiter);
     return sumArrayOfStringsAsInts(tokens);
   };
   return this;
