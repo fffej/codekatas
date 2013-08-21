@@ -27,7 +27,7 @@ var StringCalculator = function() {
   return this;
 };
 
-var hasCustomDelimter = function(s) {
+var hasCustomDelimiter = function(s) {
   return s.indexOf('//') === 0;
 };
 
@@ -42,11 +42,11 @@ describe('string calculator', function() {
 
   describe('delimiters', function() {
     it('knows about custom delimters', function() {
-      assert(hasCustomDelimter('//q\n1q2q3'));
+      assert(hasCustomDelimiter('//q\n1q2q3'));
     });
 
     it('ignores normal delimters', function() {
-      assert(!hasCustomDelimter('1,2,3'));
+      assert(!hasCustomDelimiter('1,2,3'));
     });
   });
 
