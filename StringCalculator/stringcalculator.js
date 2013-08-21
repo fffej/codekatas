@@ -27,6 +27,10 @@ var StringCalculator = function() {
   return this;
 };
 
+var hasCustomDelimter = function(s) {
+  return s.indexOf('//') === 0;
+};
+
 describe('string calculator', function() {
   it('exists', function() {
     assert(new StringCalculator());
