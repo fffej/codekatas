@@ -33,10 +33,13 @@ var hasCustomDelimiter = function(s) {
 
 var getDelimiter = function(s) {
   if (hasCustomDelimiter(s)) {
-    return { delimiter: s.substr(2, s.indexOf('\n') - 2) };
+    return { 
+      delimiter: s.substr(2, s.indexOf('\n') - 2),
+      line: s.substr(s.indexOf('\n') + 1)
+    };
   } 
 
-  return { delimiter: ',' };
+  return { delimiter: ',', line: s };
 };
 
 describe('string calculator', function() {
