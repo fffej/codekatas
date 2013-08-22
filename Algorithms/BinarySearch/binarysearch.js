@@ -25,4 +25,8 @@ describe('binary search', function() {
   it('finds a single element', function() {
     assert.equal(0, [0].binarySearch(0));
   });
+
+  it('finds the middle element', function() {
+    assert.equal(1, [1,2,3].binarySearch(2));
+  });
 });
