@@ -11,6 +11,10 @@ Array.prototype.binarySearch = function(n) {
     if (O[mid] === n) {
       return mid;
     } 
+
+    if(O[mid] < n) {
+      return f(mid,hi);
+    }
     return -1;
   };
 
