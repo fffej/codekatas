@@ -37,4 +37,8 @@ describe('binary search', function() {
   it('finds up', function() {
     assert.equal(2, [1,2,3].binarySearch(3));
   });
+
+  it('finds down', function() {
+    assert.equal(1, [1,2,3].binarySearch(1));
+  });
 });
