@@ -36,6 +36,12 @@ var Ant = function() {
     orientation = dirs[(i+1) % 4];
   };
 
+  Ant.prototype.turnAntiClockwise = function() {
+    this.turnClockwise();
+    this.turnClockwise();
+    this.turnClockwise();
+  };
+
   return this;
 };
 
