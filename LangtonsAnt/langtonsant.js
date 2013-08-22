@@ -27,6 +27,10 @@ describe('infinite grid', function() {
     it('has a position', function() {
       assert(new Ant().position());
     });
+
+    it('has an orientation', function() {
+      assert.equal(Orientation.NORTH, new Ant().orientation());
+    });
   });
 
 });
