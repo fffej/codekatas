@@ -40,6 +40,22 @@ describe('infinite grid', function() {
     it('has an orientation', function() {
       assert.equal(Orientation.NORTH, new Ant().orientation());
     });
+
+    it('can turn', function() {
+      var ant = new Ant();
+
+      ant.turnClockwise();
+      assert.equal(Orientation.EAST, ant.orientation());
+
+      ant.turnClockwise();
+      assert.equal(Orientation.SOUTH, ant.orientation());
+
+      ant.turnClockwise();
+      assert.equal(Orientation.WEST, ant.orientation());
+
+      ant.turnClockwise();
+      assert.equal(Orientation.NORTH, ant.orientation());
+    });
   });
 
 });
