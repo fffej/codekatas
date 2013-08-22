@@ -20,5 +20,10 @@ describe('infinite grid', function() {
     it('exists', function() {
       assert(new Ant());
     });
+
+    it('has a position', function() {
+      assert(new Ant().position());
+    });
   });
+
 });
