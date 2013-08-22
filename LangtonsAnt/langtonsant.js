@@ -74,6 +74,22 @@ describe('infinite grid', function() {
       ant.turnClockwise();
       assert.equal(Orientation.NORTH, ant.orientation());
     });
+
+    it('can turn anti-clockwise', function() {
+      var ant = new Ant();
+
+      ant.turnAntiClockwise();
+      assert.equal(Orientation.WEST, ant.orientation());
+ 
+      ant.turnAntiClockwise();
+      assert.equal(Orientation.SOUTH, ant.orientation());
+
+      ant.turnAntiClockwise();
+      assert.equal(Orientation.EAST, ant.orientation());
+
+      ant.turnAntiClockwise();
+      assert.equal(Orientation.NORTH, ant.orientation());
+    });
   });
 
 });
