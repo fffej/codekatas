@@ -2,7 +2,7 @@
 var assert = require('assert');
 
 var Orientation = {
-  North: 0
+  NORTH: 0
 };
 
 var Plane = function() {
@@ -13,6 +13,11 @@ var Ant = function() {
   Ant.prototype.position = function() {
     return { x: 0, y: 0 };
   };
+
+  Ant.prototype.orientation = function() {
+    return Orientation.NORTH;
+  };
+
   return this;
 };
 
