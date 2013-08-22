@@ -21,10 +21,10 @@ var Ant = function() {
       Orientation.SOUTH,
       Orientation.WEST
   ];
-
+  var position = { x: 0, y: 0 };
 
   Ant.prototype.position = function() {
-    return { x: 0, y: 0 };
+    return position;
   };
 
   Ant.prototype.orientation = function() {
@@ -40,6 +40,10 @@ var Ant = function() {
     this.turnClockwise();
     this.turnClockwise();
     this.turnClockwise();
+  };
+
+  Ant.prototype.march = function() {
+    position.y += 1;
   };
 
   return this;
