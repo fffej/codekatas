@@ -5,6 +5,10 @@ var Plane = function() {
   return this;
 };
 
+var Ant = function() {
+  return this;
+};
+
 describe('infinite grid', function() {
   describe('grid', function() {
     it('exists', function() {
