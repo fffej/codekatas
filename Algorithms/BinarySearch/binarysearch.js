@@ -12,6 +12,10 @@ Array.prototype.binarySearch = function(n) {
       return mid;
     } 
 
+    if (lo === mid || hi === mid) {
+      return -(mid+1);
+    }
+
     if(O[mid] < n) {
       return f(mid,hi);
     }
@@ -19,9 +23,6 @@ Array.prototype.binarySearch = function(n) {
     if (O[mid] > n) {
       return f(lo,mid);
     }
-
-    if (mid === 0) return -1;
-    return -mid;
   };
 
   return f(0, O.length);
