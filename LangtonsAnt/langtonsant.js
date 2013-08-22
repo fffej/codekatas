@@ -22,6 +22,11 @@ var Ant = function() {
       Orientation.WEST
   ];
   var position = { x: 0, y: 0 };
+  var marchDirs = {};
+  marchDirs[Orientation.NORTH] = { x: 0, y: 1 };
+  marchDirs[Orientation.EAST] =  { x: 1, y: 0 };
+  marchDirs[Orientation.SOUTH] = { x: 0, y: -1 };
+  marchDirs[Orientation.WEST] =  { x: -1, y: 0 };
 
   Ant.prototype.position = function() {
     return position;
@@ -43,7 +48,9 @@ var Ant = function() {
   };
 
   Ant.prototype.march = function() {
-    position.y += 1;
+    var delta = marchDirs[orientation];
+    position.x += delta.x;
+    position.y += delta.y;
   };
 
   return this;
