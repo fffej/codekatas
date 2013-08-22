@@ -48,5 +48,7 @@ describe('binary search', function() {
     assert.equal(0, [1,2,3].binarySearch(1));
   });
 
-  
+  it('finds insertion index', function() {
+    assert.equal(-2, [1,2,4,5,6].binarySearch(3));
+  });
 });
