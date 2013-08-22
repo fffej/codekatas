@@ -41,7 +41,7 @@ describe('infinite grid', function() {
       assert.equal(Orientation.NORTH, new Ant().orientation());
     });
 
-    it('can turn', function() {
+    it('can turn clockwise', function() {
       var ant = new Ant();
 
       ant.turnClockwise();
