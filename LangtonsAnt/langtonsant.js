@@ -67,6 +67,14 @@ describe('infinite grid', function() {
       assert.equal(0, ant.position().y);
     });
 
+    it('can march', function() {
+      var ant = new Ant();
+      ant.march();
+
+      assert.equal(0, ant.position().x);
+      assert.equal(1, ant.position().y);
+    });
+
     it('has an orientation', function() {
       assert.equal(Orientation.NORTH, new Ant().orientation());
     });
