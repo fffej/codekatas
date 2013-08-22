@@ -1,6 +1,10 @@
 "use strict";
 var assert = require('assert');
 
+var Orientation = {
+  North: 0
+};
+
 var Plane = function() {
   return this;
 };
