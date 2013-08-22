@@ -6,6 +6,9 @@ var Plane = function() {
 };
 
 var Ant = function() {
+  Ant.prototype.position = function() {
+    return { x: 0, y: 0 };
+  };
   return this;
 };
 
