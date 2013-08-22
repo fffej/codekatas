@@ -15,6 +15,11 @@ Array.prototype.binarySearch = function(n) {
     if(O[mid] < n) {
       return f(mid,hi);
     }
+
+    if (O[mid] > n) {
+      return f(lo,mid);
+    }
+
     return -1;
   };
 
@@ -39,6 +44,6 @@ describe('binary search', function() {
   });
 
   it('finds down', function() {
-    assert.equal(1, [1,2,3].binarySearch(1));
+    assert.equal(0, [1,2,3].binarySearch(1));
   });
 });
