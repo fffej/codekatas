@@ -20,7 +20,8 @@ Array.prototype.binarySearch = function(n) {
       return f(lo,mid);
     }
 
-    return -1;
+    if (mid === 0) return -1;
+    return -mid;
   };
 
   return f(0, O.length);
@@ -46,4 +47,6 @@ describe('binary search', function() {
   it('finds down', function() {
     assert.equal(0, [1,2,3].binarySearch(1));
   });
+
+  
 });
