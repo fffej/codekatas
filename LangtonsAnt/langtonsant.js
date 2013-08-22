@@ -15,6 +15,13 @@ var Plane = function() {
 var Ant = function() {
 
   var orientation = Orientation.NORTH;
+  var dirs = [
+      Orientation.NORTH, 
+      Orientation.EAST,
+      Orientation.SOUTH,
+      Orientation.WEST
+  ];
+
 
   Ant.prototype.position = function() {
     return { x: 0, y: 0 };
@@ -25,15 +32,7 @@ var Ant = function() {
   };
 
   Ant.prototype.turnClockwise = function() {
-    var dirs = [
-        Orientation.NORTH, 
-        Orientation.EAST,
-        Orientation.SOUTH,
-        Orientation.WEST
-    ];
-
     var i = dirs.indexOf(orientation);
-
     orientation = dirs[(i+1) % 4];
   };
 
