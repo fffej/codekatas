@@ -21,7 +21,7 @@ var Stack = function() {
   };  
 
   Stack.prototype.top = function() {
-    return this._cards[0];
+    return this._cards[this._cards.length - 1];
   };
 
   return this;
