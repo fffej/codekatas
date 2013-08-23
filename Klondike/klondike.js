@@ -24,6 +24,10 @@ var Stack = function() {
     return this._cards[this._cards.length - 1];
   };
 
+  Stack.prototype.pop = function() {
+    return this._cards.pop();;
+  };
+
   return this;
 };
 
