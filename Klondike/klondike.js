@@ -41,4 +41,11 @@ describe('klondike', function() {
       var deck = new Deck();
     });
   });
+
+  describe('stack', function() {
+    it('is a concept', function() {
+      assert(new Stack().empty());
+    });
+  });
+
 });
