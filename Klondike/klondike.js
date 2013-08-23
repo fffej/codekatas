@@ -9,11 +9,18 @@ var Suit = {
 };
 
 var Stack = function() {
+
+  Stack.prototype._cards = [];
+
   Stack.prototype.empty = function() {
     return true;
   };
 
   Stack.prototype.add = function(card) {
+
+  };
+
+  Stack.prototype.top = function() {
 
   };
 
