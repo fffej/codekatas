@@ -1,12 +1,34 @@
 "use strict";
 var assert = require('assert');
 
+var Suit = {
+  Spades: 1,
+  Diamonds: 2,
+  Clubs: 3,
+  Hearts: 4
+};
+
+var Card = function(suit,value) {
+  this._suit = suit;
+  this._value = value;
+
+  Card.prototype.suit = function() {
+    return this._suit;
+  };
+
+  Card.prototype.value = function() {
+    return this._value;
+  };
+
+  return this;
+};
+
 describe('klondike', function() {
   describe('card', function() {
     it('has a suit and a value', function() {
-      var card = new Card(Suit.Spades);
+      var card = new Card(Suit.Spades,1);
       assert.equal(Suit.Spades, card.suit());
-      assert.equal(Value.Ace, card.value());
+      assert.equal(1, card.value());
     });
   });
 });
