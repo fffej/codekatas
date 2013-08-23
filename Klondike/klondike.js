@@ -54,6 +54,13 @@ describe('klondike', function() {
     it('is a concept', function() {
       assert(new Stack().empty());
     });
+
+    it('can add card', function() {
+      var stack = new Stack();
+      stack.add(new Card(Suit.Spades, 1));
+
+      assert.deepEqual(new Card(Suit.Spades, 1), stack.top());
+    });
   });
 
 });
