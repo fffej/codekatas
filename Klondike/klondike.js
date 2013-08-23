@@ -31,4 +31,10 @@ describe('klondike', function() {
       assert.equal(1, card.value());
     });
   });
+
+  describe('deck', function() {
+    it('consists of 52 cards', function() {
+      var deck = new Deck();
+    });
+  });
 });
