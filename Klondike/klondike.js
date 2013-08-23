@@ -17,11 +17,11 @@ var Stack = function() {
   };
 
   Stack.prototype.add = function(card) {
-
-  };
+    this._cards.push(card);
+  };  
 
   Stack.prototype.top = function() {
-
+    return this._cards[0];
   };
 
   return this;
