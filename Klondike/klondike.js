@@ -25,7 +25,7 @@ var Stack = function() {
   };
 
   Stack.prototype.pop = function() {
-    return this._cards.pop();;
+    return this._cards.pop();
   };
 
   return this;
