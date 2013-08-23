@@ -27,10 +27,6 @@ var Stack = function() {
   return this;
 };
 
-var Deck = function() {
-  return this;
-};
-
 var Card = function(suit,value) {
   this._suit = suit;
   this._value = value;
@@ -52,12 +48,6 @@ describe('klondike', function() {
       var card = new Card(Suit.Spades,1);
       assert.equal(Suit.Spades, card.suit());
       assert.equal(1, card.value());
-    });
-  });
-
-  describe('deck', function() {
-    it('consists of 52 cards', function() {
-      var deck = new Deck();
     });
   });
 
