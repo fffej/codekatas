@@ -8,6 +8,10 @@ var Suit = {
   Hearts: 4
 };
 
+var Deck = function() {
+  return this;
+};
+
 var Card = function(suit,value) {
   this._suit = suit;
   this._value = value;
