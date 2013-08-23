@@ -63,12 +63,23 @@ describe('klondike', function() {
       assert.deepEqual(new Card(Suit.Spades, 1), stack.top());
     });
 
-    it('can add multiple cards', function() {
+    var stackWithTwoCards = function() {
       var stack = new Stack();
       stack.add(new Card(Suit.Spades, 1));
       stack.add(new Card(Suit.Hearts, 2));
+ 
+      return stack;
+    };
 
+    it('can add multiple cards', function() {
+      var stack = stackWithTwoCards();
       assert.deepEqual(new Card(Suit.Hearts, 2), stack.top());
+    });
+
+    it('can pop cards', function() {
+      var stack = stackWithTwoCards();
+      stack.pop();
+      assert.deepEqual(new Card(Suit.Spades, 1), stack.top());
     });
   });
 
