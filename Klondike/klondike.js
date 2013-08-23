@@ -46,6 +46,15 @@ var Card = function(suit,value) {
   return this;
 };
 
+var Foundation = function() {
+  this[Suit.Spades] = new Stack();
+  this[Suit.Clubs] = new Stack();
+  this[Suit.Hearts] = new Stack();
+  this[Suit.Diamonds] = new Stack();
+
+  return this;
+};
+
 describe('klondike', function() {
   describe('card', function() {
     it('has a suit and a value', function() {
