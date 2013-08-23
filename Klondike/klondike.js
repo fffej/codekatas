@@ -55,6 +55,16 @@ describe('klondike', function() {
     });
   });
 
+  describe('foundation', function() {
+    it('has four stacks', function() {
+      var foundation = new Foundation();
+      assert(foundation[Suit.Spades].empty());
+      assert(foundation[Suit.Hearts].empty());
+      assert(foundation[Suit.Diamonds].empty());
+      assert(foundation[Suit.Clubs].empty());
+    });
+  });
+
   describe('stack', function() {
     it('is a concept', function() {
       assert(new Stack().empty());
