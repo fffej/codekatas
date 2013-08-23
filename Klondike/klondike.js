@@ -13,6 +13,10 @@ var Stack = function() {
     return true;
   };
 
+  Stack.prototype.add = function(card) {
+
+  };
+
   return this;
 };
 
