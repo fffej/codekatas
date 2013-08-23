@@ -8,6 +8,14 @@ var Suit = {
   Hearts: 4
 };
 
+var Stack = function() {
+  Stack.prototype.empty = function() {
+    return true;
+  };
+
+  return this;
+};
+
 var Deck = function() {
   return this;
 };
