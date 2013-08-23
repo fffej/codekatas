@@ -52,6 +52,10 @@ var Foundation = function() {
   this[Suit.Hearts] = new Stack();
   this[Suit.Diamonds] = new Stack();
 
+  Foundation.prototype.canRaise = function() {
+    return false;
+  };
+
   return this;
 };
 
