@@ -52,7 +52,7 @@ var Foundation = function() {
   this[Suit.Hearts] = new Stack();
   this[Suit.Diamonds] = new Stack();
 
-  Foundation.prototype.canRaise = function(card) {
+  Foundation.prototype.raise = function(card) {
     var stack = this[card.suit()];
 
     if (stack.empty() && card.value() === 1) {
@@ -85,12 +85,12 @@ describe('klondike', function() {
 
     it('must start with aces', function() {
       var foundation = new Foundation();     
-      assert(!foundation.canRaise(new Card(Suit.Spades, 2)));
+      assert(!foundation.raise(new Card(Suit.Spades, 2)));
     });
 
     it('raises an ace to an empty stack', function() {
       var foundation = new Foundation();
-      assert(foundation.canRaise(new Card(Suit.Spades, 1)));
+      assert(foundation.raise(new Card(Suit.Spades, 1)));
     });
   });
 
