@@ -92,6 +92,12 @@ describe('klondike', function() {
       var foundation = new Foundation();
       assert(foundation.raise(new Card(Suit.Spades, 1)));
     });
+
+    it('raises multiple cards', function() {
+      var foundation = new Foundation();
+      assert(foundation.raise(new Card(Suit.Spades, 1)));
+      assert(foundation.raise(new Card(Suit.Spades, 2)));
+    });
   });
 
   describe('stack', function() {
