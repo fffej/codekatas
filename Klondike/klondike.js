@@ -81,6 +81,11 @@ describe('klondike', function() {
       var foundation = new Foundation();     
       assert(!foundation.canRaise(new Card(Suit.Spades, 2)));
     });
+
+    it('raises an ace to an empty stack', function() {
+      var foundation = new Foundation();
+      assert(foundation.canRaise(new Card(Suit.Spades, 1)));
+    });
   });
 
   describe('stack', function() {
