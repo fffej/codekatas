@@ -52,7 +52,13 @@ var Foundation = function() {
   this[Suit.Hearts] = new Stack();
   this[Suit.Diamonds] = new Stack();
 
-  Foundation.prototype.canRaise = function() {
+  Foundation.prototype.canRaise = function(card) {
+    var stack = this[card.suit()];
+
+    if (stack.empty() && card.value() === 1) {
+      return true;
+    }
+
     return false;
   };
 
