@@ -77,9 +77,8 @@ describe('klondike', function() {
       assert(foundation[Suit.Clubs].empty());
     });
 
-    it('can raise cards to the right stack', function() {
-      var foundation = new Foundation();
-     
+    it('must start with aces', function() {
+      var foundation = new Foundation();     
       assert(!foundation.canRaise(new Card(Suit.Spades, 2)));
     });
   });
