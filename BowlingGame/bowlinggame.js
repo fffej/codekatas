@@ -17,13 +17,19 @@ var Game = function() {
     var score = 0;
     var frameStart = 0;
     for (var i=0;i<10;++i) {
-      var frameScore = rolls[frameStart] + rolls[frameStart+1];      
-      if (isSpare(frameStart)) { 
-        score += rolls[frameStart + 2];
+      var frameScore = rolls[frameStart] + rolls[frameStart+1];    
+      if (rolls[frameStart] === 10) {
+        score += rolls[frameStart + 1] + rolls[frameStart + 2] + 10;
+         frameStart++;
       } 
-      score += frameScore;
-
-      frameStart += 2;
+      else if (isSpare(frameStart)) { 
+        score += rolls[frameStart + 2] + 10;
+        frameStart += 2;
+      } 
+      else {
+        score += rolls[frameStart] + rolls[frameStart+1];
+        frameStart += 2;
+      }
     }
 
     return score;
