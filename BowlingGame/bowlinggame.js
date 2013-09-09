@@ -69,7 +69,7 @@ describe('bowling game', function() {
       assert.equal(3 + 7 + 2 + 2, game.score());
     });
 
-    it.skip('successfully scores a strike', function() {
+    it('successfully scores a strike', function() {
       game.roll(10);
       game.roll(5);
       game.roll(2);
