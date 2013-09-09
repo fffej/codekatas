@@ -5,6 +5,10 @@ var Game = function() {
 
   var rolls = [];
 
+  var isSpare = function(frameNum) {
+    return 10 === rolls[2*frameNum] + rolls[2*frameNum+1];
+  };
+
   this.roll = function(pins) {
     rolls.push(pins);
   };
@@ -13,7 +17,7 @@ var Game = function() {
     var score = 0;
     for (var i=0;i<10;++i) {
       var frameScore = rolls[2*i] + rolls[2*i+1];
-      if (frameScore === 10) { 
+      if (isSpare(i)) { 
         score += frameScore + rolls[2*i+2];
       }
       else {
