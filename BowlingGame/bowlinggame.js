@@ -3,12 +3,14 @@ var assert = require('assert');
 
 var Game = function() {
 
+  var score = 0;
+
   this.roll = function(pins) {
-    return -1;
+    score += pins;
   };
 
   this.score = function() {
-    return 0;
+    return score;
   };
 
   return this;
