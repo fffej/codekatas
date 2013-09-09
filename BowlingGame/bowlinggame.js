@@ -44,7 +44,7 @@ describe('bowling game', function() {
       assert.equal(5, game.score());
     });
 
-    it('successfully scores a spare', function() {
+    it.skip('successfully scores a spare', function() {
       game.roll(3);
       game.roll(7);
       game.roll(2);
