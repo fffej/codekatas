@@ -23,10 +23,6 @@ describe('bowling game', function() {
       game = new Game();
     });
 
-    it('is able to bowl a zero', function() {
-      assert(game.roll(0));
-    });
-
     it('is able to bowl a gutter game', function() {
       for (var i=0;i<20;++i) {
         game.roll(0);
