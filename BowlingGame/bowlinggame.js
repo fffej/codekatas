@@ -2,6 +2,11 @@
 var assert = require('assert');
 
 var Game = function() {
+
+  this.roll = function(pins) {
+    return -1;
+  };
+
   return this;
 };
 
