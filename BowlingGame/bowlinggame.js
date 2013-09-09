@@ -18,11 +18,9 @@ var Game = function() {
     for (var i=0;i<10;++i) {
       var frameScore = rolls[2*i] + rolls[2*i+1];
       if (isSpare(i)) { 
-        score += frameScore + rolls[2*i+2];
+        score += rolls[2*i+2];
       }
-      else {
-        score += frameScore;
-      }
+      score += frameScore;
     }
 
     return score;
