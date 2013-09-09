@@ -15,15 +15,15 @@ var Game = function() {
 
   this.score = function() {
     var score = 0;
-    var nextFrameStart = 0;
+    var frameStart = 0;
     for (var i=0;i<10;++i) {
-      var frameScore = rolls[nextFrameStart] + rolls[nextFrameStart+1];      
-      if (isSpare(nextFrameStart)) { 
-        score += rolls[nextFrameStart + 2];
+      var frameScore = rolls[frameStart] + rolls[frameStart+1];      
+      if (isSpare(frameStart)) { 
+        score += rolls[frameStart + 2];
       } 
       score += frameScore;
 
-      nextFrameStart += 2;
+      frameStart += 2;
     }
 
     return score;
