@@ -5,8 +5,8 @@ var Game = function() {
 
   var rolls = [];
 
-  var isSpare = function(frameNum) {
-    return 10 === rolls[2*frameNum] + rolls[2*frameNum+1];
+  var isSpare = function(frameStart) {
+    return 10 === rolls[frameStart] + rolls[frameStart + 1];
   };
 
   this.roll = function(pins) {
@@ -15,15 +15,15 @@ var Game = function() {
 
   this.score = function() {
     var score = 0;
+    var nextFrameStart = 0;
     for (var i=0;i<10;++i) {
-      var frameScore = rolls[2*i] + rolls[2*i+1];
-      if (rolls[2*i] === 10) {
-        score += rolls[2*i+2] + rolls[2*i+3];
-      }
-      else if (isSpare(i)) { 
-        score += rolls[2*i+2];
+      var frameScore = rolls[nextFrameStart] + rolls[nextFrameStart+1];      
+      if (isSpare(nextFrameStart)) { 
+        score += rolls[nextFrameStart + 2];
       } 
       score += frameScore;
+
+      nextFrameStart += 2;
     }
 
     return score;
