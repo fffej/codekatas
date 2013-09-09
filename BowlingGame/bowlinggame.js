@@ -25,19 +25,21 @@ describe('bowling game', function() {
       game = new Game();
     });
 
-    it('is able to bowl a gutter game', function() {
-      for (var i=0;i<20;++i) {
-        game.roll(0);
+    var rollMany = function(n, pins) {
+      for (var i=0;i<n;++i) {
+        game.roll(pins);
       }
+    }
+
+    it('is able to bowl a gutter game', function() {
+      rollMany(20,0);
 
       assert.equal(0, game.score());
     });
 
     it('scores non strike pins', function() {
       game.roll(5);
-      for (var i=0;i<19;++i) {
-        game.roll(0);
-      }
+      rollMany(19,0);
 
       assert.equal(5, game.score());
     });
