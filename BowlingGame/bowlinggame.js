@@ -22,5 +22,13 @@ describe('bowling game', function() {
     it('is able to bowl a zero', function() {
       assert(game.roll(0));
     });
+
+    it('is able to bowl a gutter game', function() {
+      for (var i=0;i<20;++i) {
+        game.roll(0);
+      }
+
+      assert.equal(0, game.score());
+    });
   });
 });
