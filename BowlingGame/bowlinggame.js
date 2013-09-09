@@ -30,5 +30,14 @@ describe('bowling game', function() {
 
       assert.equal(0, game.score());
     });
+
+    it('scores non strike pins', function() {
+      game.roll(5);
+      for (var i=0;i<19;++i) {
+        game.roll(0);
+      }
+
+      assert.equal(5, game.score());
+    });
   });
 });
