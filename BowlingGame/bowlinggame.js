@@ -83,5 +83,10 @@ describe('bowling game', function() {
       rollMany(17,0);
       assert.equal(10 + 5 + 2 + 5 + 2, game.score());
     });
+
+    it('can roll the perfect game', function() {
+      rollMany(12,10);
+      assert.equal(300, game.score());
+    });
   });
 });
