@@ -65,5 +65,14 @@ describe('bowling game', function() {
       rollMany(17,0);
       assert.equal(3 + 7 + 2 + 2, game.score());
     });
+
+    it('successfully scores a strike', function() {
+      game.roll(10);
+      game.roll(5);
+      game.roll(2);
+
+      rollMany(17,0);
+      assert.equal(10 + 5 + 2 + 5 + 2, game.score());
+    });
   });
 });
