@@ -7,6 +7,10 @@ var Game = function() {
     return -1;
   };
 
+  this.score = function() {
+    return 0;
+  };
+
   return this;
 };
 
