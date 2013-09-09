@@ -43,5 +43,14 @@ describe('bowling game', function() {
 
       assert.equal(5, game.score());
     });
+
+    it('successfully scores a spare', function() {
+      game.roll(3);
+      game.roll(7);
+      game.roll(2);
+
+      rollMany(17,0);
+      assert.equal(3 + 7 + 2 + 2, game.score());
+    });
   });
 });
