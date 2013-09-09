@@ -12,7 +12,13 @@ var Game = function() {
   this.score = function() {
     var score = 0;
     for (var i=0;i<10;++i) {
-      score += (rolls[2*i] + rolls[2*i+1]);
+      var frameScore = rolls[2*i] + rolls[2*i+1];
+      if (frameScore === 10) { 
+        score += frameScore + rolls[2*i+2];
+      }
+      else {
+        score += frameScore;
+      }
     }
 
     return score;
