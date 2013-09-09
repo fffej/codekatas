@@ -11,8 +11,8 @@ var Game = function() {
 
   this.score = function() {
     var score = 0;
-    for (var i=0;i<rolls.length;++i) {
-      score += rolls[i];
+    for (var i=0;i<10;++i) {
+      score += (rolls[2*i] + rolls[2*i+1]);
     }
 
     return score;
