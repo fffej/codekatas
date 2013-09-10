@@ -12,6 +12,13 @@ namespace Fatvat.Katas.MineSweeper
             var mineField = new MineField(".");
             Assert.That(mineField.Show(), Is.EqualTo("0"));
         }
+
+        [Test]
+        public void OneMine()
+        {
+            var mineField = new MineField("*");
+            Assert.That(mineField.Show(), Is.EqualTo("*"));
+        }
     }
 
     public class MineField
