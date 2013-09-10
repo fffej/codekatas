@@ -28,7 +28,6 @@ namespace Fatvat.Katas.MineSweeper
         }
 
         [Test]
-        [Ignore]
         public void EmptyMineFieldWithTwoRows()
         {
             var mineField = new MineField("...\n...");
