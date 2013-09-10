@@ -78,7 +78,10 @@ namespace Fatvat.Katas.MineSweeper
 
         private bool IsMine(int line, int index)
         {
-            return m_MineField[line][index] == '*';
+            bool isInBounds = line >= 0 && line < m_MineField.Length &&
+                     index >= 0 && index < m_MineField[line].Length;
+
+            return isInBounds && m_MineField[line][index] == '*';
         }
     }
 }
