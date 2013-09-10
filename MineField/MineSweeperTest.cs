@@ -18,5 +18,14 @@ namespace Fatvat.Katas.MineSweeper
 
     public class MineField
     {
+        public MineField(string s)
+        {
+            
+        }
+
+        public string Show()
+        {
+            return "0";
+        }
     }
 }
