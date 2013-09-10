@@ -39,7 +39,30 @@ namespace Fatvat.Katas.MineSweeper
 
         public string Show()
         {
-            return m_MineField[0] == '*' ? "*" : "0";
+            var result = "";
+            for (var i = 0; i < m_MineField.Length; ++i)
+            {
+                var surroundingMines = 0;
+                if (i > 0 && m_MineField[i - 1] == '*')
+                {
+                    surroundingMines++;
+                }
+                if (i + 1 < m_MineField.Length && m_MineField[i + 1] == '*')
+                {
+                    surroundingMines++;
+                }
+
+                if (m_MineField[i] == '.')
+                {
+                    result += surroundingMines;
+                }
+                else
+                {
+                    result += '*';
+                }
+            }
+
+            return result;
         }
     }
 }
