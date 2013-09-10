@@ -1,6 +1,10 @@
 "use strict";
 var assert=require('assert');
 
+var Category = {
+  Chance: 1
+};
+
 var Yahtzee = function() {
 
   var dice = [];
