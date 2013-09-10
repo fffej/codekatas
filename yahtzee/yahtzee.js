@@ -2,6 +2,21 @@
 var assert=require('assert');
 
 var Yahtzee = function() {
+
+  var dice = [];
+
+  this.roll = function(a,b,c,d,e) {
+    dice = [a,b,c,d,e];
+  };
+
+  this.score = function() {
+    var sum = 0;
+    for (var i=0;i<dice.length;++i) {
+      sum += dice[i];
+    }
+    return sum;
+  };
+
   return this;
 };
 
