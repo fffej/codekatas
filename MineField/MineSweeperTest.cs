@@ -6,8 +6,6 @@ namespace Fatvat.Katas.MineSweeper
     [TestFixture]
     public class MineSweeperTest
     {
-
-
         [Test]
         public void TestSimplestMineField()
         {
