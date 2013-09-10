@@ -6,10 +6,13 @@ namespace Fatvat.Katas.MineSweeper
     [TestFixture]
     public class MineSweeperTest
     {
+
+
         [Test]
-        public void TestMineFieldExists()
+        public void TestSimplestMineField()
         {
-            new MineField();
+            var mineField = new MineField(".");
+            Assert.That(mineField.Show(), Is.EqualTo("0"));
         }
     }
 
