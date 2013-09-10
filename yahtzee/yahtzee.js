@@ -19,6 +19,15 @@ var areEqual = function(a,b) {
   return true;
 };
 
+var sum = function(dice) {
+  var totalSum = 0;
+  for (var i=0;i<dice.length;++i) {
+    totalSum += dice[i];
+  }
+
+  return totalSum;
+};
+
 var Yahtzee = function() {
 
   var dice = [];
@@ -30,11 +39,7 @@ var Yahtzee = function() {
   this.score = function(category) {
     switch (category) {
       case Category.Chance:
-        var sum = 0;
-        for (var i=0;i<dice.length;++i) {
-          sum += dice[i];
-        }
-        return sum;
+        return sum(dice);
       case Category.SmallStraight:
         if (areEqual(dice,[1,2,3,4,5])) {
           return 15;
