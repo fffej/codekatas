@@ -51,15 +51,7 @@ namespace Fatvat.Katas.MineSweeper
             {
                 for (var column = 0; column < m_MineField[line].Length; ++column)
                 {
-                    var surroundingMines = 0;
-                    if (IsMine(line, column - 1))
-                    {
-                        surroundingMines++;
-                    }
-                    if (IsMine(line, column + 1))
-                    {
-                        surroundingMines++;
-                    }
+                    var surroundingMines = GetNumberOfSurroundingMines(line, column);
 
                     if (!IsMine(line, column))
                     {
@@ -74,6 +66,20 @@ namespace Fatvat.Katas.MineSweeper
             }
 
             return result.TrimEnd();
+        }
+
+        private int GetNumberOfSurroundingMines(int line, int column)
+        {
+            int surroundingMines = 0;
+            if (IsMine(line, column - 1))
+            {
+                surroundingMines++;
+            }
+            if (IsMine(line, column + 1))
+            {
+                surroundingMines++;
+            }
+            return surroundingMines;
         }
 
         private bool IsMine(int line, int index)
