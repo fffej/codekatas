@@ -5,20 +5,43 @@ var Category = {
   Chance: 1
 };
 
+var areEqual = function(a,b) {
+  if (a.length !== b.length) {
+    return false;
+  }
+
+  for (var i=0;i<a.length;++i) {
+    if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
 var Yahtzee = function() {
 
   var dice = [];
 
   this.roll = function(a,b,c,d,e) {
-    dice = [a,b,c,d,e];
+    dice = [a,b,c,d,e].sort();
   };
 
   this.score = function(category) {
-    var sum = 0;
-    for (var i=0;i<dice.length;++i) {
-      sum += dice[i];
+    switch (category) {
+      case Category.Chance:
+        var sum = 0;
+        for (var i=0;i<dice.length;++i) {
+          sum += dice[i];
+        }
+        return sum;
+      case Category.SmallStraight:
+        if (areEqual(dice,[1,2,3,4,5])) {
+          return 15;
+        } else {
+          return 0;
+        }
     }
-    return sum;
   };
 
   return this;
