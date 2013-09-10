@@ -33,6 +33,13 @@ namespace Fatvat.Katas.MineSweeper
             var mineField = new MineField("...\n...");
             Assert.That(mineField.Show(), Is.EqualTo("000\n000"));
         }
+
+        [Test]
+        public void MineFieldWithTwoRows()
+        {
+            var mineField = new MineField(".*.\n*..");
+            Assert.That(mineField.Show(), Is.EqualTo("2*1\n*21"));
+        }
     }
 
     public class MineField
