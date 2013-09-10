@@ -87,6 +87,7 @@ namespace Fatvat.Katas.MineSweeper
                     {
                         continue;
                     }
+
                     if (IsMine(line + dx, column + dy))
                     {
                         surroundingMines++;
