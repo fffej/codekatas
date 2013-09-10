@@ -7,7 +7,7 @@ namespace Fatvat.Katas.MineSweeper
     public class MineSweeperTest
     {
         [Test]
-        public void TestSimplestMineField()
+        public void EmptyMineField()
         {
             var mineField = new MineField(".");
             Assert.That(mineField.Show(), Is.EqualTo("0"));
