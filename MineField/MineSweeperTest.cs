@@ -7,9 +7,9 @@ namespace Fatvat.Katas.MineSweeper
     public class MineSweeperTest
     {
         [Test]
-        public void Test()
+        public void TestMineFieldExists()
         {
-            
+            new MineField();
         }
     }
 }
