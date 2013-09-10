@@ -78,14 +78,22 @@ namespace Fatvat.Katas.MineSweeper
         private int GetNumberOfSurroundingMines(int line, int column)
         {
             int surroundingMines = 0;
-            if (IsMine(line, column - 1))
+
+            for (var dx = -1; dx <= 1; dx++)
             {
-                surroundingMines++;
+                for (var dy = -1; dy <= 1; dy++)
+                {
+                    if (dx == 0 && dy == 0)
+                    {
+                        continue;
+                    }
+                    if (IsMine(line + dx, column + dy))
+                    {
+                        surroundingMines++;
+                    }
+                }
             }
-            if (IsMine(line, column + 1))
-            {
-                surroundingMines++;
-            }
+
             return surroundingMines;
         }
 
