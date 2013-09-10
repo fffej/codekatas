@@ -49,19 +49,19 @@ namespace Fatvat.Katas.MineSweeper
             var result = "";
             for (var line = 0; line < m_MineField.Length; ++line)
             {
-                for (var i = 0; i < m_MineField[line].Length; ++i)
+                for (var column = 0; column < m_MineField[line].Length; ++column)
                 {
                     var surroundingMines = 0;
-                    if (i > 0 && IsMine(line, i - 1))
+                    if (column > 0 && IsMine(line, column - 1))
                     {
                         surroundingMines++;
                     }
-                    if (i + 1 < m_MineField[line].Length && IsMine(line, i + 1))
+                    if (column + 1 < m_MineField[line].Length && IsMine(line, column + 1))
                     {
                         surroundingMines++;
                     }
 
-                    if (!IsMine(line, i))
+                    if (!IsMine(line, column))
                     {
                         result += surroundingMines;
                     }
