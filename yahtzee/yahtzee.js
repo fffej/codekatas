@@ -41,4 +41,13 @@ describe('yahtzee', function() {
 
      assert.equal(15, yahtzee.score(Category.SmallStraight));
   });
+
+  it('roll five numbers as low-straight', function() {
+    var yahtzee = new Yahtzee();
+    yahtzee.roll(1,3,3,4,4);
+
+     assert.equal(0, yahtzee.score(Category.SmallStraight));
+  });
+
+
 });
