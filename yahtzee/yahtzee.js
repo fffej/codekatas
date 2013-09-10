@@ -29,9 +29,16 @@ describe('yahtzee', function() {
     assert(new Yahtzee());
   });
 
-  it('roll five numbers', function() {
+  it('roll five numbers as chance', function() {
      var yahtzee = new Yahtzee();
      yahtzee.roll(1,2,3,4,5);
      assert.equal(1 + 2 + 3 + 4 + 5, yahtzee.score(Category.Chance));
+  });
+
+  it('roll five numbers as low-straight', function() {
+    var yahtzee = new Yahtzee();
+    yahtzee.roll(1,2,3,4,5);
+
+     assert.equal(15, yahtzee.score(Category.SmallStraight));
   });
 });
