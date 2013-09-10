@@ -12,4 +12,8 @@ namespace Fatvat.Katas.MineSweeper
             new MineField();
         }
     }
+
+    public class MineField
+    {
+    }
 }
