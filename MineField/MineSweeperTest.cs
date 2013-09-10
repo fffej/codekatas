@@ -38,24 +38,24 @@ namespace Fatvat.Katas.MineSweeper
 
     public class MineField
     {
-        private readonly string m_MineField;
+        private readonly string[] m_MineField;
 
         public MineField(string mineField)
         {
-            m_MineField = mineField;
+            m_MineField = mineField.Split('\n');
         }
 
         public string Show()
         {
             var result = "";
-            for (var i = 0; i < m_MineField.Length; ++i)
+            for (var i = 0; i < m_MineField[0].Length; ++i)
             {
                 var surroundingMines = 0;
                 if (i > 0 && IsMine(i - 1))
                 {
                     surroundingMines++;
                 }
-                if (i + 1 < m_MineField.Length && IsMine(i + 1))
+                if (i + 1 < m_MineField[0].Length && IsMine(i + 1))
                 {
                     surroundingMines++;
                 }
@@ -75,7 +75,7 @@ namespace Fatvat.Katas.MineSweeper
 
         private bool IsMine(int index)
         {
-            return m_MineField[index] == '*';
+            return m_MineField[0][index] == '*';
         }
     }
 }
