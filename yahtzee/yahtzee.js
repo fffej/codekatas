@@ -31,6 +31,7 @@ var sum = function(dice) {
 var Yahtzee = function() {
 
   var dice = [];
+  var lowStraight = [1,2,3,4,5];
 
   this.roll = function(a,b,c,d,e) {
     dice = [a,b,c,d,e].sort();
@@ -41,11 +42,7 @@ var Yahtzee = function() {
       case Category.Chance:
         return sum(dice);
       case Category.SmallStraight:
-        if (areEqual(dice,[1,2,3,4,5])) {
-          return 15;
-        } else {
-          return 0;
-        }
+        return areEqual(dice,lowStraight) ? 15 : 0;
     }
   };
 
