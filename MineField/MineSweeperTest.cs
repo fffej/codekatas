@@ -52,11 +52,11 @@ namespace Fatvat.Katas.MineSweeper
                 for (var column = 0; column < m_MineField[line].Length; ++column)
                 {
                     var surroundingMines = 0;
-                    if (column > 0 && IsMine(line, column - 1))
+                    if (IsMine(line, column - 1))
                     {
                         surroundingMines++;
                     }
-                    if (column + 1 < m_MineField[line].Length && IsMine(line, column + 1))
+                    if (IsMine(line, column + 1))
                     {
                         surroundingMines++;
                     }
