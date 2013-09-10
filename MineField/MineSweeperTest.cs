@@ -23,14 +23,16 @@ namespace Fatvat.Katas.MineSweeper
 
     public class MineField
     {
-        public MineField(string s)
+        private readonly string m_MineField;
+
+        public MineField(string mineField)
         {
-            
+            m_MineField = mineField;
         }
 
         public string Show()
         {
-            return "0";
+            return m_MineField[0] == '*' ? "*" : "0";
         }
     }
 }
