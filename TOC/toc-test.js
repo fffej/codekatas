@@ -18,25 +18,28 @@ describe('theory of constraints', function() {
   });
 
   describe('production system stage', function() {
+
+    var stage = null;
+
+    beforeEach(function() {
+      stage = toc.createStage('Analysis');
+    });
+
     it('has a name', function() {
-      var stage = toc.createStage('Analysis');
       assert.equal('Analysis', stage.name);
     });
 
     it('initially is empty', function() {
-      var stage = toc.createStage('banana');
       assert.equal(0, stage.itemCount);
     });
  
     it('can receive items', function() {
-      var stage = toc.createStage('banana');
       stage.receive(5);
-
       assert.equal(5, stage.itemCount);
     });
 
     it('can produce items', function() {
-      var stage = toc.createStage('banana');
+
       stage.receive(5);
 
       var produced = stage.produce(1);
@@ -45,7 +48,6 @@ describe('theory of constraints', function() {
     });
 
     it('can only produce as many items as it\'s capacity', function() {
-      var stage = toc.createStage('banana');
       stage.receive(5);
 
       var produced = stage.produce(6);
