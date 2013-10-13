@@ -31,6 +31,16 @@ describe('theory of constraints', function() {
 
       assert.equal(10, stage.itemCount);
     });
+
+    it('items do not go into the second stage from feed', function() {
+      var stageIn = toc.createStage('Stage1');
+      var stageOut = toc.createStage('Stage2');
+   
+      var system = toc.createSystem(stageIn,stageOut);
+      system.feed(10);
+      
+      assert.equal(0, stageOut.itemCount);
+    });
   });
 
   describe('production system stage', function() {
