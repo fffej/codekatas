@@ -20,8 +20,12 @@ describe('theory of constraints', function() {
   describe('production system stage', function() {
     it('has a name', function() {
       var stage = toc.createStage('Analysis');
-
       assert.equal('Analysis', stage.name);
+    });
+
+    it('initially is empty', function() {
+      var stage = toc.createStage('banana');
+      assert.equal(0, stage.itemCount);
     });
   });
 });
