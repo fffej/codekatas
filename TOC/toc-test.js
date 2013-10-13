@@ -16,4 +16,12 @@ describe('theory of constraints', function() {
       assert(nums[i] > 0);
     }
   });
+
+  describe('production system', function() {
+    it('stage has a name', function() {
+      var stage = toc.createStage('Analysis');
+
+      assert.equal('Analysis', stage.name);
+    });
+  });
 });
