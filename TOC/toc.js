@@ -4,6 +4,14 @@ var rollDice = function() {
   return Math.random() * 6 + 1 | 0;
 }
 
+var createSystem = function() {
+  return new System();
+};
+
+var System = function() {
+
+};
+
 var createStage = function(name) {
   return new Stage(name);
 };
@@ -28,4 +36,5 @@ var Stage = function(name) {
 if (typeof('')) {
   exports.rollDice = rollDice;
   exports.createStage = createStage;  
+  exports.createSystem = createSystem;
 }
