@@ -17,8 +17,8 @@ describe('theory of constraints', function() {
     }
   });
 
-  describe('production system', function() {
-    it('stage has a name', function() {
+  describe('production system stage', function() {
+    it('has a name', function() {
       var stage = toc.createStage('Analysis');
 
       assert.equal('Analysis', stage.name);
