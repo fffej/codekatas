@@ -17,6 +17,7 @@ var Stage = function(name) {
   };
 
   this.produce = function(unitCount) {
+    unitCount = Math.min(this.itemCount,unitCount);
     this.itemCount -= unitCount;
     return unitCount;
   };
