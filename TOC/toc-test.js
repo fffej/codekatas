@@ -43,5 +43,14 @@ describe('theory of constraints', function() {
       assert.equal(4, stage.itemCount);
       assert.equal(1, produced);
     });
+
+    it('can only produce as many items as it\'s capacity', function() {
+      var stage = toc.createStage('banana');
+      stage.receive(5);
+
+      var produced = stage.produce(6);
+      assert.equal(5, produced);
+      assert.equal(0, stage.itemCount);
+    });
   });
 });
