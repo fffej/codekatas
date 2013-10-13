@@ -10,6 +10,7 @@ var createStage = function(name) {
 
 var Stage = function(name) {
   this.name = name;
+  this.itemCount = 0;
   return this;
 };
 
