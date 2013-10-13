@@ -4,8 +4,13 @@ var rollDice = function() {
   return Math.random() * 6 + 1 | 0;
 }
 
-var createStage = function() {
+var createStage = function(name) {
+  return new Stage(name);
+};
 
+var Stage = function(name) {
+  this.name = name;
+  return this;
 };
 
 if (typeof('')) {
