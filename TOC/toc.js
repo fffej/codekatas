@@ -9,8 +9,13 @@ var createStage = function(name) {
 };
 
 var Stage = function(name) {
+
   this.name = name;
   this.itemCount = 0;
+  this.receive = function(unitCount) {
+    this.itemCount += unitCount;
+  };
+
   return this;
 };
 
