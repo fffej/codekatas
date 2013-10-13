@@ -23,6 +23,14 @@ describe('theory of constraints', function() {
 
       assert(system);
     });
+
+    it('items are fed into the first stage', function() {
+      var stage = toc.createStage('Pot');
+      var system = toc.createSystem(stage);
+      system.feed(10);
+
+      assert.equal(10, stage.itemCount);
+    });
   });
 
   describe('production system stage', function() {
