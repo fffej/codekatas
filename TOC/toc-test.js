@@ -17,6 +17,14 @@ describe('theory of constraints', function() {
     }
   });
 
+  describe('production system', function() {
+    it('is created from stages', function() {
+      var system = toc.createSystem(toc.createStage('Pot'));
+
+      assert(system);
+    });
+  });
+
   describe('production system stage', function() {
 
     var stage = null;
