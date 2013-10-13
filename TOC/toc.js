@@ -1,7 +1,7 @@
 "use strict";
 
 var rollDice = function() {
-    return -1;
+    return Math.random() * 6 + 1 | 0;
 }
 
 if (typeof('')) {
