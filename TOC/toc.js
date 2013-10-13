@@ -5,11 +5,23 @@ var rollDice = function() {
 }
 
 var createSystem = function() {
-  return new System();
+  var stages = [];
+  for (var i=0;i<arguments.length;++i) {
+    stages.push(arguments[i]);
+  }
+
+  return new System(stages);
 };
 
-var System = function() {
+var System = function(stages) {
 
+   this.stages = stages;
+
+   this.feed = function(materials) {
+     this.stages[0].receive(materials);
+   };
+
+   return this;
 };
 
 var createStage = function(name) {
