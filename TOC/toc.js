@@ -54,7 +54,7 @@ var Stage = function(name) {
   return this;
 };
 
-if (typeof('')) {
+if (typeof(exports) !== "undefined") {
   exports.rollDice = rollDice;
   exports.createStage = createStage;  
   exports.createSystem = createSystem;
