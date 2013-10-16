@@ -24,13 +24,9 @@ var System = function(stages) {
    this.tick = function(timeSourceFn) {
      var stageCount = this.stages.length;
 
-     var workItems = this.stages[0].produce(timeSourceFn())
-     for (var i=1;i<stageCount;++i) {
-       this.stages[i].receive(workItems);
-       
-       if (i !== stageCount - 1) {
-         workItems = this.stages[i].produce(timeSourceFn());
-       }
+     for (var i=0;i<stageCount-1;++i) {
+       var workItems = this.stages[i].produce(timeSourceFn());
+       this.stages[i+1].receive(workItems);
      }
    };
 
