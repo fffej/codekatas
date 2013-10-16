@@ -43,7 +43,7 @@ describe('theory of constraints', function() {
       var system = toc.createSystem(stageIn, stageOut);
 
       system.feed(1);
-      system.tick(1);
+      system.tick(function() { return 1; });
 
       assert.equal(0, stageIn.itemCount);
       assert.equal(1, stageOut.itemCount);

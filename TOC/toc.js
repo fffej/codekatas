@@ -21,6 +21,19 @@ var System = function(stages) {
      this.stages[0].receive(materials);
    };
 
+   this.tick = function(timeSourceFn) {
+     var stageCount = this.stages.length;
+
+     var workItems = this.stages[0].produce(timeSourceFn())
+     for (var i=1;i<stageCount;++i) {
+       this.stages[i].receive(workItems);
+       
+       if (i !== stageCount - 1) {
+         workItems = this.stages[i].produce(timeSourceFn());
+       }
+     }
+   };
+
    return this;
 };
 
