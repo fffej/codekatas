@@ -22,12 +22,15 @@
 
   <script type="text/javascript">
     var stages = [];
-    for (var i=0;i<5;++i) {
+    var stageCount = 5;
+    var initialFeed = 300;
+
+    for (var i=0;i<stageCount;++i) {
       stages.push(new Stage('Stage ' + i));
     }
 
     var system = new System(stages);
-    system.feed(100);
+    system.feed(initialFeed);
 
     var binder = d3.select("body").selectAll("div");
 
@@ -44,13 +47,17 @@
       .text("Step")
       .on("click", function() {
 
- 
-        system.tick(function() { return Math.random()*6 + 1; });
+        d3.timer(function() {
+          if (stages[stageCount-1] === initialFeed) {
+            return true;
+          }
 
-        d3.select("#wip_limit").selectAll("div").data(stages)
-          .style("height", function(x) {
-            return x.itemCount + "px";
-          });
+          // Tick the system
+          system.tick(function() { return Math.random()*6 + 1; }); 
+
+          d3.select("#wip_limit").selectAll("div").data(stages)
+            .style("height", function(x) { return x.itemCount + "px"; });
+        }, 50);
       });
   </script>
 </body>
