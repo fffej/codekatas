@@ -8,13 +8,17 @@
     div.bar {
       display: inline-block;
       width: 25px;
-      height: 75px;
+      height: 100px;
       background-color: teal;
     }
   </style>
 </head>
 <body>
   <h1>Limiting WIP</h1>
+
+  <div id="wip_limit">
+
+  </div>
 
   <script type="text/javascript">
     var stages = [];
@@ -25,12 +29,29 @@
     var system = new System(stages);
     system.feed(100);
 
-    d3.select("body").selectAll("div")
+    var binder = d3.select("body").selectAll("div");
+
+    d3.select("#wip_limit").selectAll("div")
       .data(stages)
       .enter()
       .append("div")
       .attr("class","bar")
-      .style("height", function(x) {return x.itemCount});
+      .style("height", function(x) {
+        return x.itemCount + "px";
+      });
+
+    d3.select("body").append("button")
+      .text("Step")
+      .on("click", function() {
+
+ 
+        system.tick(function() { return Math.random()*6 + 1; });
+
+        d3.select("#wip_limit").selectAll("div").data(stages)
+          .style("height", function(x) {
+            return x.itemCount + "px";
+          });
+      });
   </script>
 </body>
 </html>
