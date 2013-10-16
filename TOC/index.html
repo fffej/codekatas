@@ -4,6 +4,14 @@
   <title>The benefits of Work In Progress</title>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="toc.js" charset="utf-8"></script>
+  <style>
+    div.bar {
+      display: inline-block;
+      width: 25px;
+      height: 75px;
+      background-color: teal;
+    }
+  </style>
 </head>
 <body>
   <h1>Limiting WIP</h1>
@@ -17,11 +25,12 @@
     var system = new System(stages);
     system.feed(100);
 
-    d3.select("body").selectAll("p")
+    d3.select("body").selectAll("div")
       .data(stages)
       .enter()
-      .append("p")
-      .text(function(x) {return x.itemCount});
+      .append("div")
+      .attr("class","bar")
+      .style("height", function(x) {return x.itemCount});
   </script>
 </body>
 </html>
