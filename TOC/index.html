@@ -7,5 +7,21 @@
 </head>
 <body>
   <h1>Limiting WIP</h1>
+
+  <script type="text/javascript">
+    var stages = [];
+    for (var i=0;i<5;++i) {
+      stages.push(new Stage('Stage ' + i));
+    }
+
+    var system = new System(stages);
+    system.feed(100);
+
+    d3.select("body").selectAll("p")
+      .data(stages)
+      .enter()
+      .append("p")
+      .text(function(x) {return x.itemCount});
+  </script>
 </body>
 </html>
