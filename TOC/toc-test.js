@@ -35,6 +35,19 @@ describe('theory of constraints', function() {
       assert.equal(10, stageIn.itemCount);      
       assert.equal(0,  stageOut.itemCount);
     });
+
+    it('items are bucketed in the last stage', function() {
+      var stageIn = toc.createStage('Stage1');
+      var stageOut = toc.createStage('Stage2');
+
+      var system = toc.createSystem(stageIn, stageOut);
+
+      system.feed(1);
+      system.tick(1);
+
+      assert.equal(0, stageIn.itemCount);
+      assert.equal(1, stageOut.itemCount);
+    });
   });
 
   describe('production system stage', function() {
