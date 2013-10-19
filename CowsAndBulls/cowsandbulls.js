@@ -101,6 +101,19 @@ var createGame = function(goal) {
     return new Game(goal);
 };
 
+var containsDuplicates = function(str) {
+    for (var i=0;i<str.length;++i) {
+	var found = false;
+	for (var j=0;j<str.length;++j) {
+	    if (i === j) continue;
+	    
+	    if (str[i] === str[j])
+		return true;
+	}
+    }
+    return false;
+};
+
 describe("cows and bulls", function() {
 
     describe('playing naive', function() {
@@ -114,18 +127,6 @@ describe("cows and bulls", function() {
 
     describe('intelligently playing', function() {
 
-	var containsDuplicates = function(str) {
-	    for (var i=0;i<str.length;++i) {
-		var found = false;
-		for (var j=0;j<str.length;++j) {
-		    if (i === j) continue;
-		    
-		    if (str[i] === str[j])
-			return true;
-		}
-	    }
-	    return false;
-	};
 
 	it('should have four unique numbers in initial guess', function() {
 	    var player = new Player();
