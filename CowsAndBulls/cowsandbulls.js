@@ -57,14 +57,23 @@ var Game = function(goal) {
     return this;
 };
 
+var asString = function(num) {
+    var s = '0000' + num;
+    return s.substr(s.length - 4);
+};
+
+var Player = function() {
+    this.guess = function() {
+	return asString(0);
+    };
+
+    return this;
+};
+
 var Naive = function() {
 
     this.currentGuess = 0;
 
-    var asString = function(num) {
-	var s = '0000' + num;
-	return s.substr(s.length - 4);
-    };
 
     this.guess = function() {
 	return asString(this.currentGuess);
@@ -89,6 +98,29 @@ describe("cows and bulls", function() {
 	    var turns = game.play(new Naive());
 
 	    assert.equal(5556, turns);
+	});
+    });
+
+    describe('intelligently playing', function() {
+
+	var containsDuplicates = function(str) {
+	    for (var i=0;i<str.length;++i) {
+		var found = false;
+		for (var j=0;j<str.length;++j) {
+		    if (i === j) continue;
+		    
+		    if (str[i] === str[j])
+			return true;
+		}
+	    }
+	    return false;
+	};
+
+	it('should have four unique numbers in initial guess', function() {
+	    var player = new Player();
+
+	    var initialGuess = player.guess();
+	    assert(!containsDuplicates(initialGuess), 'no duplicates');
 	});
     });
 
