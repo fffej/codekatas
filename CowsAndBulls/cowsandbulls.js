@@ -50,13 +50,23 @@ var Game = function(goal) {
 	    var score = this.score(guess);
 	    strategy.update(score);
 	} while (!finishingScore(score));
+
+	return turns;
     };
 
     return this;
 };
 
 var Naive = function() {
+    this.guess = function() {
+	return '5555';
+    };
 
+    this.update = function(guess, score) {
+
+    };
+
+    return this;
 };
 
 var Strategy = {
