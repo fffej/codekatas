@@ -7,6 +7,9 @@ var Game = function(goal) {
 	var cows = 0;
         var bulls = 0;
 
+	assert(goal.length === guess.length, 'Lengths must be equivalent');
+
+
         return {
 	    cows: cows,
 	    bulls: bulls
