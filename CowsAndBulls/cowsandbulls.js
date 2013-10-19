@@ -163,6 +163,14 @@ describe("cows and bulls", function() {
 
 	    assert.equal(6561, player.possibilities.length);
 	});
+
+	it('correct guesses eliminate possibilities', function() {
+	    var player = new Player();
+
+	    player.update('1234', { cows: 4, bulls: 0 });
+
+	    assert.equal(4*3*2*1, player.possibilities.length);
+	});
     });
 
     describe('scoring', function() {
