@@ -44,6 +44,16 @@ var createGame = function(goal) {
 };
 
 describe("cows and bulls", function() {
+
+    describe('playing naive', function() {
+	it('should solve it within 9999 turns', function() {
+	    var game = createGame('5555');
+	    var turns = game.play(Strategy.Naive);
+
+	    assert.equal(4444, turns);
+	});
+    });
+
     describe('scoring', function() {
 	it('should match the example', function() {
 	    var game = createGame('8045');
