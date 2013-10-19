@@ -177,13 +177,6 @@ describe("cows and bulls", function() {
 
     describe('slightly intelligently playing', function() {
 
-	it('should have four unique numbers in initial guess', function() {
-	    var player = new Player();
-
-	    var initialGuess = player.guess();
-	    assert(!containsDuplicates(initialGuess), 'no duplicates');
-	});
-
 	it('initial pool of answers is 10000', function() {
 	    var player = new Player();
 
