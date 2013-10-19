@@ -79,6 +79,18 @@ var Player = function() {
     };
 
     this.update = function(guess,score) {
+	if (score.cows === 0) {
+	    // None of the numbers are correct
+	    for (var i=0;i<guess.length;++i) {
+		var digit = guess[i];
+		for (var k=this.possibilities.length-1;k>=0;--k) {
+		    var possibility = this.possibilities[k];
+		    if (asString(possibility).indexOf(digit) !== -1) {
+			this.possibilities.splice(k,1);
+		    }
+		}
+	    }
+	}
     };
 
     return this;
@@ -149,7 +161,7 @@ describe("cows and bulls", function() {
 
 	    player.update('1111', { cows: 0, bulls: 0 });
 
-	    assert.equal(9000, player.possibilities.length);
+	    assert.equal(6561, player.possibilities.length);
 	});
     });
 
