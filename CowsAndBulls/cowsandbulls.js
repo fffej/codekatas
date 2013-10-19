@@ -80,7 +80,6 @@ var Player = function() {
     };
 
     this.eliminateMatches = function(guess, fn) {
-	// None of the numbers are correct
 	for (var i=0;i<guess.length;++i) {
 	    var digit = guess[i];
 	    for (var k=this.possibilities.length-1;k>=0;--k) {
