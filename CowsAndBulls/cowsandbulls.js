@@ -45,6 +45,14 @@ var createGame = function(goal) {
 
 describe("cows and bulls", function() {
     describe('scoring', function() {
+	it('should match the example', function() {
+	    var game = createGame('8045');
+	    var result = game.score('0865');
+
+	    assert.equal(2, result.cows);
+	    assert.equal(1, result.bulls);
+	});
+
 	it('no matches scores no cows or bulls', function() {
             var game = createGame('1234');
 
