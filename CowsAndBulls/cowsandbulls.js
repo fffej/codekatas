@@ -49,7 +49,7 @@ var Game = function(goal) {
 	    var guess = strategy.guess();
 	    var score = this.score(guess);
 	    strategy.update(guess,score);
-	} while (!finishingScore(score) && turns < 1000);
+	} while (!finishingScore(score) && turns < 10002);
 
 	return turns;
     };
@@ -114,16 +114,8 @@ var Player = function() {
 
 	if (score.cows > 0) {
 	    // Any possibility that doesn't contain at least 
-	    // one from guess is wrong
+	    // score.cows from guess is wrong
 	    this.eliminatePartialMatches(guess, score.cows);
-	    return;
-	}
-
-	if (score.cows + score.bulls === 4) {
-	    // All of the numbers are correct, so we can eliminate 
-	    this.eliminateMatches(guess, function(str,digit) {
-		return (str.indexOf(digit) === -1);
-	    });
 	    return;
 	}
     };
