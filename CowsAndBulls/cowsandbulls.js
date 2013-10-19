@@ -48,8 +48,8 @@ var Game = function(goal) {
 	    turns++;
 	    var guess = strategy.guess();
 	    var score = this.score(guess);
-	    strategy.update(score);
-	} while (!finishingScore(score));
+	    strategy.update(guess,score);
+	} while (!finishingScore(score) && turns < 1000);
 
 	return turns;
     };
@@ -176,6 +176,13 @@ describe("cows and bulls", function() {
     });
 
     describe('slightly intelligently playing', function() {
+
+	it('should solve the game within 9999 turns', function() {
+	    var game = createGame('1234');
+	    var turns = game.play(new Player());
+	    
+	    assert(turns < 10000);
+	});
 
 	it('initial pool of answers is 10000', function() {
 	    var player = new Player();
