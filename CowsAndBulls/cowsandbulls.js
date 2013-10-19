@@ -219,6 +219,9 @@ describe("cows and bulls", function() {
 	    
 	    player.update('1111', { cows: 1, bulls: 0 });
 	    assert.equal(3439, player.possibilities.length);
+	    for (var i=0;i<player.possibilities.length;++i) {
+		assert(-1 != asString(player.possibilities[i]).indexOf('1'));
+	    }
 	});
     });
 
