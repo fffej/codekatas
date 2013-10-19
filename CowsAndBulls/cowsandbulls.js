@@ -3,12 +3,21 @@
 var assert = require('assert');
 
 var Game = function(goal) {
-    this.score = function(guess) {
-	var cows = 0;
-        var bulls = 0;
 
+    var scoreBulls = function(guess, goal) {
+	var bulls = 0;
+	for (var i=0;i<guess.length;++i) {
+	    if (guess[i] === goal[i])
+		bulls++;
+	}
+	return bulls;
+    };
+
+    this.score = function(guess) {
 	assert(goal.length === guess.length, 'Lengths must be equivalent');
 
+	var cows = 0;
+        var bulls = scoreBulls(guess,goal);
 
         return {
 	    cows: cows,
