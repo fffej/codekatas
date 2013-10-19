@@ -13,13 +13,26 @@ var Game = function(goal) {
 	return bulls;
     };
 
+    var scoreCows = function(guess, goal) {
+	var cows = 0;
+	for (var i=0;i<goal.length;++i) {
+	    var desiredChar = goal[i];
+	    for (var j=0;j<goal.length;++j) {
+		if (j === i) continue;
+
+		if (guess[j] === desiredChar) {
+		    cows++;
+		}
+	    }
+	}
+	return cows;
+    };
+
     this.score = function(guess) {
 	assert(goal.length === guess.length, 'Lengths must be equivalent');
 
-	var cows = 0;
-
         return {
-	    cows: cows,
+	    cows: scoreCows(guess,goal),
 	    bulls: scoreBulls(guess,goal)
 	};
     };
