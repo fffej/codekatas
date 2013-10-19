@@ -135,7 +135,6 @@ var Naive = function() {
 
     this.currentGuess = 0;
 
-
     this.guess = function() {
 	return asString(this.currentGuess);
     };
