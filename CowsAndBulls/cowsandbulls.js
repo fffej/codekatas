@@ -91,12 +91,31 @@ var Player = function() {
 	}
     };
 
+    this.eliminatePartialMatches = function(guess, n) {
+	for (var k=this.possibilities.length-1;k>=0;--k) {
+	    var foundCount =  0;
+	    for (var i=0;i<guess.length;++i) {
+		if (asString(this.possibilities[k]).indexOf(guess[i]) !== -1) 
+		    foundCount++;
+	    }
+	    if (foundCount < n)
+		this.possibilities.splice(k,1);
+	}
+    };
+
     this.update = function(guess,score) {
 	if (score.cows === 0) {
 	    // None of the numbers are correct
 	    this.eliminateMatches(guess, function(str,digit) {
 		return (str.indexOf(digit) !== -1);
 	    });
+	    return;
+	}
+
+	if (score.cows > 0) {
+	    // Any possibility that doesn't contain at least 
+	    // one from guess is wrong
+	    this.eliminatePartialMatches(guess, score.cows);
 	    return;
 	}
 
@@ -192,7 +211,14 @@ describe("cows and bulls", function() {
 
 	    player.update('1234', { cows: 2, bulls: 0 });
 
-	    assert.equal(77, player.possibilities.length);
+	    assert.equal(4284, player.possibilities.length);
+	});
+
+	it('partial matches eliminate possibilities (2)', function() {
+	    var player = new Player();
+	    
+	    player.update('1111', { cows: 1, bulls: 0 });
+	    assert.equal(3439, player.possibilities.length);
 	});
     });
 
