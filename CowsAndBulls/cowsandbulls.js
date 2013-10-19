@@ -156,8 +156,7 @@ describe("cows and bulls", function() {
 	});
     });
 
-    describe('intelligently playing', function() {
-
+    describe('slightly intelligently playing', function() {
 
 	it('should have four unique numbers in initial guess', function() {
 	    var player = new Player();
