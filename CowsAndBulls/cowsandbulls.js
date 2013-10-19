@@ -156,7 +156,7 @@ describe("cows and bulls", function() {
 	    assert.equal(10000, player.possibilities.length);
 	});
 
-	it('guesses eliminate possibilities', function() {
+	it('zero scores eliminate possibilities', function() {
 	    var player = new Player();
 
 	    player.update('1111', { cows: 0, bulls: 0 });
