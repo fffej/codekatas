@@ -78,18 +78,25 @@ var Player = function() {
 	return asString(1234);
     };
 
+    this.eliminateMatches = function(guess, fn) {
+	// None of the numbers are correct
+	for (var i=0;i<guess.length;++i) {
+	    var digit = guess[i];
+	    for (var k=this.possibilities.length-1;k>=0;--k) {
+		var possibility = this.possibilities[k];
+		if (fn(asString(possibility),digit)) {
+		    this.possibilities.splice(k,1);
+		}
+	    }
+	}
+    };
+
     this.update = function(guess,score) {
 	if (score.cows === 0) {
 	    // None of the numbers are correct
-	    for (var i=0;i<guess.length;++i) {
-		var digit = guess[i];
-		for (var k=this.possibilities.length-1;k>=0;--k) {
-		    var possibility = this.possibilities[k];
-		    if (asString(possibility).indexOf(digit) !== -1) {
-			this.possibilities.splice(k,1);
-		    }
-		}
-	    }
+	    this.eliminateMatches(guess, function(str,digit) {
+		return (str.indexOf(digit) !== -1);
+	    });
 	    return;
 	}
 
