@@ -63,6 +63,7 @@ var asString = function(num) {
 };
 
 var Player = function() {
+
     this.guess = function() {
 	return asString(1234);
     };
