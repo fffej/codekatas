@@ -28,5 +28,12 @@ describe("cows and bulls", function() {
             assert.equal(0,r.cows);
 	    assert.equal(0,r.bulls);
 	});
+
+	it('all correct is all bulls', function() {
+	    var game = createGame('1234');
+
+	    var r = game.score('1234');
+	    assert.equal(4, r.bulls);
+	});
     });
 });
