@@ -62,7 +62,17 @@ var asString = function(num) {
     return s.substr(s.length - 4);
 };
 
+var fromTo = function(start,end) {
+    var arr = [];
+    for (var i=start;i<=end;++i) {
+	arr.push(i);
+    }
+    return arr;
+};
+
 var Player = function() {
+
+    this.possibilities = fromTo(0,9999);
 
     this.guess = function() {
 	return asString(1234);
@@ -124,10 +134,10 @@ describe("cows and bulls", function() {
 	    assert(!containsDuplicates(initialGuess), 'no duplicates');
 	});
 
-	it('initial pool of answers is 9999', function() {
+	it('initial pool of answers is 10000', function() {
 	    var player = new Player();
 
-	    assert.equal(9999, player.possibilities.length);
+	    assert.equal(10000, player.possibilities.length);
 	});
     });
 
