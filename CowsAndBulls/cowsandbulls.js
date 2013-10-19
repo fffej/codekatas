@@ -76,7 +76,10 @@ var Player = function() {
 
     this.guess = function() {
 	var n = (Math.random() * this.possibilities.length) | 0;
-	return asString(this.possibilities[n]);
+	var guess = asString(this.possibilities[n]);
+
+	console.log(guess);
+	return guess;
     };
 
     this.eliminateMatches = function(guess, fn) {
@@ -107,7 +110,7 @@ var Player = function() {
 	if (score.cows === 0) {
 	    // None of the numbers are correct
 	    this.eliminateMatches(guess, function(str,digit) {
-		return (str.indexOf(digit) !== -1);
+		return str.indexOf(digit) !== -1;
 	    });
 	    return;
 	}
