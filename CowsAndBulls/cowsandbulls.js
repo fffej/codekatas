@@ -78,7 +78,6 @@ var Player = function() {
 	var n = (Math.random() * this.possibilities.length) | 0;
 	var guess = asString(this.possibilities[n]);
 
-	console.log(guess);
 	return guess;
     };
 
@@ -206,6 +205,14 @@ describe("cows and bulls", function() {
 	    player.update('1234', { cows: 2, bulls: 0 });
 
 	    assert.equal(4284, player.possibilities.length);
+	    for (var i=0;i<player.possibilities.length;++i) {
+		var v = asString(player.possibilities[i]);
+		
+		var count = 0;
+		for (var k=1;k<=4;++k) 
+		    count += v.indexOf(k + '') !== -1 ? 1 : 0;
+		assert.equal(2, count);
+	    }
 	});
 
 	it('partial matches eliminate possibilities (2)', function() {
