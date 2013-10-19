@@ -59,14 +59,19 @@ var Game = function(goal) {
 
 var Naive = function() {
 
-    this.currentGuess = '5555';
+    this.currentGuess = 0;
+
+    var asString = function(num) {
+	var s = '0000' + num;
+	return s.substr(s.length - 4);
+    };
 
     this.guess = function() {
-	return this.currentGuess;
+	return asString(this.currentGuess);
     };
 
     this.update = function(guess, score) {
-	
+	this.currentGuess++;
     };
 
     return this;
@@ -87,7 +92,7 @@ describe("cows and bulls", function() {
 	    var game = createGame('5555');
 	    var turns = game.play(Strategy.Naive);
 
-	    assert.equal(4444, turns);
+	    assert.equal(5556, turns);
 	});
     });
 
