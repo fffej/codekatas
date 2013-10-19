@@ -77,10 +77,6 @@ var Naive = function() {
     return this;
 };
 
-var Strategy = {
-    Naive: new Naive()
-};
-
 var createGame = function(goal) {
     return new Game(goal);
 };
@@ -90,7 +86,7 @@ describe("cows and bulls", function() {
     describe('playing naive', function() {
 	it('should solve it within 9999 turns', function() {
 	    var game = createGame('5555');
-	    var turns = game.play(Strategy.Naive);
+	    var turns = game.play(new Naive());
 
 	    assert.equal(5556, turns);
 	});
