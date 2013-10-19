@@ -36,7 +36,31 @@ var Game = function(goal) {
 	    bulls: scoreBulls(guess,goal)
 	};
     };
+
+    var finishingScore = function(score) {
+	return score.bulls === 4;
+    };
+
+    this.play = function(strategy) {
+	var turns = 0;
+
+	do {
+	    turns++;
+	    var guess = strategy.guess();
+	    var score = this.score(guess);
+	    strategy.update(score);
+	} while (!finishingScore(score));
+    };
+
     return this;
+};
+
+var Naive = function() {
+
+};
+
+var Strategy = {
+    Naive: new Naive()
 };
 
 var createGame = function(goal) {
