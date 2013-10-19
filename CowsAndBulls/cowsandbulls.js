@@ -45,6 +45,15 @@ describe("cows and bulls", function() {
 
 	    var r = game.score('1234');
 	    assert.equal(4, r.bulls);
+	    assert.equal(0, r.cows);
+	});
+
+	it('all in wrong order is all cows', function() {
+	    var game = createGame('1234');
+
+	    var r = game.score('4321');
+	    assert.equal(4, r.cows);
+	    assert.equal(0, r.bulls);
 	});
     });
 });
