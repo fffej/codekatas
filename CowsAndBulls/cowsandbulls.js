@@ -75,7 +75,8 @@ var Player = function() {
     this.possibilities = fromTo(0,9999);
 
     this.guess = function() {
-	return asString(1234);
+	var n = (Math.random() * this.possibilities.length) | 0;
+	return asString(this.possibilities[n]);
     };
 
     this.eliminateMatches = function(guess, fn) {
