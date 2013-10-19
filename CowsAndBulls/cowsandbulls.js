@@ -211,7 +211,7 @@ describe("cows and bulls", function() {
 		var count = 0;
 		for (var k=1;k<=4;++k) 
 		    count += v.indexOf(k + '') !== -1 ? 1 : 0;
-		assert.equal(2, count);
+		assert(count >= 2);
 	    }
 	});
 
