@@ -186,6 +186,14 @@ describe("cows and bulls", function() {
 
 	    assert.equal(4*3*2*1, player.possibilities.length);
 	});
+
+	it('partial matches eliminate possibilites', function() {
+	    var player = new Player();
+
+	    player.update('1234', { cows: 2, bulls: 0 });
+
+	    assert.equal(77, player.possibilities.length);
+	});
     });
 
     describe('scoring', function() {
