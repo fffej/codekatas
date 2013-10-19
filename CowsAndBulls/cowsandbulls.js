@@ -64,7 +64,7 @@ var asString = function(num) {
 
 var Player = function() {
     this.guess = function() {
-	return asString(0);
+	return asString(1234);
     };
 
     return this;
