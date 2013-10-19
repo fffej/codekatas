@@ -123,6 +123,12 @@ describe("cows and bulls", function() {
 	    var initialGuess = player.guess();
 	    assert(!containsDuplicates(initialGuess), 'no duplicates');
 	});
+
+	it('initial pool of answers is 9999', function() {
+	    var player = new Player();
+
+	    assert.equal(9999, player.possibilities.length);
+	});
     });
 
     describe('scoring', function() {
