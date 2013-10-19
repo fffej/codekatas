@@ -58,12 +58,15 @@ var Game = function(goal) {
 };
 
 var Naive = function() {
+
+    this.currentGuess = '5555';
+
     this.guess = function() {
-	return '5555';
+	return this.currentGuess;
     };
 
     this.update = function(guess, score) {
-
+	
     };
 
     return this;
