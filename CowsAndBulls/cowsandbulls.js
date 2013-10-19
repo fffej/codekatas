@@ -78,6 +78,9 @@ var Player = function() {
 	return asString(1234);
     };
 
+    this.update = function(guess,score) {
+    };
+
     return this;
 };
 
@@ -139,6 +142,14 @@ describe("cows and bulls", function() {
 	    var player = new Player();
 
 	    assert.equal(10000, player.possibilities.length);
+	});
+
+	it('guesses eliminate possibilities', function() {
+	    var player = new Player();
+
+	    player.update('1111', { cows: 0, bulls: 0 });
+
+	    assert.equal(9000, player.possibilities.length);
 	});
     });
 
