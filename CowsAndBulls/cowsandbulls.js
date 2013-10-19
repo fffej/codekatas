@@ -102,15 +102,9 @@ var Player = function() {
 
 	if (score.cows + score.bulls === 4) {
 	    // All of the numbers are correct, so we can eliminate 
-	    for (var i=0;i<guess.length;++i) {
-		var digit = guess[i];
-		for (var k=this.possibilities.length-1;k>=0;--k) {
-		    var possibility = this.possibilities[k];
-		    if (asString(possibility).indexOf(digit) === -1) {
-			this.possibilities.splice(k,1);
-		    }
-		}
-	    }
+	    this.eliminateMatches(guess, function(str,digit) {
+		return (str.indexOf(digit) === -1);
+	    });
 	    return;
 	}
     };
