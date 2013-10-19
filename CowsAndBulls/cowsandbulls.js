@@ -17,11 +17,10 @@ var Game = function(goal) {
 	assert(goal.length === guess.length, 'Lengths must be equivalent');
 
 	var cows = 0;
-        var bulls = scoreBulls(guess,goal);
 
         return {
 	    cows: cows,
-	    bulls: bulls
+	    bulls: scoreBulls(guess,goal)
 	};
     };
     return this;
