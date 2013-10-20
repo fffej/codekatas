@@ -98,7 +98,8 @@ var Player = function() {
 	for (var k=this.possibilities.length-1;k>=0;--k) {
 	    var foundCount =  0;
 	    for (var i=0;i<guess.length;++i) {
-		if (asString(this.possibilities[k]).indexOf(guess[i]) !== -1) 
+		var poss = asString(this.possibilities[k]);
+		if (poss.indexOf(guess[i]) !== -1) 
 		    foundCount++;
 	    }
 	    if (foundCount < n)
