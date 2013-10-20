@@ -112,12 +112,14 @@ var Player = function() {
 	    this.eliminateMatches(guess, function(str,digit) {
 		return str.indexOf(digit) !== -1;
 	    });
+
+	    return;
 	}
 
-	if (score.cows > 0) {
+	if (score.cows + score.bulls > 0) {
 	    // Any possibility that doesn't contain at least 
 	    // score.cows from guess is wrong
-	    this.eliminatePartialMatches(guess, score.cows);
+	    this.eliminatePartialMatches(guess, score.cows + score.bulls);
 	}
 
 	if (score.bulls > 0) {
