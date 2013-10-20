@@ -115,6 +115,8 @@ var Player = function() {
 	}
     };
 
+
+
     this.update = function(guess,score) {
 	if (score.cows + score.bulls === 0) {
 	    // None of the numbers are correct so we can eliminate anything
@@ -122,14 +124,6 @@ var Player = function() {
 	    this.eliminateMatches(guess, function(str,digit) {
 		return str.indexOf(digit) !== -1;
 	    });
-
-	    return;
-	}
-
-	if (score.cows + score.bulls > 0) {
-	    // Any possibility that doesn't contain at least 
-	    // score.cows + score.bulls from guess is wrong
-	    this.eliminatePartialMatches(guess, score.cows + score.bulls);
 	}
 
 	if (score.bulls > 0) {
@@ -149,6 +143,11 @@ var Player = function() {
 	    }
 	}
 
+	if (score.cows + score.bulls > 0) {
+	    // Any possibility that doesn't contain at least 
+	    // score.cows + score.bulls from guess is wrong
+	    this.eliminatePartialMatches(guess, score.cows + score.bulls);
+	}
     };
 
     return this;
