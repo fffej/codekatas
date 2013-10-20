@@ -108,7 +108,8 @@ var Player = function() {
 
     this.update = function(guess,score) {
 	if (score.cows === 0 && score.bulls === 0) {
-	    // None of the numbers are correct
+	    // None of the numbers are correct so we can elimiante anything
+	    // that contains any of these digits
 	    this.eliminateMatches(guess, function(str,digit) {
 		return str.indexOf(digit) !== -1;
 	    });
