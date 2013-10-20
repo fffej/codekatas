@@ -49,6 +49,7 @@ var Game = function(goal) {
 	    var guess = strategy.guess();
 	    var score = this.score(guess);
 	    strategy.update(guess,score);
+
 	} while (!finishingScore(score) && turns < 10002);
 
 	return turns;
@@ -106,20 +107,19 @@ var Player = function() {
     };
 
     this.update = function(guess,score) {
-	if (score.cows === 0) {
+	if (score.cows === 0 && score.bulls === 0) {
 	    // None of the numbers are correct
 	    this.eliminateMatches(guess, function(str,digit) {
 		return str.indexOf(digit) !== -1;
 	    });
-	    return;
 	}
 
 	if (score.cows > 0) {
 	    // Any possibility that doesn't contain at least 
 	    // score.cows from guess is wrong
 	    this.eliminatePartialMatches(guess, score.cows);
-	    return;
 	}
+
     };
 
     return this;
@@ -174,7 +174,7 @@ describe("cows and bulls", function() {
 	    var game = createGame('1234');
 	    var turns = game.play(new Player());
 	    
-	    assert(turns < 10000);
+	    assert(turns < 10000, 'Too many turns');
 	});
 
 	it('initial pool of answers is 10000', function() {
