@@ -119,7 +119,7 @@ var Player = function() {
 
 	if (score.cows + score.bulls > 0) {
 	    // Any possibility that doesn't contain at least 
-	    // score.cows from guess is wrong
+	    // score.cows + score.bulls from guess is wrong
 	    this.eliminatePartialMatches(guess, score.cows + score.bulls);
 	}
 
@@ -131,7 +131,7 @@ var Player = function() {
 		
 		var inRightPlace = 0;
 		for (var k=0;k<4;++k) {
-		    inRightPlace += p[k] === guess[k] ? 1 : 0;
+		    inRightPlace += (p[k] === guess[k]) ? 1 : 0;
 		}
 
 		if (inRightPlace < score.bulls) {
