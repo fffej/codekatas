@@ -126,8 +126,12 @@ var Player = function() {
 	    for (var i=this.possibilities.length-1; i>=0; --i) {
 		var p = asString(this.possibilities[i]);
 		
-		if (p[0] !== guess[0] && p[1] !== guess[1] &&
-		    p[2] !== guess[2] && p[3] !== guess[3]) {
+		var inRightPlace = 0;
+		for (var k=0;k<4;++k) {
+		    inRightPlace += p[k] === guess[k] ? 1 : 0;
+		}
+
+		if (inRightPlace < score.bulls) {
 		    this.possibilities.splice(i,1);
 		}
 	    }
