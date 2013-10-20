@@ -199,6 +199,22 @@ describe("cows and bulls", function() {
 	    assert.equal(4*3*2*1, player.possibilities.length);
 	});
 
+	it('partial bull matches eliminate many possibilities', function() {
+	    var player = new Player();
+
+	    player.update('1234', { cows: 0, bulls: 1 });
+
+	    // all possibilities must have at least one in the right position
+	    for (var i=0;i<player.possibilities.length;++i) {
+		var remaining = asString(player.possibilities[i]);
+
+		assert(remaining[0] === '1' ||
+		       remaining[1] === '2' ||
+		       remaining[2] === '3' ||
+		       remaining[3] === '4');
+	    }
+	});
+
 	it('partial matches eliminate possibilites', function() {
 	    var player = new Player();
 
