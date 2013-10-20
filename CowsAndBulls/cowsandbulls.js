@@ -120,6 +120,19 @@ var Player = function() {
 	    this.eliminatePartialMatches(guess, score.cows);
 	}
 
+	if (score.bulls > 0) {
+	    // Any possibility that doesn't contain at least
+	    // score.bulls in the same position as guess is wrong
+	    for (var i=this.possibilities.length-1; i>=0; --i) {
+		var p = asString(this.possibilities[i]);
+		
+		if (p[0] !== guess[0] && p[1] !== guess[1] &&
+		    p[2] !== guess[2] && p[3] !== guess[3]) {
+		    this.possibilities.splice(i,1);
+		}
+	    }
+	}
+
     };
 
     return this;
