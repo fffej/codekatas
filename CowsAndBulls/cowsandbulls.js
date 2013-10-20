@@ -189,12 +189,13 @@ describe("cows and bulls", function() {
 
     describe('slightly intelligently playing', function() {
 
-	it('should solve the game within 9999 turns', function() {
+	it.only('should solve the game within 9999 turns', function() {
 	    for (var i=0;i<100;++i) {
-		var game = createGame(asString(Math.random() * 10000 | 0 ));
+		var goal = asString(Math.random() * 10000 | 0);
+		var game = createGame(goal);
 		var turns = game.play(new Player());
 	    
-		assert(turns < 10000, 'Too many turns');
+		assert(turns < 10000, 'Too many turns to solve: ' + goal);
 	    }
 	});
 
