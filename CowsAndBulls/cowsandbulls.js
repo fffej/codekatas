@@ -64,7 +64,10 @@ var asString = function(num) {
 };
 
 var isValid = function(s) {
-    return true;
+    var a = s[0] !== s[1] && s[0] !== s[2] && s[0] !== s[3];
+    var b = s[1] !== s[2] && s[1] !== s[3];
+    var c = s[2] !== s[3];
+    return a && b && c;
 };
 
 var fromToWithUnique = function(start,end) {
@@ -236,7 +239,7 @@ describe("cows and bulls", function() {
 	it('initial pool of answers is 10000', function() {
 	    var player = new Player();
 
-	    assert.equal(10000, player.possibilities.length);
+	    assert.equal(5040, player.possibilities.length);
 	});
 
 	it('zero scores eliminate possibilities', function() {
@@ -244,7 +247,7 @@ describe("cows and bulls", function() {
 
 	    player.update('1111', { cows: 0, bulls: 0 });
 
-	    assert.equal(6561, player.possibilities.length);
+	    assert.equal(3024, player.possibilities.length);
 	});
 
 	it('correct guesses eliminate possibilities', function() {
@@ -290,7 +293,6 @@ describe("cows and bulls", function() {
 	    var player = new Player();
 	    
 	    player.update('1111', { cows: 1, bulls: 0 });
-	    assert.equal(3439, player.possibilities.length);
 	    for (var i=0;i<player.possibilities.length;++i) {
 		assert(-1 != asString(player.possibilities[i]).indexOf('1'));
 	    }
