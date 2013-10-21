@@ -212,13 +212,19 @@ describe("cows and bulls", function() {
         };
 
 	it('should solve the game within 9999 turns', function() {
-	    for (var i=0;i<100;++i) {
+	    var totalTurns = 0;
+	    var count = 100;
+
+	    for (var i=0;i<count;++i) {
 		var goal = generateUniqueGoal();
 		var game = createGame(goal);
 		var turns = game.play(new Player());
 	    
+		totalTurns += turns;
 		assert(turns < 10000, 'Too many turns to solve: ' + goal);
 	    }
+
+	    console.log('Average number of turns: ' + totalTurns / count);
 	});
 
 	it('initial pool of answers is 10000', function() {
