@@ -198,9 +198,22 @@ describe("cows and bulls", function() {
 
     describe('slightly intelligently playing', function() {
 
+	var generateUniqueGoal = function() {
+            var digits = [0,1,2,3,4,5,6,7,8,9];
+
+	    var goal = '';
+	    for (var i=0;i<4;++i) {
+		var index = Math.random() * digits.length | 0;
+		goal += digits[index];
+		digits.splice(index,1);
+	    }
+
+	    return goal;
+        };
+
 	it('should solve the game within 9999 turns', function() {
 	    for (var i=0;i<100;++i) {
-		var goal = asString(Math.random() * 10000 | 0);
+		var goal = generateUniqueGoal();
 		var game = createGame(goal);
 		var turns = game.play(new Player());
 	    
