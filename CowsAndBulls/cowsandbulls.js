@@ -63,17 +63,23 @@ var asString = function(num) {
     return s.substr(s.length - 4);
 };
 
-var fromTo = function(start,end) {
+var isValid = function(s) {
+    return true;
+};
+
+var fromToWithUnique = function(start,end) {
     var arr = [];
     for (var i=start;i<=end;++i) {
-	arr.push(i);
+	if (isValid(asString(i))) {
+	    arr.push(i);
+	}
     }
     return arr;
 };
 
 var Player = function() {
 
-    this.possibilities = fromTo(0,9999);
+    this.possibilities = fromToWithUnique(0,9999);
 
     this.guess = function() {
 	var n = (Math.random() * this.possibilities.length) | 0;
