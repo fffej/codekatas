@@ -43,6 +43,9 @@ var Player = function() {
 };
 
 var Game = function() {
+    this.play = function(player) {
+	return 1000000;
+    };
     return this;
 };
 
