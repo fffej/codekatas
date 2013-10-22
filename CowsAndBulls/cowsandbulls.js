@@ -14,5 +14,12 @@ describe('cows and bulls', function() {
 	  assert.equal(score.cows, 0);
 	  assert.equal(score.bulls, 0);
       });
+
+      it('single match in wrong place scores one cows', function() {
+	  var score = calculateScore('1234', '5671');
+
+	  assert.equal(score.cows, 1);
+	  assert.equal(score.bulls, 0);
+      });
   });
 });
