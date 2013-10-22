@@ -52,5 +52,15 @@ describe('cows and bulls', function() {
 	    var player = new Player();
 	    assert.equal(4, player.guess().length);
 	});
+
+	it('eliminates possibilities', function() {
+	    var player = new Player();
+	    player.update('1234', {cows: 0, bulls: 0});
+
+	    var guess = player.guess();
+	    for (var i=1;i<=4;++i) {
+		assert(guess.indexOf('' + i) !== -1);
+	    }
+	});
     });
 });
