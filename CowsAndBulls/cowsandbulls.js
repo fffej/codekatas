@@ -29,6 +29,12 @@ var Player = function() {
 };
 
 describe('cows and bulls', function() {
+
+    var fact = function(n) {
+	if (n === 1) return 1;
+	return n * fact(n-1);
+    };
+
     describe('scoring', function() {
 	var assertCowsAndBulls = function(expected, actual) {
 	    assert.equal(actual.cows, expected.cows);
@@ -55,6 +61,13 @@ describe('cows and bulls', function() {
 	it('guesses have four characters', function() {
 	    var player = new Player();
 	    assert.equal(4, player.guess().length);
+	});
+
+	it('initially contains all possibilities', function() {
+	    var player = new Player();
+
+	    var possibilities = fact(10) / fact(10-4);
+	    assert.equal(possibilities, player.guesses.length);
 	});
     });
 });
