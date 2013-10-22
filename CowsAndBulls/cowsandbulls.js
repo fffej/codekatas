@@ -59,6 +59,12 @@ var Player = function() {
 		return s.cows + s.bulls < score.cows + score.bulls;
 	    });
 	}
+
+	if (score.bulls > 0) {
+	    this.removeIf(guess, function(s) {
+		return s.bulls < score.bulls;
+	    });
+	}
     };
     
     return this;
@@ -139,7 +145,7 @@ describe('cows and bulls', function() {
 	it('uses bulls to eliminate possibilities', function() {
 	    var player = new Player();
 	    player.update('1234', {cows: 0, bulls: 3});
-	    assert.equal(7, player.guesses.length);
+	    assert.equal(24, player.guesses.length);
 	});
     });
 
