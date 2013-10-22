@@ -155,7 +155,7 @@ describe('cows and bulls', function() {
 	    var game = new Game('5678');
 	    var turnsTaken = game.play(new Player());
 
-	    assert(turnsTaken < possibilities);
+	    assert(turnsTaken < 30);
 	});
     });
 });
