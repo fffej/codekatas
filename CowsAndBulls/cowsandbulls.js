@@ -17,9 +17,23 @@ var calculateScore = function(guess, secret) {
     return { cows: cows, bulls: bulls };
 };
 
+var generateGuesses = function(n) {
+    var digits = ['0','1','2','3','4','5','6','7','8','9'];
+    if (n === 1) return digits;
+
+    var rest = generateGuesses(n-1);
+    var guesses = [];
+    for (var i=0;i<rest.length;++i)
+	for (var d=0;d<digits.length;++d) 
+	    if (rest[i].indexOf(digits[d]) === -1)
+		guesses.push(digits[d] + rest[i]);
+
+    return guesses;
+};
+
 var Player = function() {
 
-    this.guesses = ['5678'];
+    this.guesses = generateGuesses(4);
 
     this.guess = function() {
 	return this.guesses.pop();
