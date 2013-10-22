@@ -110,11 +110,18 @@ describe('cows and bulls', function() {
 	    assert.equal(possibilities, player.guesses.length);
 	});
 
-	it('eliminates possibilities', function() {
+	it('eliminates possibilities when no matches', function() {
 	    var player = new Player();
 	    player.update('1234', {cows: 0, bulls: 0});
 
 	    assert.equal(fact(6) / fact(6-4), player.guesses.length);
+	});
+
+	it('eliminates possibilities when all matches', function() {
+	    var player = new Player();
+	    player.update('1234', {cows: 4, bulls: 0});
+
+	    assert.equal(fact(4), player.guesses.length);
 	});
     });
 
