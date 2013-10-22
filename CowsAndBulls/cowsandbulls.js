@@ -25,9 +25,6 @@ var Player = function() {
 	return this.guesses.pop();
     };
     
-    this.update = function(guess, score) {
-    };
-
     return this;
 };
 
@@ -55,19 +52,9 @@ describe('cows and bulls', function() {
     });
 
     describe('strategy', function() {
-	it('initially has all possibilities', function() {
+	it('guesses have four characters', function() {
 	    var player = new Player();
 	    assert.equal(4, player.guess().length);
-	});
-
-	it('eliminates possibilities', function() {
-	    var player = new Player();
-	    player.update('1234', {cows: 0, bulls: 0});
-
-	    var guess = player.guess();
-	    for (var i=1;i<=4;++i) {
-		assert(guess.indexOf('' + i) === -1);
-	    }
 	});
     });
 });
