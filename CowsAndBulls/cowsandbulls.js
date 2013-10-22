@@ -20,25 +20,24 @@ var calculateScore = function(guess, secret) {
 
 describe('cows and bulls', function() {
     describe('scoring', function() {
+	var assertCowsAndBulls = function(expected, actual) {
+	    assert.equal(actual.cows, expected.cows);
+	    assert.equal(actual.bulls, expected.bulls);
+	};
+
 	it('no matches scores zero cows and bulls', function() {
 	    var score = calculateScore('1234','5678');
-	    
-	    assert.equal(score.cows, 0);
-	    assert.equal(score.bulls, 0);
+	    assertCowsAndBulls({cows: 0, bulls: 0}, score);
 	});
 	
 	it('single match in wrong place scores one cows', function() {
 	    var score = calculateScore('1234', '5671');
-	    
-	    assert.equal(score.cows, 1);
-	    assert.equal(score.bulls, 0);
+	    assertCowsAndBulls({cows: 1, bulls: 0}, score);
 	});
 
 	it('single match in right place scores one bull', function() {
 	    var score = calculateScore('1234', '1567');
-
-	    assert.equal(score.cows, 0);
-	    assert.equal(score.bulls, 1);
+	    assertCowsAndBulls({cows: 0, bulls: 1}, score);
 	});
     });
 });
