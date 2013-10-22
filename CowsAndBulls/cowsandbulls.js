@@ -38,6 +38,9 @@ var Player = function() {
     this.guess = function() {
 	return this.guesses.pop();
     };
+
+    this.update = function(guess,score) {
+    };
     
     return this;
 };
@@ -98,6 +101,13 @@ describe('cows and bulls', function() {
 	it('initially contains all possibilities', function() {
 	    var player = new Player();
 	    assert.equal(possibilities, player.guesses.length);
+	});
+
+	it('eliminates possibilities', function() {
+	    var player = new Player();
+	    player.update('1234', {cows: 0, bulls: 0});
+
+	    assert.equal(fact(6) / fact(6-4), player.guesses.length);
 	});
     });
 
