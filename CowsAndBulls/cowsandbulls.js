@@ -18,8 +18,11 @@ var calculateScore = function(guess, secret) {
 };
 
 var Player = function() {
+
+    var guesses = ['5678'];
+
     this.guess = function() {
-	return '1023';
+	return guesses.pop();
     };
     
     this.update = function(guess, score) {
@@ -62,8 +65,9 @@ describe('cows and bulls', function() {
 	    player.update('1234', {cows: 0, bulls: 0});
 
 	    var guess = player.guess();
+	    console.log(guess);
 	    for (var i=1;i<=4;++i) {
-		assert(guess.indexOf('' + i) !== -1);
+		assert(guess.indexOf('' + i) === -1);
 	    }
 	});
     });
