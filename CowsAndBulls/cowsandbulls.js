@@ -42,9 +42,18 @@ var Player = function() {
     return this;
 };
 
-var Game = function() {
+var Game = function(secret) {
+    
     this.play = function(player) {
-	return 1000000;
+	var turns = 0;
+
+	do {
+	    var guess = player.guess();
+	    var score = calculateScore(guess, secret);
+	    turns++;
+	} while (score.bulls !== 4);
+
+	return turns;
     };
     return this;
 };
