@@ -31,9 +31,11 @@ var generateGuesses = function(n) {
     return guesses;
 };
 
+var allChoices = generateGuesses(4);
+
 var Player = function() {
 
-    this.guesses = generateGuesses(4);
+    this.guesses = allChoices.slice(0);
 
     this.guess = function() {
 	return this.guesses.pop();
@@ -78,6 +80,7 @@ var Game = function(secret) {
 	do {
 	    var guess = player.guess();
 	    var score = calculateScore(guess, secret);
+	    player.update(guess,score);
 	    turns++;
 	} while (score.bulls !== 4);
 
@@ -156,6 +159,20 @@ describe('cows and bulls', function() {
 	    var turnsTaken = game.play(new Player());
 
 	    assert(turnsTaken < 30);
+	});
+
+	it('is relatively smart', function() {
+	    var guesses = generateGuesses(4);
+	    var maxTurns = 0;
+
+	    for (var i=0;i<guesses.length;++i) {
+		var game = new Game(guesses[i]);
+		var turnsTaken = game.play(new Player());
+
+		maxTurns = Math.max(maxTurns, turnsTaken);
+	    }
+
+	    assert.equal(62, maxTurns);
 	});
     });
 });
