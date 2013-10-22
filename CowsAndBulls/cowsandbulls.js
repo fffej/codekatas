@@ -40,6 +40,13 @@ var Player = function() {
     };
 
     this.update = function(guess,score) {
+	if (score.cows + score.bulls === 0) {
+	    for (var i=this.guesses.length-1;i>=0;--i) {
+		var s = calculateScore(this.guesses[i],guess);
+		if (s.cows + s.bulls > 0) 
+		    this.guesses.splice(i,1);
+	    };
+	}
     };
     
     return this;
