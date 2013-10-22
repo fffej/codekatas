@@ -17,6 +17,13 @@ var calculateScore = function(guess, secret) {
     return { cows: cows, bulls: bulls };
 };
 
+var Player = function() {
+    this.guess = function() {
+	return '';
+    };
+    return this;
+};
+
 describe('cows and bulls', function() {
     describe('scoring', function() {
 	var assertCowsAndBulls = function(expected, actual) {
@@ -37,6 +44,13 @@ describe('cows and bulls', function() {
 	it('single match in right place scores one bull', function() {
 	    var score = calculateScore('1234', '1567');
 	    assertCowsAndBulls({cows: 0, bulls: 1}, score);
+	});
+    });
+
+    describe('strategy', function() {
+	it('initially has all possibilities', function() {
+	    var player = new Player();
+	    assert.equal(4, player.guess().length);
 	});
     });
 });
