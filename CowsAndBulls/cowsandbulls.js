@@ -42,6 +42,10 @@ var Player = function() {
     return this;
 };
 
+var Game = function() {
+    return this;
+};
+
 describe('cows and bulls', function() {
 
     var fact = function(n) {
