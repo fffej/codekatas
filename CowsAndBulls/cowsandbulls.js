@@ -132,20 +132,20 @@ describe('cows and bulls', function() {
 	    var player = new Player();
 	    player.update('1234', {cows: 0, bulls: 0});
 
-	    assert.equal((fact(6) / fact(6-4)) - 1, player.guesses.length);
+	    assert.equal((fact(6) / fact(6-4)), player.guesses.length);
 	});
 
 	it('eliminates possibilities when all matches', function() {
 	    var player = new Player();
 	    player.update('1234', {cows: 4, bulls: 0});
 
-	    assert.equal(fact(4) - 1, player.guesses.length);
+	    assert.equal(fact(4), player.guesses.length);
 	});
 
 	it('uses bulls to eliminate possibilities', function() {
 	    var player = new Player();
 	    player.update('1234', {cows: 0, bulls: 3});
-	    assert.equal(24, player.guesses.length);
+	    assert.equal(7, player.guesses.length);
 	});
     });
 
