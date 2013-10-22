@@ -6,7 +6,13 @@ var calculateScore = function(guess, secret) {
     var cows = 0;
     var bulls = 0;
 
-    return { cows: 0, bulls: 0 };
+    for (var i=0;i<secret.length;++i) {
+	var secretChar = secret[i];
+	if (guess.indexOf(secretChar) !== -1) 
+	    cows++;
+    }
+
+    return { cows: cows, bulls: bulls };
 };
 
 describe('cows and bulls', function() {
