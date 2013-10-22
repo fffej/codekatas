@@ -8,7 +8,10 @@ var calculateScore = function(guess, secret) {
 
     for (var i=0;i<secret.length;++i) {
 	var secretChar = secret[i];
-	if (guess.indexOf(secretChar) !== -1) 
+	var found = guess.indexOf(secretChar);
+	if (found === i) 
+	    bulls++
+	else if (found !== -1)
 	    cows++;
     }
 
