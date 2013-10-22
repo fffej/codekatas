@@ -39,13 +39,19 @@ var Player = function() {
 	return this.guesses.pop();
     };
 
+    this.removeIf = function(guess, removePred) {
+	for (var i=this.guesses.length-1;i>=0;--i) {
+	    var s = calculateScore(this.guesses[i],guess);
+	    if (removePred(s))
+		this.guesses.splice(i,1);
+	}
+    };
+
     this.update = function(guess,score) {
 	if (score.cows + score.bulls === 0) {
-	    for (var i=this.guesses.length-1;i>=0;--i) {
-		var s = calculateScore(this.guesses[i],guess);
-		if (s.cows + s.bulls > 0) 
-		    this.guesses.splice(i,1);
-	    };
+	    this.removeIf(guess, function(s) {
+		return (s.cows + s.bulls > 0);
+	    });
 	}
 
 	if (score.cows + score.bulls > 0) {
