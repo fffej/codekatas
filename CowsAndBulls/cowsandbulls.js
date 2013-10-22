@@ -49,6 +49,8 @@ describe('cows and bulls', function() {
 	return n * fact(n-1);
     };
 
+    var possibilities = fact(10) / fact(10-4);
+
     describe('scoring', function() {
 	var assertCowsAndBulls = function(expected, actual) {
 	    assert.equal(actual.cows, expected.cows);
@@ -79,9 +81,16 @@ describe('cows and bulls', function() {
 
 	it('initially contains all possibilities', function() {
 	    var player = new Player();
-
-	    var possibilities = fact(10) / fact(10-4);
 	    assert.equal(possibilities, player.guesses.length);
+	});
+    });
+
+    describe('playing', function() {
+	it('always wins in the end', function() {
+	    var game = new Game();
+	    var turnsTaken = game.play(new Player());
+
+	    assert(turnsTaken < possibilities);
 	});
     });
 });
