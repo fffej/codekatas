@@ -19,10 +19,10 @@ var calculateScore = function(guess, secret) {
 
 var Player = function() {
 
-    var guesses = ['5678'];
+    this.guesses = ['5678'];
 
     this.guess = function() {
-	return guesses.pop();
+	return this.guesses.pop();
     };
     
     this.update = function(guess, score) {
@@ -65,7 +65,6 @@ describe('cows and bulls', function() {
 	    player.update('1234', {cows: 0, bulls: 0});
 
 	    var guess = player.guess();
-	    console.log(guess);
 	    for (var i=1;i<=4;++i) {
 		assert(guess.indexOf('' + i) === -1);
 	    }
