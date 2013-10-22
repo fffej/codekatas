@@ -47,6 +47,14 @@ var Player = function() {
 		    this.guesses.splice(i,1);
 	    };
 	}
+
+	if (score.cows + score.bulls > 0) {
+	    for (var i=this.guesses.length-1;i>=0;--i) {
+		var s = calculateScore(this.guesses[i],guess);
+		if (s.cows + s.bulls < score.cows + score.bulls) 
+		    this.guesses.splice(i,1);
+	    }
+	}
     };
     
     return this;
