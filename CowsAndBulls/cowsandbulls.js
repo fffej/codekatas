@@ -21,6 +21,10 @@ var Player = function() {
     this.guess = function() {
 	return '1023';
     };
+    
+    this.update = function(guess, score) {
+    };
+
     return this;
 };
 
