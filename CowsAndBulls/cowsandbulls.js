@@ -19,7 +19,7 @@ var calculateScore = function(guess, secret) {
 
 var Player = function() {
     this.guess = function() {
-	return '';
+	return '1023';
     };
     return this;
 };
