@@ -135,6 +135,12 @@ describe('cows and bulls', function() {
 
 	    assert.equal(fact(4), player.guesses.length);
 	});
+
+	it('uses bulls to eliminate possibilities', function() {
+	    var player = new Player();
+	    player.update('1234', {cows: 0, bulls: 3});
+	    assert.equal(7, player.guesses.length);
+	});
     });
 
     describe('playing', function() {
