@@ -14,13 +14,7 @@ var getDelimiter = function(str) {
     return isCustomDelimiter(str) ? str[2] : ',';
 };
 
-var add = function(str) {
-    if (str.length === 0) return 0;
-    str = str.replace(/\n/,',');
-
-    var delim = getDelimiter(str);
-    str = stripDelimiter(str);
-
+var sumValues = function(str, delim) {
     var sum = 0;
     var nums = str.split(delim);
     for (var i=0;i<nums.length;++i) {
@@ -28,6 +22,16 @@ var add = function(str) {
     }
 
     return sum;
+};
+
+var add = function(str) {
+    if (str.length === 0) return 0;
+    str = str.replace(/\n/,',');
+
+    var delim = getDelimiter(str);
+    str = stripDelimiter(str);
+
+    return sumValues(str,delim);
 };
 
 describe('string calculator', function() {
