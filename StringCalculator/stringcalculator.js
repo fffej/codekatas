@@ -11,6 +11,10 @@ describe('string calculator', function() {
 	it('should return a 0 for empty string', function() {
 	    assert.equal(0, add(''));
 	});
+
+	it('should return identity for a single number', function() {
+	    assert.equal(1, add('1'));
+	});
     });
 });
 
