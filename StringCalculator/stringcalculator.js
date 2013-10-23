@@ -2,27 +2,24 @@
 
 var assert = require('assert');
 
-var isCustomDelimter = function(str) {
+var isCustomDelimiter = function(str) {
     return str[0] === '/' && str[1] === '/';
 };
 
 var stripDelimiter = function(str) {
-    return str.substr(4);
+    return isCustomDelimiter(str) ? str.substr(4) : str;
 };
 
 var getDelimiter = function(str) {
-    return str[2];
+    return isCustomDelimiter(str) ? str[2] : ',';
 };
 
 var add = function(str) {
     if (str.length === 0) return 0;
     str = str.replace(/\n/,',');
 
-    var delim = ',';
-    if (isCustomDelimter(str)) {
-	delim = getDelimiter(str);
-	str = stripDelimiter(str);
-    }
+    var delim = getDelimiter(str);
+    str = stripDelimiter(str);
 
     var sum = 0;
     var nums = str.split(delim);
