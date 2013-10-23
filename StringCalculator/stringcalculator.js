@@ -17,6 +17,10 @@ describe('string calculator', function() {
 	it('should return identity for a single number', function() {
 	    assert.equal(1, add('1'));
 	});
+
+	it('should return sum for numbers separated by ,', function() {
+	    assert.equal(2, add('1,2'));
+	});
     });
 });
 
