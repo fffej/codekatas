@@ -29,7 +29,7 @@ var sumValues = function(str, delim) {
     }
 
     if (invalidValues.length !== 0)
-	throw new Error('negatives not allowed: ' + num);
+	throw new Error('negatives not allowed: ' + invalidValues);
 
     return sum;
 };
