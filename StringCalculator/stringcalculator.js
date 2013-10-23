@@ -25,7 +25,6 @@ var sumValues = function(str, delim) {
 };
 
 var add = function(str) {
-    if (str.length === 0) return 0;
     str = str.replace(/\n/,',');
 
     var delim = getDelimiter(str);
