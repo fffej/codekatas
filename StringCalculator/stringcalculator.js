@@ -33,6 +33,10 @@ describe('string calculator', function() {
 	it('should handle numbers spparated by newlines', function() {
 	    assert.equal(3, add('1\n2'));
 	});
+
+	it('should support different delimiters', function() {
+	    assert.equal(3, add('//;\n1;2'));
+	});
     });
 });
 
