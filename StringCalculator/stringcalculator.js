@@ -20,7 +20,7 @@ var sumValues = function(str, delim) {
     for (var i=0;i<nums.length;++i) {
 	var num = nums[i]|0;
 
-	if (num < 0) throw Exception('negatives not allowed');
+	if (num < 0) throw new Error('negatives not allowed: ' + num);
 
 	sum += num;
     }
@@ -65,7 +65,10 @@ describe('string calculator', function() {
 	it('should not support negative numbers', function() {
 	    assert.throws(function() {
 		add('-1');
-	    }, function(e) { assert(e.message.indexOf('-1') !== -1); });
+	    }, function(err) { 
+		assert(err.message.indexOf('-1') !== -1);
+		return true;
+	    });
 	});
     });
 });
