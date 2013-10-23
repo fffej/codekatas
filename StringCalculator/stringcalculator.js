@@ -57,6 +57,12 @@ describe('string calculator', function() {
 	it('should support different delimiters', function() {
 	    assert.equal(3, add('//;\n1;2'));
 	});
+
+	it('should not support negative numbers', function() {
+	    assert.throws(function() {
+		add('-1');
+	    });
+	});
     });
 });
 
