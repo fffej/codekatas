@@ -17,13 +17,19 @@ var getDelimiter = function(str) {
 var sumValues = function(str, delim) {
     var sum = 0;
     var nums = str.split(delim);
+
+    var invalidValues = [];
+
     for (var i=0;i<nums.length;++i) {
 	var num = nums[i]|0;
 
-	if (num < 0) throw new Error('negatives not allowed: ' + num);
+	if (num < 0) invalidValues.push(num);
 
 	sum += num;
     }
+
+    if (invalidValues.length !== 0)
+	throw new Error('negatives not allowed: ' + num);
 
     return sum;
 };
