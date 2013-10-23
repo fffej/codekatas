@@ -27,6 +27,10 @@ describe('string calculator', function() {
 	it('should return sum for numbers separated by ,', function() {
 	    assert.equal(3, add('1,2'));
 	});
+
+	it('should handle numbers spparated by newlines', function() {
+	    assert.equal(3, add('1\n2'));
+	});
     });
 });
 
