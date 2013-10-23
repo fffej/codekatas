@@ -5,6 +5,8 @@ var assert = require('assert');
 var add = function(str) {
     if (str.length === 0) return 0;
 
+    str = str.replace(/\n/,',');
+
     var sum = 0;
     var nums = str.split(',');
     for (var i=0;i<nums.length;++i) {
