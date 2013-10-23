@@ -24,9 +24,12 @@ var sumValues = function(str, delim) {
     return sum;
 };
 
-var add = function(str) {
-    str = str.replace(/\n/,',');
+var stripInvalidCharacters = function(str) {
+    return str.replace(/\n/,',');
+};
 
+var add = function(str) {
+    str = stripInvalidCharacters(str);
     var delim = getDelimiter(str);
     str = stripDelimiter(str);
 
