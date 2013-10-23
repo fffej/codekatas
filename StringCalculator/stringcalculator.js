@@ -70,6 +70,15 @@ describe('string calculator', function() {
 		return true;
 	    });
 	});
+
+	it('should display all negative numbers', function() {
+	    assert.throws(function() { add('-1,-2'); },
+			  function(err) {
+			      assert(err.message.indexOf('-1') !== -1);
+			      assert(err.message.indexOf('-2') !== -1);
+			      return true;
+			  });
+	});
     });
 });
 
