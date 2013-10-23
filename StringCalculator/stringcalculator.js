@@ -2,13 +2,22 @@
 
 var assert = require('assert');
 
+var isCustomDelimter = function(str) {
+    return str[0] === '/' && str[1] === '/';
+};
+
 var add = function(str) {
     if (str.length === 0) return 0;
-
     str = str.replace(/\n/,',');
 
+    var delim = ',';
+    if (isCustomDelimter(str)) {
+	delim = str[2];
+	str = str.substr(4);
+    }
+
     var sum = 0;
-    var nums = str.split(',');
+    var nums = str.split(delim);
     for (var i=0;i<nums.length;++i) {
 	sum += nums[i] | 0;
     }
