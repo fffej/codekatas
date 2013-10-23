@@ -65,7 +65,7 @@ describe('string calculator', function() {
 	it('should not support negative numbers', function() {
 	    assert.throws(function() {
 		add('-1');
-	    });
+	    }, function(e) { assert(e.message.indexOf('-1') !== -1); });
 	});
     });
 });
