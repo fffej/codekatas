@@ -18,7 +18,11 @@ var sumValues = function(str, delim) {
     var sum = 0;
     var nums = str.split(delim);
     for (var i=0;i<nums.length;++i) {
-	sum += nums[i] | 0;
+	var num = nums[i]|0;
+
+	if (num < 0) throw Exception('negatives not allowed');
+
+	sum += num;
     }
 
     return sum;
