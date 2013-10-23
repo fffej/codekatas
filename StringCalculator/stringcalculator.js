@@ -6,14 +6,22 @@ var isCustomDelimter = function(str) {
     return str[0] === '/' && str[1] === '/';
 };
 
+var stripDelimiter = function(str) {
+    return str.substr(4);
+};
+
+var getDelimiter = function(str) {
+    return str[2];
+};
+
 var add = function(str) {
     if (str.length === 0) return 0;
     str = str.replace(/\n/,',');
 
     var delim = ',';
     if (isCustomDelimter(str)) {
-	delim = str[2];
-	str = str.substr(4);
+	delim = getDelimiter(str);
+	str = stripDelimiter(str);
     }
 
     var sum = 0;
