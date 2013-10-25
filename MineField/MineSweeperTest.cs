@@ -41,6 +41,15 @@ namespace Fatvat.Katas.MineSweeper
             AssertMineField(mineFieldInput, expectedOutput);
         }
 
+        [Test]
+        public void Given_1x3_Minefield_With_No_Mines_Produce_Empty_Output()
+        {
+            const string mineFieldInput = "1 3\n-\n-\n-\n";
+            const string expectedOutput = "0\n0\n0\n";
+
+            AssertMineField(mineFieldInput, expectedOutput);
+        }
+
         // ReSharper restore InconsistentNaming
     }
 
