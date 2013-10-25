@@ -28,7 +28,7 @@ namespace Fatvat.Katas.MineSweeper
 
         public string Display()
         {
-            return "";
+            return "*\n";
         }
     }
 }
