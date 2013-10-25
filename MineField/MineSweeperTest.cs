@@ -30,14 +30,26 @@ namespace Fatvat.Katas.MineSweeper
 
     public class MineField
     {
+        private readonly bool m_HasMine;
+
+        private MineField(bool hasMine)
+        {
+            m_HasMine = hasMine;
+        }
+
         public static MineField Read(string input)
         {
-            return new MineField();
+            var lines = input.Split(new char[] {'\n'});
+
+            bool hasMine = lines[1] == "*";
+
+
+            return new MineField(hasMine);
         }
 
         public string Display()
         {
-            return "*\n";
+            return !m_HasMine ? "0\n" : "*\n";
         }
     }
 }
