@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Linq.Expressions;
 using NUnit.Framework;
 using FluentAssertions;
@@ -114,7 +115,20 @@ namespace Fatvat.Katas.MineSweeper
 
         private int SurroundingMines(int x, int y)
         {
-            return 0;
+            var length1 = m_HasMine.GetLength(1);
+            var length2 = m_HasMine.GetLength(0);
+
+            var mines = 0;
+
+            for (var i = Math.Max(y-1,0); i < Math.Min(y+2, length1); ++i)
+            {
+                for (var j = Math.Max(x-1,0); j < Math.Min(x+2,length2); ++j)
+                {
+                    if (i == j) continue;
+                    mines += IsNotMine(j, i) ? 0 : 1;
+                }
+            }
+            return mines;
         }
 
 
