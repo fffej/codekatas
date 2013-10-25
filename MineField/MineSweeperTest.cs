@@ -75,7 +75,7 @@ namespace Fatvat.Katas.MineSweeper
             {
                 for (var j = 0; j < fieldY; ++j)
                 {
-                    grid[i, j] = lines[i + 1][j];
+                    grid[i,j] = lines[j+1][i];
                 }
             }
             
@@ -85,11 +85,11 @@ namespace Fatvat.Katas.MineSweeper
         public string Display()
         {
             string result = "";
-            for (var i = 0; i < m_HasMine.GetLength(0); ++i)
+            for (var i = 0; i < m_HasMine.GetLength(1); ++i)
             {
-                for (var j = 0; j < m_HasMine.GetLength(1); ++j)
+                for (var j = 0; j < m_HasMine.GetLength(0); ++j)
                 {
-                    result += m_HasMine[i, j] != '*' ? '0' : '*';
+                    result += m_HasMine[j,i] != '*' ? '0' : '*';
                 }
                 result += "\n";
             }
