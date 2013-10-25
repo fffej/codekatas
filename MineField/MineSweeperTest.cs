@@ -59,26 +59,34 @@ namespace Fatvat.Katas.MineSweeper
             var lines = input.Split(new [] {'\n'});
 
             int[] header = lines[0].Split(new[] {' '}).Select(int.Parse).ToArray();
-            var dx = header[0];
-            var dy = header[1];
+            var fieldX = header[0];
+            var fieldY = header[1];
 
-            char[,] grid = new char[dx,dy];
-            for (var i = 0; i < dx; ++i)
+            char[,] grid = new char[fieldX,fieldY];
+            for (var i = 0; i < fieldX; ++i)
             {
-                for (var j = 0; j < dy; ++j)
+                for (var j = 0; j < fieldY; ++j)
                 {
                     grid[i, j] = lines[i + 1][j];
                 }
             }
-            
-
             
             return new MineField(grid);
         }
 
         public string Display()
         {
-            return m_HasMine[0,0] != '*' ? "0\n" : "*\n";
+            string result = "";
+            for (var i = 0; i < m_HasMine.GetLength(0); ++i)
+            {
+                for (var j = 0; j < m_HasMine.GetLength(1); ++j)
+                {
+                    result += m_HasMine[i, j] != '*' ? '0' : '*';
+                }
+                result += "\n";
+            }
+
+            return result;
         }
     }
 }
