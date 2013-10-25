@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using System.Linq.Expressions;
+using NUnit.Framework;
 using FluentAssertions;
 
 namespace Fatvat.Katas.MineSweeper
@@ -26,6 +28,7 @@ namespace Fatvat.Katas.MineSweeper
         }
 
         [Test]
+        [Ignore]
         public void Given_2x2_Minefield_With_No_Mines_Produce_Empty_Output()
         {
             const string mineFieldInput = "2 2\n--\n--\n";
@@ -39,26 +42,38 @@ namespace Fatvat.Katas.MineSweeper
 
     public class MineField
     {
-        private readonly bool m_HasMine;
+        private readonly char[,] m_HasMine;
 
-        private MineField(bool hasMine)
+        private MineField(char[,] hasMine)
         {
             m_HasMine = hasMine;
         }
 
         public static MineField Read(string input)
         {
-            var lines = input.Split(new char[] {'\n'});
+            var lines = input.Split(new [] {'\n'});
 
-            bool hasMine = lines[1] == "*";
+            int[] header = lines[0].Split(new[] {' '}).Select(int.Parse).ToArray();
+            var dx = header[0];
+            var dy = header[1];
 
+            char[,] grid = new char[dx,dy];
+            for (var i = 0; i < dx; ++i)
+            {
+                for (var j = 0; j < dy; ++j)
+                {
+                    grid[i, j] = lines[i + 1][j];
+                }
+            }
+            
 
-            return new MineField(hasMine);
+            
+            return new MineField(grid);
         }
 
         public string Display()
         {
-            return !m_HasMine ? "0\n" : "*\n";
+            return m_HasMine[0,0] != '*' ? "0\n" : "*\n";
         }
     }
 }
