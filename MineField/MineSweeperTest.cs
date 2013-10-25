@@ -50,6 +50,15 @@ namespace Fatvat.Katas.MineSweeper
             AssertMineField(mineFieldInput, expectedOutput);
         }
 
+        [Test]
+        public void Given_2x2_MineFIeld_With_Single_Mine_Produce_Output()
+        {
+            const string mineFieldInput = "2 2\n*-\n--\n";
+            const string expectedOutput = "*1\n11\n";
+
+            AssertMineField(mineFieldInput, expectedOutput);
+        }
+
         // ReSharper restore InconsistentNaming
     }
 
