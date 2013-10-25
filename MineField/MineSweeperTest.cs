@@ -99,7 +99,7 @@ namespace Fatvat.Katas.MineSweeper
             {
                 for (var j = 0; j < m_HasMine.GetLength(0); ++j)
                 {
-                    result += m_HasMine[j,i] != '*' ? SurroundingMines(j,i).ToString() : "*";
+                    result += IsNotMine(j, i) ? SurroundingMines(j,i).ToString() : "*";
                 }
                 result += "\n";
             }
@@ -107,7 +107,12 @@ namespace Fatvat.Katas.MineSweeper
             return result;
         }
 
-        private int SurroundingMines(int i, int i1)
+        private bool IsNotMine(int j, int i)
+        {
+            return m_HasMine[j,i] != '*';
+        }
+
+        private int SurroundingMines(int x, int y)
         {
             return 0;
         }
