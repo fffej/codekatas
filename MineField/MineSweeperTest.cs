@@ -51,6 +51,7 @@ namespace Fatvat.Katas.MineSweeper
         }
 
         [Test]
+        [Ignore]
         public void Given_2x2_MineFIeld_With_Single_Mine_Produce_Output()
         {
             const string mineFieldInput = "2 2\n*-\n--\n";
