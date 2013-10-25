@@ -8,6 +8,11 @@ namespace Fatvat.Katas.MineSweeper
     [TestFixture]
     public class MineSweeperTest
     {
+        private void AssertMineField(string input, string expectedOutput)
+        {
+            Assert.That(MineField.Read(input).Display(), Is.EqualTo(expectedOutput));
+        }
+
         // ReSharper disable InconsistentNaming
         [Test]
         public void Given_Simplest_MineField_Can_ProduceOutput()
@@ -15,7 +20,7 @@ namespace Fatvat.Katas.MineSweeper
             const string mineFieldInput = "1 1\n*";
             const string expectedOutput = "*\n";
 
-            Assert.That(MineField.Read(mineFieldInput).Display(), Is.EqualTo(expectedOutput));
+            AssertMineField(mineFieldInput, expectedOutput);
         }
 
         [Test]
@@ -24,7 +29,7 @@ namespace Fatvat.Katas.MineSweeper
             const string mineFieldInput = "1 1\n-";
             const string expectedOutput = "0\n";
 
-            Assert.That(MineField.Read(mineFieldInput).Display(), Is.EqualTo(expectedOutput));
+            AssertMineField(mineFieldInput, expectedOutput);
         }
 
         [Test]
@@ -34,7 +39,7 @@ namespace Fatvat.Katas.MineSweeper
             const string mineFieldInput = "2 2\n--\n--\n";
             const string expectedOutput = "00\n00\n";
 
-            Assert.That(MineField.Read(mineFieldInput).Display(), Is.EqualTo(expectedOutput));
+            AssertMineField(mineFieldInput, expectedOutput);
         }
 
         // ReSharper restore InconsistentNaming
