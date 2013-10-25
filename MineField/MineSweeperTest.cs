@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Linq.Expressions;
 using NUnit.Framework;
-using FluentAssertions;
 
 namespace Fatvat.Katas.MineSweeper
 {
@@ -52,7 +50,6 @@ namespace Fatvat.Katas.MineSweeper
         }
 
         [Test]
-        [Ignore]
         public void Given_2x2_MineFIeld_With_Single_Mine_Produce_Output()
         {
             const string mineFieldInput = "2 2\n*-\n--\n";
@@ -77,20 +74,29 @@ namespace Fatvat.Katas.MineSweeper
         {
             var lines = input.Split(new [] {'\n'});
 
-            int[] header = lines[0].Split(new[] {' '}).Select(int.Parse).ToArray();
+            int[] header = ReadHeader(lines);
             var fieldX = header[0];
             var fieldY = header[1];
 
-            char[,] grid = new char[fieldX,fieldY];
-            for (var i = 0; i < fieldX; ++i)
-            {
-                for (var j = 0; j < fieldY; ++j)
-                {
-                    grid[i,j] = lines[j+1][i];
-                }
-            }
-            
+            var grid = ReadGrid(lines, fieldX, fieldY);
+
             return new MineField(grid);
+        }
+
+        private static int[] ReadHeader(string[] lines)
+        {
+            return lines[0].Split(new[] {' '}).Select(int.Parse).ToArray();
+        }
+
+        private static char[,] ReadGrid(string[] lines, int fieldX, int fieldY)
+        {
+            char[,] grid = new char[fieldX, fieldY];
+            
+            for (var i = 0; i < fieldX; ++i)
+                for (var j = 0; j < fieldY; ++j)
+                    grid[i, j] = lines[j + 1][i];
+            
+            return grid;
         }
 
         public string Display()
@@ -115,22 +121,18 @@ namespace Fatvat.Katas.MineSweeper
 
         private int SurroundingMines(int x, int y)
         {
-            var length1 = m_HasMine.GetLength(1);
-            var length2 = m_HasMine.GetLength(0);
-
             var mines = 0;
 
-            for (var i = Math.Max(y-1,0); i < Math.Min(y+2, length1); ++i)
+            for (var i = Math.Max(y-1,0); i < Math.Min(y+2, m_HasMine.GetLength(1)); ++i)
             {
-                for (var j = Math.Max(x-1,0); j < Math.Min(x+2,length2); ++j)
+                for (var j = Math.Max(x-1,0); j < Math.Min(x+2,m_HasMine.GetLength(0)); ++j)
                 {
-                    if (i == j) continue;
+                    if (i == y && j == x) continue;
                     mines += IsNotMine(j, i) ? 0 : 1;
                 }
             }
+
             return mines;
         }
-
-
     }
 }
