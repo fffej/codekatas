@@ -99,12 +99,19 @@ namespace Fatvat.Katas.MineSweeper
             {
                 for (var j = 0; j < m_HasMine.GetLength(0); ++j)
                 {
-                    result += m_HasMine[j,i] != '*' ? '0' : '*';
+                    result += m_HasMine[j,i] != '*' ? SurroundingMines(j,i).ToString() : "*";
                 }
                 result += "\n";
             }
 
             return result;
         }
+
+        private int SurroundingMines(int i, int i1)
+        {
+            return 0;
+        }
+
+
     }
 }
