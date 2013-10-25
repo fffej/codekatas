@@ -25,6 +25,15 @@ namespace Fatvat.Katas.MineSweeper
             Assert.That(MineField.Read(mineFieldInput).Display(), Is.EqualTo(expectedOutput));
         }
 
+        [Test]
+        public void Given_2x2_Minefield_With_No_Mines_Produce_Empty_Output()
+        {
+            const string mineFieldInput = "2 2\n--\n--\n";
+            const string expectedOutput = "00\n00\n";
+
+            Assert.That(MineField.Read(mineFieldInput).Display(), Is.EqualTo(expectedOutput));
+        }
+
         // ReSharper restore InconsistentNaming
     }
 
