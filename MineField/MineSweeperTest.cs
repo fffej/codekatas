@@ -33,7 +33,6 @@ namespace Fatvat.Katas.MineSweeper
         }
 
         [Test]
-        [Ignore]
         public void Given_2x2_Minefield_With_No_Mines_Produce_Empty_Output()
         {
             const string mineFieldInput = "2 2\n--\n--\n";
