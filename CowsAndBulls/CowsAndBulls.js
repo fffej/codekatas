@@ -15,10 +15,21 @@ var calculateCows = function(guess, secret) {
     return cows;
 };
 
+var calculateBulls = function(guess, secret) {
+    var n = guess.length;
+    var bulls = 0;
+
+    for (var i=0;i<n;++i)
+	if (guess[i] === secret[i])
+	    bulls++;
+
+    return bulls;
+};
+
 var calculateScore = function(guess, secret) {
     return {
 	cows: calculateCows(guess,secret),
-	bulls: guess === secret ? 4 : 0
+	bulls: calculateBulls(guess,secret)
     };
 };
 
