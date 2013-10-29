@@ -55,13 +55,17 @@ var calculateInitialGuesses = function() {
     return permutations(4);
 };
 
+var eliminateGuesses = function(guesses, guess, score) {
+    return guesses;
+};
+
 describe('cows and bulls', function() {
 
     describe('eliminations', function() {
 	it('should eliminate all not matching', function() {
 	    var guesses = calculateInitialGuesses();
 
-	    var rest = eliminateGuesses(guess, {bulls: 0, cows: 0});
+	    var rest = eliminateGuesses(guesses, '1234', {bulls: 0, cows: 0});
 
 	    assert.equal(6*5*4*3, rest.length);
 	});
