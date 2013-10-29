@@ -73,7 +73,28 @@ var eliminateGuesses = function(guesses, guess, score) {
     return rest;
 };
 
+var Game = function() {
+    this.play = function() {
+	return 1000;
+    };
+    return this;
+};
+
+var ComputerPlayer = function() {
+    return this;
+};
+
 describe('cows and bulls', function() {
+
+    describe('game', function() {
+	it('should complete within 10 turns', function() {
+	    var game = new Game('5432');
+	    
+	    var turnsTaken = game.play(new ComputerPlayer());
+	    
+	    assert(turnsTaken < 10);
+	});
+    });
 
     describe('eliminations', function() {
 	it('should eliminate all not matching', function() {
