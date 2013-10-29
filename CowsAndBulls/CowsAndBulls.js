@@ -34,7 +34,25 @@ var calculateScore = function(guess, secret) {
 };
 
 var calculateInitialGuesses = function() {
-    return [];
+    var digits = ['0','1','2','3','4','5','6','7','8','9'];
+
+    var permutations = function(n) {
+	if (n === 1) return digits;
+
+	var rest = permutations(n - 1);
+	var options = [];
+	for (var i=0;i<rest.length;++i) {
+	    for (var j=0;j<digits.length;++j) {
+		if (rest[i].indexOf(digits[j]) === -1) {
+		    options.push(digits[j] + rest[i]);
+		}
+	    }
+	}
+
+	return options;
+    };
+
+    return permutations(4);
 };
 
 describe('cows and bulls', function() {
