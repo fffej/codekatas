@@ -134,32 +134,32 @@ describe('cows and bulls', function() {
 
     describe('scoring', function() {
 
+	var assertScoreEquals = function(score,expected) {
+	    assert(scoreEquals(score,expected));
+	};
+
 	it('scores nothing when no matches', function() {
 	    var score = calculateScore('1234', '5678');
 
-	    assert.equal(0, score.cows);
-	    assert.equal(0, score.bulls);
+	    assertScoreEquals({cows: 0, bulls: 0}, score);
 	});
 
 	it('scores bulls when all matches', function() {
 	    var score = calculateScore('1234', '1234');
 	    
-	    assert.equal(0, score.cows);
-	    assert.equal(4, score.bulls);
+	    assertScoreEquals({cows: 0, bulls: 4}, score);
 	});
 
 	it('scores cows when permutation', function() {
 	    var score = calculateScore('1234', '4321');
 	    
-	    assert.equal(4, score.cows);
-	    assert.equal(0, score.bulls);
+	    assertScoreEquals({cows: 4, bulls: 0}, score);
 	});
 
 	it('scores partially', function() {
 	    var score = calculateScore('1234', '1243');
 
-	    assert.equal(2, score.cows);
-	    assert.equal(2, score.bulls);
+	    assertScoreEquals({cows: 2, bulls: 2}, score);
 	});
     });
 });
