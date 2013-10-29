@@ -24,5 +24,12 @@ describe('cows and bulls', function() {
 	    assert.equal(0, score.cows);
 	    assert.equal(4, score.bulls);
 	});
+
+	it('scores cows when permutation', function() {
+	    var score = calculateScore('1234', '4321');
+	    
+	    assert.equal(4, score.cows);
+	    assert.equal(0, score.bulls);
+	});
     });
 });
