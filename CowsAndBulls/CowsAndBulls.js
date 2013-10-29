@@ -34,6 +34,15 @@ var calculateScore = function(guess, secret) {
 };
 
 describe('cows and bulls', function() {
+
+    describe('permutations', function() {
+	it('should have 10*9*8*7 initial guesses', function() {
+	    var setOfGuesses = calculateInitialGuesses();
+
+	    assert.equal(10*9*8*7, setOfGuesses.length);
+	});
+    });
+
     describe('scoring', function() {
 	it('scores nothing when no matches', function() {
 	    var score = calculateScore('1234', '5678');
