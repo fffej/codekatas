@@ -55,8 +55,22 @@ var calculateInitialGuesses = function() {
     return permutations(4);
 };
 
+var scoreEquals = function(a,b) {
+    return a.cows === b.cows && a.bulls === b.bulls;
+};
+
 var eliminateGuesses = function(guesses, guess, score) {
-    return guesses;
+    var rest = [];
+    var n = guesses.length;
+
+    for (var i=0;i<n;++i) {
+	var sc = calculateScore(guesses[i],guess);
+	if (scoreEquals(sc,score))
+	    rest.push(guesses[i]);
+    }
+    
+
+    return rest;
 };
 
 describe('cows and bulls', function() {
