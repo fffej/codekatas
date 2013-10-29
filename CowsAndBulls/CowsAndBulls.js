@@ -73,14 +73,32 @@ var eliminateGuesses = function(guesses, guess, score) {
     return rest;
 };
 
-var Game = function() {
-    this.play = function() {
-	return 1000;
+var Game = function(secret) {
+    this.play = function(player) {
+	var turns = 0;
+	do {
+	    var guess = player.guess();
+	    var score = calculateScore(secret,guess);
+	    player.update(guess,score);
+	    turns++;
+	} while (score.bulls !== 4)
+
+	return turns;
     };
     return this;
 };
 
 var ComputerPlayer = function() {
+    this.guesses = calculateInitialGuesses();
+
+    this.guess = function() {
+	return this.guesses.pop();
+    };
+
+    this.update = function(guess,score) {
+	this.guesses = eliminateGuesses(this.guesses,guess,score);
+    };
+
     return this;
 };
 
@@ -115,6 +133,7 @@ describe('cows and bulls', function() {
     });
 
     describe('scoring', function() {
+
 	it('scores nothing when no matches', function() {
 	    var score = calculateScore('1234', '5678');
 
