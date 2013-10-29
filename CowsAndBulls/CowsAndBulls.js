@@ -2,9 +2,22 @@
 
 var assert = require('assert');
 
+var calculateCows = function(guess, secret) {
+    var n = guess.length;
+    var cows = 0;
+
+    for (var i=0;i<n;++i) {
+	var idx = secret.indexOf(guess[i]);
+	if (idx !== -1 && idx !== i) 
+	    cows++;
+    }
+
+    return cows;
+};
+
 var calculateScore = function(guess, secret) {
     return {
-	cows: 0,
+	cows: calculateCows(guess,secret),
 	bulls: guess === secret ? 4 : 0
     };
 };
