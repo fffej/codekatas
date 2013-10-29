@@ -33,6 +33,10 @@ var calculateScore = function(guess, secret) {
     };
 };
 
+var calculateInitialGuesses = function() {
+    return [];
+};
+
 describe('cows and bulls', function() {
 
     describe('permutations', function() {
