@@ -44,5 +44,12 @@ describe('cows and bulls', function() {
 	    assert.equal(4, score.cows);
 	    assert.equal(0, score.bulls);
 	});
+
+	it('scores partially', function() {
+	    var score = calculateScore('1234', '1243');
+
+	    assert.equal(2, score.cows);
+	    assert.equal(2, score.bulls);
+	});
     });
 });
