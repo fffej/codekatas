@@ -5,7 +5,7 @@ var assert = require('assert');
 var calculateScore = function(guess, secret) {
     return {
 	cows: 0,
-	bulls: 0
+	bulls: guess === secret ? 4 : 0
     };
 };
 
