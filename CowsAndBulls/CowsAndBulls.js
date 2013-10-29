@@ -57,6 +57,16 @@ var calculateInitialGuesses = function() {
 
 describe('cows and bulls', function() {
 
+    describe('eliminations', function() {
+	it('should eliminate all not matching', function() {
+	    var guesses = calculateInitialGuesses();
+
+	    var rest = eliminateGuesses(guess, {bulls: 0, cows: 0});
+
+	    assert.equal(6*5*4*3, rest.length);
+	});
+    });
+
     describe('permutations', function() {
 	it('should have 10*9*8*7 initial guesses', function() {
 	    var setOfGuesses = calculateInitialGuesses();
