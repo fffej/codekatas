@@ -35,3 +35,30 @@ allRows = [Row a b c d | a <- [0..9], b <- [0..9], c <- [0..9], d <- [0..9], dis
                            
 removeBadGuesses :: Row -> Score -> [Row] -> [Row]
 removeBadGuesses r s = filter (\row -> score row r == s)
+
+data Player = Player [Row] deriving (Show,Eq)
+
+defaultPlayer :: Player
+defaultPlayer = Player allRows
+
+gameInProgress :: GameState -> Bool
+gameInProgress (GameState secret p) = score (lastGuess p) secret /= Score 4 0 
+
+data GameState = GameState Row Player deriving (Show,Eq)
+
+lastGuess :: Player -> Row
+lastGuess (Player xs) = head xs
+
+remaining :: Player -> [Row]
+remaining (Player xs) = xs
+
+makeGuess :: GameState -> GameState
+makeGuess (GameState secret player) = GameState secret newPlayer
+    where
+      guess = lastGuess player
+      newPlayer = Player (removeBadGuesses guess (score guess secret) (remaining player))
+
+playGame :: Row -> Int
+playGame row = length $ takeWhile gameInProgress games 
+    where
+      games = iterate makeGuess (GameState row defaultPlayer)
