@@ -29,17 +29,13 @@ removeBadGuesses r s = filter (\row -> score row r == s)
 lastGuess :: Player -> Row
 lastGuess (Player xs) = head xs
 
-remaining :: Player -> [Row]
-remaining (Player xs) = xs
-
 playGame :: Row -> Int
 playGame secret = length $ takeWhile gameInProgress games 
     where
       games = iterate makeGuess (Player allRows)
-      gameInProgress player = score (lastGuess player) secret /= Score 4 0
-      makeGuess player = newPlayer
+      gameInProgress (Player (x:xs)) = score x secret /= Score 4 0
+      makeGuess (Player guesses) = newPlayer
           where
-            guesses = remaining player
             guess = head guesses
             newPlayer = Player (removeBadGuesses guess (score guess secret) guesses)
 
