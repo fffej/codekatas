@@ -21,7 +21,6 @@ score a b = Score bulls cows
 allRows :: [Row]
 allRows = filter distinct [Row a b c d | a <- [0..9], b <- [0..9], c <- [0..9], d <- [0..9]]
     where 
-      -- lazy
       distinct (Row a b c d) = 4 == length (nub [a,b,c,d])
                            
 removeBadGuesses :: Row -> Score -> [Row] -> [Row]
