@@ -1,11 +1,10 @@
 module CowsAndBulls where
 
+import Data.List
+
 data Row = Row Int Int Int Int deriving (Show,Eq)
-
 data Score = Score Int Int deriving (Show,Eq)
-
 data Player = Player [Row] deriving (Show,Eq)
-
 data GameState = GameState Row Player deriving (Show,Eq)
 
 rowToList :: Row -> [Int]
@@ -21,17 +20,13 @@ score a b = Score bulls cows
       bulls = length $ filter id (zipWith (==) xs ys)
 
 allRows :: [Row]
-allRows = [Row a b c d | a <- [0..9], b <- [0..9], c <- [0..9], d <- [0..9], distinct a b c d]
-    where
-      distinct a b c d = a /= b && a /= c && a /= d &&
-                         b /= c && b /= d &&
-                         c /= d
+allRows = filter distinct [Row a b c d | a <- [0..9], b <- [0..9], c <- [0..9], d <- [0..9]]
+    where 
+      -- lazy
+      distinct (Row a b c d) = 4 == length (nub [a,b,c,d])
                            
 removeBadGuesses :: Row -> Score -> [Row] -> [Row]
 removeBadGuesses r s = filter (\row -> score row r == s)
-
-defaultPlayer :: Player
-defaultPlayer = Player allRows
 
 gameInProgress :: GameState -> Bool
 gameInProgress (GameState secret p) = score (lastGuess p) secret /= Score 4 0 
@@ -45,10 +40,11 @@ remaining (Player xs) = xs
 makeGuess :: GameState -> GameState
 makeGuess (GameState secret player) = GameState secret newPlayer
     where
-      guess = lastGuess player
-      newPlayer = Player (removeBadGuesses guess (score guess secret) (remaining player))
+      guesses = remaining player
+      guess = head guesses
+      newPlayer = Player (removeBadGuesses guess (score guess secret) guesses)
 
 playGame :: Row -> Int
 playGame row = length $ takeWhile gameInProgress games 
     where
-      games = iterate makeGuess (GameState row defaultPlayer)
+      games = iterate makeGuess (GameState row (Player allRows))
