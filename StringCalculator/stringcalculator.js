@@ -2,13 +2,9 @@
 
 var assert = require('assert');
 
+
 var add = function(str) {
-    var parts = str.split(',');
-    var sum = 0;
-    for (var i=0;i<parts.length;++i) {
-	sum += (parts[i]|0);
-    }
-    return sum;
+     return str.split(',').map(function(x) { return x | 0; }).reduce(function(x,y) { return x + y; },0);
 };
 
 describe('string calculator', function() {
