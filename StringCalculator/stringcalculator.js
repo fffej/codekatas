@@ -22,4 +22,8 @@ describe('string calculator', function() {
     it('should add numbers separated by commas', function() {
 	assert.equal(2, add('1,1'));
     });
+
+    it('should treat newlines as commas', function() {
+	assert.equal(2, add('1\n1'));
+    });
 });
