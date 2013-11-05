@@ -11,6 +11,9 @@ var splitToNumbers = function(str) {
 };
 
 var extractCustomDelimiter = function(str) {
+    if (str.indexOf('//') === 0) {
+	return str[3];
+    }
     return ',';
 };
 
