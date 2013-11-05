@@ -7,7 +7,7 @@ var toNumber = function(x) { return x | 0; };
 var addXY = function(x,y) { return x + y; };
 
 var splitToNumbers = function(str) {
-    return str.split(',');
+    return str.replace(/\n/,',').split(',');
 };
 
 var add = function(str) {
