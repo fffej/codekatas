@@ -4,8 +4,10 @@ var assert = require('assert');
 
 var toNumber = function(x) { return x | 0; };
 
+var addXY = function(x,y) { return x + y; };
+
 var add = function(str) {
-     return str.split(',').map(toNumber).reduce(function(x,y) { return x + y; },0);
+     return str.split(',').map(toNumber).reduce(addXY,0);
 };
 
 describe('string calculator', function() {
