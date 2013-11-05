@@ -30,4 +30,8 @@ describe('string calculator', function() {
     it('should treat newlines as commas', function() {
 	assert.equal(2, add('1\n1'));
     });
+
+    it('should handle mixed , and \' \'', function() {
+	assert.equal(3, add('1,1\n1'));
+    });
 });
