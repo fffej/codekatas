@@ -6,8 +6,12 @@ var toNumber = function(x) { return x | 0; };
 
 var addXY = function(x,y) { return x + y; };
 
+var splitToNumbers = function(str) {
+    return str.split(',');
+};
+
 var add = function(str) {
-     return str.split(',').map(toNumber).reduce(addXY,0);
+     return splitToNumbers(str).map(toNumber).reduce(addXY,0);
 };
 
 describe('string calculator', function() {
