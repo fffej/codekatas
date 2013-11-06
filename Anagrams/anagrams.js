@@ -5,14 +5,10 @@ var assert = require('assert');
 var anagrams = function(s) {
     var n = s.length;
 
-    if (n === 0) {
-	return [];
-    }
+    if (n === 0) return [];
 
-    if (n === 1) {
-	return [s];
-    }
-    
+    if (n === 1) return [s];
+
     return ['aa','aa'];
 };
 
