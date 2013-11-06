@@ -7,6 +7,7 @@ var isFizz = function(n) { return n % 3 === 0; };
 var isBuzz = function(n) { return n % 5 === 0; };
 
 var fizzbuzz = function(i) {
+    if (isFizz(i) && isBuzz(i)) return 'FizzBuzz';
     if (isFizz(i)) return 'Fizz';
     if (isBuzz(i)) return 'Buzz';
 
