@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var fizzbuzz = function(i) {
-    return 1;
+    return i;
 };
 
 describe('fizz buzz', function() {
