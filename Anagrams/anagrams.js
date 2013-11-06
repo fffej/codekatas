@@ -3,7 +3,9 @@
 var assert = require('assert');
 
 var anagrams = function(s) {
-    return [s];
+    if (s.length === 1) {
+	return [s];
+    }
 };
 
 describe('anagrams', function() {
