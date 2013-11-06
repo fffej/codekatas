@@ -4,13 +4,11 @@ var assert = require('assert');
 
 var statistics = function(s) {
 
-    var min = function(x,y) { return Math.min(x,y); };
-
-    var minimum = s.length === 0 ? undefined : s.reduce(min, s[0]);
+    var minFn = function(x,y) { return Math.min(x,y); };
 
     return {
 	count: s.length,
-	minimum: minimum
+	minimum: s.length === 0 ? undefined : s.reduce(minFn, s[0])
     };
 };
 
