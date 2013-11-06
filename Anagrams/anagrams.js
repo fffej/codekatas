@@ -7,9 +7,9 @@ var anagrams = function() {
 };
 
 describe('anagrams', function() {
-    it('anagrams of a single character', function() {
-	var anagramsOfA = anagrams('a');
 
-	assert.deepEqual(['a'], anagramsOfA);
+    it('anagrams of a single character', function() {
+	assert.deepEqual(['a'], anagrams('a'));
+	assert.deepEqual(['z'], anagrams('z'));
     });
 });
