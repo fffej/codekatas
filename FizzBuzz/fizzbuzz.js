@@ -17,4 +17,8 @@ describe('fizz buzz', function() {
     it('numbers divisible by 3 should Fizz', function() {
 	assert.equal('Fizz', fizzbuzz(3));
     });
+
+    it('numbers divisible by 5 should Buzz', function() {
+	assert.equal('Buzz', fizzbuzz(5));
+    });
 });
