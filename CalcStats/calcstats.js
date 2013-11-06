@@ -28,7 +28,7 @@ describe('sequence processing', function() {
 	assert.equal(undefined, stats.average);
     });
 
-    it('min works as expected on lists', function() {
+    it('min works as expected', function() {
 	assert.equal(0, statistics([0]).minimum);	
 	assert.equal(3, statistics([5,4,3]).minimum);
     });
