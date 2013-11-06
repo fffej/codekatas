@@ -5,10 +5,11 @@ var assert = require('assert');
 var statistics = function(s) {
 
     var minFn = function(x,y) { return Math.min(x,y); };
+    var maxFn = function(x,y) { return Math.max(x,y); };
 
     return {
 	count: s.length,
-	maximum: s.length === 0 ? undefined : 0,
+	maximum: s.length === 0 ? undefined : s.reduce(maxFn, s[0]),
 	minimum: s.length === 0 ? undefined : s.reduce(minFn, s[0])
     };
 };
