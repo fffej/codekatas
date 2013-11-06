@@ -5,6 +5,10 @@ var assert = require('assert');
 var anagrams = function(s) {
     var n = s.length;
 
+    if (n === 0) {
+	return [];
+    }
+
     if (n === 1) {
 	return [s];
     }
@@ -15,7 +19,7 @@ var anagrams = function(s) {
 describe('anagrams', function() {
 
     it('anagrams of an empty string are empty', function() {
-	assert.equal([], anagrams(''));
+	assert.deepEqual([], anagrams(''));
     });
 
     it('anagrams of a single character', function() {
