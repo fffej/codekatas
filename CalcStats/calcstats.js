@@ -8,6 +8,7 @@ var statistics = function(s) {
 
     return {
 	count: s.length,
+	maximum: s.length === 0 ? undefined : 0,
 	minimum: s.length === 0 ? undefined : s.reduce(minFn, s[0])
     };
 };
