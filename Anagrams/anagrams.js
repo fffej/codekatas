@@ -2,8 +2,8 @@
 
 var assert = require('assert');
 
-var anagrams = function() {
-    return ['a'];
+var anagrams = function(s) {
+    return [s];
 };
 
 describe('anagrams', function() {
