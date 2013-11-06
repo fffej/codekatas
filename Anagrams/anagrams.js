@@ -14,7 +14,7 @@ var anagrams = function(s) {
 
     for (var i=0;i<n;++i) {
 	var remaining = s.substr(0,i) + s.substr(i+1);
-	assert (remaining.length + 1 === s.length)
+	assert (remaining.length + 1 === s.length);
 	var rest = anagrams(remaining);
 	var jn = rest.length;
 	for (var j=0;j<jn;++j) {
