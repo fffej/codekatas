@@ -34,6 +34,7 @@ describe('sequence processing', function() {
 
     it('max works as expected', function() {
 	assert.equal(0, statistics([0]).maximum);
+	assert.equal(5, statistics([5,4,3]).maximum);
     });
 
 });
