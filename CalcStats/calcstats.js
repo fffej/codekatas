@@ -2,9 +2,9 @@
 
 var assert = require('assert');
 
-var statistics = function() {
+var statistics = function(s) {
     return {
-	count: 0
+	count: s.length
     };
 };
 
