@@ -31,5 +31,8 @@ describe('sequence processing', function() {
 	assert.equal(3, statistics([5,4,3]).minimum);
     });
 
+    it('max works as expected', function() {
+	assert.equal(0, statistics([0]).maximum);
+    });
 
 });
