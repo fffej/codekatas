@@ -3,8 +3,12 @@
 var assert = require('assert');
 
 var statistics = function(s) {
+
+    var minimum = s.length === 0 ? undefined : s.reduce(function(x,y) { return Math.min(x,y); }, s[0]);
+
     return {
-	count: s.length
+	count: s.length,
+	minimum: minimum
     };
 };
 
