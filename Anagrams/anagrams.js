@@ -39,4 +39,8 @@ describe('anagrams', function() {
     it('anagrams of different characters', function() {
 	assert.deepEqual(['ab','ba'], anagrams('ab'));
     });
+
+    it('anagrams have expected count', function() {
+	assert.equal(5*4*3*2*1, anagrams('abcde').length);
+    });
 });
