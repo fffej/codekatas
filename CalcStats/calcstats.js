@@ -4,15 +4,17 @@ var assert = require('assert');
 
 var statistics = function(s) {
 
+    var n = s.length;
+    var isEmpty = n === 0;
     var minFn = function(x,y) { return Math.min(x,y); };
     var maxFn = function(x,y) { return Math.max(x,y); };
-    var avgFn = function(x,y) { return (y / s.length) + x; };
+    var avgFn = function(x,y) { return (y / n) + x; };
 
     return {
-	count: s.length,
-	maximum: s.length === 0 ? undefined : s.reduce(maxFn, s[0]),
-	minimum: s.length === 0 ? undefined : s.reduce(minFn, s[0]),
-	average: s.length === 0 ? undefined : s.reduce(avgFn, 0)
+	count: n,
+	maximum: isEmpty ? undefined : s.reduce(maxFn, s[0]),
+	minimum: isEmpty ? undefined : s.reduce(minFn, s[0]),
+	average: isEmpty ? undefined : s.reduce(avgFn, 0)
     };
 };
 
