@@ -9,7 +9,15 @@ var anagrams = function(s) {
 
     if (n === 1) return [s];
 
-    return ['aa','aa'];
+
+    var r = [];
+
+    for (var i=0;i<n;++i) {
+	var rest = s.substr(0,i) + s.substr(i+1);
+	r.push(s[i] + rest);
+    }
+    
+    return r;
 };
 
 describe('anagrams', function() {
