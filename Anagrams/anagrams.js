@@ -3,14 +3,18 @@
 var assert = require('assert');
 
 var anagrams = function(s) {
-    if (s.length === 1) {
+    var n = s.length;
+
+    if (n === 1) {
 	return [s];
     }
+    
+    
 };
 
 describe('anagrams', function() {
 
-    it('anagrams of a single character', function() {
+    it.only('anagrams of a single character', function() {
 	assert.deepEqual(['a'], anagrams('a'));
 	assert.deepEqual(['z'], anagrams('z'));
     });
