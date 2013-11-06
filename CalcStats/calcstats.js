@@ -6,13 +6,13 @@ var statistics = function(s) {
 
     var minFn = function(x,y) { return Math.min(x,y); };
     var maxFn = function(x,y) { return Math.max(x,y); };
-    var avgFn = function(x,y) { return y + (x / s.length); };
+    var avgFn = function(x,y) { return (y / s.length) + x; };
 
     return {
 	count: s.length,
 	maximum: s.length === 0 ? undefined : s.reduce(maxFn, s[0]),
 	minimum: s.length === 0 ? undefined : s.reduce(minFn, s[0]),
-	average: s.length === 0 ? undefined : s.reduce(avgFn, s[0])
+	average: s.length === 0 ? undefined : s.reduce(avgFn, 0)
     };
 };
 
@@ -42,5 +42,6 @@ describe('sequence processing', function() {
 
     it('average works as expected', function() {
 	assert.equal(0, statistics([0]).average);
+	assert.equal(3, statistics([2,4]).average);
     });
 });
