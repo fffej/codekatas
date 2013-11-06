@@ -16,12 +16,12 @@ var anagrams = function(s) {
 
     var r = [];
 
-    for (var i=0;i<n;++i) {
+    Array.prototype.forEach.call(s, function(x,i) {
 	var rest = anagrams(removeCharAt(s,i));
 	rest.forEach(function(x) {
 	    r.push(s[i] + x);
 	});
-    }
+    });
     
     return r;
 };
