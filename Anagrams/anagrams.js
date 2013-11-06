@@ -35,4 +35,8 @@ describe('anagrams', function() {
 	assert.deepEqual(['aa','aa'], anagrams('aa'));
 	assert.deepEqual(['bb','bb'], anagrams('bb'));
     });
+
+    it('anagrams of different characters', function() {
+	assert.deepEqual(['ab','ba'], anagrams('ab'));
+    });
 });
