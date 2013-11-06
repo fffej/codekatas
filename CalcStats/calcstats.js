@@ -38,4 +38,7 @@ describe('sequence processing', function() {
 	assert.equal(5, statistics([5,4,3]).maximum);
     });
 
+    it('average works as expected', function() {
+	assert.equal(0, statistics([0]).average);
+    });
 });
