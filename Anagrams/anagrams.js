@@ -13,8 +13,13 @@ var anagrams = function(s) {
     var r = [];
 
     for (var i=0;i<n;++i) {
-	var rest = s.substr(0,i) + s.substr(i+1);
-	r.push(s[i] + rest);
+	var remaining = s.substr(0,i) + s.substr(i+1);
+	assert (remaining.length + 1 === s.length)
+	var rest = anagrams(remaining);
+	var jn = rest.length;
+	for (var j=0;j<jn;++j) {
+	    r.push(s[i] + rest[j]);
+	}
     }
     
     return r;
