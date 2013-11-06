@@ -2,6 +2,10 @@
 
 var assert = require('assert');
 
+var removeCharAt = function(s,n) {
+    return s.substr(0,n) + s.substr(n+1);
+};
+
 var anagrams = function(s) {
     var n = s.length;
 
@@ -13,8 +17,8 @@ var anagrams = function(s) {
     var r = [];
 
     for (var i=0;i<n;++i) {
-	var remaining = s.substr(0,i) + s.substr(i+1);
-	assert (remaining.length + 1 === s.length);
+	var remaining = removeCharAt(s,i);
+
 	var rest = anagrams(remaining);
 	var jn = rest.length;
 	for (var j=0;j<jn;++j) {
