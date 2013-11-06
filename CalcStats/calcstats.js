@@ -3,7 +3,9 @@
 var assert = require('assert');
 
 var statistics = function() {
-
+    return {
+	count: 0
+    };
 };
 
 describe('sequence processing', function() {
