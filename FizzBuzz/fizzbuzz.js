@@ -3,6 +3,8 @@
 var assert = require('assert');
 
 var fizzbuzz = function(i) {
+    if (i % 3 === 0) return 'Fizz';
+
     return i;
 };
 
