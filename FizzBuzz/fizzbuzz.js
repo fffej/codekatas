@@ -2,9 +2,13 @@
 
 var assert = require('assert');
 
+var isFizz = function(n) { return n % 3 === 0; };
+
+var isBuzz = function(n) { return n % 5 === 0; };
+
 var fizzbuzz = function(i) {
-    if (i % 3 === 0) return 'Fizz';
-    if (i % 5 === 0) return 'Buzz';
+    if (isFizz(i)) return 'Fizz';
+    if (isBuzz(i)) return 'Buzz';
 
     return i;
 };
