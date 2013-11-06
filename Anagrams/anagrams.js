@@ -14,7 +14,11 @@ var anagrams = function(s) {
 
 describe('anagrams', function() {
 
-    it.only('anagrams of a single character', function() {
+    it('anagrams of an empty string are empty', function() {
+	assert.equal([], anagrams(''));
+    });
+
+    it('anagrams of a single character', function() {
 	assert.deepEqual(['a'], anagrams('a'));
 	assert.deepEqual(['z'], anagrams('z'));
     });
