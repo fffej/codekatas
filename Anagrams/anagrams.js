@@ -18,10 +18,9 @@ var anagrams = function(s) {
 
     for (var i=0;i<n;++i) {
 	var rest = anagrams(removeCharAt(s,i));
-	var jn = rest.length;
-	for (var j=0;j<jn;++j) {
-	    r.push(s[i] + rest[j]);
-	}
+	rest.forEach(function(x) {
+	    r.push(s[i] + x);
+	});
     }
     
     return r;
