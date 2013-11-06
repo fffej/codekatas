@@ -3,19 +3,22 @@
 var assert = require('assert');
 
 var statistics = function(s) {
-
     var n = s.length;
     var isEmpty = n === 0;
-    var minFn = function(x,y) { return Math.min(x,y); };
-    var maxFn = function(x,y) { return Math.max(x,y); };
-    var avgFn = function(x,y) { return (y / n) + x; };
 
-    return {
-	count: n,
-	maximum: isEmpty ? undefined : s.reduce(maxFn, s[0]),
-	minimum: isEmpty ? undefined : s.reduce(minFn, s[0]),
-	average: isEmpty ? undefined : s.reduce(avgFn, 0)
+    var defaults = {
+	count: n, 
+	maximum: isEmpty ? undefined : s[0],
+	minimum: isEmpty ? undefined : s[0],
+	average: isEmpty ? undefined : 0
     };
+
+    return s.reduce(function(x,y) {
+	x.minimum = Math.min(y,x.minimum);
+	x.maximum = Math.max(y,x.maximum);
+	x.average = (y / n) + x.average;
+	return x;
+    }, defaults);
 };
 
 describe('sequence processing', function() {
