@@ -10,7 +10,8 @@ var sum = function(x,y) { return x + y; };
 
 var Categories = {
     Chance: function(dice) { return dice.reduce(sum); },
-    Ones:   function(dice) { return dice.filter(valueIs(1)).reduce(sum); }
+    Ones:   function(dice) { return dice.filter(valueIs(1)).reduce(sum); },
+    Twos:   function(dice) { return dice.filter(valueIs(2)).reduce(sum); }
 };
 
 var score = function(category, a,b,c,d,e) {
