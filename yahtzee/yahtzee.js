@@ -42,6 +42,10 @@ describe('yahtzee', function() {
 	    assert.equal(3, score(Categories.Threes, 1,1,1,2,3));
 	});
 
+	it('should score the highest matching pair', function() {
+	    assert.equal(8, score(Categories.Pair, 3,3,3,4,4));
+	    assert.equal(0, score(Categories.Pair, 3,3,3,4,1));
+	});
 
     });
 });
