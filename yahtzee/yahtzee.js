@@ -6,13 +6,17 @@ var valueIs = function(x) {
     return function(p) { return x === p; };
 };
 
+var onlyThose = function(dice,x) {
+    return dice.filter(valueIs(x));
+};
+
 var sum = function(x,y) { return x + y; };
 
 var Categories = {
     Chance:  function(dice) { return dice.reduce(sum); },
-    Ones:    function(dice) { return dice.filter(valueIs(1)).reduce(sum); },
-    Twos:    function(dice) { return dice.filter(valueIs(2)).reduce(sum); },
-    Threes:  function(dice) { return dice.filter(valueIs(3)).reduce(sum); }
+    Ones:    function(dice) { return onlyThose(dice,1).reduce(sum); },
+    Twos:    function(dice) { return onlyThose(dice,2).reduce(sum); },
+    Threes:  function(dice) { return onlyThose(dice,3).reduce(sum); }
 };
 
 var score = function(category, a,b,c,d,e) {
