@@ -17,7 +17,7 @@ var Categories = {
     Ones:    function(dice) { return onlyThose(dice,1).reduce(sum); },
     Twos:    function(dice) { return onlyThose(dice,2).reduce(sum); },
     Threes:  function(dice) { return onlyThose(dice,3).reduce(sum); },
-    Pair:    function(dice) { return 0; }
+    Pair:    function(dice) { return onlyThose(dice, Math.max(dice); }
 };
 
 var score = function(category, a,b,c,d,e) {
