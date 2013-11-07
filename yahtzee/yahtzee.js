@@ -27,5 +27,10 @@ describe('yahtzee', function() {
 	it('should score \'ones\' as the sum of those matching ones', function() {
 	    assert.equal(3, score(Categories.Ones, 1,1,1,2,3));
 	});
+
+	it('should score \'twos\' as the sum of those matching twos', function() {
+	    assert.equal(2, score(Categories.Twos, 1,1,1,2,3));
+	});
+
     });
 });
