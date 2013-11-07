@@ -8,7 +8,15 @@ var Categories = {
 };
 
 var score = function(category, a,b,c,d,e) {
-    return a + b + c + d + e;
+
+    var sum = function(x,y) { return x + y; };
+
+    if (category === Categories.Chance) {
+	return a + b + c + d + e;
+    }
+    else if (category === Categories.Ones) {
+	return [a,b,c,d,e].filter(function(x) { return x === 1 }).reduce(sum);
+    }
 };
 
 describe('yahtzee', function() {
