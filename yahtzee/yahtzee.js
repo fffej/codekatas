@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var score = function(a,b,c,d,e) {
-
+    return a + b + c + d + e;
 };
 
 describe('yahtzee', function() {
