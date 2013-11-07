@@ -2,23 +2,20 @@
 
 var assert = require('assert');
 
+var valueIs = function(x) {
+    return function(p) { return x === p; };
+};
+
+var sum = function(x,y) { return x + y; };
+
 var Categories = {
-    Chance: 0,
-    Ones:   1
+    Chance: function(dice) { return dice.reduce(sum); },
+    Ones:   function(dice) { return dice.filter(valueIs(1)).reduce(sum); }
 };
 
 var score = function(category, a,b,c,d,e) {
-
     var dice = [a,b,c,d,e];
-
-    var sum = function(x,y) { return x + y; };
-
-    if (category === Categories.Chance) {
-	return dice.reduce(sum);
-    }
-    else if (category === Categories.Ones) {
-	return dice.filter(function(x) { return x === 1 }).reduce(sum);
-    }
+    return category(dice);
 };
 
 describe('yahtzee', function() {
