@@ -17,5 +17,9 @@ describe('prelude', function() {
 	it('should preserve array', function() {
 	    assert.deepEqual([1,2,3], map([1,2,3], id));
 	});
+
+	it('should apply function', function() {
+	    assert.deepEqual([1,2,3], map([0,1,2], function(x) { return x + 1; }));
+	});
     });
 });
