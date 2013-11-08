@@ -17,6 +17,11 @@ var tail = function(l) {
     return l.tail;
 };
 
+var nth = function(list,n) {
+    if (n === 0) { return head(list); }
+    return nth(list.tail, n - 1);
+};
+
 var makeList = function() {
     if (arguments.length === 0) {
 	return new Cons(undefined,undefined);
