@@ -21,9 +21,13 @@ var nth = function(list,n) {
     return n === 0 ? head(list) : nth(list.tail, n-1);
 };
 
+var isNull = function(list) {
+    return list === List.empty;
+};
+
 var makeList = function() {
     if (arguments.length === 0) {
-	return new Cons(undefined,undefined);
+	return List.empty;
     }
 
     var args = Array.prototype.slice.call(arguments);
