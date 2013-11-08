@@ -2,6 +2,7 @@
 
 var assert = require('assert');
 
+
 var Cons = function(head,tail) {
     this.head = head;
     this.tail = tail;
@@ -9,7 +10,14 @@ var Cons = function(head,tail) {
 };
 
 var makeList = function() {
-    return new Cons(arguments[0], arguments[1]);
+    if (arguments.length === 0) {
+	return new Cons(undefined,undefined);
+    }
+
+    var args = Array.prototype.slice.call(arguments);
+    var head = args.shift();
+
+    return new Cons(head, args.length === 0 ? undefined : makeList.apply(null,args));
 };
 
 var List = {
