@@ -45,5 +45,10 @@ describe('prelude', function() {
 	    assert.equal(3,         list.tail.tail.head);
 	    assert.equal(undefined, list.tail.tail.tail);
 	});
+
+	it('should have head and tail functions', function() {
+	    assert.equal(1, head(makeList(1,2,3)));
+	    assert.equal(2, head(tail(makeList(1,2,3))));
+	});
     });
 });
