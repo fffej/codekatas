@@ -28,5 +28,14 @@ describe('prelude', function() {
 	    assert.equal(1, list.head);
 	    assert.equal(undefined, list.tail);
 	});
+
+	it('should handle multiple elements', function() {
+	    var list = makeList(1,2,3);
+
+	    assert.equal(1,         list.head);
+	    assert.equal(2,         list.tail.head);
+	    assert.equal(3,         list.tail.tail.head);
+	    assert.equal(undefined, list.tail.tail.tail);
+	});
     });
 });
