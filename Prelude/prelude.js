@@ -18,8 +18,7 @@ var tail = function(l) {
 };
 
 var nth = function(list,n) {
-    if (n === 0) { return head(list); }
-    return nth(list.tail, n - 1);
+    return n === 0 ? head(list) : nth(list.tail, n-1);
 };
 
 var makeList = function() {
