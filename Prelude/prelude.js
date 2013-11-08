@@ -5,7 +5,11 @@ var assert = require('assert');
 var id = function(x) { return x; };
 
 var map = function(arr,f) {
-    return arr;
+    var r = [];
+    for (var i=0;i<arr.length;++i) {
+	r.push(f(arr[i]));
+    }
+    return r;
 };
 
 describe('prelude', function() {
