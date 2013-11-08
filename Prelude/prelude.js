@@ -21,5 +21,12 @@ describe('prelude', function() {
 	it('should make an empty list', function() {
 	    assert.deepEqual(List.empty, makeList());
 	});
+
+	it('should make a cons cell', function() {
+	    var l = makeList(1);
+
+	    assert.equal(l.head, 1);
+	    assert.equal(undefined, l.tail);
+	});
     });
 });
