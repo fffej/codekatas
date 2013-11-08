@@ -23,10 +23,10 @@ describe('prelude', function() {
 	});
 
 	it('should make a cons cell', function() {
-	    var l = makeList(1);
+	    var list = makeList(1);
 
-	    assert.equal(l.head, 1);
-	    assert.equal(undefined, l.tail);
+	    assert.equal(1, list.head);
+	    assert.equal(undefined, list.tail);
 	});
     });
 });
