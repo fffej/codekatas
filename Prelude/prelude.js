@@ -9,7 +9,7 @@ var Cons = function(head,tail) {
 };
 
 var makeList = function() {
-    return new Cons();
+    return new Cons(arguments[0], arguments[1]);
 };
 
 var List = {
