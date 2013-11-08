@@ -58,5 +58,9 @@ describe('prelude', function() {
 	    assert.equal(1, head(makeList(1,2,3)));
 	    assert.equal(2, head(tail(makeList(1,2,3))));
 	});
+
+	it('should be possible get the nth element', function() {
+	    assert.equal(2, nth(makeList(1,2,3),1));
+	});
     });
 });
