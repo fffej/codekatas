@@ -2,6 +2,16 @@
 
 var assert = require('assert');
 
+var Cons = function(head,tail) {
+    this.head = head;
+    this.tail = tail;
+    return this;
+};
+
+var makeList = function() {
+    return new Cons();
+};
+
 var List = {
     empty: new Cons()
 };
@@ -9,7 +19,7 @@ var List = {
 describe('prelude', function() {
     describe('lists', function() {
 	it('should make an empty list', function() {
-	    assert.equal(List.empty, makeList());
+	    assert.deepEqual(List.empty, makeList());
 	});
     });
 });
