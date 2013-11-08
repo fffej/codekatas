@@ -66,5 +66,10 @@ describe('prelude', function() {
 	it('should be possible get the nth element', function() {
 	    assert.equal(2, nth(makeList(1,2,3),1));
 	});
+
+	it('should support null', function() {
+	    assert(isNull(makeList()));
+	    assert(!isNull(makeList(1)));
+	});
     });
 });
