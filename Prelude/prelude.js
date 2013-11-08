@@ -9,6 +9,14 @@ var Cons = function(head,tail) {
     return this;
 };
 
+var head = function(l) {
+    return l.head;
+};
+
+var tail = function(l) {
+    return l.tail;
+};
+
 var makeList = function() {
     if (arguments.length === 0) {
 	return new Cons(undefined,undefined);
