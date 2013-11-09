@@ -47,6 +47,7 @@ var liveCell = function() {
 };
 
 describe('game of life', function() {
+
     describe('rules', function() {
 	it('under population', function() {
 	    for (var i=0;i<2;++i) 
