@@ -21,6 +21,10 @@ var nth = function(list,n) {
     return n === 0 ? head(list) : nth(list.tail, n-1);
 };
 
+var map = function(list,f) {
+    return list;
+};
+
 var isNull = function(list) {
     return list === List.empty;
 };
@@ -69,6 +73,12 @@ describe('prelude', function() {
 
 	it('should be possible get the nth element', function() {
 	    assert.equal(2, nth(makeList(1,2,3),1));
+	});
+
+	it('can map', function() {
+	    var addOne = function(x) { return x + 1; };
+
+	    assert.deepEqual(makeList(2,3,4), map(makeList(1,2,3), addOne));
 	});
 
 	it('should support null', function() {
