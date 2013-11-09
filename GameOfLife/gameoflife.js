@@ -3,13 +3,31 @@
 var assert = require('assert');
 
 var deadCell = function() {
-    return {};
+    return {
+	dead: true
+    };
 };
 
+
+
 var liveCell = function() {
+
+    var states = [
+	deadCell,
+	deadCell,
+	liveCell,
+	liveCell,
+	deadCell,
+	deadCell,
+	deadCell,
+	deadCell,
+	deadCell
+    ];
+
     return { 
+	live: true,
 	next: function(n) { 
-	    return deadCell();
+	    return states[n]();
 	}
     };
 };
@@ -17,11 +35,11 @@ var liveCell = function() {
 describe('game of life', function() {
     describe('rules', function() {
 	it('under population', function() {
-	    assert.deepEqual(deadCell(), liveCell().next(1));
+	    assert(liveCell().next(1).dead);
 	});
 
 	it('persistence', function() {
-	    assert.deepEqual(liveCell(), liveCell().next(2));
+	    assert(liveCell().next(2).live);
 	});
     });
 });
