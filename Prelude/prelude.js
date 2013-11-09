@@ -45,10 +45,6 @@ var makeList = function() {
     return new Cons(head, args.length === 0 ? undefined : makeList.apply(null,args));
 };
 
-var List = {
-    empty: new Cons()
-};
-
 describe('prelude', function() {
     describe('lists', function() {
 	it('should make an empty list', function() {
