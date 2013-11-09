@@ -4,7 +4,10 @@ var assert = require('assert');
 
 var deadCell = function() {
     return {
-	dead: true
+	dead: true,
+	next: function() {
+	    return liveCell();
+	}
     };
 };
 
@@ -50,7 +53,7 @@ describe('game of life', function() {
 	});
 
 	it('produce', function() {
-	    assert(deadCell.next(3).alive);
+	    assert(deadCell().next(3).alive);
 	});
     });
 });
