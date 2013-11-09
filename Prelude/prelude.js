@@ -29,6 +29,14 @@ var map = function(list,f) {
     );
 };
 
+var filter = function(list,p) {
+    if (isNull(list)) return list;
+
+    if (p(head(list))) return new Cons(head(list), filter(tail(list),p));
+    
+    return filter(tail(list),p);
+};
+
 var isNull = function(list) {
     return !list;
 };
