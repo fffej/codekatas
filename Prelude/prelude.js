@@ -2,7 +2,6 @@
 
 var assert = require('assert');
 
-
 var Cons = function(head,tail) {
     this.head = head;
     this.tail = tail;
@@ -80,6 +79,12 @@ describe('prelude', function() {
 	    var addOne = function(x) { return x + 1; };
 
 	    assert.deepEqual(makeList(2,3,4), map(makeList(1,2,3), addOne));
+	});
+
+	it('can filter', function() {
+	    var isOdd = function(x) { return x % 2 !== 0; };
+
+	    assert.deepEqual(makeList(1,3,5), filter(makeList(1,2,3,4,5), isOdd));
 	});
 
 	it('should support null', function() {
