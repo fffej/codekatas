@@ -17,7 +17,6 @@ var liveCell = function() {
 describe('game of life', function() {
     describe('rules', function() {
 	it('under population', function() {
-	    var cell = liveCell();
 	    assert.deepEqual(deadCell(), liveCell().next(1));
 	});
     });
