@@ -35,15 +35,18 @@ var liveCell = function() {
 describe('game of life', function() {
     describe('rules', function() {
 	it('under population', function() {
-	    assert(liveCell().next(1).dead);
+	    for (var i=0;i<2;++i) 
+		assert(liveCell().next(i).dead);
 	});
 
 	it('persistence', function() {
 	    assert(liveCell().next(2).live);
+	    assert(liveCell().next(3).live);
 	});
 
 	it('over population', function() {
-	    assert(liveCell().next(4).dead);
+	    for (var i=4;i<9;++i)
+		assert(liveCell().next(i).dead);
 	});
     });
 });
