@@ -53,7 +53,7 @@ describe('game of life', function() {
 	});
 
 	it('produce', function() {
-	    assert(deadCell().next(3).alive);
+	    assert(deadCell().next(3).live);
 	});
     });
 });
