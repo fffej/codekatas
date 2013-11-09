@@ -41,5 +41,9 @@ describe('game of life', function() {
 	it('persistence', function() {
 	    assert(liveCell().next(2).live);
 	});
+
+	it('over population', function() {
+	    assert(liveCell().next(4).dead);
+	});
     });
 });
