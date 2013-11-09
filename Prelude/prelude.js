@@ -24,19 +24,19 @@ var nth = function(list,n) {
 var map = function(list,f) {
     if (isNull(list)) return list;
 
-    return cons(
+    return new Cons(
 	f(head(list)),
 	map(tail(list),f)
     );
 };
 
 var isNull = function(list) {
-    return list === List.empty;
+    return !list;
 };
 
 var makeList = function() {
     if (arguments.length === 0) {
-	return List.empty;
+	return undefined;
     }
 
     var args = Array.prototype.slice.call(arguments);
@@ -52,7 +52,7 @@ var List = {
 describe('prelude', function() {
     describe('lists', function() {
 	it('should make an empty list', function() {
-	    assert.deepEqual(List.empty, makeList());
+	    assert.deepEqual(undefined, makeList());
 	});
 
 	it('should make a cons cell', function() {
