@@ -19,5 +19,9 @@ describe('game of life', function() {
 	it('under population', function() {
 	    assert.deepEqual(deadCell(), liveCell().next(1));
 	});
+
+	it('persistence', function() {
+	    assert.deepEqual(liveCell(), liveCell().next(2));
+	});
     });
 });
