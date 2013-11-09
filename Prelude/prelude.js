@@ -22,7 +22,12 @@ var nth = function(list,n) {
 };
 
 var map = function(list,f) {
-    return list;
+    if (isNull(list)) return list;
+
+    return cons(
+	f(head(list)),
+	map(tail(list),f)
+    );
 };
 
 var isNull = function(list) {
