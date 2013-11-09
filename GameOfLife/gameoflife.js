@@ -48,5 +48,9 @@ describe('game of life', function() {
 	    for (var i=4;i<9;++i)
 		assert(liveCell().next(i).dead);
 	});
+
+	it('produce', function() {
+	    assert(deadCell.next(3).alive);
+	});
     });
 });
