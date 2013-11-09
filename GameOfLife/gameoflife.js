@@ -3,10 +3,23 @@
 var assert = require('assert');
 
 var deadCell = function() {
+
+    var states = [
+	deadCell,
+	deadCell,
+	deadCell,
+	liveCell,
+	deadCell,
+	deadCell,
+	deadCell,
+	deadCell,
+	deadCell
+    ];
+
     return {
 	dead: true,
-	next: function() {
-	    return liveCell();
+	next: function(n) {
+	    return states[n]();
 	}
     };
 };
@@ -54,6 +67,14 @@ describe('game of life', function() {
 
 	it('produce', function() {
 	    assert(deadCell().next(3).live);
+	});
+
+	it('dead stays dead', function() {
+	    for (var i=0;i<3;++i)
+		assert(deadCell().next(i).dead);
+
+	    for (var i=4;i<9;++i)
+		assert(deadCell().next(i).dead);
 	});
     });
 });
