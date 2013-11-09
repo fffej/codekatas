@@ -24,8 +24,6 @@ var deadCell = function() {
     };
 };
 
-
-
 var liveCell = function() {
 
     var states = [
