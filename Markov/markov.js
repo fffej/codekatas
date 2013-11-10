@@ -5,7 +5,7 @@ var createData = function(pc, tokens) {
     var data = [],
         n = tokens.length;
 
-    for (var i=0;i<n-1;++i) {
+    for (var i=0;i<n-(pc-1);++i) {
 	var token = tokens[i];
 
 	if (!data[token]) data[token] = {};
