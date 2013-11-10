@@ -34,5 +34,10 @@ describe('Markov chain', function() {
 	    var model = markov.buildModel(3, ['a','b','c','d','e']);
 	    assert.equal(1, model.frequencyOf('a','b','c'));
 	});
+
+	it('should have a wide window', function() {
+	    var model = markov.buildModel(4, ['a','b','c','d','e']);
+	    assert.equal(1, model.frequencyOf('a','b','c','d'));
+	});
     });
 });
