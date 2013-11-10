@@ -10,12 +10,13 @@ var createData = function(pc, tokens) {
 
 	if (!data[token]) data[token] = {};
 
+	var obj = data[token];
 	for (var j=0;j<pc;++j) {
-	    if (!data[token][tokens[i+j]])
-		data[token][tokens[i+j]] = 0;
+	    if (!obj[tokens[i+j]])
+		obj[tokens[i+j]] = 0;
 	}
 
-	data[token][tokens[i+1]]++;
+	obj[tokens[i+1]]++;
     }
 
     return data;
