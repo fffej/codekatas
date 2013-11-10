@@ -23,6 +23,7 @@ describe('Markov chain', function() {
 
 	it('should provide frequency analysis', function() {
 	    assert.equal(1, model.frequencyOf('the','quick'));
+	    assert.equal(1, model.frequencyOf('brown','fox'));
 	});
     });
 });
