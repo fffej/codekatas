@@ -28,4 +28,11 @@ describe('Markov chain', function() {
 	    assert.equal(1, model.frequencyOf('brown','fox'));
 	});
     });
+
+    describe('larger prediction context', function() {
+	it('should count the frequency of n', function() {
+	    var model = markov.buildModel(3, ['a','b','c','d','e']);
+	    assert.equal(1, model.frequencyOf('a','b','c'));
+	});
+    });
 });
