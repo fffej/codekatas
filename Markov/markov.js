@@ -1,5 +1,7 @@
 "use strict";
 
-var id = function(x) { return x; };
+var buildModel = function(source) { 
+    return source; 
+};
 
-exports.buildModel = id;
+exports.buildModel = buildModel;
