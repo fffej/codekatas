@@ -7,12 +7,6 @@ var smush = function(w1,w2) {
     return w1[0] + smush(w1.substr(1), w2);
 };
 
-var smushN = function() {
-    var args = Array.prototype.slice.call(arguments);
-
-    return '';
-};
-
 describe('word smushing', function() {
     it('should join words with no overlap', function() {
 	assert.equal('thecat', smush('the', 'cat'));
@@ -22,12 +16,4 @@ describe('word smushing', function() {
 	assert.equal('henot', smush('hen', 'not'));
     });
 
-    it('should overlap n words', function() {
-	assert.equal('minutestingingerman', smushN(
-	    'testing',
-	    'ginger',
-	    'german',
-	    'minutes'
-	));
-    });
 });
