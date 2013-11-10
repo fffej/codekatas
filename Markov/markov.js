@@ -47,7 +47,13 @@ var Model = function(predictionContext, tokens) {
     };
 
     this.generate = function(start, len, seed) {
-	return [];
+	var r = [];
+	
+	for (var i=0;i<len;++i) {
+	    r[i] = '';
+	}
+
+	return r;
     };
 
     return this;
