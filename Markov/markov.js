@@ -36,7 +36,13 @@ var Model = function(predictionContext, tokens) {
     };
 
     this.frequencyOf = function() {
-	return this._data[arguments[0]][arguments[1]];
+	var end = this._data;
+
+	for (var i=0;i<arguments.length;++i) {
+	    end = end[arguments[i]];
+	}
+
+	return end;
     };
 
     return this;
