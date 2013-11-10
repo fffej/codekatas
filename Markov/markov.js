@@ -12,8 +12,9 @@ var createData = function(pc, tokens) {
 
     for (var i=0;i<n-(pc-1);++i) {
 	var obj = ensurePropertyExists(data,tokens[i]);
+
 	for (var j=1;j<pc-1;++j) {
-	    obj[tokens[i+j]] = new Object();
+	    obj[tokens[i+j]] = {};
 	    obj = obj[tokens[i+j]];
 	}
 
