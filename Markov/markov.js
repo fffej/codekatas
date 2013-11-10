@@ -3,6 +3,7 @@
 
 var ensurePropertyExists = function(d,i) {
     if (!d[i]) d[i] = {};
+    return d[i];
 }
 
 var createData = function(pc, tokens) {
@@ -12,8 +13,7 @@ var createData = function(pc, tokens) {
     for (var i=0;i<n-(pc-1);++i) {
 	var token = tokens[i];
 
-	ensurePropertyExists(data,token);
-	var obj = data[token];
+	var obj = ensurePropertyExists(data,token);
 	for (var j=1;j<pc-1;++j) {
 	    obj[tokens[i+j]] = new Object();
 	    obj = obj[tokens[i+j]];
