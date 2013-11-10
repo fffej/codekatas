@@ -1,7 +1,7 @@
 "use strict";
 
 
-var createData = function(predictionContext, tokens) {
+var createData = function(pc, tokens) {
     var data = [],
         n = tokens.length;
 
