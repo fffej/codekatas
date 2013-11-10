@@ -15,4 +15,13 @@ describe('word smushing', function() {
     it('should do single character overlaps', function() {
 	assert.equal('henot', smush('hen', 'not'));
     });
+
+    it('should overlap n words', function() {
+	assert.equal('minutestingingerman', smushN(
+	    'testing',
+	    'ginger',
+	    'german',
+	    'minutes'
+	));
+    });
 });
