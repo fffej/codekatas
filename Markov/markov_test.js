@@ -20,5 +20,9 @@ describe('Markov chain', function() {
 	it('should provide entries', function() {
 	    assert.equal(4, model.entryCount());
 	});
+
+	it('should provide frequency analysis', function() {
+	    assert.equal(1, model.frequencyOf('the','quick'));
+	});
     });
 });
