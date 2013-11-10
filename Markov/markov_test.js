@@ -13,16 +13,18 @@ describe('Markov chain', function() {
 		'the',
 		'quick',
 		'brown',
-		'fox'
+		'fox',
+		'the',
+		'quick'
 	    ]);
 	});
 
 	it('should provide entries', function() {
-	    assert.equal(4, model.entryCount());
+	    assert.equal(6, model.entryCount());
 	});
 
 	it('should provide frequency analysis', function() {
-	    assert.equal(1, model.frequencyOf('the','quick'));
+	    assert.equal(2, model.frequencyOf('the','quick'));
 	    assert.equal(1, model.frequencyOf('brown','fox'));
 	});
     });
