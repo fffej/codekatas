@@ -50,6 +50,11 @@ describe('Markov chain', function() {
 	    var run = model.generate(0,10,seed);
 	    assert.equal(10, run.length);
 	});
+
+	it('has appropriate first index', function() {
+	    var run = model.generate(0,1,seed);
+	    assert.deepEqual(['the'],run);
+	});
     });
 
     describe('larger prediction context', function() {
