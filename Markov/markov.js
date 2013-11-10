@@ -10,8 +10,10 @@ var createData = function(pc, tokens) {
 
 	if (!data[token]) data[token] = {};
 
-	if (!data[token][tokens[i+1]])
-	    data[token][tokens[i+1]] = 0;
+	for (var j=0;j<pc;++j) {
+	    if (!data[token][tokens[i+j]])
+		data[token][tokens[i+j]] = 0;
+	}
 
 	data[token][tokens[i+1]]++;
     }
