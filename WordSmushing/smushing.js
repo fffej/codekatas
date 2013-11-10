@@ -9,7 +9,7 @@ var smush = function(w1,w2) {
 };
 
 describe('word smushing', function() {
-    it.only('should join words with no overlap', function() {
+    it('should join words with no overlap', function() {
 	assert.equal('thecat', smush('the', 'cat'));
     });
 
