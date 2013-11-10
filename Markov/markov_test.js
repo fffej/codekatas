@@ -29,6 +29,27 @@ describe('Markov chain', function() {
 	});
     });
 
+    describe('generating data', function() {
+
+	var model = null;
+
+	beforeEach(function() {
+	    model = markov.buildModel(2, [
+		'the',
+		'quick',
+		'brown',
+		'fox',
+		'the',
+		'quick'
+	    ]);
+	});
+
+	it('length of sequence', function() {
+	    var run = model.generate(0,10,12345);
+	    assert.equal(10, run.length);
+	});
+    });
+
     describe('larger prediction context', function() {
 	it('should count the frequency of n', function() {
 	    var model = markov.buildModel(3, ['a','b','c','d','e']);
