@@ -3,12 +3,7 @@
 var assert = require('assert');
 
 var smush = function(w1,w2) {
-    if (w1 === '') return w2;
-
-    if (w2.indexOf(w1) === 0) {
-	return w2;
-    }
-
+    if (w1 === '' || w2.indexOf(w1) === 0) return w2;
     return w1[0] + smush(w1.substr(1), w2);
 };
 
