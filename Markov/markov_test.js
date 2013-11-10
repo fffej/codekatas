@@ -55,6 +55,11 @@ describe('Markov chain', function() {
 	    var run = model.generate(0,1,seed);
 	    assert.deepEqual(['the'],run);
 	});
+
+	it('generates words', function() {
+	    var run = model.generate(0,2,seed);
+	    assert.deepEqual(['the','quick'],run);
+	});
     });
 
     describe('larger prediction context', function() {
