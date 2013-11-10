@@ -1,6 +1,5 @@
 "use strict";
 
-
 var ensurePropertyExists = function(d,i) {
     if (!d[i]) d[i] = {};
     return d[i];
@@ -45,6 +44,10 @@ var Model = function(predictionContext, tokens) {
 	}
 
 	return end;
+    };
+
+    this.generate = function(start, len, seed) {
+	return [];
     };
 
     return this;
