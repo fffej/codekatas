@@ -11,7 +11,9 @@ var createData = function(pc, tokens) {
 	if (!data[token]) data[token] = {};
 
 	var obj = data[token];
-	for (var j=0;j<pc-1;++j) {
+	for (var j=1;j<pc-1;++j) {
+	    obj[tokens[i+j]] = new Object();
+	    obj = obj[tokens[i+j]];
 	}
 
 	if (!obj[tokens[i+pc-1]])
