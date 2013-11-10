@@ -33,6 +33,8 @@ describe('Markov chain', function() {
 
 	var model = null;
 
+	var seed = 12345;
+
 	beforeEach(function() {
 	    model = markov.buildModel(2, [
 		'the',
@@ -45,7 +47,7 @@ describe('Markov chain', function() {
 	});
 
 	it('length of sequence', function() {
-	    var run = model.generate(0,10,12345);
+	    var run = model.generate(0,10,seed);
 	    assert.equal(10, run.length);
 	});
     });
