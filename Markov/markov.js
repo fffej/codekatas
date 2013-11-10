@@ -1,6 +1,6 @@
 "use strict";
 
-var Model = function(tokens) {
+var Model = function(predictionContext, tokens) {
 
     var n = tokens.length;
 
@@ -28,8 +28,8 @@ var Model = function(tokens) {
     return this;
 };
 
-var buildModel = function(source) { 
-    return new Model(source); 
+var buildModel = function(predictionContext, source) { 
+    return new Model(predictionContext, source); 
 };
 
 exports.buildModel = buildModel;
