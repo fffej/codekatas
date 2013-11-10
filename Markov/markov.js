@@ -48,7 +48,10 @@ var Model = function(predictionContext, tokens) {
 
     this.pickOne = function(soFar, upTo) {
 	var n = soFar.length;
-	var obj = this._data[soFar[n-1]];
+
+	// TODO this needs to reach the end of the prediction
+	// chain.
+	var obj = this._data[soFar[n-(predictionContext-1)]];
 
 	return this.weightedChoice(obj);
     };
