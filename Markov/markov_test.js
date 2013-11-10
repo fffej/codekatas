@@ -9,7 +9,7 @@ describe('Markov chain', function() {
 	var model = null;
 	
 	beforeEach(function() {
-	    model = markov.buildModel([
+	    model = markov.buildModel(2, [
 		'the',
 		'quick',
 		'brown',
