@@ -47,7 +47,24 @@ var Model = function(predictionContext, tokens) {
     };
 
     this.pickOne = function(soFar, upTo) {
-	return '';
+	var n = soFar.length;
+	var obj = this._data[soFar[n-1]];
+
+	return this.weightedChoice(obj);
+    };
+
+    this.weightedChoice = function(obj) {
+
+	var words = [];
+
+	for(var prop in obj) {
+	    for (var i=0;i<obj[prop];++i) {
+		words.push(prop);
+	    }
+	}
+	
+	var n = Math.random() * words.length | 0;
+	return words[n];
     };
 
     this.generate = function(start, len) {
