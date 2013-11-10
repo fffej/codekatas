@@ -46,11 +46,16 @@ var Model = function(predictionContext, tokens) {
 	return end;
     };
 
+    this.pickOne = function(soFar, upTo) {
+	return '';
+    };
+
     this.generate = function(start, len) {
 	var r = [];
-	
-	for (var i=0;i<len;++i) {
-	    r[i] = tokens[start];
+	r[0] = tokens[start];
+
+	for (var i=1;i<len;++i) {
+	    r[i] = this.pickOne(r,i-1);
 	}
 
 	return r;
