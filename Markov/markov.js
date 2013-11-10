@@ -2,7 +2,7 @@
 
 
 var createData = function(pc, tokens) {
-    var data = [],
+    var data = {},
         n = tokens.length;
 
     for (var i=0;i<n-(pc-1);++i) {
