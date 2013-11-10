@@ -1,21 +1,29 @@
 "use strict";
 
-var Model = function(predictionContext, tokens) {
 
-    var n = tokens.length;
-
-    this._data = [];
+var createData = function(predictionContext, tokens) {
+    var data = [],
+        n = tokens.length;
 
     for (var i=0;i<n-1;++i) {
 	var token = tokens[i];
 
-	if (!this._data[token]) this._data[token] = {};
+	if (!data[token]) data[token] = {};
 
-	if (!this._data[token][tokens[i+1]])
-	    this._data[token][tokens[i+1]] = 0;
+	if (!data[token][tokens[i+1]])
+	    data[token][tokens[i+1]] = 0;
 
-	this._data[token][tokens[i+1]]++;
+	data[token][tokens[i+1]]++;
     }
+
+    return data;
+};
+
+var Model = function(predictionContext, tokens) {
+
+    var n = tokens.length;
+
+    this._data = createData(predictionContext, tokens);
 
     this.entryCount = function() {
 	return tokens.length;
