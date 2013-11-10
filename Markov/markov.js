@@ -50,7 +50,7 @@ var Model = function(predictionContext, tokens) {
 	var r = [];
 	
 	for (var i=0;i<len;++i) {
-	    r[i] = '';
+	    r[i] = tokens[start];
 	}
 
 	return r;
