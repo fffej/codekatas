@@ -33,8 +33,6 @@ describe('Markov chain', function() {
 
 	var model = null;
 
-	var seed = 12345;
-
 	beforeEach(function() {
 	    model = markov.buildModel(2, [
 		'the',
@@ -47,17 +45,17 @@ describe('Markov chain', function() {
 	});
 
 	it('length of sequence', function() {
-	    var run = model.generate(0,10,seed);
+	    var run = model.generate(0,10);
 	    assert.equal(10, run.length);
 	});
 
 	it('has appropriate first index', function() {
-	    var run = model.generate(0,1,seed);
+	    var run = model.generate(0,1);
 	    assert.deepEqual(['the'],run);
 	});
 
 	it('generates words', function() {
-	    var run = model.generate(0,2,seed);
+	    var run = model.generate(0,2);
 	    assert.deepEqual(['the','quick'],run);
 	});
     });

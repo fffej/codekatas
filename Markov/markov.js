@@ -46,7 +46,7 @@ var Model = function(predictionContext, tokens) {
 	return end;
     };
 
-    this.generate = function(start, len, seed) {
+    this.generate = function(start, len) {
 	var r = [];
 	
 	for (var i=0;i<len;++i) {
