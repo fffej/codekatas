@@ -16,8 +16,11 @@ var Game = function() {
 
 	var sum = 0;
 
-	for (var i=0;i<10;++i) {
-	    sum += pins[i*2] + pins[i*2 + 1];
+	var pinCount = 0;
+	for (var i=0;i<10;++i) {	    
+	    sum += pins[pinCount] + pins[pinCount+1];
+
+	    pinCount += 2;
 	}
 
 	return sum;
