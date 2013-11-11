@@ -6,14 +6,14 @@ var add = function(x,y) { return x + y; };
 
 var Game = function() {
 
-    var pins = [];
+    this._pins = [];
 
     this.roll = function(n) {	
-	pins.push(n);
+	this._pins.push(n);
     };
 
-    this._scoreSpare = function(pins, i) {
-	return pins[i] + pins[i+1] + pins[i+2];
+    this._scoreSpare = function(i) {
+	return this._pins[i] + this._pins[i+1] + this._pins[i+2];
     };
 
     this.score = function() {
@@ -23,11 +23,11 @@ var Game = function() {
 	var pinCount = 0;
 	for (var i=0;i<10;++i) {	    
 
-	    if (pins[pinCount] + pins[pinCount+1] === 10) {
-		sum += this._scoreSpare(pins,pinCount);
+	    if (this._pins[pinCount] + this._pins[pinCount+1] === 10) {
+		sum += this._scoreSpare(pinCount);
 	    }
 	    else {
-		sum += pins[pinCount] + pins[pinCount+1];
+		sum += this._pins[pinCount] + this._pins[pinCount+1];
 	    }
 
 	    pinCount += 2;
