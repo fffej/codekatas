@@ -18,7 +18,13 @@ var Game = function() {
 
 	var pinCount = 0;
 	for (var i=0;i<10;++i) {	    
-	    sum += pins[pinCount] + pins[pinCount+1];
+
+	    if (pins[pinCount] + pins[pinCount+1] === 10) {
+		sum += pins[pinCount] + pins[pinCount+1] + pins[pinCount+2];
+	    }
+	    else {
+		sum += pins[pinCount] + pins[pinCount+1];
+	    }
 
 	    pinCount += 2;
 	}
