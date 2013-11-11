@@ -14,11 +14,16 @@ var Game = function() {
 };
 
 describe('bowling game', function() {
+
+    var rollMany = function(game, roll, n) {
+	for (var i=0;i<n;++i) {
+	    game.roll(roll);
+	}
+    };
+
     it('rolling 20 gutter balls is a gutter game', function() {
 	var game = new Game();
-	for (var i=0;i<20;++i) {
-	    game.roll(0);
-	}
+	rollMany(game, 0, 20);
 
 	assert.equal(0, game.score());
     });
