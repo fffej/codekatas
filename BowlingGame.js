@@ -106,4 +106,11 @@ describe('bowling game', function() {
 
 	assert.equal(10 + 6 + 6, game.score());
     });
+
+    it('handles a perfect game', function() {
+	var game = new Game();
+	rollMany(game, 10, 12);
+
+	assert.equal(300, game.score());
+    });
 });
