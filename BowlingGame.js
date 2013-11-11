@@ -30,13 +30,18 @@ var Game = function() {
 
 	var pinCount = 0;
 	for (var i=0;i<10;++i) {	    
-
-	    if (this._isSpare(pinCount)) 
+	    if (this._pins[i] === 10) {
+		sum += 10 + this._pins[i+1] + this._pins[i+2];
+		pinCount+=1;
+	    }
+	    else if (this._isSpare(pinCount)) {
 		sum += this._scoreSpare(pinCount);
-	    else 
+		pinCount+=2;
+	    }
+	    else {
 		sum += this._scoreFrame(pinCount);
-
-	    pinCount += 2;
+		pinCount+=2;
+	    }
 	}
 
 	return sum;
