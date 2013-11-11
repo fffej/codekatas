@@ -24,14 +24,22 @@ var Game = function() {
 	return this._pins[i] + this._pins[i+1] === 10;
     };
 
+    this._isStrike = function(i) {
+	return this._pins[i] === 10;
+    };
+
+    this._scoreStrike = function(i) {
+	return 10 + this._pins[i+1] + this._pins[i+2];
+    };
+
     this.score = function() {
 
 	var sum = 0;
 
 	var pinCount = 0;
 	for (var i=0;i<10;++i) {	    
-	    if (this._pins[i] === 10) {
-		sum += 10 + this._pins[i+1] + this._pins[i+2];
+	    if (this._isStrike(i)) {
+		sum += this._scoreStrike(pinCount); 
 		pinCount+=1;
 	    }
 	    else if (this._isSpare(pinCount)) {
