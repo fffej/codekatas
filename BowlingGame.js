@@ -13,7 +13,11 @@ var Game = function() {
     };
 
     this._scoreSpare = function(i) {
-	return this._pins[i] + this._pins[i+1] + this._pins[i+2];
+	return this._scoreFrame(i) + this._pins[i+2];
+    };
+
+    this._scoreFrame = function(i) {
+	return this._pins[i] + this._pins[i+1];
     };
 
     this.score = function() {
@@ -27,7 +31,7 @@ var Game = function() {
 		sum += this._scoreSpare(pinCount);
 	    }
 	    else {
-		sum += this._pins[pinCount] + this._pins[pinCount+1];
+		sum += this._scoreFrame(pinCount);
 	    }
 
 	    pinCount += 2;
