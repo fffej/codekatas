@@ -12,6 +12,10 @@ var Game = function() {
 	pins.push(n);
     };
 
+    this._scoreSpare = function(pins, i) {
+	return pins[i] + pins[i+1] + pins[i+2];
+    };
+
     this.score = function() {
 
 	var sum = 0;
@@ -20,7 +24,7 @@ var Game = function() {
 	for (var i=0;i<10;++i) {	    
 
 	    if (pins[pinCount] + pins[pinCount+1] === 10) {
-		sum += pins[pinCount] + pins[pinCount+1] + pins[pinCount+2];
+		sum += this._scoreSpare(pins,pinCount);
 	    }
 	    else {
 		sum += pins[pinCount] + pins[pinCount+1];
