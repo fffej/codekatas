@@ -82,4 +82,15 @@ describe('bowling game', function() {
 
 	assert.equal(16, game.score());
     });
+
+    it('handles strikes', function() {
+	var game = new Game();
+	game.roll(10);
+	game.roll(3);
+	game.roll(3);
+
+	rollMany(game, 0, 16);
+
+	assert.equal(10 + 6 + 6, game.score());
+    });
 });
