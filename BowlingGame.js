@@ -53,6 +53,11 @@ describe('bowling game', function() {
 	}
     };
 
+    var rollSpare = function(game) {
+	game.roll(5);
+	game.roll(5);
+    };
+
     it('rolling 20 gutter balls is a gutter game', function() {
 	var game = new Game();
 	rollMany(game, 0, 20);
@@ -69,8 +74,7 @@ describe('bowling game', function() {
 
     it('handles spares', function() {
 	var game = new Game();
-	game.roll(5);
-	game.roll(5); // spare
+	rollSpare(game);
 	game.roll(3);
 
 	// Rest is a gutter game
