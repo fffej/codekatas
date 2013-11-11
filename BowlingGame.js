@@ -13,7 +13,13 @@ var Game = function() {
     };
 
     this.score = function() {
-	return pins.reduce(add,0);
+
+	var sum = 0;
+	for (var i=0;i<pins.length;++i) {
+	    sum += pins[i];
+	}
+
+	return sum;
     };
 
     return this;
