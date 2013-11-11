@@ -35,19 +35,20 @@ var Game = function() {
     this.score = function() {
 
 	var sum = 0;
-
 	var pinCount = 0;
+
 	for (var i=0;i<10;++i) {	    
 	    if (this._isStrike(i)) {
 		sum += this._scoreStrike(pinCount); 
 		pinCount+=1;
 	    }
-	    else if (this._isSpare(pinCount)) {
-		sum += this._scoreSpare(pinCount);
-		pinCount+=2;
-	    }
 	    else {
-		sum += this._scoreFrame(pinCount);
+		if (this._isSpare(pinCount)) {
+		    sum += this._scoreSpare(pinCount);
+		}
+		else {
+		    sum += this._scoreFrame(pinCount);
+		}
 		pinCount+=2;
 	    }
 	}
