@@ -3,11 +3,15 @@
 var assert = require('assert');
 
 var Game = function() {
+
+    var pins = [];
+
     this.roll = function(n) {	
+	pins.push(n);
     };
 
     this.score = function() {
-	return 0;
+	return pins.reduce(function(x,y) { return x + y; },0);
     };
 
     return this;
