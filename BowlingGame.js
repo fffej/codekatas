@@ -2,6 +2,8 @@
 
 var assert = require('assert');
 
+var add = function(x,y) { return x + y; };
+
 var Game = function() {
 
     var pins = [];
@@ -11,7 +13,7 @@ var Game = function() {
     };
 
     this.score = function() {
-	return pins.reduce(function(x,y) { return x + y; },0);
+	return pins.reduce(add,0);
     };
 
     return this;
