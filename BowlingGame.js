@@ -40,4 +40,16 @@ describe('bowling game', function() {
 
 	assert.equal(20, game.score());
     });
+
+    it('handles spares', function() {
+	var game = new Game();
+	game.roll(5);
+	game.roll(5); // spare
+	game.roll(3);
+
+	// Rest is a gutter game
+	rollMany(game, 0,17);
+
+	assert.equal(16, game.score());
+    });
 });
