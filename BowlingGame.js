@@ -14,13 +14,15 @@ var Game = function() {
 
     this._scoreSpare = function(i) {
 	return {
-	    score: this._scoreFrame(i).score + this._pins[i+2]
+	    score: this._scoreFrame(i).score + this._pins[i+2],
+	    pinsConsumed: 2
 	};
     };
 
     this._scoreFrame = function(i) {
 	return {
-	    score: this._pins[i] + this._pins[i+1]
+	    score: this._pins[i] + this._pins[i+1],
+	    pinsConsumed: 2
 	};
     };
 
@@ -34,7 +36,8 @@ var Game = function() {
 
     this._scoreStrike = function(i) {
 	return {
-	    score: 10 + this._pins[i+1] + this._pins[i+2]
+	    score: 10 + this._pins[i+1] + this._pins[i+2],
+	    pinsConsumed: 1
 	};
     };
 
@@ -43,20 +46,20 @@ var Game = function() {
 	var sum = 0;
 	var pinCount = 0;
 
-	for (var i=0;i<10;++i) {	    
+	for (var i=0;i<10;++i) {
+	    var result;
 	    if (this._isStrike(i)) {
-		sum += this._scoreStrike(pinCount).score; 
-		pinCount+=1;
+		result = this._scoreStrike(pinCount);
+	    }
+	    else if (this._isSpare(pinCount)) {
+		result = this._scoreSpare(pinCount);
 	    }
 	    else {
-		if (this._isSpare(pinCount)) {
-		    sum += this._scoreSpare(pinCount).score;
-		}
-		else {
-		    sum += this._scoreFrame(pinCount).score;
-		}
-		pinCount+=2;
+		result = this._scoreFrame(pinCount);
 	    }
+	    
+	    sum += result.score;
+	    pinCount+= result.pinsConsumed;
 	}
 
 	return sum;
