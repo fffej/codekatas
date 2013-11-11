@@ -27,4 +27,11 @@ describe('bowling game', function() {
 
 	assert.equal(0, game.score());
     });
+
+    it('hitting 20 single pins scores 20', function() {
+	var game = new Game();
+	rollMany(game, 1, 20);
+
+	assert.equal(20, game.score());
+    });
 });
