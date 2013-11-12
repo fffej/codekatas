@@ -15,4 +15,11 @@ describe('reversi', function() {
 	var board = createBoard(['BW','BW']);
 	assert(board !== undefined);
     });
+
+    it('should return no valid moves', function() {
+	var board = createBoard(['BW',
+				 'BW']);
+
+	assert.equal(0, board.legalMoves().length);
+    });
 });
