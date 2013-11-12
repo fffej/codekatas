@@ -4,7 +4,18 @@ var assert = require('assert');
 
 var Board = function(rows) {
     this.legalMoves = function(turn) {
-	return [];
+
+	var moves = [];
+
+	for (var i=0;i<rows.length;++i) {
+	    for (var j=0;j<rows[i].length;++j) {
+		if (rows[i][j] === '-') {
+		    moves.push({row: i, col: j});
+		}
+	    }
+	}
+
+	return moves;
     };
 
     return this;
