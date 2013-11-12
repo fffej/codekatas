@@ -3,17 +3,19 @@
 var assert = require('assert');
 
 var Board = function(rows) {
+
+    this.isValidMove = function(i,j) {
+	return rows[i][j] === '-';
+    };
+
     this.legalMoves = function(turn) {
 
 	var moves = [];
 
-	for (var i=0;i<rows.length;++i) {
-	    for (var j=0;j<rows[i].length;++j) {
-		if (rows[i][j] === '-') {
+	for (var i=0;i<rows.length;++i)
+	    for (var j=0;j<rows[i].length;++j)
+		if (this.isValidMove(i,j)) 
 		    moves.push({row: i, col: j});
-		}
-	    }
-	}
 
 	return moves;
     };
