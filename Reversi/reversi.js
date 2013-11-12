@@ -11,7 +11,7 @@ var createBoard = function(rows) {
 };
 
 describe('reversi', function() {
-    it('should give no legal moves', function() {
+    it('should create a board', function() {
 	var board = createBoard(['BW','BW']);
 	assert(board !== undefined);
     });
