@@ -3,6 +3,10 @@
 var assert = require('assert');
 
 var Board = function(rows) {
+    this.legalMoves = function() {
+	return [];
+    };
+
     return this;
 };
 
