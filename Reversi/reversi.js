@@ -60,7 +60,7 @@ describe('reversi', function() {
 	assert.equal(0, board.legalMoves('B').length);
     });
 
-    it('should return the single valid move', function() {
+    it('should return the single valid move (left)', function() {
 	var board = createBoard(['BW-',
 				 'BBB',
 				 'BBB']);
@@ -68,7 +68,7 @@ describe('reversi', function() {
 	assert.equal(1, board.legalMoves('B').length);
     });
 
-    it('should not return any valid moves', function() {
+    it('should not return any valid moves (left)', function() {
 	var board = createBoard(['BW-',
 				 'BBB',
 				 'BBB']);
@@ -76,7 +76,7 @@ describe('reversi', function() {
 	assert.equal(0, board.legalMoves('W').length);
     });
 
-    it('should return the single valid move', function() {
+    it('should return the single valid move (right)', function() {
 	var board = createBoard(['-WB',
 				 'BBB',
 				 'BBB']);
@@ -84,7 +84,7 @@ describe('reversi', function() {
 	assert.equal(1, board.legalMoves('B').length);
     });
 
-    it('should not return any valid moves', function() {
+    it('should not return any valid moves (right)', function() {
 	var board = createBoard(['-WB',
 				 'BBB',
 				 'BBB']);
