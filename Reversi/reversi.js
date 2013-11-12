@@ -45,4 +45,12 @@ describe('reversi', function() {
 
 	assert.equal(1, board.legalMoves().length);
     });
+
+    it('should not return any valid moves', function() {
+	var board = createBoard(['BW-',
+				 'BBB',
+				 'BBB'], 'W');
+
+	assert.equal(0, board.legalMoves().length);
+    });
 });
