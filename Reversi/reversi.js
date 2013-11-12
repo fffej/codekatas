@@ -19,13 +19,24 @@ var Board = function(rows) {
 	    return false;
     };
 
+    var isValidMoveRight = function(i,j,turn) {
+	var w = j+1;
+	while (w < rows[i].length && rows[i][w] === opposite(turn))
+	    w++;
+
+	if (w < rows[i].length && w !== j+1)
+	    return (rows[i][w] === turn);
+	else
+	    return false;
+    };
+
+
     this.isValidMove = function(i,j, turn) {
 	if (rows[i][j] !== '-')
 	    return false;
 
-	return isValidMoveLeft(i,j,turn);
-
-	return false;
+	return isValidMoveLeft(i,j,turn) ||
+	       isValidMoveRight(i,j,turn);
     };
 
     this.legalMoves = function(turn) {
