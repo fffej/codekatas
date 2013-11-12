@@ -8,18 +8,22 @@ var Board = function(rows) {
 	return turn === 'B' ? 'W' : 'B';
     };
 
-    this.isValidMove = function(i,j, turn) {
-	if (rows[i][j] !== '-')
-	    return false;
-
-	// Walk left
+    var isValidMoveLeft = function(i,j,turn) {
 	var w = j-1;
 	while (w >= 0 && rows[i][w] === opposite(turn))
 	    w--;
 
-	if (w >= 0 && w !== j-1) {
+	if (w >= 0 && w !== j-1)
 	    return (rows[i][w] === turn);
-	}
+	else
+	    return false;
+    };
+
+    this.isValidMove = function(i,j, turn) {
+	if (rows[i][j] !== '-')
+	    return false;
+
+	return isValidMoveLeft(i,j,turn);
 
 	return false;
     };
