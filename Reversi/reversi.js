@@ -17,9 +17,11 @@ var Board = function(rows) {
 	while (w >= 0 && rows[i][w] === opposite(turn))
 	    w--;
 
-	if (w >= 0) {
+	if (w >= 0 && w !== j-1) {
 	    return (rows[i][w] === turn);
 	}
+
+	return false;
     };
 
     this.legalMoves = function(turn) {
