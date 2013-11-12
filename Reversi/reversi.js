@@ -2,8 +2,12 @@
 
 var assert = require('assert');
 
+var Board = function(rows) {
+    return this;
+};
+
 var createBoard = function(rows) {
-    return true;
+    return new Board(rows);
 };
 
 describe('reversi', function() {
