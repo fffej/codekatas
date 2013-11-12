@@ -5,7 +5,10 @@ var assert = require('assert');
 var Board = function(rows) {
 
     this.isValidMove = function(i,j) {
-	return rows[i][j] === '-';
+	if (rows[i][j] !== '-')
+	    return false;
+
+	return true;
     };
 
     this.legalMoves = function(turn) {
