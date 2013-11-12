@@ -75,4 +75,21 @@ describe('reversi', function() {
 
 	assert.equal(0, board.legalMoves('W').length);
     });
+
+    it('should return the single valid move', function() {
+	var board = createBoard(['-WB',
+				 'BBB',
+				 'BBB']);
+
+	assert.equal(1, board.legalMoves('B').length);
+    });
+
+    it('should not return any valid moves', function() {
+	var board = createBoard(['-WB',
+				 'BBB',
+				 'BBB']);
+
+	assert.equal(0, board.legalMoves('W').length);
+    });
+
 });
