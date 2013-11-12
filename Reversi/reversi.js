@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var Board = function(rows) {
-    this.legalMoves = function() {
+    this.legalMoves = function(turn) {
 	return [];
     };
 
@@ -24,7 +24,7 @@ describe('reversi', function() {
 	var board = createBoard(['BW',
 				 'BW']);
 
-	assert.equal(0, board.legalMoves().length);
+	assert.equal(0, board.legalMoves('B').length);
     });
 
     it('should return the single valid move', function() {
