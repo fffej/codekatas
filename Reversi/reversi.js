@@ -4,7 +4,11 @@ var assert = require('assert');
 
 var Board = function(rows) {
 
-    this.isValidMove = function(i,j) {
+    var opposite = function(turn) {
+	return turn === 'B' ? 'W' : 'B';
+    };
+
+    this.isValidMove = function(i,j, turn) {
 	if (rows[i][j] !== '-')
 	    return false;
 
@@ -17,7 +21,7 @@ var Board = function(rows) {
 
 	for (var i=0;i<rows.length;++i)
 	    for (var j=0;j<rows[i].length;++j)
-		if (this.isValidMove(i,j)) 
+		if (this.isValidMove(i,j,turn)) 
 		    moves.push({row: i, col: j});
 
 	return moves;
