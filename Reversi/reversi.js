@@ -12,7 +12,14 @@ var Board = function(rows) {
 	if (rows[i][j] !== '-')
 	    return false;
 
-	return true;
+	// Walk left
+	var w = j-1;
+	while (w >= 0 && rows[i][w] === opposite(turn))
+	    w--;
+
+	if (w >= 0) {
+	    return (rows[i][w] === turn);
+	}
     };
 
     this.legalMoves = function(turn) {
@@ -47,12 +54,12 @@ describe('reversi', function() {
 	assert.equal(0, board.legalMoves('B').length);
     });
 
-    it('should return the single valid move', function() {
+    it.only('should return the single valid move', function() {
 	var board = createBoard(['BW-',
 				 'BBB',
 				 'BBB'], 'B');
 
-	assert.equal(1, board.legalMoves().length);
+	assert.equal(1, board.legalMoves('B').length);
     });
 
     it('should not return any valid moves', function() {
@@ -60,6 +67,6 @@ describe('reversi', function() {
 				 'BBB',
 				 'BBB'], 'W');
 
-	assert.equal(0, board.legalMoves().length);
+	assert.equal(0, board.legalMoves('W').length);
     });
 });
