@@ -73,9 +73,8 @@ var Model = function(predictionContext, tokens) {
 	return words[n];
     };
 
-    this.generate = function(start, len) {
-	var r = [];
-	r[0] = tokens[start];
+    this.generate = function(startPhrase, len) {
+	var r = startPhrase;
 
 	for (var i=1;i<len;++i) {
 	    r[i] = this.pickOne(r,i);
