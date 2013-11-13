@@ -57,6 +57,12 @@ describe('Markov chain', function() {
 	    assert.deepEqual(['the','quick'],run);
 	});
 
+	it('requires the right prime', function() {
+	    assert.throws(function() {
+		createModel(2).generate([],2);
+	    });
+	});
+
 	it.skip('generates words with wider window', function() {
 	    var run = createModel(3).generate(['the','quick'],3);
 	    assert.deepEqual(['the','quick','brown'], run);
