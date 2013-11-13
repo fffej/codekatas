@@ -57,7 +57,7 @@ describe('Markov chain', function() {
 	    assert.deepEqual(['the','quick'],run);
 	});
 
-	it.skip('generates words with wider window', function() {
+	it('generates words with wider window', function() {
 	    var run = createModel(3).generate(['the'],3);
 	    assert.deepEqual(['the','quick','brown'], run);
 	});
