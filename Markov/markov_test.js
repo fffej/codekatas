@@ -43,22 +43,22 @@ describe('Markov chain', function() {
 	};
 
 	it('length of sequence', function() {
-	    var run = createModel(2).generate(0,10);
+	    var run = createModel(2).generate(['the'],10);
 	    assert.equal(10, run.length);
 	});
 
 	it('has appropriate first index', function() {
-	    var run = createModel(2).generate(0,1);
+	    var run = createModel(2).generate(['the'],1);
 	    assert.deepEqual(['the'],run);
 	});
 
 	it('generates words', function() {
-	    var run = createModel(2).generate(0,2);
+	    var run = createModel(2).generate(['the'],2);
 	    assert.deepEqual(['the','quick'],run);
 	});
 
 	it.skip('generates words with wider window', function() {
-	    var run = createModel(3).generate(0,3);
+	    var run = createModel(3).generate(['the'],3);
 	    assert.deepEqual(['the','quick','brown'], run);
 	});
     });
