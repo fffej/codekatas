@@ -18,10 +18,7 @@ var createData = function(pc, tokens) {
 	for (var j=1;j<win;++j)
 	    obj = ensurePropertyExists(obj, tokens[i+j]);
 
-	if (!obj[tokens[i+win]])
-	    obj[tokens[i+win]] = 0;
-
-	obj[tokens[i+win]]++;
+	obj[tokens[i+win]] = 1 + (obj[tokens[i+win]]|0);
     }
 
     return data;
