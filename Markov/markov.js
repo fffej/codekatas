@@ -1,5 +1,7 @@
 "use strict";
 
+var assert = require('assert');
+
 var ensurePropertyExists = function(d,i) {
     if (!d[i]) d[i] = {};
     return d[i];
@@ -74,6 +76,8 @@ var Model = function(predictionContext, tokens) {
     };
 
     this.generate = function(startPhrase, len) {
+	assert(startPhrase.length === (predictionContext - 1));
+
 	var r = startPhrase;
 
 	for (var i=startPhrase.length;i<len;++i) {
