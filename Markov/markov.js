@@ -58,12 +58,18 @@ var Model = function(predictionContext, tokens) {
 	return this.weightedChoice(obj);
     };
 
-    this.weightedChoice = function(obj) {
+    var pushValuesNTimes = function(obj) {
 	var words = [];
 
 	for(var prop in obj) 
 	    for (var i=0;i<obj[prop];++i) 
 		words.push(prop);
+
+	return words;
+    };
+
+    this.weightedChoice = function(obj) {
+	var words = pushValuesNTimes(obj);
 	
 	var n = Math.random() * words.length | 0;
 	return words[n];
