@@ -76,7 +76,7 @@ var Model = function(predictionContext, tokens) {
     this.generate = function(startPhrase, len) {
 	var r = startPhrase;
 
-	for (var i=1;i<len;++i) {
+	for (var i=startPhrase.length;i<len;++i) {
 	    r[i] = this.pickOne(r,i);
 	}
 
