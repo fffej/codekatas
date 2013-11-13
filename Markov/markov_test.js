@@ -57,7 +57,7 @@ describe('Markov chain', function() {
 	    assert.deepEqual(['the','quick'],run);
 	});
 
-	it('requires the right prime', function() {
+	it('requires the right prime to start the sequence', function() {
 	    assert.throws(function() {
 		createModel(2).generate([],2);
 	    });
