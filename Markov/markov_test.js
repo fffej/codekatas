@@ -58,7 +58,7 @@ describe('Markov chain', function() {
 	});
 
 	it.only('generates words with wider window', function() {
-	    var run = createModel(3).generate(['the'],3);
+	    var run = createModel(3).generate(['the','quick'],3);
 	    assert.deepEqual(['the','quick','brown'], run);
 	});
     });
