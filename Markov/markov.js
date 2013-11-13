@@ -41,9 +41,8 @@ var Model = function(predictionContext, tokens) {
     this.frequencyOf = function() {
 	var end = this._data;
 
-	for (var i=0;i<arguments.length;++i) {
+	for (var i=0;i<arguments.length;++i)
 	    end = end[arguments[i]];
-	}
 
 	return end;
     };
@@ -53,22 +52,18 @@ var Model = function(predictionContext, tokens) {
 
 	var startIndex = n - (predictionContext - 1);
 	var obj = this._data;
-	for (var i = startIndex; i < upTo; i++) {
+	for (var i = startIndex; i < upTo; i++) 
 	    obj = obj[soFar[i]];
-	}
 
 	return this.weightedChoice(obj);
     };
 
     this.weightedChoice = function(obj) {
-
 	var words = [];
 
-	for(var prop in obj) {
-	    for (var i=0;i<obj[prop];++i) {
+	for(var prop in obj) 
+	    for (var i=0;i<obj[prop];++i) 
 		words.push(prop);
-	    }
-	}
 	
 	var n = Math.random() * words.length | 0;
 	return words[n];
@@ -78,10 +73,8 @@ var Model = function(predictionContext, tokens) {
 	assert(startPhrase.length === (predictionContext - 1));
 
 	var r = startPhrase;
-
-	for (var i=startPhrase.length;i<len;++i) {
+	for (var i=startPhrase.length;i<len;++i)
 	    r[i] = this.pickOne(r,i);
-	}
 
 	return r;
     };
