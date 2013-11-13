@@ -68,11 +68,14 @@ var Model = function(predictionContext, tokens) {
 	return words;
     };
 
+    var randomElementFromArray = function(arr) {
+	var n = Math.random() * arr.length | 0;
+	return arr[n];
+    };
+
     this.weightedChoice = function(obj) {
 	var words = pushValuesNTimes(obj);
-	
-	var n = Math.random() * words.length | 0;
-	return words[n];
+	return randomElementFromArray(words);
     };
 
     this.generate = function(startPhrase, len) {
