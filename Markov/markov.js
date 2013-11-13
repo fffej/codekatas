@@ -9,20 +9,19 @@ var ensurePropertyExists = function(d,i) {
 
 var createData = function(pc, tokens) {
     var data = {},
-        n = tokens.length;
+        n = tokens.length,
+        win = pc - 1;
 
-    for (var i=0;i<n-(pc-1);++i) {
+    for (var i=0;i<n-win;++i) {
 	var obj = ensurePropertyExists(data,tokens[i]);
 
-	for (var j=1;j<pc-1;++j) {
-	    obj[tokens[i+j]] = {};
-	    obj = obj[tokens[i+j]];
-	}
+	for (var j=1;j<win;++j)
+	    obj = ensurePropertyExists(obj, tokens[i+j]);
 
-	if (!obj[tokens[i+pc-1]])
-	    obj[tokens[i+pc-1]] = 0;
+	if (!obj[tokens[i+win]])
+	    obj[tokens[i+win]] = 0;
 
-	obj[tokens[i+pc-1]]++;
+	obj[tokens[i+win]]++;
     }
 
     return data;
