@@ -37,5 +37,10 @@ describe('string calculator', function() {
 	    var result = add('1,1');
 	    assert.equal(2, result);
 	});
+
+	it('automatically handles n numbers', function() {
+	    var result = add('1,2,3,4,5');
+	    assert.equal(1+2+3+4+5, result);
+	});
     });
 });
