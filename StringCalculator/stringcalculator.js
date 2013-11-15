@@ -2,8 +2,23 @@
 
 var assert = require('assert');
 
+var convertToInt = function(s) {
+    return s.map(function(x) { return x|0; });
+};
+
+var sum = function(s) {
+    return s.reduce(function(x,y) { return x + y; });
+};
+
+var splitUp = function(s) {
+    return s.split(',');
+};
+
 var add = function(s) {
-    return s.split(',').map(function(x) { return x|0; }).reduce(function(x,y) { return x + y; });
+    var tokens = splitUp(s);
+    var asNumbers = convertToInt(tokens);
+
+    return sum(asNumbers);
 };
 
 describe('string calculator', function() {
