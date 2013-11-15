@@ -17,5 +17,10 @@ describe('string calculator', function() {
 	    var result = add('1');
 	    assert.equal(1, result);
 	});
+
+	it('should add 2 numbers', function() {
+	    var result = add('1,1');
+	    assert.equal(2, result);
+	});
     });
 });
