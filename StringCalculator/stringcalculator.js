@@ -12,5 +12,10 @@ describe('string calculator', function() {
 	    var result = add('');
 	    assert.equal(0, result);
 	});
+
+	it('single number returns the value', function() {
+	    var result = add('1');
+	    assert.equal(1, result);
+	});
     });
 });
