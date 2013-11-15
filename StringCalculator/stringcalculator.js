@@ -42,5 +42,10 @@ describe('string calculator', function() {
 	    var result = add('1,2,3,4,5');
 	    assert.equal(1+2+3+4+5, result);
 	});
+
+	it('should handle new lines', function() {
+	    var result = add('1\n2,3');
+	    assert.equal(6, result);
+	});
     });
 });
