@@ -14,8 +14,13 @@ var splitUp = function(s) {
     return s.split(',');
 };
 
+var handleNewLines = function(s) {
+    return s.replace(/\n/g,',');
+};
+
 var add = function(s) {
-    var tokens = splitUp(s);
+    var handledNewLines = handleNewLines(s);
+    var tokens = splitUp(handledNewLines);
     var asNumbers = convertToInt(tokens);
 
     return sum(asNumbers);
