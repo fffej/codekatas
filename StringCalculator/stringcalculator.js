@@ -19,7 +19,7 @@ describe('string calculator', function() {
 	assert.equal(3, add('3'));
     });
 
-    it('multiple numbers add', function() {
+    it('two numbers add', function() {
 	assert.equal(2, add('1,1'));
 	assert.equal(3, add('1,2'));
     });
