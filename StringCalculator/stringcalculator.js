@@ -35,4 +35,8 @@ describe('string calculator', function() {
     it('multiple numbers add', function() {
 	assert.equal(3, add('1,1,1'));
     });
+
+    it('newlines are treated like ,', function() {
+	assert.equal(3, add('1\n1,1'));
+    });
 });
