@@ -17,8 +17,7 @@ var split = function(s) {
 };
 
 var add = function(s) {
-    var nums = coerceToNums(split(s));
-    return sum(nums);
+    return sum(coerceToNums(split(s)));
 };
 
 describe('string calculator', function() {
