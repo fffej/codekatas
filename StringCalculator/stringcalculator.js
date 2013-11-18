@@ -2,10 +2,15 @@
 
 var assert = require('assert');
 
-var add = function(s) {
-    var nums = s.split(',').map(function(x) { return x|0; }).reduce(function(x,y) { return x + y; });
+var sum = function(arr) {
+    var add = function(x,y) { return x + y; };
+    return arr.reduce(add);
+};
 
-    return nums;
+var add = function(s) {
+    var nums = s.split(',').map(function(x) { return x|0; });
+
+    return sum(nums);
 };
 
 describe('string calculator', function() {
