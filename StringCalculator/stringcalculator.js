@@ -49,5 +49,6 @@ describe('string calculator', function() {
 
     it('supports custom delimiters', function() {
 	assert.equal(3, add('//;\n1;2'));
+	assert.equal(5, add('//;\n3;2'));
     });
 });
