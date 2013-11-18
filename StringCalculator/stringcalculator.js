@@ -2,7 +2,8 @@
 
 var assert = require('assert');
 
-var add = function() {
+var add = function(s) {
+    if (s.length !== 0) return 1;
     return 0;
 };
 
