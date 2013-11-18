@@ -7,9 +7,13 @@ var sum = function(arr) {
     return arr.reduce(add);
 };
 
-var add = function(s) {
-    var nums = s.split(',').map(function(x) { return x|0; });
+var coerceToNums = function(arr) {
+    var asInt = function(x) { return x|0; };
+    return arr.map(asInt);
+}
 
+var add = function(s) {
+    var nums = coerceToNums(s.split(','));
     return sum(nums);
 };
 
