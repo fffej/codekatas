@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var add = function(s) {
-    if (s.length !== 0) return 1;
+    if (s.length !== 0) return s|0;
     return 0;
 };
 
