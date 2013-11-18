@@ -12,12 +12,15 @@ var coerceToNums = function(arr) {
     return arr.map(asInt);
 };
 
+var splitCustomDelimiter = function(s) {
+    var splitChar = s[2];
+    var rest = s.split('\n')[1];
+    return rest.split(splitChar);
+};
+
 var split = function(s) {
-    if (s.indexOf('//') === 0) {
-	var splitChar = s[2];
-	var rest = s.split('\n')[1];
-	return rest.split(splitChar);
-    }
+    if (s.indexOf('//') === 0) 
+	return splitCustomDelimiter(s);
 
     return s.split(/,|\n/);
 };
