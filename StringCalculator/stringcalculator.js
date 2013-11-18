@@ -3,8 +3,7 @@
 var assert = require('assert');
 
 var add = function(s) {
-    if (s.length !== 0) return s|0;
-    return 0;
+    return s|0;
 };
 
 describe('string calculator', function() {
