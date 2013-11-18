@@ -22,8 +22,12 @@ var split = function(s) {
     return s.split(/,|\n/);
 };
 
+var ignoreNumbers = function(arr) {
+    return arr.filter(function(x) { return x <= 1000; });
+};
+
 var add = function(s) {
-    return sum(coerceToNums(split(s)));
+    return sum(ignoreNumbers(coerceToNums(split(s))));
 };
 
 describe('string calculator', function() {
