@@ -53,4 +53,8 @@ describe('string calculator', function() {
 	assert.equal(3, add('//;\n1;2'));
 	assert.equal(5, add('//;\n3;2'));
     });
+
+    it('ignores numbers over 1000', function() {
+	assert.equal(2, add('1001,2'));
+    });
 });
