@@ -42,4 +42,8 @@ describe('string calculator', function() {
     it('newlines are treated like ,', function() {
 	assert.equal(3, add('1\n1,1'));
     });
+
+    it('supports custom delimiters', function() {
+	assert.equal(3, add('//;\n1;2'));
+    });
 });
