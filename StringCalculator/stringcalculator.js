@@ -14,5 +14,6 @@ describe('string calculator', function() {
 
     it('single numbers produce identity', function() {
 	assert.equal(1, add('1'));
+	assert.equal(3, add('3'));
     });
 });
