@@ -61,4 +61,10 @@ describe('string calculator', function() {
     it('ignores numbers over 1000', function() {
 	assert.equal(2, add('1001,2'));
     });
+
+    it('throws on negative numbers', function() {
+	assert.throws(function() {
+	    add('-1');
+	});
+    });
 });
