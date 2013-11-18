@@ -3,10 +3,9 @@
 var assert = require('assert');
 
 var add = function(s) {
-    var nums = s.split(',');
-    if (nums.length !== 1) return (nums[0]|0) + (nums[1]|0);
+    var nums = s.split(',').map(function(x) { return x|0; }).reduce(function(x,y) { return x + y; });
 
-    return s|0;
+    return nums;
 };
 
 describe('string calculator', function() {
