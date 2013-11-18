@@ -26,8 +26,17 @@ var ignoreNumbers = function(arr) {
     return arr.filter(function(x) { return x <= 1000; });
 };
 
+var validate = function(arr) {
+    var illegal = arr.filter(function(x) { return x < 0; });
+
+    if (illegal.length !== 0)
+	throw Exception(illegal);
+
+    return arr;
+};
+
 var add = function(s) {
-    return sum(ignoreNumbers(coerceToNums(split(s))));
+    return sum(ignoreNumbers(validate(coerceToNums(split(s)))));
 };
 
 describe('string calculator', function() {
