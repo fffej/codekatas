@@ -10,10 +10,14 @@ var sum = function(arr) {
 var coerceToNums = function(arr) {
     var asInt = function(x) { return x|0; };
     return arr.map(asInt);
-}
+};
+
+var split = function(s) {
+    return s.split(/,|\n/);
+};
 
 var add = function(s) {
-    var nums = coerceToNums(s.split(','));
+    var nums = coerceToNums(split(s));
     return sum(nums);
 };
 
