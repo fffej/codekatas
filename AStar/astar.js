@@ -104,6 +104,13 @@ describe('a* search algorithm', function() {
 
 	    assert.equal(2, choices.length);
 	});
+
+	it('can cost choices', function() {
+	    var map = load(defaultMap);
+	    var choices = map.moves(map.start());
+
+	    assert.equal(map.cost(choices[0]), map.cost(choices[1]));
+	});
     });
 
     describe('costs', function() {
