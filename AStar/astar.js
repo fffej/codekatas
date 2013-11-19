@@ -72,6 +72,10 @@ var Map = function(rows) {
 	return this.costSoFar + cost(this.at(pt));
     };
 
+    this.solve = function(callback) {
+
+    };
+
     this.costSoFar = 0;
 
     return this;
@@ -142,7 +146,7 @@ describe('a* search algorithm', function() {
 	});
 
 	it('makes the correct move', function() {
-	    var map = load('@*\n.X');
+	    var map = load('@*\nX.');
 	    var moves = [];
 
 	    map.solve(function(x) { moves.push(x); });
