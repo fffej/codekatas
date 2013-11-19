@@ -114,6 +114,7 @@ describe('a* search algorithm', function() {
 	    var choices = map.moves(map.start());
 
 	    assert.equal(map.cost(choices[0]), map.cost(choices[1]));
+	    assert.equal(1, map.cost(choices[0]));
 	});
     });
 
