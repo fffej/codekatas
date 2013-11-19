@@ -48,15 +48,18 @@ var Map = function(rows) {
 	    return this.rows[pt.y][pt.x];
     };
 
-    this.moves = function(pt) {
-	var choices = [];
-
+    var surroundings = function(pt) {
 	var left = p(pt.x-1,pt.y);
 	var right = p(pt.x+1,pt.y);
 	var up = p(pt.x, pt.y-1);
 	var down = p(pt.x, pt.y+1);
 
-	var deltas = [left,right,up,down];
+	return [left,right,up,down];
+    };
+
+    this.moves = function(pt) {
+	var choices = [];
+	var deltas = surroundings(pt);
 
 	for (var i=0;i<deltas.length;++i) 
 	    if (walkable(this.at(deltas[i]))) 
