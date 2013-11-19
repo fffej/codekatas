@@ -41,12 +41,23 @@ var load = function(s) {
 describe('a* search algorithm', function() {
 
     describe('map', function() {
+
+	var defaultMap = '@.\n.X';
+
 	it('finds goal', function() {
-	    var map = load('@.\n.X');
+	    var map = load(defaultMap);
 	    var p = map.goal();
 
 	    assert.equal(1, p.x);
 	    assert.equal(1, p.y);
+	});
+
+	it('finds start', function() {
+	    var map = load(defaultMap);
+	    var p = map.start();
+
+	    assert.equal(0, p.x);
+	    assert.equal(0, p.y);
 	});
     });
 
