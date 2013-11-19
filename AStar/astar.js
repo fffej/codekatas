@@ -200,6 +200,14 @@ describe('a* search algorithm', function() {
 
 	    assert.equal(3, moves.length);
 	});
+
+	it('handles cycles', function() {
+	    var map = load('@..\n..X');
+	    var moves = [];
+	    map.solve(function(x) { moves.push(x); });
+	    
+	    assert.equal(4, moves.length);
+	});
     });
 
     describe('costs', function() {
