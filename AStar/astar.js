@@ -92,6 +92,19 @@ var Map = function(rows) {
 	    callback(done[0]);
 	    return
 	}
+
+	var best = 10000001;
+	var bestIdx = -1;
+	
+	for (var i=0;i<choices.length;++i) {
+	    var cost = this.cost(choices[i]);
+	    if (cost < best) {
+		best = cost;
+		bestIdx = i;
+	    }
+	}
+
+	this._solve(choices[bestIdx], callback);
     };
 
     this.costSoFar = 0;
