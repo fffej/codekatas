@@ -97,6 +97,14 @@ describe('a* search algorithm', function() {
 	it('mountain costs 3', function() {
 	    assert.equal(3, cost('^'));
 	});
+
+	it('walkable', function() {
+	    assert(walkable('.'));
+	    assert(walkable('*'));
+	    assert(walkable('^'));
+	    assert(walkable('@'));
+	    assert(walkable('X'));
+	});
     });
 
     describe('Manhattan distance', function() {
