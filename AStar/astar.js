@@ -109,6 +109,11 @@ describe('a* search algorithm', function() {
 	    assert(walkable('@'));
 	    assert(walkable('X'));
 	});
+
+	it('non-walkable', function() {
+	    assert(!walkable(undefined));
+	    assert(!walkable('~'));
+	});
     });
 
     describe('Manhattan distance', function() {
