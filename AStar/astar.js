@@ -167,7 +167,7 @@ describe('a* search algorithm', function() {
 	    assert.equal(2, moves.length);
 	});
 
-	it.skip('makes the best choice when confronted', function() {
+	it('makes the best choice when confronted', function() {
 	    var map = load('@*\n.X');
 	    var moves = [];
 
