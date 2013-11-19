@@ -84,9 +84,14 @@ var Map = function(rows) {
 	callback(pt);
 
 	var choices = this.moves(pt);
-	for (var i=0;i<choices.length;++i)
-	    if (ptEqual(choices[i],this.goal()))
-		callback(choices[i]);
+
+	// Are we done?
+	var isGoal = function(x) { return ptEqual(x,this.goal()); };
+	var done = choices.filter(isGoal,this);
+	if (done.length === 1) {
+	    callback(done[0]);
+	    return
+	}
     };
 
     this.costSoFar = 0;
