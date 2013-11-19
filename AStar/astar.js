@@ -21,6 +21,10 @@ var p = function(x,y) {
     };
 };
 
+var ptEqual = function(p1,p2) {
+    return p1.x === p2.x && p1.y === p2.y;
+};
+
 var manhattanDistance = function(p1,p2) {
     return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
 };
@@ -73,6 +77,14 @@ var Map = function(rows) {
     };
 
     this.solve = function(callback) {
+	// first move is to the start destination
+	var start = this.start();
+	callback(start);
+
+	var choices = this.moves(start);
+	for (var i=0;i<choices.length;++i)
+	    if (ptEqual(choices[i],this.goal()))
+		callback(choices[i]);
 
     };
 
