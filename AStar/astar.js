@@ -22,6 +22,18 @@ var manhattanDistance = function(p1,p2) {
 };
 
 describe('a* search algorithm', function() {
+
+    describe('map', function() {
+	it('loads map', function() {
+	    var map = load('@.\n.X');
+
+	    var p = map.goal();
+
+	    assert.equal(1, p.x);
+	    assert.equal(1, p.y);
+	});
+    });
+
     describe('costs', function() {
 	it('flatlands cost 1', function() {
 	    assert.equal(1, cost('.'));
