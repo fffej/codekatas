@@ -39,6 +39,12 @@ var Map = function(rows) {
 	return findIt(this.rows, '@');
     };
 
+    this.moves = function(p) {
+	var choices = [];
+
+	return choices;
+    };
+
     return this;
 };
 
