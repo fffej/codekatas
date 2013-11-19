@@ -2,55 +2,81 @@
 
 var assert = require('assert');
 
-var convertToInt = function(s) {
-    return s.map(function(x) { return x|0; });
+var sum = function(arr) {
+    var add = function(x,y) { return x + y; };
+    return arr.reduce(add);
 };
 
-var sum = function(s) {
-    return s.reduce(function(x,y) { return x + y; });
+var coerceToNums = function(arr) {
+    var asInt = function(x) { return x|0; };
+    return arr.map(asInt);
 };
 
-var splitUp = function(s) {
-    return s.split(',');
+var splitCustomDelimiter = function(s) {
+    var splitChar = s[2];
+    var rest = s.split('\n')[1];
+    return rest.split(splitChar);
 };
 
-var handleNewLines = function(s) {
-    return s.replace(/\n/g,',');
+var split = function(s) {
+    if (s.indexOf('//') === 0) 
+	return splitCustomDelimiter(s);
+
+    return s.split(/,|\n/);
+};
+
+var ignoreNumbers = function(arr) {
+    return arr.filter(function(x) { return x <= 1000; });
+};
+
+var validate = function(arr) {
+    var illegal = arr.filter(function(x) { return x < 0; });
+
+    if (illegal.length !== 0)
+	throw Exception(illegal);
+
+    return arr;
 };
 
 var add = function(s) {
-    var handledNewLines = handleNewLines(s);
-    var tokens = splitUp(handledNewLines);
-    var asNumbers = convertToInt(tokens);
-
-    return sum(asNumbers);
+    return sum(ignoreNumbers(validate(coerceToNums(split(s)))));
 };
 
 describe('string calculator', function() {
-    describe('add', function() {
-	it('0 numbers returns an empty string', function() {
-	    var result = add('');
-	    assert.equal(0, result);
-	});
+    it('adding empty strings gives zero', function() {
+	assert.equal(0, add(''));
+    });
 
-	it('single number returns the value', function() {
-	    var result = add('1');
-	    assert.equal(1, result);
-	});
+    it('single numbers produce identity', function() {
+	assert.equal(1, add('1'));
+	assert.equal(3, add('3'));
+    });
 
-	it('should add 2 numbers', function() {
-	    var result = add('1,1');
-	    assert.equal(2, result);
-	});
+    it('two numbers add', function() {
+	assert.equal(2, add('1,1'));
+	assert.equal(3, add('1,2'));
+    });
 
-	it('automatically handles n numbers', function() {
-	    var result = add('1,2,3,4,5');
-	    assert.equal(1+2+3+4+5, result);
-	});
+    it('multiple numbers add', function() {
+	assert.equal(3, add('1,1,1'));
+    });
 
-	it('should handle new lines', function() {
-	    var result = add('1\n2,3');
-	    assert.equal(6, result);
+    it('newlines are treated like ,', function() {
+	assert.equal(3, add('1\n1,1'));
+    });
+
+    it('supports custom delimiters', function() {
+	assert.equal(3, add('//;\n1;2'));
+	assert.equal(5, add('//;\n3;2'));
+    });
+
+    it('ignores numbers over 1000', function() {
+	assert.equal(2, add('1001,2'));
+    });
+
+    it('throws on negative numbers', function() {
+	assert.throws(function() {
+	    add('-1');
 	});
     });
 });
