@@ -10,6 +10,10 @@ var cost = function(c) {
     return 1;
 };
 
+var walkable = function(c) {
+    return true;
+};
+
 var p = function(x,y) {
     return {
 	x: x,
