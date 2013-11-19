@@ -43,8 +43,24 @@ var Map = function(rows) {
 	return findIt(this.rows, '@');
     };
 
-    this.moves = function(p) {
+    this.at = function(pt) {
+	if (this.rows[pt.y])
+	    return this.rows[pt.y][pt.x];
+    };
+
+    this.moves = function(pt) {
 	var choices = [];
+
+	var left = p(pt.x-1,pt.y);
+	var right = p(pt.x+1,pt.y);
+	var up = p(pt.x, pt.y-1);
+	var down = p(pt.x, pt.y+1);
+
+	var deltas = [left,right,up,down];
+
+	for (var i=0;i<deltas.length;++i) 
+	    if (walkable(this.at(deltas[i]))) 
+		choices.push(deltas[i]);
 
 	return choices;
     };
@@ -81,7 +97,7 @@ describe('a* search algorithm', function() {
 	it('finds choices', function() {
 	    var map = load(defaultMap);
 	    
-	    var choices = map.moves(p);
+	    var choices = map.moves(map.start());
 
 	    assert.equal(2, choices.length);
 	});
