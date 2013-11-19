@@ -165,6 +165,15 @@ describe('a* search algorithm', function() {
 
 	    assert.equal(2, moves.length);
 	});
+
+	it('makes the best choice when confronted', function() {
+	    var map = load('@*\n.X');
+	    var moves = [];
+
+	    map.solve(function(x) { moves.push(x); });
+
+	    assert.equal(3, moves.length);
+	});
     });
 
     describe('costs', function() {
