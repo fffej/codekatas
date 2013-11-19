@@ -68,8 +68,6 @@ var Map = function(rows) {
 	for (var i=0;i<deltas.length;++i) 
 	    if (walkable(this.at(deltas[i])) && this.notVisited(deltas[i])) 
 		choices.push(deltas[i]);
-	
-
 
 	return choices;
     };
