@@ -69,7 +69,7 @@ var Map = function(rows) {
     };
 
     this.cost = function(pt) {
-	return cost(this.at(pt));
+	return this.costSoFar + cost(this.at(pt));
     };
     
     this.costSoFar = 0;
@@ -137,8 +137,8 @@ describe('a* search algorithm', function() {
 
 	    var choices = map.moves(map.start());
 	    
-	    assert(cost(choices[0]) > map.costSoFar);
-	    assert(cost(choices[1]) > map.costSoFar);
+	    assert(map.cost(choices[0]) > map.costSoFar);
+	    assert(map.cost(choices[1]) > map.costSoFar);
 	});
     });
 
