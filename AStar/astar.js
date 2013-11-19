@@ -24,18 +24,19 @@ var manhattanDistance = function(p1,p2) {
 var Map = function(rows) {
     this.rows = rows;
 
-    this.goal = function() { 
-	for (var y=0;y<this.rows.length;++y) 
-	    for (var x=0;x<this.rows[y].length;++x)
-		if (this.rows[y][x] === 'X') 
+    var findIt = function(rows, it) {
+	for (var y=0;y<rows.length;++y) 
+	    for (var x=0;x<rows[y].length;++x)
+		if (rows[y][x] === it) 
 		    return p(x,y);
     };
 
+    this.goal = function() { 
+	return findIt(this.rows, 'X');
+    };
+
     this.start = function() { 
-	for (var y=0;y<this.rows.length;++y) 
-	    for (var x=0;x<this.rows[y].length;++x)
-		if (this.rows[y][x] === '@') 
-		    return p(x,y);
+	return findIt(this.rows, '@');
     };
 
     return this;
