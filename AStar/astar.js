@@ -10,6 +10,17 @@ var cost = function(c) {
     return 1;
 };
 
+var p = function(x,y) {
+    return {
+	x: x,
+	y: y
+    };
+};
+
+var manhattanDistance = function(p1,p2) {
+    return 5;
+};
+
 describe('a* search algorithm', function() {
     describe('costs', function() {
 	it('flatlands cost 1', function() {
