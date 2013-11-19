@@ -3,6 +3,8 @@
 var assert = require('assert');
 
 var cost = function(c) {
+    if (c === '*') return 2;
+
     return 1;
 };
 
