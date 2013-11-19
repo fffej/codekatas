@@ -78,7 +78,7 @@ describe('a* search algorithm', function() {
 	    assert.equal(0, p.y);
 	});
 
-	it.skip('finds choices', function() {
+	it('finds choices', function() {
 	    var map = load(defaultMap);
 	    
 	    var choices = map.moves(p);
