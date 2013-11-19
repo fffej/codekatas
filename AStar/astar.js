@@ -41,6 +41,7 @@ describe('a* search algorithm', function() {
     describe('Manhattan distance', function() {
 	it('works in a straight line', function() {
 	    assert.equal(5, manhattanDistance(p(0,0), p(5,0)));
+	    assert.equal(3, manhattanDistance(p(0,3), p(0,0)));
 	});
     });
 });
