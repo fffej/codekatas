@@ -157,7 +157,7 @@ describe('a* search algorithm', function() {
 	    assert(map.cost(choices[1]) > map.costSoFar);
 	});
 
-	it('makes the correct move', function() {
+	it('makes the correct move in the simplest example', function() {
 	    var map = load('@*\nX.');
 	    var moves = [];
 
