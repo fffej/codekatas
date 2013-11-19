@@ -11,6 +11,8 @@ var cost = function(c) {
 };
 
 var walkable = function(c) {
+    if (c === undefined || c === '~') return false;
+
     return true;
 };
 
