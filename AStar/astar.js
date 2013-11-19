@@ -31,6 +31,13 @@ var Map = function(rows) {
 		    return p(x,y);
     };
 
+    this.start = function() { 
+	for (var y=0;y<this.rows.length;++y) 
+	    for (var x=0;x<this.rows[y].length;++x)
+		if (this.rows[y][x] === '@') 
+		    return p(x,y);
+    };
+
     return this;
 };
 
