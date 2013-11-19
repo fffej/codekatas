@@ -23,6 +23,7 @@ var manhattanDistance = function(p1,p2) {
 
 var Map = function(rows) {
     this.rows = rows;
+
     this.goal = function() { 
 	for (var y=0;y<this.rows.length;++y) 
 	    for (var x=0;x<this.rows[y].length;++x)
@@ -40,9 +41,8 @@ var load = function(s) {
 describe('a* search algorithm', function() {
 
     describe('map', function() {
-	it('loads map', function() {
+	it('finds goal', function() {
 	    var map = load('@.\n.X');
-
 	    var p = map.goal();
 
 	    assert.equal(1, p.x);
