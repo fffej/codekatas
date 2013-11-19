@@ -130,6 +130,16 @@ describe('a* search algorithm', function() {
 	    var map = load(defaultMap);
 	    assert.equal(0, map.costSoFar);
 	});
+
+	it('uses cost so far when costing choices', function() {
+	    var map = load('@*\n.X');
+	    map.costSoFar = 100001;
+
+	    var choices = map.moves(map.start());
+	    
+	    assert(cost(choices[0]) > map.costSoFar);
+	    assert(cost(choices[1]) > map.costSoFar);
+	});
     });
 
     describe('costs', function() {
