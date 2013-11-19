@@ -69,7 +69,7 @@ var Map = function(rows) {
     };
 
     this.cost = function(pt) {
-	return 1;
+	return cost(this.at(pt));
     };
 
     return this;
