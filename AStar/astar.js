@@ -116,6 +116,13 @@ describe('a* search algorithm', function() {
 	    assert.equal(map.cost(choices[0]), map.cost(choices[1]));
 	    assert.equal(1, map.cost(choices[0]));
 	});
+
+	it('can cost variable choices', function() {
+	    var map = load('@*\n.X');
+	    var choices = map.moves(map.start());
+
+	    assert(map.cost(choices[0]) !== map.cost(choices[1]));
+	});
     });
 
     describe('costs', function() {
