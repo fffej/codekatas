@@ -75,11 +75,8 @@ var Map = function(rows) {
     };
 
     this.notVisited = function(pt) {
-	for (var i=0;i<this.visited.length;i++)
-	    if (ptEqual(pt, this.visited[i])) 
-		return false;
-	
-	return true;
+
+	return this.visited.filter(function(x) { return ptEqual(pt,x) }).length === 0;
     };
 
     this.cost = function(pt) {
