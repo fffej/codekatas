@@ -68,6 +68,10 @@ var Map = function(rows) {
 	return choices;
     };
 
+    this.cost = function(pt) {
+	return 0;
+    };
+
     return this;
 };
 
