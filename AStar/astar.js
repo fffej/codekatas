@@ -18,7 +18,7 @@ var p = function(x,y) {
 };
 
 var manhattanDistance = function(p1,p2) {
-    return 5;
+    return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
 };
 
 describe('a* search algorithm', function() {
