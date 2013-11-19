@@ -215,6 +215,14 @@ describe('a* search algorithm', function() {
 	    
 	    assert.equal(4, moves.length);
 	});
+
+	it('makes the best moves', function() {
+	    var map = load('@^.\n.~X');
+	    var moves = [];
+	    map.solve(function(x) { moves.push(x); });
+	    
+	    assert.equal(4, moves.length);
+	});
     });
 
     describe('costs', function() {
