@@ -79,6 +79,21 @@ var Map = function(rows) {
     this.solve = function(callback) {
 	this._solve(this.start(), callback);
     };
+
+    this._bestChoice = function(choices) {
+	var best = 10000001;
+	var bestIdx = -1;
+	
+	for (var i=0;i<choices.length;++i) {
+	    var cost = this.cost(choices[i]);
+	    if (cost < best) {
+		best = cost;
+		bestIdx = i;
+	    }
+	}
+
+	return choices[bestIdx];
+    };
     
     this._solve = function(pt, callback) {
 	callback(pt);
@@ -93,18 +108,7 @@ var Map = function(rows) {
 	    return
 	}
 
-	var best = 10000001;
-	var bestIdx = -1;
-	
-	for (var i=0;i<choices.length;++i) {
-	    var cost = this.cost(choices[i]);
-	    if (cost < best) {
-		best = cost;
-		bestIdx = i;
-	    }
-	}
-
-	this._solve(choices[bestIdx], callback);
+	this._solve(this._bestChoice(choices), callback);
     };
 
     this.costSoFar = 0;
