@@ -66,10 +66,20 @@ var Map = function(rows) {
 	var deltas = surroundings(pt);
 
 	for (var i=0;i<deltas.length;++i) 
-	    if (walkable(this.at(deltas[i]))) 
+	    if (walkable(this.at(deltas[i])) && this.notVisited(deltas[i])) 
 		choices.push(deltas[i]);
+	
+
 
 	return choices;
+    };
+
+    this.notVisited = function(pt) {
+	for (var i=0;i<this.visited.length;i++)
+	    if (ptEqual(pt, this.visited[i])) 
+		return false;
+	
+	return true;
     };
 
     this.cost = function(pt) {
