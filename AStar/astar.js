@@ -94,18 +94,21 @@ var Map = function(rows) {
 
 	return choices[bestIdx];
     };
+
+    this._isComplete = function(choices) {
+	var isGoal = function(x) { return ptEqual(x,this.goal()); };
+	var done = choices.filter(isGoal,this);
+	return done.length === 1;
+    };
     
     this._solve = function(pt, callback) {
 	callback(pt);
 
 	var choices = this.moves(pt);
 
-	// Are we done?
-	var isGoal = function(x) { return ptEqual(x,this.goal()); };
-	var done = choices.filter(isGoal,this);
-	if (done.length === 1) {
-	    callback(done[0]);
-	    return
+	if (this._isComplete(choices)) {
+	    callback(this.goal());
+	    return;
 	}
 
 	this._solve(this._bestChoice(choices), callback);
