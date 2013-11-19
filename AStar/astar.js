@@ -71,6 +71,8 @@ var Map = function(rows) {
     this.cost = function(pt) {
 	return cost(this.at(pt));
     };
+    
+    this.costSoFar = 0;
 
     return this;
 };
@@ -126,7 +128,7 @@ describe('a* search algorithm', function() {
 
 	it('has a cost-so-far metric', function() {
 	    var map = load(defaultMap);
-	    assert.equal(0, this.costSoFar);
+	    assert.equal(0, map.costSoFar);
 	});
     });
 
