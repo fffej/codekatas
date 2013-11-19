@@ -123,6 +123,11 @@ describe('a* search algorithm', function() {
 
 	    assert(map.cost(choices[0]) !== map.cost(choices[1]));
 	});
+
+	it('has a cost-so-far metric', function() {
+	    var map = load(defaultMap);
+	    assert.equal(0, this.costSoFar);
+	});
     });
 
     describe('costs', function() {
