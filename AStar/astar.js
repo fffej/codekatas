@@ -103,6 +103,7 @@ var Map = function(rows) {
     
     this._solve = function(pt, callback) {
 	callback(pt);
+	this.visited.push(pt);
 
 	var choices = this.moves(pt);
 
@@ -115,6 +116,7 @@ var Map = function(rows) {
     };
 
     this.costSoFar = 0;
+    this.visited = [];
 
     return this;
 };
