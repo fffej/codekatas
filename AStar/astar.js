@@ -1,3 +1,7 @@
+// reached the point (finally) where we have to implement a priority
+// queue of best paths so far.  Rather a circuitious route to get there 
+// though...
+
 "use strict";
 
 var assert = require('assert');
