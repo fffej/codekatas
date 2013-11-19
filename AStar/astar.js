@@ -23,7 +23,12 @@ var manhattanDistance = function(p1,p2) {
 
 var Map = function(rows) {
     this.rows = rows;
-    this.goal = function() { return 1; };
+    this.goal = function() { 
+	for (var y=0;y<this.rows.length;++y) 
+	    for (var x=0;x<this.rows[y].length;++x)
+		if (this.rows[y][x] === 'X') 
+		    return p(x,y);
+    };
 
     return this;
 };
