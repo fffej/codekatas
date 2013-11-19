@@ -21,6 +21,17 @@ var manhattanDistance = function(p1,p2) {
     return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
 };
 
+var Map = function(rows) {
+    this.rows = rows;
+    this.goal = function() { return 1; };
+
+    return this;
+};
+
+var load = function(s) {
+    return new Map(s.split('\n'));
+};
+
 describe('a* search algorithm', function() {
 
     describe('map', function() {
