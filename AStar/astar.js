@@ -13,5 +13,9 @@ describe('a* search algorithm', function() {
 	    assert.equal(1, cost('@'));
 	    assert.equal(1, cost('X'));
 	});
+
+	it('forest costs 2', function() {
+	    assert.equal(2, cost('*'));
+	});
     });
 });
