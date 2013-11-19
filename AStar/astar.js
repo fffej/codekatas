@@ -77,15 +77,16 @@ var Map = function(rows) {
     };
 
     this.solve = function(callback) {
-	// first move is to the start destination
-	var start = this.start();
-	callback(start);
+	this._solve(this.start(), callback);
+    };
+    
+    this._solve = function(pt, callback) {
+	callback(pt);
 
-	var choices = this.moves(start);
+	var choices = this.moves(pt);
 	for (var i=0;i<choices.length;++i)
 	    if (ptEqual(choices[i],this.goal()))
 		callback(choices[i]);
-
     };
 
     this.costSoFar = 0;
