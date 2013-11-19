@@ -26,4 +26,10 @@ describe('a* search algorithm', function() {
 	    assert.equal(3, cost('^'));
 	});
     });
+
+    describe('Manhattan distance', function() {
+	it('works in a straight line', function() {
+	    assert.equal(5, manhattanDistance(p(0,0), p(5,0)));
+	});
+    });
 });
