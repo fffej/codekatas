@@ -60,5 +60,8 @@ describe('circuit simulator', function() {
 	var inverter = makeInverter(input,output);
 
 	assert(output.getSignal());
+
+	input.setSignal(false);
+	assert(!output.getSignal());
     });
 });
