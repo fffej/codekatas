@@ -29,4 +29,13 @@ describe('circuit simulator', function() {
 	w.setSignal(true);
 	assert.equal(true, w.getSignal());
     });
+
+    it('has an inverter', function() {
+	var input = makeWire();
+	var output = makeWire();
+
+	var inverter = makeInverter(input,output);
+
+	assert(output.getSignal());
+    });
 });
