@@ -64,4 +64,19 @@ describe('circuit simulator', function() {
 	input.setSignal(true);
 	assert(!output.getSignal());
     });
+
+    it('has an and gate', function() {
+	var input1 = makeWire(),
+	    input2 = makeWire(),
+	    output = makeWire();
+
+	var andGate = andGate(input1, input2, output);
+
+	assert(!output.getSignal());
+	
+	input1.setSignal(true);
+	input2.setSignal(true);
+
+	assert(output.getSignal());
+    });
 });
