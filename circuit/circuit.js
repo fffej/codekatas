@@ -93,4 +93,23 @@ describe('circuit simulator', function() {
 
 	assert(output.getSignal());
     });
+
+    it('has an or gate', function() {
+	var input1 = makeWire(),
+	    input2 = makeWire(),
+	    output = makeWire();
+
+	var orGate = makeOr(input1, input2, output);
+
+	assert(!output.getSignal());
+
+	input1.setSignal(true);
+	assert(output.getSignal());
+
+	input1.setSignal(false);
+	assert(!output.getSignal());
+
+	input2.setSignal(true);
+	assert(output.getSignal());
+    });
 });
