@@ -1,0 +1,15 @@
+{
+  "name": "circuit",
+  "version": "0.0.1",
+  "description": "code kata to play with reactive extensions",
+  "main": "circuit.js",
+  "dependencies": {
+    "rx": "~2.2.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha circuit_test"
+  },
+  "author": "",
+  "license": "BSD-2-Clause"
+}
