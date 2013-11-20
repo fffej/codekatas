@@ -73,58 +73,7 @@ var makeOr = function(input1,input2,output) {
     return new Or(input1,input2,output);
 };
 
-describe('circuit simulator', function() {
-    it('wires have a signal', function() {
-	var w = makeWire();
-	assert.equal(false, w.getSignal());
-
-	w.setSignal(true);
-	assert.equal(true, w.getSignal());
-    });
-
-    it('has an inverter', function() {
-	var input = makeWire();
-	var output = makeWire();
-
-	var inverter = makeInverter(input,output);
-
-	assert(output.getSignal());
-
-	input.setSignal(true);
-	assert(!output.getSignal());
-    });
-
-    it('has an and gate', function() {
-	var input1 = makeWire(),
-	    input2 = makeWire(),
-	    output = makeWire();
-
-	var andGate = makeAnd(input1, input2, output);
-
-	assert(!output.getSignal());
-	
-	input1.setSignal(true);
-	input2.setSignal(true);
-
-	assert(output.getSignal());
-    });
-
-    it('has an or gate', function() {
-	var input1 = makeWire(),
-	    input2 = makeWire(),
-	    output = makeWire();
-
-	var orGate = makeOr(input1, input2, output);
-
-	assert(!output.getSignal());
-
-	input1.setSignal(true);
-	assert(output.getSignal());
-
-	input1.setSignal(false);
-	assert(!output.getSignal());
-
-	input2.setSignal(true);
-	assert(output.getSignal());
-    });
-});
+exports.makeWire = makeWire;
+exports.makeInverter = makeInverter;
+exports.makeAnd = makeAnd;
+exports.makeOr = makeOr;
