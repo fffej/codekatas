@@ -61,7 +61,7 @@ describe('circuit simulator', function() {
 
 	assert(output.getSignal());
 
-	input.setSignal(false);
+	input.setSignal(true);
 	assert(!output.getSignal());
     });
 });
