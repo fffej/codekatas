@@ -6,18 +6,33 @@ var Wire = function() {
     
     var signal = false;
 
+    var observers = [];
+
     this.getSignal = function() {
 	return signal;
     };
 
     this.setSignal = function(s) {
+	var n = observers.length;
 	signal = !!s;
+	for (var i=0;i<n;++i) 
+	    observers[i](signal);
+    };
+
+    this.onChange = function(f) {
+	observers.push(f);
+	f(signal);
     };
 
     return this;
 };
 
 var Inverter = function(input,output) {
+
+    input.onChange(function(signal) {
+	output.setSignal(!signal);
+    });
+
     return this;
 };
 
