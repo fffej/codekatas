@@ -36,12 +36,26 @@ var Inverter = function(input,output) {
     return this;
 };
 
+var And = function(input1,input2,output) {
+    input1.onChange(function(s) {
+	output.setSignal(s && input2.getSignal());
+    });
+
+    input2.onChange(function(s) {
+	output.setSignal(s && input1.getSignal());
+    });
+};
+
 var makeWire = function() {
     return new Wire();
 };
 
 var makeInverter = function(input,output) {
     return new Inverter(input,output);
+};
+
+var makeAnd = function(input1,input2,output) {
+    return new And(input1,input2,output);
 };
 
 describe('circuit simulator', function() {
@@ -70,7 +84,7 @@ describe('circuit simulator', function() {
 	    input2 = makeWire(),
 	    output = makeWire();
 
-	var andGate = andGate(input1, input2, output);
+	var andGate = makeAnd(input1, input2, output);
 
 	assert(!output.getSignal());
 	
