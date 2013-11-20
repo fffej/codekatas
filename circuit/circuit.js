@@ -17,8 +17,16 @@ var Wire = function() {
     return this;
 };
 
+var Inverter = function(input,output) {
+    return this;
+};
+
 var makeWire = function() {
     return new Wire();
+};
+
+var makeInverter = function(input,output) {
+    return new Inverter(input,output);
 };
 
 describe('circuit simulator', function() {
