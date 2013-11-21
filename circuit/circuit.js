@@ -31,6 +31,17 @@ var isWire = function(x) {
     };
 };
 
+var isWires = function(arr) {
+    var n = arr.length;
+
+    return function(y) {
+	for (var i=0;i<n;++i)
+	    if (arr[i] === y) return true;
+
+	return false;
+    };
+};
+
 var Inverter = function(input,output) {
 
     source.where(isWire(input)).subscribe(function(wire) {
@@ -43,9 +54,8 @@ var Inverter = function(input,output) {
 };
 
 var And = function(input1,input2,output) {
-    source.subscribe(function(wire) {
-	if (wire === input1 || wire === input2) 
-	    output.setSignal(input1.getSignal() && input2.getSignal());
+    source.where(isWires([input1,input2])).subscribe(function(wire) {
+	output.setSignal(input1.getSignal() && input2.getSignal());
     });
 };
 
