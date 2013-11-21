@@ -25,11 +25,16 @@ var Wire = function(name) {
     return this;
 };
 
+var isWire = function(x) {
+    return function(y) {
+	return x === y;
+    };
+};
+
 var Inverter = function(input,output) {
 
-    source.subscribe(function(wire) {
-	if (wire === input) 
-	    output.setSignal(!wire.getSignal());
+    source.where(isWire(input)).subscribe(function(wire) {
+	output.setSignal(!wire.getSignal());
     });
 
     input.setSignal(input.getSignal());
