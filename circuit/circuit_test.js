@@ -24,7 +24,7 @@ describe('circuit simulator', function() {
 	assert(!output.getSignal());
     });
 
-    it.only('has an and gate', function() {
+    it('has an and gate', function() {
 	var input1 = circuit.makeWire(),
 	    input2 = circuit.makeWire(),
 	    output = circuit.makeWire();
