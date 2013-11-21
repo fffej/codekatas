@@ -2,8 +2,12 @@
 
 var assert = require('assert');
 var Rx = require('rx');
+var EventEmitter = require('events').EventEmitter;
 
-var Wire = function() {
+var eventEmitter = new EventEmitter();
+var source = Rx.Observable.fromEvent(eventEmitter,'signalChange');
+
+var Wire = function(name) {
     
     var signal = false;
 
@@ -14,15 +18,8 @@ var Wire = function() {
     };
 
     this.setSignal = function(s) {
-	var n = observers.length;
 	signal = !!s;
-	for (var i=0;i<n;++i) 
-	    observers[i](signal);
-    };
-
-    this.onChange = function(f) {
-	observers.push(f);
-	f(signal);
+	eventEmitter.emit('signalChange', this, signal);
     };
 
     return this;
@@ -30,9 +27,12 @@ var Wire = function() {
 
 var Inverter = function(input,output) {
 
-    input.onChange(function(signal) {
-	output.setSignal(!signal);
+    source.subscribe(function(data) {
+	if (data === input) 
+	    output.setSignal(!input.getSignal());
     });
+
+    input.setSignal(input.getSignal());
 
     return this;
 };
