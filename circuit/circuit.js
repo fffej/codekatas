@@ -38,12 +38,9 @@ var Inverter = function(input,output) {
 };
 
 var And = function(input1,input2,output) {
-    input1.onChange(function(s) {
-	output.setSignal(s && input2.getSignal());
-    });
-
-    input2.onChange(function(s) {
-	output.setSignal(s && input1.getSignal());
+    source.subscribe(function(wire) {
+	if (wire === input1 || wire === input2) 
+	    output.setSignal(input1.getSignal() && input2.getSignal());
     });
 };
 
