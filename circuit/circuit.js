@@ -5,7 +5,7 @@ var Rx = require('rx');
 var EventEmitter = require('events').EventEmitter;
 
 var eventEmitter = new EventEmitter();
-var source = Rx.Observable.fromEvent(eventEmitter,'signalChange');
+var source = Rx.Observable.fromEvent(eventEmitter, 'signalChange');
 
 var Wire = function(name) {
     
@@ -19,7 +19,7 @@ var Wire = function(name) {
 
     this.setSignal = function(s) {
 	signal = !!s;
-	eventEmitter.emit('signalChange', this, signal);
+	eventEmitter.emit('signalChange', this);
     };
 
     return this;
@@ -28,8 +28,8 @@ var Wire = function(name) {
 var Inverter = function(input,output) {
 
     source.subscribe(function(data) {
-	if (data === input) 
-	    output.setSignal(!input.getSignal());
+	if (data.wire === input) 
+	    output.setSignal(!data.value);
     });
 
     input.setSignal(input.getSignal());
