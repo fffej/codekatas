@@ -60,9 +60,8 @@ var And = function(input1,input2,output) {
 };
 
 var Or = function(input1,input2,output) {
-    source.subscribe(function(wire) {
-	if (wire === input1 || wire === input2) 
-	    output.setSignal(input1.getSignal() || input2.getSignal());
+    source.where(isWires([input1,input2])).subscribe(function(wire) {
+	output.setSignal(input1.getSignal() || input2.getSignal());
     });
 };
 
