@@ -27,9 +27,9 @@ var Wire = function(name) {
 
 var Inverter = function(input,output) {
 
-    source.subscribe(function(data) {
-	if (data.wire === input) 
-	    output.setSignal(!data.value);
+    source.subscribe(function(wire) {
+	if (wire === input) 
+	    output.setSignal(!wire.getSignal());
     });
 
     input.setSignal(input.getSignal());
