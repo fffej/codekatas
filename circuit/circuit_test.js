@@ -12,7 +12,7 @@ describe('circuit simulator', function() {
 	assert.equal(true, w.getSignal());
     });
 
-    it.only('has an inverter', function() {
+    it('has an inverter', function() {
 	var input = circuit.makeWire();
 	var output = circuit.makeWire();
 
