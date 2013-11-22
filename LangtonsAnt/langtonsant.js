@@ -5,13 +5,23 @@ var Color = {
     White: 0
 };
 
+var Direction = {
+    Up: 0
+};
+
 var Ant = function() {
     
     var position = {x: 0, y: 0};
+    var orientation = Direction.Up;
 
     this.position = function() {
 	return position;
     };
+
+    this.faces = function() {
+	return orientation;
+    };
+
 
     return this;
 };
