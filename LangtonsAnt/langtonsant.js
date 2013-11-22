@@ -13,8 +13,8 @@ describe('langton\'s ant', function() {
 
 	it('has a location', function() {
 	    var ant = makeAnt();
-	    assert.equal(0, ant.getPos().x);
-	    assert.equal(0, ant.getPos().y);
+	    assert.equal(0, ant.position().x);
+	    assert.equal(0, ant.position().y);
 	});
     });
 });
