@@ -21,8 +21,17 @@ var makeAnt = function() {
     return new Ant();
 };
 
+var Square = function() {
+
+    this.color = function() { 
+	return Color.White; 
+    };
+
+    return this;
+};
+
 var makeSquare = function() {
-    return {};
+    return new Square();
 };
 
 describe('langton\'s ant', function() {
