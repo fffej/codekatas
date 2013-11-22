@@ -83,6 +83,11 @@ describe('langton\'s ant', function() {
 	it('exists', function() {
 	    assert(makeGame());
 	});
+
+	it('records state', function() {
+	    var game = makeGame();
+	    assert.deepEqual({x: 0, y: 0}, game.ant().position());
+	});
     });
 
     describe('ant', function() {
