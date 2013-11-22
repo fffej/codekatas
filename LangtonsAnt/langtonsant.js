@@ -105,11 +105,13 @@ var Game = function() {
 
     this.step = function() {
 	if (this.color(ant.position()) === Color.White) {
-	    blackSquares.push(ant.position());
+	    blackSquares.push({x: ant.position().x, y: ant.position().y});
 	    ant.right();	
+	    ant.move();
 	} else {
 	    blackSquares.remove(ant.position());
 	    ant.left();
+	    ant.move();
 	}
     };
 
