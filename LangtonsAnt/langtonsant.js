@@ -25,6 +25,9 @@ var Ant = function() {
     };
 
     this.left = function() {
+
+	
+
 	switch (orientation) {
 	case Orientation.Up:
 	    orientation = Orientation.Left;
@@ -93,6 +96,9 @@ describe('langton\'s ant', function() {
 
 	    ant.left();
 	    assert.equal(Orientation.Right, ant.orientation());
+
+	    ant.left();
+	    assert.equal(Orientation.Up, ant.orientation());
 	});
     });
 
