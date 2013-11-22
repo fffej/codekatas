@@ -23,8 +23,14 @@ var makeAnt = function() {
 
 var Square = function() {
 
+    var color = Color.White;
+
     this.color = function() { 
-	return Color.White; 
+	return color;
+    };
+
+    this.flip = function() {
+	color = (color == Color.White ? Color.Black : Color.White);
     };
 
     return this;
@@ -57,7 +63,9 @@ describe('langton\'s ant', function() {
 	});
 
 	it('flips', function() {
-	    assert.equal(Color.Black, makeSquare().flip().color());
+	    var sq = makeSquare();
+	    sq.flip();
+	    assert.equal(Color.Black, sq.color());
 	});
     });
 });
