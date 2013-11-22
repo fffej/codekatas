@@ -77,7 +77,14 @@ var makeSquare = function() {
 var Game = function() {
     var ant = makeAnt();
 
+    var blackSquares = [];
+
     this.color = function(x,y) {
+	var key = {x: x, y: y};
+	for (var i=0;i<blackSquares.length;++i) {
+	    if (blackSquares[i] === key) return Color.Black;
+	}
+
 	return Color.White;
     };
 
@@ -86,7 +93,7 @@ var Game = function() {
     };
 
     this.step = function() {
-	ant.right();
+	ant.right();	
     };
 
     return this;
