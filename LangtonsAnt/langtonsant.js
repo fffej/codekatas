@@ -66,6 +66,12 @@ describe('langton\'s ant', function() {
 	    var ant = makeAnt();
 	    assert.equal(Orientation.Up, ant.orientation());
 	});
+
+	it('turns left', function() {
+	    var ant = makeAnt();
+	    ant.left();
+	    assert.equal(Orientation.Left, ant.orientation());
+	});
     });
 
     describe('square', function() {
