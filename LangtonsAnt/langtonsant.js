@@ -80,6 +80,10 @@ var Game = function() {
 	return ant;
     };
 
+    this.step = function() {
+	ant.right();
+    };
+
     return this;
 };
 
