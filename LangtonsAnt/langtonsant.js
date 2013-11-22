@@ -5,14 +5,14 @@ var Color = {
     White: 0
 };
 
-var Direction = {
+var Orientation = {
     Up: 0
 };
 
 var Ant = function() {
     
     var position = {x: 0, y: 0};
-    var orientation = Direction.Up;
+    var orientation = Orientation.Up;
 
     this.position = function() {
 	return position;
@@ -64,7 +64,7 @@ describe('langton\'s ant', function() {
 
 	it('faces up', function() {
 	    var ant = makeAnt();
-	    assert.equal(Direction.Up, ant.faces());
+	    assert.equal(Orientation.Up, ant.faces());
 	});
     });
 
