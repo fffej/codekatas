@@ -1,0 +1,17 @@
+{
+  "name": "LangtonsAnt",
+  "version": "0.0.0",
+  "description": "Langtons Ant visualization",
+  "main": "langtonsant.js",
+  "dependencies": {
+    "node-png": "~0.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Jeff Foster",
+  "license": "BSD",
+  "readmeFilename": "readme.txt"
+}
