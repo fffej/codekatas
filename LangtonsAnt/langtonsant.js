@@ -1,6 +1,10 @@
 "use strict";
 var assert = require('assert');
 
+var Color = {
+    White: 0
+};
+
 var Ant = function() {
     
     var position = {x: 0, y: 0};
@@ -37,6 +41,10 @@ describe('langton\'s ant', function() {
     describe('square', function() {
 	it('exists', function() {
 	    assert(makeSquare());
+	});
+
+	it('initially white', function() {
+	    assert.equal(Color.White, makeSquare().color());
 	});
     });
 });
