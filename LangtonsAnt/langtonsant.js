@@ -109,7 +109,9 @@ var Game = function() {
 	    ant.right();	
 	    ant.move();
 	} else {
-	    blackSquares.remove(ant.position());
+	    blackSquares = blackSquares.filter(function(x) {
+		return eqPoint(x,ant.position());
+	    });
 	    ant.left();
 	    ant.move();
 	}
