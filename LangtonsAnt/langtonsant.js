@@ -1,8 +1,20 @@
 "use strict";
 var assert = require('assert');
 
+var Ant = function() {
+    
+    var position = {x: 0, y: 0};
+
+    this.position = function() {
+	return position;
+    };
+
+    return this;
+};
+
+
 var makeAnt = function() {
-    return {};
+    return new Ant();
 };
 
 describe('langton\'s ant', function() {
