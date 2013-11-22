@@ -46,8 +46,6 @@ var Ant = function() {
 	orientation = r[orientation];
     };
 
-
-
     return this;
 };
 
@@ -76,6 +74,13 @@ var makeSquare = function() {
 };
 
 describe('langton\'s ant', function() {
+
+    describe('game', function() {
+	it('exists', function() {
+	    assert(makeGame());
+	});
+    });
+
     describe('ant', function() {
 	it('exists', function() {
 	    assert(makeAnt());
