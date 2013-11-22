@@ -25,9 +25,6 @@ var Ant = function() {
     };
 
     this.left = function() {
-
-	
-
 	switch (orientation) {
 	case Orientation.Up:
 	    orientation = Orientation.Left;
@@ -37,6 +34,9 @@ var Ant = function() {
 	    break;
 	case Orientation.Down:
 	    orientation = Orientation.Right;
+	    break;
+	case Orientation.Right:
+	    orientation = Orientation.Up;
 	    break;
 	}
     };
