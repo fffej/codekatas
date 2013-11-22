@@ -17,6 +17,10 @@ var makeAnt = function() {
     return new Ant();
 };
 
+var makeSquare = function() {
+    return {};
+};
+
 describe('langton\'s ant', function() {
     describe('ant', function() {
 	it('exists', function() {
