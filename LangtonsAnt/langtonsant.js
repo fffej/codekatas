@@ -73,8 +73,19 @@ var makeSquare = function() {
     return new Square();
 };
 
+var Game = function() {
+    var ant = makeAnt();
+
+    this.ant = function() {
+	return ant;
+    };
+
+    return this;
+};
+
+
 var makeGame = function() {
-    return {};
+    return new Game();
 };
 
 describe('langton\'s ant', function() {
