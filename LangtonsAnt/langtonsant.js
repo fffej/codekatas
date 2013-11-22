@@ -104,7 +104,7 @@ describe('langton\'s ant', function() {
 	    assert.deepEqual({x: 0, y: 0}, game.ant().position());
 	});
 
-	it('steps', function() {
+	it('steps ant orientation', function() {
 	    var game = makeGame();
 	    game.step();
 
