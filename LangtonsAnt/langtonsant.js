@@ -2,7 +2,8 @@
 var assert = require('assert');
 
 var Color = {
-    White: 0
+    White: 0,
+    Black: 1
 };
 
 var Orientation = {
@@ -75,6 +76,10 @@ var makeSquare = function() {
 
 var Game = function() {
     var ant = makeAnt();
+
+    this.color = function(x,y) {
+	return Color.White;
+    };
 
     this.ant = function() {
 	return ant;
