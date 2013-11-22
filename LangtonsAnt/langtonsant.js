@@ -156,6 +156,13 @@ describe('langton\'s ant', function() {
 	    assert.equal(Orientation.Up, ant.orientation());
 	});
 
+	it('moves', function() {
+	    var ant = makeAnt();
+	    ant.move();
+	    assert.equal(0, ant.position().x);
+	    assert.equal(1, ant.position().y);
+	});
+
 	it('turns left', function() {
 	    var ant = makeAnt();
 	    ant.left();
