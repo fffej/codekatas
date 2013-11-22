@@ -110,6 +110,14 @@ describe('langton\'s ant', function() {
 
 	    assert.equal(Orientation.Right, game.ant().orientation());
 	});
+	
+	it('flips square color', function() {
+	    var game = makeGame();
+	    assert.equal(Color.White, game.color(0,0));
+
+	    game.step();
+	    assert.equal(Color.Black, game.color(0,0));
+	});
     });
 
     describe('ant', function() {
