@@ -52,6 +52,7 @@ var Ant = function() {
 	    case Orientation.Up: position.y += 1; break;
 	    case Orientation.Left: position.x -= 1; break;
 	    case Orientation.Down: position.y -= 1; break;
+	    case Orientation.Right: position.x += 1; break;
 	}
     };
 
