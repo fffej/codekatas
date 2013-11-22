@@ -55,5 +55,9 @@ describe('langton\'s ant', function() {
 	it('initially white', function() {
 	    assert.equal(Color.White, makeSquare().color());
 	});
+
+	it('flips', function() {
+	    assert.equal(Color.Black, makeSquare().flip().color());
+	});
     });
 });
