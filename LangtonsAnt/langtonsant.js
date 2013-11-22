@@ -18,7 +18,7 @@ var Ant = function() {
 	return position;
     };
 
-    this.faces = function() {
+    this.orientation = function() {
 	return orientation;
     };
 
@@ -62,9 +62,9 @@ describe('langton\'s ant', function() {
 	    assert.equal(0, ant.position().y);
 	});
 
-	it('faces up', function() {
+	it('orientation up', function() {
 	    var ant = makeAnt();
-	    assert.equal(Orientation.Up, ant.faces());
+	    assert.equal(Orientation.Up, ant.orientation());
 	});
     });
 
