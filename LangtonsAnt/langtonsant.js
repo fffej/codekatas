@@ -35,6 +35,18 @@ var Ant = function() {
 	orientation = l[orientation];
     };
 
+    this.right = function() {
+	
+	var r = {};
+	r[Orientation.Up] = Orientation.Right;
+	r[Orientation.Left] =  Orientation.Up;
+	r[Orientation.Down] =  Orientation.Left;
+	r[Orientation.Right] =  Orientation.Down;
+
+	orientation = r[orientation];
+    };
+
+
 
     return this;
 };
