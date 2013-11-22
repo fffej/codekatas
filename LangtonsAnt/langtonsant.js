@@ -99,6 +99,13 @@ describe('langton\'s ant', function() {
 	    var game = makeGame();
 	    assert.deepEqual({x: 0, y: 0}, game.ant().position());
 	});
+
+	it('steps', function() {
+	    var game = makeGame();
+	    game.step();
+
+	    assert.equal(Orientation.Right, game.ant().orientation());
+	});
     });
 
     describe('ant', function() {
