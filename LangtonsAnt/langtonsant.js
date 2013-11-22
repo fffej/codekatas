@@ -79,8 +79,7 @@ var Game = function() {
 
     var blackSquares = [];
 
-    this.color = function(x,y) {
-	var key = {x: x, y: y};
+    this.color = function(key) {
 	for (var i=0;i<blackSquares.length;++i) {
 	    if (blackSquares[i] === key) return Color.Black;
 	}
@@ -125,10 +124,10 @@ describe('langton\'s ant', function() {
 	
 	it('flips square color', function() {
 	    var game = makeGame();
-	    assert.equal(Color.White, game.color(0,0));
+	    assert.equal(Color.White, game.color({x: 0, y: 0}));
 
 	    game.step();
-	    assert.equal(Color.Black, game.color(0,0));
+	    assert.equal(Color.Black, game.color({x: 0, y: 0}));
 	});
     });
 
