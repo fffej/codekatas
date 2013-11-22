@@ -6,7 +6,8 @@ var Color = {
 };
 
 var Orientation = {
-    Up: 0
+    Up: 0,
+    Left: 1
 };
 
 var Ant = function() {
@@ -20,6 +21,10 @@ var Ant = function() {
 
     this.orientation = function() {
 	return orientation;
+    };
+
+    this.left = function() {
+	orientation = Orientation.Left;
     };
 
 
