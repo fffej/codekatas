@@ -50,7 +50,7 @@ var Ant = function() {
     this.move = function() {
 	switch (orientation) {
 	    case Orientation.Up: position.y += 1; break;
-	    case Orientation.Left: position.x -= 1;
+	    case Orientation.Left: position.x -= 1; break;
 	}
     };
 
@@ -171,6 +171,9 @@ describe('langton\'s ant', function() {
 
 	    ant.left(); ant.move();
 	    assert.equal(-1, ant.position().x);
+
+	    ant.left(); ant.move();
+	    assert.equal(0, ant.position().y);
 	});
 
 	it('turns left', function() {
