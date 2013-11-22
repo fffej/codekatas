@@ -29,4 +29,10 @@ describe('langton\'s ant', function() {
 	    assert.equal(0, ant.position().y);
 	});
     });
+
+    describe('square', function() {
+	it('exists', function() {
+	    assert(makeSquare());
+	});
+    });
 });
