@@ -24,7 +24,14 @@ var Ant = function() {
     };
 
     this.left = function() {
-	orientation = Orientation.Left;
+	switch (orientation) {
+	case Orientation.Up:
+	    orientation = Orientation.Left;
+	    break;
+	case Orientation.Left:
+	    orientation = Orientation.Down;
+	    break;
+	}
     };
 
 
