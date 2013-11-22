@@ -138,8 +138,9 @@ describe('langton\'s ant', function() {
 	    game.step();
 
 	    assert.equal(Orientation.Right, game.ant().orientation());
+	    assert.deepEqual({x: 1, y: 0}, game.ant().position());
 	});
-	
+
 	it('flips square color', function() {
 	    var game = makeGame();
 	    assert.equal(Color.White, game.color({x: 0, y: 0}));
