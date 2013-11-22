@@ -7,7 +7,8 @@ var Color = {
 
 var Orientation = {
     Up: 0,
-    Left: 1
+    Left: 1,
+    Right: 2
 };
 
 var Ant = function() {
@@ -86,6 +87,9 @@ describe('langton\'s ant', function() {
 
 	    ant.left();
 	    assert.equal(Orientation.Down, ant.orientation());
+
+	    ant.left();
+	    assert.equal(Orientation.Right, ant.orientation());
 	});
     });
 
