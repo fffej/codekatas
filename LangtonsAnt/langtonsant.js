@@ -47,6 +47,9 @@ var Ant = function() {
 	orientation = r[orientation];
     };
 
+    this.move = function() {
+    };
+
     return this;
 };
 
