@@ -32,6 +32,9 @@ var Ant = function() {
 	case Orientation.Left:
 	    orientation = Orientation.Down;
 	    break;
+	case Orientation.Down:
+	    orientation = Orientation.Right;
+	    break;
 	}
     };
 
