@@ -175,6 +175,9 @@ describe('langton\'s ant', function() {
 
 	    ant.left(); ant.move();
 	    assert.equal(0, ant.position().y);
+
+	    ant.left(); ant.move();
+	    assert.equal(0, ant.position().x);
 	});
 
 	it('turns left', function() {
