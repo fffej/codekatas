@@ -25,20 +25,14 @@ var Ant = function() {
     };
 
     this.left = function() {
-	switch (orientation) {
-	case Orientation.Up:
-	    orientation = Orientation.Left;
-	    break;
-	case Orientation.Left:
-	    orientation = Orientation.Down;
-	    break;
-	case Orientation.Down:
-	    orientation = Orientation.Right;
-	    break;
-	case Orientation.Right:
-	    orientation = Orientation.Up;
-	    break;
-	}
+	
+	var l = {};
+	l[Orientation.Up] = Orientation.Left;
+	l[Orientation.Left] =  Orientation.Down;
+	l[Orientation.Down] =  Orientation.Right;
+	l[Orientation.Right] =  Orientation.Up;
+
+	orientation = l[orientation];
     };
 
 
