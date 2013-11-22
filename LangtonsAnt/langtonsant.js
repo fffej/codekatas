@@ -76,6 +76,9 @@ describe('langton\'s ant', function() {
 	    var ant = makeAnt();
 	    ant.left();
 	    assert.equal(Orientation.Left, ant.orientation());
+
+	    ant.left();
+	    assert.equal(Orientation.Down, ant.orientation());
 	});
     });
 
