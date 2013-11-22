@@ -74,6 +74,10 @@ var makeSquare = function() {
     return new Square();
 };
 
+var eqPoint = function(p1,p2) {
+    return p1.x === p2.x && p1.y === p2.y;
+};
+
 var Game = function() {
     var ant = makeAnt();
 
@@ -81,7 +85,7 @@ var Game = function() {
 
     this.color = function(key) {
 	for (var i=0;i<blackSquares.length;++i) {
-	    if (blackSquares[i] === key) return Color.Black;
+	    if (eqPoint(blackSquares[i],key)) return Color.Black;
 	}
 
 	return Color.White;
@@ -92,7 +96,13 @@ var Game = function() {
     };
 
     this.step = function() {
-	ant.right();	
+	if (this.color(ant.position()) === Color.White) {
+	    blackSquares.push(ant.position());
+	    ant.right();	
+	} else {
+	    blackSquares.remove(ant.position());
+	    ant.left();
+	}
     };
 
     return this;
