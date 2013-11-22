@@ -94,6 +94,21 @@ describe('langton\'s ant', function() {
 	    ant.left();
 	    assert.equal(Orientation.Up, ant.orientation());
 	});
+
+	it('turns right', function() {
+	    var ant = makeAnt();
+	    ant.right();
+	    assert.equal(Orientation.Right, ant.orientation());
+
+	    ant.right();
+	    assert.equal(Orientation.Down, ant.orientation());
+
+	    ant.right();
+	    assert.equal(Orientation.Left, ant.orientation());
+
+	    ant.right();
+	    assert.equal(Orientation.Up, ant.orientation());
+	});
     });
 
     describe('square', function() {
