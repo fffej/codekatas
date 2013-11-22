@@ -49,7 +49,8 @@ var Ant = function() {
 
     this.move = function() {
 	switch (orientation) {
-	    case Orientation.Up: position.y += 1; 	    
+	    case Orientation.Up: position.y += 1; break;
+	    case Orientation.Left: position.x -= 1;
 	}
     };
 
