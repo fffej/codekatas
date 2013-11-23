@@ -1,4 +1,5 @@
 "use strict";
+
 var assert = require('assert');
 
 var Color = {
@@ -105,7 +106,10 @@ var Game = function() {
 
     this.step = function() {
 	if (this.color(ant.position()) === Color.White) {
-	    blackSquares.push({x: ant.position().x, y: ant.position().y});
+	    blackSquares.push({
+		x: ant.position().x, 
+		y: ant.position().y
+	    });
 	    ant.right();	
 	    ant.move();
 	} else {
