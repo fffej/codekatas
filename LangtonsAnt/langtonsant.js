@@ -220,6 +220,9 @@ describe('langton\'s ant', function() {
 
 	    ant.left();
 	    assert.equal(Orientation.Up, ant.orientation());
+
+	    ant.left();
+	    assert.equal(Orientation.Left, ant.orientation());
 	});
 
 	it('turns right', function() {
