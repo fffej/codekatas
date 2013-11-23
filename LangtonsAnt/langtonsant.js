@@ -186,8 +186,8 @@ describe('langton\'s ant', function() {
 	    for (var i=0;i<200;++i) 
 		game.step();
 
-	    assert.equal(1, game.width());
-	    assert.equal(1, game.height());
+	    assert.equal(8, game.width());
+	    assert.equal(8, game.height());
 	});
     });
 
