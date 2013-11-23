@@ -87,21 +87,32 @@ var Game = function() {
 	return ant;
     };
 
-    this.step = function() {
-	if (this.color(ant.position()) === Color.White) {
+    this.flipAntSquareColor = function() {
+	var isWhite = this.color(ant.position()) === Color.White;
+	if (isWhite) {
 	    blackSquares.push({
-		x: ant.position().x, 
+		x: ant.position().x,
 		y: ant.position().y
 	    });
-	    ant.right();	
-	    ant.move();
+	    assert(this.color(ant.position()) === Color.Black);
 	} else {
 	    blackSquares = blackSquares.filter(function(x) {
-		return eqPoint(x,ant.position());
+		return eqPoint(x, ant.position());
 	    });
-	    ant.left();
-	    ant.move();
+	    assert(this.color(ant.position()) === Color.White);
 	}
+    };
+
+    this.step = function() {
+	if (this.color(ant.position()) === Color.White) {
+	    this.flipAntSquareColor();
+	    ant.right();	
+	} else {
+	    this.flipAntSquareColor();
+	    ant.left();
+	}
+
+	ant.move();
     };
 
     this.width = function() {
