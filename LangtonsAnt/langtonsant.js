@@ -121,6 +121,18 @@ var Game = function() {
 	}
     };
 
+    this.width = function() {
+	var minX = blackSquares[0].x,
+	    maxX = blackSquares[0].x;
+
+	for (var i=0;i<blackSquares.length;++i) {
+	    minX = Math.min(minX, blackSquares[i].x);
+	    maxX = Math.max(maxX, blackSquares[i].x);
+	}
+
+	return maxX - minX;
+    };
+
     return this;
 };
 
@@ -157,11 +169,11 @@ describe('langton\'s ant', function() {
 	    assert.equal(Color.Black, game.color({x: 0, y: 0}));
 	});
 
-	it('steps multiple tmies', function() {
+	it('steps multiple times', function() {
 	    var game = makeGame();
 	    for (var i=0;i<1000;++i) game.step();
 
-	    assert.equal(10, game.width());
+	    assert.equal(1, game.width());
 	    assert.equal(10, game.height());
 	});
     });
