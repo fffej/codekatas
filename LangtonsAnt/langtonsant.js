@@ -133,6 +133,18 @@ var Game = function() {
 	return maxX - minX;
     };
 
+    this.height = function() {
+	var minY = blackSquares[0].y,
+	    maxY = blackSquares[0].y;
+
+	for (var i=0;i<blackSquares.length;++i) {
+	    minY = Math.min(minY, blackSquares[i].y);
+	    maxY = Math.max(maxY, blackSquares[i].y);
+	}
+
+	return maxY - minY;
+    };
+
     return this;
 };
 
@@ -174,7 +186,7 @@ describe('langton\'s ant', function() {
 	    for (var i=0;i<1000;++i) game.step();
 
 	    assert.equal(1, game.width());
-	    assert.equal(10, game.height());
+	    assert.equal(1, game.height());
 	});
     });
 
