@@ -65,25 +65,6 @@ var makeAnt = function() {
     return new Ant();
 };
 
-var Square = function() {
-
-    var color = Color.White;
-
-    this.color = function() { 
-	return color;
-    };
-
-    this.flip = function() {
-	color = (color == Color.White ? Color.Black : Color.White);
-    };
-
-    return this;
-};
-
-var makeSquare = function() {
-    return new Square();
-};
-
 var eqPoint = function(p1,p2) {
     return p1.x === p2.x && p1.y === p2.y;
 };
@@ -254,22 +235,6 @@ describe('langton\'s ant', function() {
 
 	    ant.right();
 	    assert.equal(Orientation.Up, ant.orientation());
-	});
-    });
-
-    describe('square', function() {
-	it('exists', function() {
-	    assert(makeSquare());
-	});
-
-	it('initially white', function() {
-	    assert.equal(Color.White, makeSquare().color());
-	});
-
-	it('flips', function() {
-	    var sq = makeSquare();
-	    sq.flip();
-	    assert.equal(Color.Black, sq.color());
 	});
     });
 });
