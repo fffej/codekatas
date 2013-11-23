@@ -170,7 +170,8 @@ describe('langton\'s ant', function() {
 
 	it('steps multiple times', function() {
 	    var game = makeGame();
-	    for (var i=0;i<1000;++i) game.step();
+	    for (var i=0;i<200;++i) 
+		game.step();
 
 	    assert.equal(1, game.width());
 	    assert.equal(1, game.height());
