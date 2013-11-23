@@ -96,9 +96,11 @@ var Game = function() {
 	    });
 	    assert(this.color(ant.position()) === Color.Black);
 	} else {
+	    var n = blackSquares.length;
 	    blackSquares = blackSquares.filter(function(x) {
-		return eqPoint(x, ant.position());
+		return !eqPoint(x, ant.position());
 	    });
+	    assert.equal(n - 1, blackSquares.length);
 	    assert(this.color(ant.position()) === Color.White);
 	}
     };
