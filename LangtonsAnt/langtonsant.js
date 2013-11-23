@@ -189,6 +189,20 @@ describe('langton\'s ant', function() {
 	    assert.equal(8, game.width());
 	    assert.equal(8, game.height());
 	});
+
+	it('exports to png', function() {
+	    var game = makeGame();
+	    for (var i=0;i<200;++i) game.step();
+
+	    game.export('foo.png', function() {
+		var exists = false;
+		fs.exists('foo.png', function(e) {
+		    exists = e;
+		});
+		assert(exists);
+		fs.unlinkSync('foo.png');
+	    });
+	});
     });
 
     describe('ant', function() {
