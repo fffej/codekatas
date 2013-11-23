@@ -75,8 +75,10 @@ var Game = function() {
     var blackSquares = [];
 
     this.color = function(key) {
-	for (var i=0;i<blackSquares.length;++i)
-	    if (eqPoint(blackSquares[i],key)) return Color.Black;
+	var n = blackSquares.length;
+	for (var i=0;i<n;++i)
+	    if (eqPoint(blackSquares[i],key)) 
+		return Color.Black;
 
 	return Color.White;
     };
