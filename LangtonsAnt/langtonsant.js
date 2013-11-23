@@ -156,6 +156,14 @@ describe('langton\'s ant', function() {
 	    game.step();
 	    assert.equal(Color.Black, game.color({x: 0, y: 0}));
 	});
+
+	it('steps multiple tmies', function() {
+	    var game = makeGame();
+	    for (var i=0;i<1000;++i) game.step();
+
+	    assert.equal(10, game.width());
+	    assert.equal(10, game.height());
+	});
     });
 
     describe('ant', function() {
