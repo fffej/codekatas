@@ -142,6 +142,10 @@ var Game = function() {
 	return maxY - minY;
     };
 
+    this.export = function(path) {
+
+    };
+
     return this;
 };
 
@@ -195,7 +199,10 @@ describe('langton\'s ant', function() {
 	    var game = makeGame();
 	    for (var i=0;i<200;++i) game.step();
 
+	    var calledBack = false;
+
 	    game.export('foo.png', function() {
+		calledBack = true;
 		var exists = false;
 		fs.exists('foo.png', function(e) {
 		    exists = e;
@@ -203,6 +210,8 @@ describe('langton\'s ant', function() {
 		assert(exists);
 		fs.unlinkSync('foo.png');
 	    });
+
+	    assert(calledBack);
 	});
     });
 
