@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 var produceMineField = function(s) {
-    return '';
+    return '*';
 };
 
 describe('mine field', function() {
