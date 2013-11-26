@@ -25,4 +25,8 @@ describe('mine field', function() {
     it('works for a 1x2 empty field', function() {
 	assert.equal('0\n0', produceMineField('.\n.'));
     });
+
+    it('works for a 2x1 empty field', function() {
+	assert.equal('00\n', produceMineField('..\n'));
+    });
 });
