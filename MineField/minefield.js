@@ -12,6 +12,6 @@ describe('mine field', function() {
     });
 
     it('works for an empty field', function() {
-	assert.equal('0', produceMineFIeld('.'));
+	assert.equal('0', produceMineField('.'));
     });
 });
