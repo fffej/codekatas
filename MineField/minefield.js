@@ -7,7 +7,7 @@ var produceMineField = function(s) {
 };
 
 describe('mine field', function() {
-    it('works for a single mine field', function() {
+    it('works for a single mine', function() {
 	assert.equal('*', produceMineField('*'));
     });
 });
