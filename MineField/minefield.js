@@ -4,15 +4,18 @@ var assert = require('assert');
 
 var surroundingMines = function(rows) {
     
-    var mineCount = function() {
+    var mineCount = function(i,j) {
 	return 0;
     };
 
-    var isMine = function(r,j) {
-	return r === '*' ? '*' : mineCount();
-    };
 
     return function(x,i) {
+
+	var isMine = function(r,j) {
+	    return r === '*' ? '*' : mineCount(i,j);
+	};
+
+
 	return x.split('').map(isMine).join('');
     };
 };
