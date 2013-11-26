@@ -3,8 +3,13 @@
 var assert = require('assert');
 
 var surroundingMines = function() {
+    
+    var isMine = function(r) {
+	return r === '*' ? '*' : '0';
+    };
+
     return function(x) {
-	return x === '*' ? '*' : '0';
+	return x.split('').map(isMine).join('');
     };
 };
 
