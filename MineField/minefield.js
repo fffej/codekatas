@@ -10,9 +10,8 @@ var surroundingMines = function(rows) {
 
 	for (var xd=-1;xd<=1;xd++) 
 	    for (var yd=-1;yd<=1;yd++)
-		if (rows[i + xd] && rows[i + xd][j + yd]) {
-		}
-
+		if (rows[xd+i][yd+j] === '*')
+		    count++;
 	return 0;
     };
 
