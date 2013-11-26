@@ -20,15 +20,19 @@ var produceMineField = function(s) {
 
 describe('mine field', function() {
     it('works for a single mine', function() {
-	assert.equal('*', produceMineField('*'));
+	assert.equal('*\n', produceMineField('*'));
     });
 
     it('works for an empty field', function() {
-	assert.equal('0', produceMineField('.'));
+	assert.equal('0\n', produceMineField('.'));
     });
 
     it('works for a 1x2 empty field', function() {
-	assert.equal('0\n0', produceMineField('.\n.'));
+	assert.equal('0\n0\n', produceMineField('.\n.'));
+    });
+
+    it('single mine 1x2 field', function() {
+	assert.equal('1\n*\n', produceMineField('.\n*'));
     });
 
     it('works for a 2x1 empty field', function() {
@@ -36,6 +40,6 @@ describe('mine field', function() {
     });
 
     it('works for a 2x3 field', function() {
-	assert.equal('00\n00\n00\n', produceMineField('..\n..\n..\n'));
+	assert.equal('00\n00\n00', produceMineField('..\n..\n..\n'));
     });
 });
