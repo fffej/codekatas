@@ -5,7 +5,7 @@ var assert = require('assert');
 var surroundingMines = function(rows) {
     
     var mineCount = function(i,j) {
-	console.log(rows[i][j]);
+	console.log(i + "," + j);
 	return 0;
     };
 
