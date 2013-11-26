@@ -2,9 +2,15 @@
 
 var assert = require('assert');
 
+var surroundingMines = function() {
+    return function(x) {
+	return x === '*' ? '*' : '0';
+    };
+};
+
 var produceMineField = function(s) {
     var rows = s.split('\n');
-    return rows.map(function(x) { return x === '*' ? '*' : '0'; }).join('\n');
+    return rows.map(surroundingMines()).join('\n');
 };
 
 describe('mine field', function() {
