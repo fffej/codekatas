@@ -10,4 +10,8 @@ describe('mine field', function() {
     it('works for a single mine', function() {
 	assert.equal('*', produceMineField('*'));
     });
+
+    it('works for an empty field', function() {
+	assert.equal('0', produceMineFIeld('.'));
+    });
 });
