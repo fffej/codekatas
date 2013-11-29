@@ -142,7 +142,7 @@ var Game = function() {
 	return maxY - minY;
     };
 
-    this.export = function(path) {
+    this.export = function(path, callBack) {
 
     };
 
