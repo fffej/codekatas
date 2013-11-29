@@ -195,7 +195,7 @@ describe('langton\'s ant', function() {
 	    assert.equal(8, game.height());
 	});
 
-	it('exports to png', function() {
+	it.skip('exports to png', function() {
 	    var game = makeGame();
 	    for (var i=0;i<200;++i) game.step();
 
