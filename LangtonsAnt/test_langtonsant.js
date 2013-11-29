@@ -1,5 +1,6 @@
 "use strict";
 var assert = require('assert');
+var fs = require('fs');
 
 var langton = require('./langtonsant');
 
@@ -52,6 +53,7 @@ describe('langton\'s ant', function() {
 
 	    game.export('foo.png', function() {
 		calledBack = true;
+		assert(fs.existsSync('foo.png'));
 	    });
 
 	    assert(calledBack);
