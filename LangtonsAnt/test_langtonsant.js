@@ -46,17 +46,21 @@ describe('langton\'s ant', function() {
 	});
 
 	it('exports to png', function() {
+	    var calledBack = false;
+	    var fileName = 'foo.png'
+
+	    fs.unlinkSync(fileName);
+
 	    var game = langton.makeGame();
 	    for (var i=0;i<200;++i) game.step();
 
-	    var calledBack = false;
 
-	    game.export('foo.png', function() {
-		calledBack = true;
-		assert(fs.existsSync('foo.png'));
+	    game.export(fileName, function() {
+		
 	    });
-
-	    assert(calledBack);
+	    
+	    assert(fs.existsSync(fileName));
+	    fs.unlinkSync(fileName);
 	});
     });
 

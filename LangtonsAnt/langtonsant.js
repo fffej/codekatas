@@ -143,6 +143,9 @@ var Game = function() {
     };
 
     this.export = function(path, callBack) {
+	fs.writeFile(path, 'not valid', function(err) {
+	    if (err) throw err;
+	});
 	callBack();
     };
 
