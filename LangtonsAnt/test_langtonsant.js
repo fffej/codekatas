@@ -52,12 +52,6 @@ describe('langton\'s ant', function() {
 
 	    game.export('foo.png', function() {
 		calledBack = true;
-		var exists = false;
-		fs.exists('foo.png', function(e) {
-		    exists = e;
-		});
-		assert(exists);
-		fs.unlinkSync('foo.png');
 	    });
 
 	    assert(calledBack);
