@@ -143,7 +143,7 @@ var Game = function() {
     };
 
     this.export = function(path, callBack) {
-
+	callBack();
     };
 
     return this;
