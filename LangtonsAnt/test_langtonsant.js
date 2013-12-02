@@ -1,7 +1,7 @@
 "use strict";
 var assert = require('assert');
 var fs = require('fs');
-var png = require('node-png');
+var png = require('png-js');
 
 var langton = require('./langtonsant');
 
