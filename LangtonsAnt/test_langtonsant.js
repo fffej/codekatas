@@ -60,8 +60,9 @@ describe('langton\'s ant', function() {
 	    var badName = '::';
 
 	    var game = steppedGame(200);
-	    game.export(badName, function(err, cb) {
-		assert(err);
+
+	    assert.throws(function() {
+		game.export(badName, function(){});
 	    });
 	});
 
