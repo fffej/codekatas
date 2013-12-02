@@ -1,6 +1,7 @@
 "use strict";
 var assert = require('assert');
 var fs = require('fs');
+var png = require('node-png');
 
 var langton = require('./langtonsant');
 
@@ -52,6 +53,21 @@ describe('langton\'s ant', function() {
 
 	    game.export(fileName, function() {
 		assert(fs.existsSync(fileName));
+		fs.unlinkSync(fileName);
+	    });
+	});
+
+	it('exports to a valid png', function() {
+	    var fileName = 'valid.png';
+	    if (fs.existsSync(fileName)) fs.unlinkSync(fileName);
+
+	    var game = steppedGame(200);
+
+	    game.export(fileName, function() {
+		assert(fs.existsSync(fileName));
+
+		// TODO validate png
+
 		fs.unlinkSync(fileName);
 	    });
 	});
