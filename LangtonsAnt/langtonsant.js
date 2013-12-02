@@ -143,11 +143,18 @@ var Game = function() {
     };
 
     this.export = function(path, callBack) {
-
 	var png = new PNG({
 	    width: this.width(),
 	    height: this.height(),
 	});
+
+	var size = png.width * png.height;
+	for (var i=0;i<size;++i) {
+	    png.data[i*4+0] = 255;
+	    png.data[i*4+1] = 255;
+	    png.data[i*4+2] = 255;
+	    png.data[i*4+3] = 255;
+	}
 
 	png.pack().pipe(fs.createWriteStream(path));
 	callBack();
