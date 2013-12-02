@@ -37,9 +37,7 @@ describe('langton\'s ant', function() {
 	});
 
 	it('steps multiple times', function() {
-	    var game = langton.makeGame();
-	    for (var i=0;i<200;++i) 
-		game.step();
+	    var game = steppedGame(200);
 
 	    assert.equal(8, game.width());
 	    assert.equal(8, game.height());
@@ -50,14 +48,21 @@ describe('langton\'s ant', function() {
 
 	    if (fs.existsSync(fileName)) fs.unlinkSync(fileName);
 
-	    var game = langton.makeGame();
-	    for (var i=0;i<200;++i) game.step();
+	    var game = steppedGame(200);
 
 	    game.export(fileName, function() {
 		assert(fs.existsSync(fileName));
 		fs.unlinkSync(fileName);
 	    });
 	});
+
+	var steppedGame = function(n) {
+	    var game = langton.makeGame();
+	    for (var i=0;i<n;++i)
+		game.step();
+
+	    return game;
+	};
     });
 
     describe('ant', function() {
