@@ -148,6 +148,7 @@ var Game = function() {
 	    height: this.height(),
 	});
 
+	// Make all pixels white
 	var size = png.width * png.height;
 	for (var i=0;i<size;++i) {
 	    png.data[i*4+0] = 255;
@@ -155,6 +156,8 @@ var Game = function() {
 	    png.data[i*4+2] = 255;
 	    png.data[i*4+3] = 255;
 	}
+
+	// Set the black pixels up
 
 	png.pack().pipe(fs.createWriteStream(path));
 	callBack();
