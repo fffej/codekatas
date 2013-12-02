@@ -1,7 +1,7 @@
 "use strict";
 var assert = require('assert');
 var fs = require('fs');
-var png = require('pngjs');
+var PNG = require('pngjs').PNG;
 
 var langton = require('./langtonsant');
 
@@ -66,7 +66,16 @@ describe('langton\'s ant', function() {
 	    game.export(fileName, function() {
 		assert(fs.existsSync(fileName));
 
-		// TODO validate png
+		var src = fs.createReadStream(fileName);
+		var png = new PNG({
+		    filterType: -1
+		});
+
+		png.on('error', function(err) {
+		    assert(false, 'There should be no errors')
+		});
+
+		src.pipe(png);
 
 		fs.unlinkSync(fileName);
 	    });
