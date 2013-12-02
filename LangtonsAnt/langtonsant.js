@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 var fs = require('fs');
-var png = require('png-js');
+var png = require('pngjs');
 
 var Color = {
     White: 0,

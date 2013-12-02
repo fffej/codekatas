@@ -5,7 +5,7 @@
   "main": "langtonsant.js",
   "devDependencies": {},
   "dependencies": {
-    "png-js": "~0.1.1"
+    "pngjs": "~0.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
