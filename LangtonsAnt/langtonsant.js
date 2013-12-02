@@ -105,17 +105,12 @@ var Game = function() {
 	assert(this.color(ant.position()) === Color.White);
     };
 
-    this.flipAntSquareColor = function() {
-	var isWhite = this.color(ant.position()) === Color.White;
-	isWhite ? this.flipWhite() : this.flipBlack();
-    };
-
     this.step = function() {
 	if (this.color(ant.position()) === Color.White) {
-	    this.flipAntSquareColor();
+	    this.flipWhite();
 	    ant.right();	
 	} else {
-	    this.flipAntSquareColor();
+	    this.flipBlack();
 	    ant.left();
 	}
 
