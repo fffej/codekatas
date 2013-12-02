@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 var fs = require('fs');
-var png = require('pngjs');
+var PNG = require('pngjs').PNG;
 
 var Color = {
     White: 0,
@@ -143,10 +143,14 @@ var Game = function() {
     };
 
     this.export = function(path, callBack) {
-	fs.writeFile(path, 'not valid', function(err) {
-	    if (err) throw err;
-	    callBack();
+
+	var png = new PNG({
+	    width: this.width(),
+	    height: this.height(),
 	});
+
+	png.pack().pipe(fs.createWriteStream(path));
+	callBack();
     };
 
     return this;
