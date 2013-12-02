@@ -56,16 +56,6 @@ describe('langton\'s ant', function() {
 	    });
 	});
 
-	it('fails to export to invalid name', function() {
-	    var badName = '::';
-
-	    var game = steppedGame(200);
-
-	    assert.throws(function() {
-		game.export(badName, function(){});
-	    });
-	});
-
 	var steppedGame = function(n) {
 	    var game = langton.makeGame();
 	    for (var i=0;i<n;++i)
