@@ -58,10 +58,10 @@ describe('langton\'s ant', function() {
 	});
 
 	it('exports to a valid png', function() {
-	    var fileName = 'valid.png';
+	    var fileName = 'c:/temp/valid.png';
 	    if (fs.existsSync(fileName)) fs.unlinkSync(fileName);
 
-	    var game = steppedGame(200);
+	    var game = steppedGame(15000);
 
 	    game.export(fileName, function() {
 		assert(fs.existsSync(fileName));
@@ -72,12 +72,13 @@ describe('langton\'s ant', function() {
 		});
 
 		png.on('error', function(err) {
+		    console.log(err);
 		    assert(false, 'There should be no errors')
 		});
 
 		src.pipe(png);
 
-		fs.unlinkSync(fileName);
+//		fs.unlinkSync(fileName);
 	    });
 	});
 

@@ -146,6 +146,9 @@ var Game = function() {
 	var png = new PNG({
 	    width: this.width(),
 	    height: this.height(),
+	}).on('close', function() {
+	    console.log('closed');
+	    callBack();
 	});
 
 	// Make all pixels white
@@ -158,9 +161,19 @@ var Game = function() {
 	}
 
 	// Set the black pixels up
+	for (var i=0;i<blackSquares.length;++i) {
+	    var lx = blackSquares[i].x + (png.width / 2);
+	    var ly = blackSquares[i].y + (png.height / 2);
+
+	    var offset = (lx * png.width) + ly;
+
+	    png.data[offset * 4 + 0] = 0;
+	    png.data[offset * 4 + 1] = 0;
+	    png.data[offset * 4 + 2] = 0;
+	    png.data[offset * 4 + 3] = 255;
+	}
 
 	png.pack().pipe(fs.createWriteStream(path));
-	callBack();
     };
 
     return this;
