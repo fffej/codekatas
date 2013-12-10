@@ -27,4 +27,7 @@ checklist :: [Int] -> Array Int Bool
 checklist xs = accumArray (||) False (0,n) (zip numsLessThanN (repeat True))
     where
         n = length xs
-        numsLessThanN = filter (<= n) xs	       
+        numsLessThanN = filter (<= n) xs
+
+minFree2 :: [Integer] -> Integer
+minFree2 = search . checklist	       
