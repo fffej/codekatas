@@ -5,7 +5,7 @@ in a given finite set X of natural numbers.
 
 module SmallestFreeNumber where 
 
-import Data.List ((\\),nub)
+import Data.List 
 import Data.Array
 import Data.Array.ST
 import Control.Monad.ST
