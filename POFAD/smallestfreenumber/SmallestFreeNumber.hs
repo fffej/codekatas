@@ -48,12 +48,13 @@ checklist' xs = runSTArray
 minFree2 :: [Int] -> Int
 minFree2 = search . checklist	       
 
--- Hmm, the properties described only apply to uniq sets
+-- Hmm, the properties described only apply to non overlapping elements
 -- Seems to be an assumption that \\ removes all
-prop_removeAll :: [Int] -> [Int] -> [Int] -> Bool
-prop_removeAll as bs cs = lhs == rhs
-    where
-      lhs = (as ++ bs) \\ cs
-      rhs = (as \\ cs) ++ (bs \\ cs)
-             
+prop_removeAll1 :: [Int] -> [Int] -> [Int] -> Bool
+prop_removeAll1 as bs cs = (as ++ bs) \\ cs == (as \\ cs) ++ (bs \\ cs)
 
+prop_removeAll2 :: [Int] -> [Int] -> [Int] -> Bool             
+prop_removeAll2 as bs cs = as \\ (bs ++ cs) == (as \\ bs) \\ cs
+
+prop_removeAll3 :: [Int] -> [Int] -> [Int] -> Bool
+prop_removeAll3 as bs cs = (as \\ bs) \\ cs == (as \\ cs) \\ bs
