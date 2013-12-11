@@ -5,10 +5,12 @@ in a given finite set X of natural numbers.
 
 module SmallestFreeNumber where 
 
-import Data.List ((\\))
+import Data.List ((\\),nub)
 import Data.Array
 import Data.Array.ST
 import Control.Monad.ST
+
+import Test.QuickCheck
 
 -- Naive definition.  This is O(N^2)
 minFree :: [Integer] -> Integer
@@ -45,3 +47,13 @@ checklist' xs = runSTArray
            
 minFree2 :: [Int] -> Int
 minFree2 = search . checklist	       
+
+-- Hmm, the properties described only apply to uniq sets
+-- Seems to be an assumption that \\ removes all
+prop_removeAll :: [Int] -> [Int] -> [Int] -> Bool
+prop_removeAll as bs cs = lhs == rhs
+    where
+      lhs = (as ++ bs) \\ cs
+      rhs = (as \\ cs) ++ (bs \\ cs)
+             
+
