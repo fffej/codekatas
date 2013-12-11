@@ -7,6 +7,8 @@ module SmallestFreeNumber where
 
 import Data.List ((\\))
 import Data.Array
+import Data.Array.ST
+import Control.Monad.ST
 
 -- Naive definition.  This is O(N^2)
 minFree :: [Integer] -> Integer
@@ -29,5 +31,17 @@ checklist xs = accumArray (||) False (0,n) (zip numsLessThanN (repeat True))
         n = length xs
         numsLessThanN = filter (<= n) xs
 
-minFree2 :: [Integer] -> Integer
+-- Alternative a ST monad implementation of the above
+-- Constant time
+checklist' :: [Int] -> Array Int Bool
+checklist' xs = runSTArray 
+                (do 
+                  a <- newArray (0,n) False
+                  sequence [writeArray a x True | x <- xs, x <= n]
+                  return a
+                )
+                where
+                  n = length xs
+           
+minFree2 :: [Int] -> Int
 minFree2 = search . checklist	       
