@@ -7,9 +7,10 @@ score :: [Int] -> Int
 score pins
   | null pins = 0
   | isHalfStrike = 10 + (head rest) + score rest
-  | otherwise = sum (take 2 pins) + score rest
+  | otherwise = sum frame + score rest
   where
-    isHalfStrike = sum (take 2 pins) == 10
+    frame = take 2 pins
+    isHalfStrike = sum frame == 10
     rest = drop 2 pins
 
 main :: IO ()
