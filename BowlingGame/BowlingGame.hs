@@ -22,3 +22,5 @@ main = hspec $ do
       score (replicate 20 1) `shouldBe` 20
     it "half strikes scored correctly" $ do
       score ([5,5,2] ++ replicate 17 0) `shouldBe` (5 + 5 + 2 + 2)
+    it "strikes score correctly" $ do
+      score ([10,2,3] ++ replicate 16 0) `shouldBe` (10 + 2 + 3 + 2 + 3)
