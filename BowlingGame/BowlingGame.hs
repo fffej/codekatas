@@ -6,10 +6,12 @@ import Test.QuickCheck
 score :: [Int] -> Int
 score pins
   | null pins = 0
+  | isStrike = 10 + score (drop 1 pins) + (head (tail ( tail pins))) + (head (tail pins))
   | isHalfStrike = 10 + (head rest) + score rest
   | otherwise = sum frame + score rest
   where
     frame = take 2 pins
+    isStrike = head frame == 10
     isHalfStrike = sum frame == 10
     rest = drop 2 pins
 
