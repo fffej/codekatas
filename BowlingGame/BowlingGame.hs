@@ -4,16 +4,19 @@ import Test.Hspec
 import Test.QuickCheck
 
 score :: [Int] -> Int
-score pins
+score pins = score' pins 0
+
+score' :: [Int] -> Int -> Int
+score' pins frame
   | null pins = 0
-  | isStrike = 10 + sum (take 2 rest) + score rest
-  | isHalfStrike = 10 + (head rest) + score rest
-  | otherwise = sum (take 2 pins) + score rest
+  | isStrike = 10 + sum (take 2 rest) + score' rest (frame + 1)
+  | isHalfStrike = 10 + (head rest) + score' rest (frame + 1)
+  | otherwise = sum (take 2 pins) + score' rest (frame + 1)
   where
     isStrike = head pins == 10
     isHalfStrike = sum (take 2 pins) == 10
     rest = drop (if isStrike then 1 else 2) pins
-
+    
 main :: IO ()
 main = hspec $ do
   describe "Gutter game" $ do
