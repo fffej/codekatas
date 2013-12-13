@@ -4,7 +4,13 @@ import Test.Hspec
 import Test.QuickCheck
 
 score :: [Int] -> Int
-score rolls = sum rolls
+score pins
+  | null pins = 0
+  | isHalfStrike = 10 + (head rest) + score rest
+  | otherwise = sum (take 2 pins) + score rest
+  where
+    isHalfStrike = sum (take 2 pins) == 10
+    rest = drop 2 pins
 
 main :: IO ()
 main = hspec $ do
