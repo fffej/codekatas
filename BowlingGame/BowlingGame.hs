@@ -13,3 +13,5 @@ main = hspec $ do
       score (replicate 20 0) `shouldBe` 0
     it "rolling 20 single pins scores 20" $ do
       score (replicate 20 1) `shouldBe` 20
+    it "half strikes scored correctly" $ do
+      score ([5,5,2] ++ replicate 17 0) `shouldBe` (5 + 5 + 2 + 2)
