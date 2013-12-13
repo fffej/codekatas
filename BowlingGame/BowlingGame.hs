@@ -4,7 +4,7 @@ import Test.Hspec
 import Test.QuickCheck
 
 score :: [Int] -> Int
-score = undefined
+score rolls = 0
 
 main :: IO ()
 main = hspec $ do
