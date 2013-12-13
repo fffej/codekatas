@@ -25,3 +25,5 @@ main = hspec $ do
       score ([5,5,2] ++ replicate 17 0) `shouldBe` (5 + 5 + 2 + 2)
     it "strikes score correctly" $ do
       score ([10,2,3] ++ replicate 16 0) `shouldBe` (10 + 2 + 3 + 2 + 3)
+    it "scores the perfect game" $ do
+      score (replicate 12 10) `shouldBe` 300 
