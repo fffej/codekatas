@@ -8,11 +8,10 @@ score pins
   | null pins = 0
   | isStrike = 10 + score rest + sum (take 2 rest)
   | isHalfStrike = 10 + (head rest) + score rest
-  | otherwise = sum frame + score rest
+  | otherwise = sum (take 2 pins) + score rest
   where
-    frame = take 2 pins
-    isStrike = head frame == 10
-    isHalfStrike = sum frame == 10
+    isStrike = head pins == 10
+    isHalfStrike = sum (take 2 pins) == 10
     rest = drop (if isStrike then 1 else 2) pins
 
 main :: IO ()
