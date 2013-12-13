@@ -4,7 +4,7 @@ import Test.Hspec
 import Test.QuickCheck
 
 score :: [Int] -> Int
-score rolls = 0
+score rolls = sum rolls
 
 main :: IO ()
 main = hspec $ do
