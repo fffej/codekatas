@@ -1,0 +1,17 @@
+module GameOfLife where
+
+import Test.Hspec
+import Test.QuickCheck
+
+data CellState = Live | Dead deriving (Show,Eq)
+
+nextState :: CellState -> Int -> CellState
+nextState = undefined 
+
+main :: IO ()
+main = hspec $ do
+  describe "Game of life" $ do
+    it "A live cell with 2 or less neighbours, dies" $ do
+      nextState Live 2 `shouldBe` Dead
+    
+
