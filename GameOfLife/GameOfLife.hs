@@ -17,7 +17,11 @@ data Rules = Rules
              } deriving (Show,Eq)
 
 defaultRules :: Rules
-defaultRules = undefined
+defaultRules = Rules
+                 {
+                   live = M.fromList [(2,Live),(3,Live)]
+                 , dead = M.fromList [(3,Live)]
+                 }
 
 tick :: Rules -> CellState -> Int -> CellState
 tick r Live n = M.findWithDefault Dead n (live r)
