@@ -7,7 +7,7 @@ data CellState = Live | Dead deriving (Show,Eq)
 
 nextState :: CellState -> Int -> CellState
 nextState Live n
-  | n < 2 = Dead
+  | n < 2 || n > 3 = Dead
   | otherwise = Live
 
 main :: IO ()
