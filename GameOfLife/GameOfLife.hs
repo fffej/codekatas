@@ -31,3 +31,5 @@ main = hspec $ do
       nextState Dead 3 == Live
     it "A dead cell with anything else stays dead" $ do
       all (\n -> nextState Dead n == Dead) ([0..9] \\ [3])
+
+      
