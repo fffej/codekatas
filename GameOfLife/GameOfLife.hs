@@ -6,7 +6,7 @@ import Test.QuickCheck
 data CellState = Live | Dead deriving (Show,Eq)
 
 nextState :: CellState -> Int -> CellState
-nextState = undefined 
+nextState Live 2 = Dead
 
 main :: IO ()
 main = hspec $ do
