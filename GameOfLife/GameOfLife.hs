@@ -12,6 +12,9 @@ nextState Live n
   | n < 2 || n > 3 = Dead
   | otherwise = Live
 
+nextState Dead n
+  | n == 3 = Live
+
 main :: IO ()
 main = hspec $ do
   describe "Game of life" $ do
