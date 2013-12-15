@@ -19,4 +19,6 @@ main = hspec $ do
       all (\n -> nextState Live n == Dead) ([0..9] \\ [2,3])
     it "A live cell with 2 or 3 live neighbours live on" $ do
       all (\n -> nextState Live n == Live) [2,3]
+    it "A dead cell with 3 neighbours becomes alive" $ do
+      nextState Dead 3 == Live
 
