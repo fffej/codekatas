@@ -14,6 +14,7 @@ nextState Live n
 
 nextState Dead n
   | n == 3 = Live
+  | otherwise = Dead
 
 main :: IO ()
 main = hspec $ do
