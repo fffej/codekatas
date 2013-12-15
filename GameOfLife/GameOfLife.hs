@@ -24,8 +24,9 @@ defaultRules = Rules
                  }
 
 tick :: Rules -> CellState -> Int -> CellState
-tick r Live n = if (any (== n) (live r)) then Live else Dead
-tick r Dead n = if (any (== n) (dead r)) then Live else Dead
+tick rules Live n = if (any (== n) (live rules)) then Live else Dead
+tick rules Dead n = if (any (== n) (dead rules)) then Live else Dead
+
 
 nextState :: CellState -> Int -> CellState
 nextState = tick defaultRules
