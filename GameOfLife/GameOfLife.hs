@@ -12,20 +12,20 @@ data CellState = Live | Dead deriving (Show,Eq)
 
 data Rules = Rules
              {
-               live :: Map Int CellState
-             , dead :: Map Int CellState
+               live :: [Int]
+             , dead :: [Int]
              } deriving (Show,Eq)
 
 defaultRules :: Rules
 defaultRules = Rules
                  {
-                   live = M.fromList [(2,Live),(3,Live)]
-                 , dead = M.fromList [(3,Live)]
+                   live = [2,3]
+                 , dead = [3]
                  }
 
 tick :: Rules -> CellState -> Int -> CellState
-tick r Live n = M.findWithDefault Dead n (live r)
-tick r Dead n = M.findWithDefault Dead n (dead r)
+tick r Live n = if (any (== n) (live r)) then Live else Dead
+tick r Dead n = if (any (== n) (dead r)) then Live else Dead
 
 nextState :: CellState -> Int -> CellState
 nextState = tick defaultRules
