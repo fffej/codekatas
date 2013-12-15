@@ -7,26 +7,15 @@ import Data.List ((\\))
 import Data.Map (Map)
 import qualified Data.Map as M
 
+data CellState = Live | Dead deriving (Ord,Show,Eq)
 
-data CellState = Live | Dead deriving (Show,Eq)
-
-data Rules = Rules
-             {
-               live :: [Int]
-             , dead :: [Int]
-             } deriving (Show,Eq)
+type Rules = Map CellState [Int]
 
 defaultRules :: Rules
-defaultRules = Rules
-                 {
-                   live = [2,3]
-                 , dead = [3]
-                 }
+defaultRules = M.fromList [(Live, [2,3]), (Dead, [3])]
 
 tick :: Rules -> CellState -> Int -> CellState
-tick rules Live n = if (any (== n) (live rules)) then Live else Dead
-tick rules Dead n = if (any (== n) (dead rules)) then Live else Dead
-
+tick rules state n = if (any (== n) (rules M.! state)) then Live else Dead
 
 nextState :: CellState -> Int -> CellState
 nextState = tick defaultRules
