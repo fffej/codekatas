@@ -19,16 +19,12 @@ data Rules = Rules
 defaultRules :: Rules
 defaultRules = undefined
 
+tick :: Rules -> CellState -> Int -> CellState
+tick r Live n = M.findWithDefault Dead n (live r)
+tick r Dead n = M.findWithDefault Dead n (dead r)
+
 nextState :: CellState -> Int -> CellState
-nextState Live n
-  | n < 2 || n > 3 = Dead
-  | otherwise = Live
-
-nextState Dead n
-  | n == 3 = Live
-  | otherwise = Dead
-
-                
+nextState = tick defaultRules
 
 main :: IO ()
 main = hspec $ do
