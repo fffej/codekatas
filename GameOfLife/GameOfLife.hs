@@ -4,8 +4,20 @@ import Test.Hspec
 import Test.QuickCheck
 
 import Data.List ((\\))
+import Data.Map (Map)
+import qualified Data.Map as M
+
 
 data CellState = Live | Dead deriving (Show,Eq)
+
+data Rules = Rules
+             {
+               live :: Map Int CellState
+             , dead :: Map Int CellState
+             } deriving (Show,Eq)
+
+defaultRules :: Rules
+defaultRules = undefined
 
 nextState :: CellState -> Int -> CellState
 nextState Live n
@@ -15,6 +27,8 @@ nextState Live n
 nextState Dead n
   | n == 3 = Live
   | otherwise = Dead
+
+                
 
 main :: IO ()
 main = hspec $ do
