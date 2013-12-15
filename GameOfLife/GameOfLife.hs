@@ -8,7 +8,7 @@ data CellState = Live | Dead deriving (Show,Eq)
 nextState :: CellState -> Int -> CellState
 nextState Live n
   | n < 2 = Dead
-  | otherwise = undefined
+  | otherwise = Live
 
 main :: IO ()
 main = hspec $ do
