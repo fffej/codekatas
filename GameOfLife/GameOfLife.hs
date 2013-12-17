@@ -28,7 +28,11 @@ neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
 
 bound :: Point -> Point -> Point
-bound = undefined
+bound (x,y) (mx,my) = (dx,dy)
+  where
+    dx = if x > mx then 0 else (if x < 0 then mx else x)
+    dy = if y > my then 0 else (if y < 0 then my else y)
+
 
 defaultRules :: Rules
 defaultRules = Rules [2,3] [3]
