@@ -3,7 +3,8 @@ module GameOfLife where
 import Test.Hspec
 import Test.QuickCheck
 
-import Data.Array
+import Data.Map (Map)
+import qualified Data.Map as M
 import Data.List ((\\))
 
 data CellState = Live | Dead deriving (Ord,Show,Eq)
@@ -16,13 +17,13 @@ data Rules = Rules
 
 type Point = (Int,Int)
 
-type Grid = Array Point CellState
+type Grid = Map Point CellState
 
 mkGrid :: Int -> Int -> Grid
-mkGrid width height = listArray ((0,0),(width,height)) (repeat Dead)
+mkGrid w h = M.fromList [((x,y),Dead) | x <- [0..w], y <- [0..h]]
 
 cellAt :: Grid -> Point -> CellState
-cellAt g p = g ! p
+cellAt g p = g M.! p
 
 neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
@@ -46,6 +47,9 @@ tickCell' xs s = if (elem s xs) then Live else Dead
 nextState :: CellState -> Int -> CellState
 nextState = tickCell defaultRules
 
+tickGrid :: Grid -> Grid
+tickGrid grid = undefined
+  
 main :: IO ()
 main = hspec $ do
   describe "Game of life" $ do
