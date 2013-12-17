@@ -12,7 +12,7 @@ data CellState = Live | Dead deriving (Ord,Show,Eq)
 type Rules = Map CellState [Int]
 
 neighbours :: (Int,Int) -> [(Int,Int)]
-neighbours = undefined
+neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
 
 defaultRules :: Rules
 defaultRules = M.fromList [(Live, [2,3]), (Dead, [3])]
@@ -37,5 +37,4 @@ main = hspec $ do
   describe "Grid" $ do
     it "each cell has 9 neighbours" $ do
       length (neighbours (1,1)) == 9
-
       
