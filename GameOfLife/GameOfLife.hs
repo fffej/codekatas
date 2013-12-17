@@ -3,6 +3,7 @@ module GameOfLife where
 import Test.Hspec
 import Test.QuickCheck
 
+import Data.Array
 import Data.List ((\\))
 import Data.Map (Map)
 import qualified Data.Map as M
@@ -11,15 +12,17 @@ data CellState = Live | Dead deriving (Ord,Show,Eq)
 
 type Rules = Map CellState [Int]
 
-data Grid = Grid 
+type Point = (Int,Int)
+
+type Grid = Array Point CellState
 
 mkGrid :: Int -> Int -> Grid
 mkGrid = undefined
 
-cellAt :: Grid -> (Int,Int) -> CellState
+cellAt :: Grid -> Point -> CellState
 cellAt = undefined
 
-neighbours :: (Int,Int) -> [(Int,Int)]
+neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
 
 defaultRules :: Rules
