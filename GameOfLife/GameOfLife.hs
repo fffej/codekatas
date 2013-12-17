@@ -33,19 +33,18 @@ bound (x,y) (mx,my) = (dx,dy)
     dx = if x > mx then 0 else (if x < 0 then mx else x)
     dy = if y > my then 0 else (if y < 0 then my else y)
 
-
 defaultRules :: Rules
 defaultRules = Rules [2,3] [3]
 
-tick :: Rules -> CellState -> Int -> CellState
-tick rules Live = tick' (live rules)
-tick rules Dead = tick' (dead rules)
+tickCell :: Rules -> CellState -> Int -> CellState
+tickCell rules Live = tickCell' (live rules)
+tickCell rules Dead = tickCell' (dead rules)
 
-tick' :: [Int] -> Int -> CellState
-tick' xs s = if (elem s xs) then Live else Dead
+tickCell' :: [Int] -> Int -> CellState
+tickCell' xs s = if (elem s xs) then Live else Dead
 
 nextState :: CellState -> Int -> CellState
-nextState = tick defaultRules
+nextState = tickCell defaultRules
 
 main :: IO ()
 main = hspec $ do
@@ -64,6 +63,8 @@ main = hspec $ do
     it "cells are bounded" $ do
       all (\(x,y) -> x >= 0 && x < 10) (map (bound (10,10)) (neighbours (0,0)))
     it "grids are initially all dead" $ do
-      cellAt (mkGrid 3 3) (1,1) == Dead
+      all (\x -> cellAt (mkGrid 3 3) x == Dead) [(0,0),(1,1)]
+        
+
       
       
