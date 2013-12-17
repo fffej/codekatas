@@ -27,6 +27,9 @@ cellAt g p = g ! p
 neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
 
+bound :: Point -> Point -> Point
+bound = undefined
+
 defaultRules :: Rules
 defaultRules = Rules [2,3] [3]
 
@@ -54,6 +57,9 @@ main = hspec $ do
   describe "Grid" $ do
     it "each cell has 9 neighbours" $ do
       length (neighbours (1,1)) == 9
+    it "cells are bounded" $ do
+      all (\(x,y) -> x >= 0 && x < 10) (map (bound (10,10)) (neighbours (0,0)))
     it "grids are initially all dead" $ do
       cellAt (mkGrid 3 3) (1,1) == Dead
+      
       
