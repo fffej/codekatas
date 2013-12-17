@@ -17,10 +17,10 @@ type Point = (Int,Int)
 type Grid = Array Point CellState
 
 mkGrid :: Int -> Int -> Grid
-mkGrid = undefined
+mkGrid width height = listArray ((0,0),(width,height)) (repeat Dead)
 
 cellAt :: Grid -> Point -> CellState
-cellAt = undefined
+cellAt g p = g ! p
 
 neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
