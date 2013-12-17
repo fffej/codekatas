@@ -31,8 +31,11 @@ defaultRules :: Rules
 defaultRules = Rules [2,3] [3]
 
 tick :: Rules -> CellState -> Int -> CellState
-tick rules Live n = if (elem n (live rules)) then Live else Dead
-tick rules Dead n = if (elem n (dead rules)) then Live else Dead
+tick rules Live = tick' (live rules)
+tick rules Dead = tick' (dead rules)
+
+tick' :: [Int] -> Int -> CellState
+tick' xs s = if (elem s xs) then Live else Dead
 
 nextState :: CellState -> Int -> CellState
 nextState = tick defaultRules
