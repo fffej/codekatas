@@ -26,7 +26,7 @@ cellAt :: Grid -> Point -> CellState
 cellAt g p = g M.! p
 
 liveNeighbours :: Grid -> Point -> Int
-liveNeighbours = undefined
+liveNeighbours g p = undefined
 
 neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
