@@ -11,9 +11,7 @@ data CellState = Live | Dead deriving (Ord,Show,Eq)
 
 type Rules = Map CellState [Int]
 
-data Grid = Grid Int Int
-
-neighbours :: Grid -> (Int,Int) -> [CellState]
+neighbours :: (Int,Int) -> [(Int,Int)]
 neighbours = undefined
 
 defaultRules :: Rules
@@ -38,6 +36,6 @@ main = hspec $ do
       all (\n -> nextState Dead n == Dead) ([0..9] \\ [3])
   describe "Grid" $ do
     it "each cell has 9 neighbours" $ do
-      length (neighbours (Grid 9 9) (1,1)) == 9
+      length (neighbours (1,1)) == 9
 
       
