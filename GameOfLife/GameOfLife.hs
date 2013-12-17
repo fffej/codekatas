@@ -47,8 +47,10 @@ tickCell' xs s = if (elem s xs) then Live else Dead
 nextState :: CellState -> Int -> CellState
 nextState = tickCell defaultRules
 
-tickGrid :: Grid -> Grid
-tickGrid grid = undefined
+tickGrid :: Rules -> Grid -> Grid
+tickGrid rules grid = M.mapWithKey (\p c -> tickCell rules c liveNeighbours) grid
+  where
+    liveNeighbours = 0
   
 main :: IO ()
 main = hspec $ do
