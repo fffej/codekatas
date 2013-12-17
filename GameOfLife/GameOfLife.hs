@@ -5,12 +5,14 @@ import Test.QuickCheck
 
 import Data.Array
 import Data.List ((\\))
-import Data.Map (Map)
-import qualified Data.Map as M
 
 data CellState = Live | Dead deriving (Ord,Show,Eq)
 
-type Rules = Map CellState [Int]
+data Rules = Rules
+             {
+               live :: [Int]
+             , dead :: [Int]
+             } deriving (Show,Eq)
 
 type Point = (Int,Int)
 
@@ -26,10 +28,11 @@ neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
 
 defaultRules :: Rules
-defaultRules = M.fromList [(Live, [2,3]), (Dead, [3])]
+defaultRules = Rules [2,3] [3]
 
 tick :: Rules -> CellState -> Int -> CellState
-tick rules state n = if (any (== n) (rules M.! state)) then Live else Dead
+tick rules Live n = if (any (== n) (live rules)) then Live else Dead
+tick rules Dead n = if (any (== n) (dead rules)) then Live else Dead
 
 nextState :: CellState -> Int -> CellState
 nextState = tick defaultRules
