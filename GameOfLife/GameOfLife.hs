@@ -11,7 +11,10 @@ data CellState = Live | Dead deriving (Ord,Show,Eq)
 
 type Rules = Map CellState [Int]
 
-data Grid = Grid Int Int
+data Grid = Grid 
+
+mkGrid :: Int -> Int -> Grid
+mkGrid = undefined
 
 cellAt :: Grid -> (Int,Int) -> CellState
 cellAt = undefined
@@ -43,5 +46,5 @@ main = hspec $ do
     it "each cell has 9 neighbours" $ do
       length (neighbours (1,1)) == 9
     it "grids are initially all dead" $ do
-      cellAt (Grid 3 3) (1,1) == Dead
+      cellAt (mkGrid 3 3) (1,1) == Dead
       
