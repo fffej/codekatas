@@ -24,8 +24,10 @@ data Grid = Grid
             , dimensions :: (Int,Int)
             } deriving (Eq,Show)
 
-gridPoints :: (Int,Int) -> [Point]
-gridPoints (w,h) = [(x,y) | x <- [0..w], y <- [0..h]]
+gridPoints :: Grid -> [Point]
+gridPoints grid = [(x,y) | x <- [0..w], y <- [0..h]]
+  where
+    (w,h) = dimensions grid
 
 mkGrid :: Int -> Int -> Grid
 mkGrid w h = Grid S.empty (w,h)
@@ -73,7 +75,7 @@ step :: Rules -> Grid -> Grid
 step rules grid = mkGridFromGrid grid newLiveCells
   where
     points :: [Point]
-    points = gridPoints (dimensions grid)
+    points = gridPoints grid
 
     cellStatus :: [(Point,CellState)]
     cellStatus = map (\p -> (p,liveCellAt grid p)) points
