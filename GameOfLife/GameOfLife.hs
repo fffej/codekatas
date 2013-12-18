@@ -24,9 +24,9 @@ mkGrid w h = M.fromList [((x,y),Dead) | x <- [0..w], y <- [0..h]]
 
 cellAt :: Grid -> Point -> CellState
 cellAt g p = g M.! p
-
-liveNeighbours :: Grid -> Point -> Int
-liveNeighbours g p = undefined
+ 
+numOfLiveNeighbours :: Grid -> Point -> Int
+numOfLiveNeighbours g p = undefined
 
 neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
@@ -69,4 +69,4 @@ main = hspec $ do
     it "grids are initially all dead" $ do
       all (\x -> cellAt (mkGrid 3 3) x == Dead) [(0,0),(1,1)]
     it "live neighbours can be retrieved" $ do
-      liveNeighbours (mkGrid 3 3) (0,0) == 0
+      numOfLiveNeighbours (mkGrid 3 3) (0,0) == 0
