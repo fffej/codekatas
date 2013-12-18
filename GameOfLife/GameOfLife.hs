@@ -70,7 +70,7 @@ nextState :: CellState -> Int -> CellState
 nextState = tickCell defaultRules
 
 step :: Rules -> Grid -> Grid
-step rules grid = undefined
+step rules grid = mkGridFromGrid grid liveCells
   where
     points :: [Point]
     points = gridPoints (dimensions grid)
@@ -80,6 +80,12 @@ step rules grid = undefined
 
     neighbourCount :: [Int]
     neighbourCount = map (\(p,_) -> numOfLiveNeighbours grid p) cellStatus
+
+    ps :: [(Point,CellState,Int)]
+    ps = zipWith (\(p,c) n -> (p,c,n)) cellStatus neighbourCount
+
+    liveCells :: [Point]
+    liveCells = undefined 
 
 main :: IO ()
 main = hspec $ do
