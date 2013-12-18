@@ -37,7 +37,9 @@ liveCellAt :: Grid -> Point -> Bool
 liveCellAt (Grid s _) p = S.member p s
  
 numOfLiveNeighbours :: Grid -> Point -> Int
-numOfLiveNeighbours g p = undefined
+numOfLiveNeighbours g p = length (filter id (map (liveCellAt g) n))
+  where
+    n = map (bound (dimensions g)) $ neighbours p
 
 neighbours :: Point -> [Point]
 neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
