@@ -3,9 +3,6 @@ module GameOfLife where
 import Test.Hspec
 import Test.QuickCheck
 
-import Data.Map (Map)
-import qualified Data.Map as M
-
 import Data.Set (Set)
 import qualified Data.Set as S
 
@@ -47,8 +44,14 @@ neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
 bound :: Point -> Point -> Point
 bound (x,y) (mx,my) = (dx,dy)
   where
-    dx = if x > mx then 0 else (if x < 0 then mx else x)
-    dy = if y > my then 0 else (if y < 0 then my else y)
+    dx
+      | x > mx = 0
+      | x < 0 = mx
+      | otherwise = x
+    dy
+      | y > my = 0
+      | y < 0 = my
+      | otherwise = y
 
 defaultRules :: Rules
 defaultRules = Rules [2,3] [3]
@@ -58,7 +61,7 @@ tickCell rules True = tickCell' (live rules)
 tickCell rules False = tickCell' (dead rules)
 
 tickCell' :: [Int] -> Int -> CellState
-tickCell' xs s = elem s xs
+tickCell' xs s = s `elem` xs
 
 nextState :: CellState -> Int -> CellState
 nextState = tickCell defaultRules
@@ -69,9 +72,9 @@ main = hspec $ do
     it "A live cell with anything other than 2 or 3 neighbours, dies" $ do 
       all (\n -> nextState True n == False) ([0..9] \\ [2,3])
     it "A live cell with 2 or 3 live neighbours live on" $ do
-      all (\n -> nextState True n == True) [2,3]
+      all (\n -> nextState True n) [2,3]
     it "A dead cell with 3 neighbours becomes alive" $ do
-      nextState False 3 == True
+      nextState False 3
     it "A dead cell with anything else stays dead" $ do
       all (\n -> nextState False n == False) ([0..9] \\ [3])
   describe "Grid" $ do
