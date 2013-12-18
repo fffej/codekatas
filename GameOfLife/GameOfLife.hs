@@ -11,7 +11,7 @@ import qualified Data.Set as S
 
 import Data.List ((\\))
 
-data CellState = Live | Dead deriving (Ord,Show,Eq)
+type CellState = Bool
 
 data Rules = Rules
              {
@@ -45,11 +45,11 @@ defaultRules :: Rules
 defaultRules = Rules [2,3] [3]
 
 tickCell :: Rules -> CellState -> Int -> CellState
-tickCell rules Live = tickCell' (live rules)
-tickCell rules Dead = tickCell' (dead rules)
+tickCell rules True = tickCell' (live rules)
+tickCell rules False = tickCell' (dead rules)
 
 tickCell' :: [Int] -> Int -> CellState
-tickCell' xs s = if (elem s xs) then Live else Dead
+tickCell' xs s = elem s xs
 
 nextState :: CellState -> Int -> CellState
 nextState = tickCell defaultRules
@@ -58,13 +58,13 @@ main :: IO ()
 main = hspec $ do
   describe "Game of life" $ do
     it "A live cell with anything other than 2 or 3 neighbours, dies" $ do 
-      all (\n -> nextState Live n == Dead) ([0..9] \\ [2,3])
+      all (\n -> nextState True n == False) ([0..9] \\ [2,3])
     it "A live cell with 2 or 3 live neighbours live on" $ do
-      all (\n -> nextState Live n == Live) [2,3]
+      all (\n -> nextState True n == True) [2,3]
     it "A dead cell with 3 neighbours becomes alive" $ do
-      nextState Dead 3 == Live
+      nextState False 3 == True
     it "A dead cell with anything else stays dead" $ do
-      all (\n -> nextState Dead n == Dead) ([0..9] \\ [3])
+      all (\n -> nextState False n == False) ([0..9] \\ [3])
   describe "Grid" $ do
     it "each cell has 9 neighbours" $ do
       length (neighbours (1,1)) == 9
