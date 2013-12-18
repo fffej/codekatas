@@ -21,13 +21,17 @@ data Rules = Rules
 
 type Point = (Int,Int)
 
-type Grid = Set Point 
+data Grid = Grid
+            {
+              liveCell :: Set Point
+            , dimensions :: (Int,Int)
+            } deriving (Show)
 
 mkGrid :: Int -> Int -> Grid
-mkGrid w h = S.empty
+mkGrid w h = Grid S.empty (w,h)
 
 liveCellAt :: Grid -> Point -> Bool
-liveCellAt = flip S.member
+liveCellAt (Grid s _) p = S.member p s
  
 numOfLiveNeighbours :: Grid -> Point -> Int
 numOfLiveNeighbours g p = undefined
