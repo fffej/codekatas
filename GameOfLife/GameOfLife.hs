@@ -26,8 +26,8 @@ type Grid = Set Point
 mkGrid :: Int -> Int -> Grid
 mkGrid w h = S.empty
 
-cellAt :: Grid -> Point -> Bool
-cellAt = flip S.member
+liveCellAt :: Grid -> Point -> Bool
+liveCellAt = flip S.member
  
 numOfLiveNeighbours :: Grid -> Point -> Int
 numOfLiveNeighbours g p = undefined
@@ -71,6 +71,6 @@ main = hspec $ do
     it "cells are bounded" $ do
       all (\(x,y) -> x >= 0 && x < 10) (map (bound (10,10)) (neighbours (0,0)))
     it "grids are initially all dead" $ do
-      all (\x -> cellAt (mkGrid 3 3) x == False) [(0,0),(1,1)]
+      all (\x -> liveCellAt (mkGrid 3 3) x == False) [(0,0),(1,1)]
     it "live neighbours can be retrieved" $ do
       numOfLiveNeighbours (mkGrid 3 3) (0,0) == 0
