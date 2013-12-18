@@ -30,6 +30,9 @@ gridPoints (w,h) = [(x,y) | x <- [0..w], y <- [0..h]]
 mkGrid :: Int -> Int -> Grid
 mkGrid w h = Grid S.empty (w,h)
 
+mkGridFromGrid :: Grid -> [Point] -> Grid
+mkGridFromGrid g p = Grid (S.fromList p) (dimensions g)
+
 liveCellAt :: Grid -> Point -> Bool
 liveCellAt (Grid s _) p = S.member p s
  
