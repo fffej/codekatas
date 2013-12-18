@@ -70,6 +70,7 @@ step :: Rules -> Grid -> Grid
 step rules grid = undefined
   where
     cells = gridPoints (dimensions grid)
+    neighbourCount = map (numOfLiveNeighbours grid) cells
 
 main :: IO ()
 main = hspec $ do
