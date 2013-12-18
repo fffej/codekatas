@@ -5,6 +5,10 @@ import Test.QuickCheck
 
 import Data.Map (Map)
 import qualified Data.Map as M
+
+import Data.Set (Set)
+import qualified Data.Set as S
+
 import Data.List ((\\))
 
 data CellState = Live | Dead deriving (Ord,Show,Eq)
@@ -17,13 +21,13 @@ data Rules = Rules
 
 type Point = (Int,Int)
 
-type Grid = Map Point CellState
+type Grid = Set Point 
 
 mkGrid :: Int -> Int -> Grid
-mkGrid w h = M.empty
+mkGrid w h = S.empty
 
-cellAt :: Grid -> Point -> Maybe CellState
-cellAt g p = M.lookup p g
+cellAt :: Grid -> Point -> Bool
+cellAt = flip S.member
  
 numOfLiveNeighbours :: Grid -> Point -> Int
 numOfLiveNeighbours g p = undefined
@@ -67,6 +71,6 @@ main = hspec $ do
     it "cells are bounded" $ do
       all (\(x,y) -> x >= 0 && x < 10) (map (bound (10,10)) (neighbours (0,0)))
     it "grids are initially all dead" $ do
-      all (\x -> cellAt (mkGrid 3 3) x == Nothing) [(0,0),(1,1)]
+      all (\x -> cellAt (mkGrid 3 3) x == False) [(0,0),(1,1)]
     it "live neighbours can be retrieved" $ do
       numOfLiveNeighbours (mkGrid 3 3) (0,0) == 0
