@@ -68,6 +68,8 @@ nextState = tickCell defaultRules
 
 step :: Rules -> Grid -> Grid
 step rules grid = undefined
+  where
+    cells = gridPoints (dimensions grid)
 
 main :: IO ()
 main = hspec $ do
