@@ -27,6 +27,9 @@ data Grid = Grid
             , dimensions :: (Int,Int)
             } deriving (Show)
 
+gridPoints :: (Int,Int) -> [Point]
+gridPoints (w,h) = [(x,y) | x <- [0..w], y <- [0..h]]
+
 mkGrid :: Int -> Int -> Grid
 mkGrid w h = Grid S.empty (w,h)
 
