@@ -22,7 +22,7 @@ data Grid = Grid
             {
               liveCell :: Set Point
             , dimensions :: (Int,Int)
-            } deriving (Show)
+            } deriving (Eq,Show)
 
 gridPoints :: (Int,Int) -> [Point]
 gridPoints (w,h) = [(x,y) | x <- [0..w], y <- [0..h]]
@@ -66,6 +66,9 @@ tickCell' xs s = s `elem` xs
 nextState :: CellState -> Int -> CellState
 nextState = tickCell defaultRules
 
+step :: Rules -> Grid -> Grid
+step rules grid = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "Game of life" $ do
@@ -86,3 +89,5 @@ main = hspec $ do
       all (\x -> liveCellAt (mkGrid 3 3) x == False) [(0,0),(1,1)]
     it "live neighbours can be retrieved" $ do
       numOfLiveNeighbours (mkGrid 3 3) (0,0) == 0
+    it "an empty grid translates to an empty grid" $ do
+      step defaultRules (mkGrid 3 3) == mkGrid 3 3
