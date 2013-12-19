@@ -16,12 +16,14 @@ parse xs
   | otherwise           = xs
 
 add :: String -> Either String Int
-add xs = Right (sum (map parseInt (splitWhen delimFn toParse)))
+add xs
+  | any (< 0) nums  = Left "Negatives not allowed"
+  | otherwise       = Right (sum nums)
   where
+    nums = map parseInt (splitWhen delimFn toParse)
     delimFn = customDelimter xs
     toParse = parse xs
-
-
+    
 parseInt :: String -> Int
 parseInt = read
 
