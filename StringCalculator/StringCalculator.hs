@@ -17,7 +17,7 @@ parse xs
 
 add :: String -> Either String Int
 add xs
-  | any (< 0) nums  = Left "Negatives not allowed"
+  | any (< 0) nums  = Left ("Negatives not allowed " ++ show (filter (< 0) nums))
   | otherwise       = Right (sum nums)
   where
     nums = map parseInt (splitWhen delimFn toParse)
@@ -41,5 +41,5 @@ main = hspec $ do
     it "supports custom delimiters" $ do
       add "//:\n1:2" `shouldBe` (Right 3)
     it "negatives aren't allowed" $ do
-      add "-1" `shouldBe` (Left "Negatives not allowed")
+      add "-1" `shouldBe` (Left "Negatives not allowed [-1]")
 
