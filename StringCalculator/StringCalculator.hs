@@ -27,3 +27,5 @@ main = hspec $ do
       add "1,2,3,4,5" `shouldBe` 15
     it ", and \n are allowed" $ do
       add "1\n2,3" `shouldBe` 6
+    it "supports custom delimiters" $ do
+      add "//:\n1:2" `shouldBe` 3
