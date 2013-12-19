@@ -1,11 +1,13 @@
 module StringCalculator where
 
+import Data.List.Split
+
 import Test.Hspec
 import Test.QuickCheck
 
 add :: String -> Int
 add xs
-  | ',' `elem` xs = 3
+  | ',' `elem` xs = sum (map parseInt (splitOn "," xs))
   | otherwise = parseInt xs
 
 parseInt :: String -> Int
