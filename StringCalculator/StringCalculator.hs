@@ -5,12 +5,15 @@ import Data.List.Split
 import Test.Hspec
 import Test.QuickCheck
 
+customDelimter :: String -> (Char -> Bool)
+customDelimter _ = \x -> (x == ',' || x == '\n')
+
 add :: String -> Int
 add xs
-  | ',' `elem` xs = sum (map parseInt (splitWhen stringOrComma xs))
+  | ',' `elem` xs = sum (map parseInt (splitWhen delimFn xs))
   | otherwise = parseInt xs
   where
-    stringOrComma x = x == ',' || x == '\n'
+    delimFn = customDelimter xs
 
 
 parseInt :: String -> Int
