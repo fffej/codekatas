@@ -20,7 +20,7 @@ add xs
   | any (< 0) nums  = Left ("Negatives not allowed " ++ show (filter (< 0) nums))
   | otherwise       = Right (sum nums)
   where
-    nums = map parseInt (splitWhen delimFn toParse)
+    nums = filter (< 1000) $ map parseInt (splitWhen delimFn toParse)
     delimFn = customDelimter xs
     toParse = parse xs
     
