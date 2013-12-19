@@ -15,8 +15,8 @@ parse xs
   | (take 2 xs) == "//" = drop 4 xs
   | otherwise           = xs
 
-add :: String -> Int
-add xs = sum (map parseInt (splitWhen delimFn toParse))
+add :: String -> Either String Int
+add xs = Right (sum (map parseInt (splitWhen delimFn toParse)))
   where
     delimFn = customDelimter xs
     toParse = parse xs
@@ -29,12 +29,15 @@ main :: IO ()
 main = hspec $ do
   describe "String calculator" $ do
     it "single number is identity" $ do
-      add "1" `shouldBe` 1
+      add "1" `shouldBe` (Right 1)
     it "numbers separated by , added" $ do
-      add "1,2" `shouldBe` 3
+      add "1,2" `shouldBe` (Right 3)
     it "any number of numbers" $ do
-      add "1,2,3,4,5" `shouldBe` 15
+      add "1,2,3,4,5" `shouldBe` (Right 15)
     it ", and \\n are allowed" $ do
-      add "1\n2,3" `shouldBe` 6
+      add "1\n2,3" `shouldBe` (Right 6)
     it "supports custom delimiters" $ do
-      add "//:\n1:2" `shouldBe` 3
+      add "//:\n1:2" `shouldBe` (Right 3)
+    it "negatives aren't allowed" $ do
+      add "-1" `shouldBe` (Left "Negatives not allowed")
+
