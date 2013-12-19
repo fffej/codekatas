@@ -4,7 +4,7 @@ import Test.Hspec
 import Test.QuickCheck
 
 add :: String -> Int
-add s = undefined
+add = read
 
 main :: IO () 
 main = hspec $ do
