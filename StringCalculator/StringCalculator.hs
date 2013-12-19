@@ -7,8 +7,11 @@ import Test.QuickCheck
 
 add :: String -> Int
 add xs
-  | ',' `elem` xs = sum (map parseInt (splitWhen (\x -> x == ',' || x == '\n') xs))
+  | ',' `elem` xs = sum (map parseInt (splitWhen stringOrComma xs))
   | otherwise = parseInt xs
+  where
+    stringOrComma x = x == ',' || x == '\n'
+
 
 parseInt :: String -> Int
 parseInt = read
