@@ -42,4 +42,6 @@ main = hspec $ do
       add "//:\n1:2" `shouldBe` (Right 3)
     it "negatives aren't allowed" $ do
       add "-1" `shouldBe` (Left "Negatives not allowed [-1]")
+    it "ignores nums bigger than 1000" $ do
+      add "1001,2" `shouldBe` Right 2
 
