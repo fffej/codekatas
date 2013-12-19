@@ -20,3 +20,5 @@ main = hspec $ do
       add "1" `shouldBe` 1
     it "numbers separated by , added" $ do
       add "1,2" `shouldBe` 3
+    it "any number of numbers" $ do
+      add "1,2,3,4,5" `shouldBe` 15
