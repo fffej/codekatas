@@ -1,41 +1,21 @@
 module CowsAndBulls where
 
-import Data.List
+import Test.Hspec
+import Test.QuickCheck
 
-data Row = Row Int Int Int Int deriving (Show,Eq)
-data Score = Score Int Int deriving (Show,Eq)
-data Player = Player [Row] deriving (Show,Eq)
+data Guess = Guess Int Int Int Int deriving (Show,Eq)
 
-rowToList :: Row -> [Int]
-rowToList (Row a b c d) = [a,b,c,d]
+data Score = Score
+             {
+               cows :: Int
+             , bulls :: Int
+             } deriving (Show,Eq)
 
-score :: Row -> Row -> Score
-score a b = Score bulls cows
-    where
-      xs = rowToList a 
-      ys = rowToList b
-      nonBulls = filter (uncurry (/=)) (zip xs ys)
-      cows = length $ filter (\(x,y) -> y `elem` xs) nonBulls
-      bulls = length $ filter id (zipWith (==) xs ys)
+score :: Guess -> Guess -> Score
+score = undefined
 
-allRows :: [Row]
-allRows = filter distinct [Row a b c d | a <- [0..9], b <- [0..9], c <- [0..9], d <- [0..9]]
-    where 
-      distinct (Row a b c d) = 4 == length (nub [a,b,c,d])
-                           
-removeBadGuesses :: Row -> Score -> [Row] -> [Row]
-removeBadGuesses r s = filter (\row -> score row r == s)
-
-lastGuess :: Player -> Row
-lastGuess (Player xs) = head xs
-
-playGame :: Row -> Int
-playGame secret = length $ takeWhile gameInProgress games 
-    where
-      games = iterate makeGuess (Player allRows)
-      gameInProgress (Player (x:xs)) = score x secret /= Score 4 0
-      makeGuess (Player guesses) = newPlayer
-          where
-            guess = head guesses
-            newPlayer = Player (removeBadGuesses guess (score guess secret) guesses)
-
+main :: IO ()
+main = hspec $ do
+  describe "Scoring" $ do
+    it "Correct guess scores 4 bulls" $ do
+      score (Guess 1 2 3 4) (Guess 1 2 3 4) `shouldBe` (Score 4 0)
