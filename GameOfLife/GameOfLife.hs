@@ -8,6 +8,10 @@ import qualified Data.Set as S
 
 import Data.List ((\\))
 
+import Graphics.Pgm
+import Data.Array.Unboxed
+import Data.Word (Word16)
+
 type CellState = Bool
 
 data Rules = Rules
@@ -91,6 +95,12 @@ step rules grid = mkGridFromGrid grid newLiveCells
 
     newLiveCells :: [Point]
     newLiveCells = map fst (filter snd newStates)
+
+gridToArray :: Grid -> UArray (Int,Int) Word16
+gridToArray grid = array ((0,0), dimensions grid) (map (\(x,y) -> (x,if y then 255 else 0)) cellStatus)
+  where
+    points = gridPoints grid
+    cellStatus = map (\p -> (p,liveCellAt grid p)) points
 
 main :: IO ()
 main = hspec $ do
