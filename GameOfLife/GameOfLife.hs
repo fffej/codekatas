@@ -79,6 +79,11 @@ tickCell' xs s = s `elem` xs
 nextState :: CellState -> Int -> CellState
 nextState = tickCell defaultRules
 
+run :: Rules -> Grid -> [Grid]
+run rules g = iterate step' g
+  where
+    step' = step rules
+
 step :: Rules -> Grid -> Grid
 step rules grid = mkGridFromGrid grid newLiveCells
   where
