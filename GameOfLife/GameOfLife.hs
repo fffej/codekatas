@@ -83,7 +83,7 @@ nextState :: CellState -> Int -> CellState
 nextState = tickCell defaultRules
 
 run :: Rules -> Grid -> [Grid]
-run rules g = iterate step' g
+run rules = iterate step'
   where
     step' = step rules
 
