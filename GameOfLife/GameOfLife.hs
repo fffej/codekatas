@@ -126,7 +126,7 @@ gridToImage grid path =  writeBMP path bmp
 
 randomGrid :: Int -> Int -> IO Grid
 randomGrid w h = do
-  x <- filterM (\x -> getStdRandom $ random) [(x,y) | x <- [0..w], y <- [0..h]]
+  x <- filterM (\x -> getStdRandom random) [(x,y) | x <- [0..w], y <- [0..h]]
   return (Grid (S.fromList x) (w,h))
 
 
