@@ -111,8 +111,8 @@ randomGrid w h = do
   return (Grid (S.fromList x) (w,h))
   
 
-main :: IO ()
-main = hspec $ do
+test :: IO ()
+test = hspec $ do
   describe "Game of life" $ do
     it "A live cell with anything other than 2 or 3 neighbours, dies" $ do 
       all (\n -> nextState True n == False) ([0..9] \\ [2,3])
