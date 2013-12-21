@@ -157,6 +157,6 @@ test = hspec $ do
     it "live neighbours can be retrieved" $ do
       numOfLiveNeighbours (mkGrid 3 3) (0,0) == 0
     it "live neighbours count is correct" $ do
-      numOfLiveNeighbours (mkGrid' (3,3) (replicate 9 (1,1))) (0,0) == 8
+      numOfLiveNeighbours (mkGrid' (3,3) [(x,y) | x <- [0..3], y <- [0..3]]) (0,0) `shouldBe` 8
     it "an empty grid translates to an empty grid" $ do
       step defaultRules (mkGrid 3 3) == mkGrid 3 3
