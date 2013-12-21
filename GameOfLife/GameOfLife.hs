@@ -8,7 +8,6 @@ import qualified Data.Set as S
 
 import Data.List ((\\))
 
-import Graphics.Pgm
 import Data.Array.Unboxed
 import Data.Word (Word16)
 
