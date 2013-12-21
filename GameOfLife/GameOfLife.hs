@@ -134,7 +134,15 @@ randomGrid :: Int -> Int -> IO Grid
 randomGrid w h = do
   x <- filterM (\x -> getStdRandom $ random) [(x,y) | x <- [0..w], y <- [0..h]]
   return (Grid (S.fromList x) (w,h))
-  
+
+
+writeFiles :: FilePath -> IO ()
+writeFiles path= do
+  grid <- randomGrid 64 64
+  let x = take 100 $ run defaultRules grid
+      y = [path ++ show c ++ ".bmp" | c <- [0 .. ]]
+      z = zip x y 
+  sequence_ (map (\(g,p) -> gridToImage g p) z)
 
 test :: IO ()
 test = hspec $ do
