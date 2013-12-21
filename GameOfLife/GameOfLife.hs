@@ -12,6 +12,9 @@ import Graphics.Pgm
 import Data.Array.Unboxed
 import Data.Word (Word16)
 
+import System.Random
+import Control.Monad
+
 type CellState = Bool
 
 data Rules = Rules
@@ -101,6 +104,12 @@ gridToArray grid = array ((0,0), dimensions grid) (map (\(x,y) -> (x,if y then 2
   where
     points = gridPoints grid
     cellStatus = map (\p -> (p,liveCellAt grid p)) points
+
+randomGrid :: Int -> Int -> IO Grid
+randomGrid w h = do
+  x <- filterM (\x -> getStdRandom $ random) [(x,y) | x <- [0..w], y <- [0..h]]
+  return (Grid (S.fromList x) (w,h))
+  
 
 main :: IO ()
 main = hspec $ do
