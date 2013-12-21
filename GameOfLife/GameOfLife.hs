@@ -108,12 +108,6 @@ step rules grid = mkGridFromGrid grid newLiveCells
     newLiveCells :: [Point]
     newLiveCells = map fst (filter snd newStates)
 
-gridToArray :: Grid -> UArray (Int,Int) Word16
-gridToArray grid = array ((0,0), dimensions grid) (map (\(x,y) -> (x,if y then 255 else 0)) cellStatus)
-  where
-    points = gridPoints grid
-    cellStatus = map (\p -> (p,liveCellAt grid p)) points
-
 gridToBMP :: Grid -> ByteString
 gridToBMP grid = pack $ concatMap (\y -> (if y then white else black)) cellStatus
   where
