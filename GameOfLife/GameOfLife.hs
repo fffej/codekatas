@@ -40,8 +40,11 @@ gridPoints grid = [(x,y) | x <- [0..w], y <- [0..h]]
 mkGrid :: Int -> Int -> Grid
 mkGrid w h = Grid S.empty (w,h)
 
+mkGrid' :: (Int,Int) -> [Point] -> Grid
+mkGrid' bounds points = Grid (S.fromList points) bounds
+
 mkGridFromGrid :: Grid -> [Point] -> Grid
-mkGridFromGrid g p = Grid (S.fromList p) (dimensions g)
+mkGridFromGrid g p = mkGrid' (dimensions g) p
 
 liveCellAt :: Grid -> Point -> Bool
 liveCellAt (Grid s _) p = S.member p s
@@ -153,5 +156,7 @@ test = hspec $ do
       all (\x -> liveCellAt (mkGrid 3 3) x == False) [(0,0),(1,1)]
     it "live neighbours can be retrieved" $ do
       numOfLiveNeighbours (mkGrid 3 3) (0,0) == 0
+    it "live neighbours count is correct" $ do
+      numOfLiveNeighbours (mkGrid' (3,3) (replicate 9 (1,1))) (0,0) == 8
     it "an empty grid translates to an empty grid" $ do
       step defaultRules (mkGrid 3 3) == mkGrid 3 3
