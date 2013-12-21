@@ -55,7 +55,7 @@ numOfLiveNeighbours g p = length (filter id (map (liveCellAt g) n))
     n = map (bound (dimensions g)) $ neighbours p
 
 neighbours :: Point -> [Point]
-neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ]
+neighbours (x,y) = [(x+dx,y+dy) | dx <- [-1,0,1], dy <- [-1,0,1] ] \\ [(x,y)]
 
 bound :: Point -> Point -> Point
 bound (x,y) (mx,my) = (dx,dy)
@@ -148,8 +148,8 @@ test = hspec $ do
     it "A dead cell with anything else stays dead" $ do
       all (\n -> nextState False n == False) ([0..9] \\ [3])
   describe "Grid" $ do
-    it "each cell has 9 neighbours" $ do
-      length (neighbours (1,1)) == 9
+    it "each cell has 8 neighbours (not including itself!" $ do
+      length (neighbours (1,1)) == 8
     it "cells are bounded" $ do
       all (\(x,y) -> x >= 0 && x < 10) (map (bound (10,10)) (neighbours (0,0)))
     it "grids are initially all dead" $ do
