@@ -9,7 +9,8 @@ import qualified Data.Set as S
 import Data.List ((\\))
 
 import Data.Array.Unboxed
-import Data.Word (Word16)
+import Data.Word (Word8,Word16)
+import Codec.BMP
 
 import System.Random
 import Control.Monad
@@ -103,6 +104,16 @@ gridToArray grid = array ((0,0), dimensions grid) (map (\(x,y) -> (x,if y then 2
   where
     points = gridPoints grid
     cellStatus = map (\p -> (p,liveCellAt grid p)) points
+
+gridToBMP :: Grid -> [Word8]
+gridToBMP grid = concatMap (\y -> (if y then white else black)) cellStatus
+  where
+    white :: [Word8]
+    white = [255,255,255,0]
+    black :: [Word8]
+    black = [0,0,0,0]
+    points = gridPoints grid
+    cellStatus = map (\p -> liveCellAt grid p) points
 
 randomGrid :: Int -> Int -> IO Grid
 randomGrid w h = do
