@@ -1,5 +1,5 @@
 module GameOfLife where
-
+    
 import Test.Hspec
 import Test.QuickCheck
 
