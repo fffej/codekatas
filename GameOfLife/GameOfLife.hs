@@ -10,6 +10,7 @@ import Data.List ((\\))
 
 import Data.Array.Unboxed
 import Data.Word (Word8,Word16)
+import Data.ByteString (ByteString,pack)
 import Codec.BMP
 
 import System.Random
@@ -105,8 +106,8 @@ gridToArray grid = array ((0,0), dimensions grid) (map (\(x,y) -> (x,if y then 2
     points = gridPoints grid
     cellStatus = map (\p -> (p,liveCellAt grid p)) points
 
-gridToBMP :: Grid -> [Word8]
-gridToBMP grid = concatMap (\y -> (if y then white else black)) cellStatus
+gridToBMP :: Grid -> ByteString
+gridToBMP grid = pack $ concatMap (\y -> (if y then white else black)) cellStatus
   where
     white :: [Word8]
     white = [255,255,255,0]
@@ -114,6 +115,12 @@ gridToBMP grid = concatMap (\y -> (if y then white else black)) cellStatus
     black = [0,0,0,0]
     points = gridPoints grid
     cellStatus = map (\p -> liveCellAt grid p) points
+
+gridToImage :: Grid -> FilePath -> IO ()
+gridToImage grid path =  writeBMP path bmp
+  where
+    (x,y) = dimensions grid
+    bmp = packRGBA32ToBMP (x + 1) (y + 1) (gridToBMP grid)
 
 randomGrid :: Int -> Int -> IO Grid
 randomGrid w h = do
