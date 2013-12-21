@@ -148,7 +148,7 @@ test = hspec $ do
     it "A dead cell with 3 neighbours becomes alive" $ do
       nextState False 3
     it "A dead cell with anything else stays dead" $ do
-      all (\n -> nextState False n == False) ([0..9] \\ [3])
+      all (\n -> not (nextState False n)) ([0..9] \\ [3])
   describe "Grid" $ do
     it "each cell has 8 neighbours (not including itself!" $ do
       length (neighbours (1,1)) == 8
