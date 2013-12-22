@@ -7,7 +7,9 @@ myLast :: [a] -> a
 myLast (x:[]) = x
 myLast (_:xs) = myLast xs
 
-myButLast = undefined
+myButLast :: [a] -> a
+myButLast (x:y:[]) = x
+myButLast (x:xs)   = myButLast xs
 
 main :: IO ()
 main = hspec $ do
