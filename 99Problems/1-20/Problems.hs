@@ -77,7 +77,11 @@ encodeModified xs = map toToken (pack xs)
     toToken (x:[]) = Single x
     toToken xs = Multiple (length xs) (head xs) 
 
-decodeModified = undefined
+decodeModified :: Eq a => [CompressToken a] -> [a]
+decodeModified xs = concatMap fromToken xs
+  where
+    fromToken (Single x) = [x]
+    fromToken (Multiple n x) = replicate n x
 
 main :: IO ()
 main = hspec $ do
