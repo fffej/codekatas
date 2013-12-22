@@ -26,7 +26,6 @@ myReverse xs = go xs []
       | null xs   = ys
       | otherwise = go (tail xs) (head xs:ys)  
 
-
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
