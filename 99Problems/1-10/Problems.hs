@@ -3,6 +3,8 @@ module Problems where
 import Test.Hspec
 import Test.QuickCheck
 
+import Control.Arrow ((&&&))
+
 myLast :: [a] -> a
 myLast (x:[]) = x
 myLast (_:xs) = myLast xs
@@ -63,10 +65,7 @@ pack (x:xs) = take' x xs : pack (drop' x xs)
 -- Open question; why does this parse in ghci and not hlint?
 -- encode :: Eq a => [a] => [(Int,a)]
 encode :: Eq a => [a] -> [(Int,a)]
-encode xs = go (pack xs)
-  where
-    go [] = []
-    go (x:xs) = (length x,head x) : go xs
+encode xs = map (length &&& head) (pack xs)
 
 main :: IO ()
 main = hspec $ do
