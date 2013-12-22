@@ -67,6 +67,12 @@ pack (x:xs) = take' x xs : pack (drop' x xs)
 encode :: Eq a => [a] -> [(Int,a)]
 encode xs = map (length &&& head) (pack xs)
 
+data CompressToken a = Multiple Int a
+                     | Single a
+                       deriving (Eq,Show)
+
+encodeModified = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -96,3 +102,8 @@ main = hspec $ do
       pack "aaaabbbccd" `shouldBe` ["aaaa","bbb","cc","d"]
     it "performs run length encoding" $ do
       encode "aaaabbbccd" `shouldBe` [(4,'a'),(3,'b'),(2,'c'),(1,'d')]
+    it "eliminates redundancy during compress" $ do
+      encodeModified "aaaabbbccd" `shouldBe` [Multiple 4 'a'
+                                             ,Multiple 3 'b'
+                                             ,Multiple 2 'c'
+                                             ,Single     'd']
