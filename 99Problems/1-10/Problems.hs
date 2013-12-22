@@ -38,10 +38,15 @@ flatten (Elem a)      = [a]
 flatten (List [])     = []
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
-compress :: [a] -> [a]
-compress xs = go xs []
+compress :: Eq a => [a] -> [a]
+compress xs = reverse $ go xs []
   where
-    go xs ys = undefined
+    go [] ys = ys
+    go (x:xs) [] = go xs [x]
+    go (x:xs) (ys)
+      | x == head ys = go xs ys
+      | otherwise    = go xs (x :ys)
+    
 
 main :: IO ()
 main = hspec $ do
