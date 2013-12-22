@@ -34,7 +34,9 @@ data NestedList a = Elem a
                     deriving (Show,Eq)
 
 flatten :: NestedList a -> [a]
-flatten (Elem a) = [a]
+flatten (Elem a)      = [a]
+flatten (List [])     = []
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
 main :: IO ()
 main = hspec $ do
