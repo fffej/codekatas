@@ -15,7 +15,9 @@ elementAt :: [a] -> Int -> a
 elementAt (x:_ ) 1 = x
 elementAt (_:xs) n = elementAt xs (n - 1)
 
-myLength = undefined
+myLength :: [a] -> Int
+myLength [] = 0
+myLength (_:xs) = 1 + myLength xs 
 
 main :: IO ()
 main = hspec $ do
