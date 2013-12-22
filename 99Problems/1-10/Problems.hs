@@ -61,7 +61,10 @@ pack (x:xs) = take' x xs : pack (drop' x xs)
       | otherwise = drop' y zs 
 
 encode :: Eq a => [a] => [(Int,a)]
-encode = undefined
+encode xs = go (pack xs)
+  where
+    go [] = []
+    go (x:xs) = (length x,head x) : go xs
 
 main :: IO ()
 main = hspec $ do
