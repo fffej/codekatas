@@ -11,6 +11,8 @@ myButLast :: [a] -> a
 myButLast (x:y:[]) = x
 myButLast (x:xs)   = myButLast xs
 
+elementAt = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -20,3 +22,5 @@ main = hspec $ do
       myLast [] `shouldThrow` anyException
     it "should find last but one element of the list" $ do
       myButLast [1,2,3,4] `shouldBe` 3
+    it "element at finds the nth element of the list" $ do
+      elementAt [1,2,3] 2 `shouldBe` 2
