@@ -12,3 +12,5 @@ main = hspec $ do
   describe "List functions" $ do
     it "should find the last element of the list" $ do
       myLast [1,2,3,4] `shouldBe` 4
+    it "last of an empty list should be an error" $ do
+      myLast [] `shouldThrow` anyException
