@@ -39,13 +39,13 @@ flatten (List [])     = []
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
 compress :: Eq a => [a] -> [a]
-compress xs = go xs []
+compress []     = []
+compress (x:xs) = x : go xs x
   where
-    go [] ys = ys
-    go (x:xs) [] = go xs [x]
-    go (x:xs) (ys)
-      | x == last ys = go xs ys
-      | otherwise    = go xs (ys ++ [x])
+    go [] ls = []
+    go (x:xs) y
+      | x == y    = go xs y
+      | otherwise = x : go xs x
     
 
 main :: IO ()
