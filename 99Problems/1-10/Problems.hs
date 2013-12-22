@@ -12,7 +12,8 @@ myButLast (x:y:[]) = x
 myButLast (x:xs)   = myButLast xs
 
 elementAt :: [a] -> Int -> a
-elementAt = undefined
+elementAt (x:_ ) 1 = x
+elementAt (_:xs) n = elementAt xs (n - 1)
 
 main :: IO ()
 main = hspec $ do
