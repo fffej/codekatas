@@ -29,6 +29,12 @@ myReverse xs = go xs []
 isPalindrome :: Eq a => [a] -> Bool
 isPalindrome xs = xs == myReverse xs
 
+data NestedList a = Elem a
+                  | List [NestedList a]
+                    deriving (Show,Eq)
+
+flatten xs = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -48,3 +54,5 @@ main = hspec $ do
       isPalindrome [1,2,3,2,1]
     it "checks for palindrome (negative)" $ do
       not (isPalindrome [1,2,3])
+    it "flattens nested lists" $ do
+      flatten (Elem 5) `shouldBe` [5]
