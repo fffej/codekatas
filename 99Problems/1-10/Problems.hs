@@ -38,6 +38,8 @@ flatten (Elem a)      = [a]
 flatten (List [])     = []
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
+compress = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -61,3 +63,5 @@ main = hspec $ do
       flatten (Elem 5) `shouldBe` [5]
     it "really does flatten lists" $ do
       flatten (List [List [Elem 5]]) `shouldBe` [5]
+    it "eliminates consecutive duplicates" $ do
+      compress "aaabbbcdddeee" `shouldBe` "abcde"
