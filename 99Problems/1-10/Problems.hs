@@ -3,7 +3,9 @@ module Problems where
 import Test.Hspec
 import Test.QuickCheck
 
-myLast = undefined
+myLast :: [a] -> a
+myLast (x:[]) = x
+myLast (_:xs) = myLast xs
 
 main :: IO ()
 main = hspec $ do
