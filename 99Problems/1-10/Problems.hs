@@ -15,6 +15,8 @@ elementAt :: [a] -> Int -> a
 elementAt (x:_ ) 1 = x
 elementAt (_:xs) n = elementAt xs (n - 1)
 
+myLength = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -26,3 +28,5 @@ main = hspec $ do
       myButLast [1,2,3,4] `shouldBe` 3
     it "element at finds the nth element of the list" $ do
       elementAt [1,2,3] 2 `shouldBe` 2
+    it "finds the length of a list" $ do
+      myLength "Hello, world!" `shouldBe` 13
