@@ -19,6 +19,8 @@ myLength :: [a] -> Int
 myLength [] = 0
 myLength (_:xs) = 1 + myLength xs 
 
+myReverse = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -32,3 +34,5 @@ main = hspec $ do
       elementAt [1,2,3] 2 `shouldBe` 2
     it "finds the length of a list" $ do
       myLength "Hello, world!" `shouldBe` 13
+    it "myReverse reverses a string" $ do
+      myReverse [1,2,3,4] `shouldBe` [4,3,2,1]
