@@ -7,6 +7,8 @@ myLast :: [a] -> a
 myLast (x:[]) = x
 myLast (_:xs) = myLast xs
 
+myButLast = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -14,3 +16,5 @@ main = hspec $ do
       myLast [1,2,3,4] `shouldBe` 4
     it "last of an empty list should be an error" $ do
       myLast [] `shouldThrow` anyException
+    it "should find last but one element of the list" $ do
+      myButLast [1,2,3,4] `shouldBe` 3
