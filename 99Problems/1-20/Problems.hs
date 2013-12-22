@@ -3,6 +3,7 @@ module Problems where
 import Test.Hspec
 import Test.QuickCheck
 
+import Control.Monad
 import Control.Arrow ((&&&))
 
 myLast :: [a] -> a
@@ -82,6 +83,13 @@ decodeModified xs = concatMap fromToken xs
   where
     fromToken (Single x) = [x]
     fromToken (Multiple n x) = replicate n x
+
+instance Arbitrary a => Arbitrary (CompressToken a) where
+  arbitrary = oneof
+              [
+               liftM Single arbitrary
+              ,liftM2 Multiple arbitrary arbitrary
+              ]
 
 main :: IO ()
 main = hspec $ do
