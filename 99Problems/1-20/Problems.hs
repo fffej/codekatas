@@ -77,6 +77,7 @@ encodeModified xs = map toToken (pack xs)
     toToken (x:[]) = Single x
     toToken xs = Multiple (length xs) (head xs) 
 
+decodeModified = undefined
 
 main :: IO ()
 main = hspec $ do
@@ -112,3 +113,8 @@ main = hspec $ do
                                              ,Multiple 3 'b'
                                              ,Multiple 2 'c'
                                              ,Single     'd']
+    it "decode modified" $ do
+      decodeModified [Multiple 4 'a'
+                     ,Multiple 3 'b'
+                     ,Multiple 2 'c'
+                     ,Single     'd'] `shouldBe` "aaaabbbccd"
