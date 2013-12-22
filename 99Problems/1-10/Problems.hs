@@ -33,6 +33,7 @@ data NestedList a = Elem a
                   | List [NestedList a]
                     deriving (Show,Eq)
 
+flatten :: NestedList a -> [a]
 flatten xs = undefined
 
 main :: IO ()
