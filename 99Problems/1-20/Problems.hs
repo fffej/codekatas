@@ -71,7 +71,8 @@ data CompressToken a = Multiple Int a
                      | Single a
                        deriving (Eq,Show)
 
-encodeModified = undefined
+encodeModified :: Eq a => [a] -> [CompressToken a]
+encodeModified xs = undefined
 
 main :: IO ()
 main = hspec $ do
