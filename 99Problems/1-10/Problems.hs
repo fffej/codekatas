@@ -39,7 +39,7 @@ flatten (List [])     = []
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
 compress :: [a] -> [a]
-compress = undefined
+compress [] = []
 
 main :: IO ()
 main = hspec $ do
