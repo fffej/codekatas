@@ -26,7 +26,8 @@ myReverse xs = go xs []
       | null xs   = ys
       | otherwise = go (tail xs) (head xs:ys)  
 
-isPalindrome = undefined
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome xs = xs == myReverse xs
 
 main :: IO ()
 main = hspec $ do
@@ -44,6 +45,6 @@ main = hspec $ do
     it "myReverse reverses a string" $ do
       myReverse [1,2,3,4] `shouldBe` [4,3,2,1]
     it "checks for palindomes (positive)" $ do
-      isPalindrome [1,2,3,2,1] `shouldBe` True
+      isPalindrome [1,2,3,2,1]
     it "checks for palindrome (negative)" $ do
-      not (isPalindrome [1,2,3]) `shouldBe` True
+      not (isPalindrome [1,2,3])
