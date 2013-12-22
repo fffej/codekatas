@@ -47,7 +47,18 @@ compress (x:xs) = x : go xs x
       | x == y    = go xs y
       | otherwise = x : go xs x
 
-pack = undefined
+pack :: Eq a => [a] -> [[a]]
+pack []     = []
+pack (x:xs) = take' x xs : pack (drop' x xs)
+  where
+    take' y [] = [y]
+    take' y (z:zs)
+      | y == z    = z : take' y zs
+      | otherwise = [y]
+    drop' y [] = []
+    drop' y (z:zs)
+      | y /= z    = z:zs
+      | otherwise = drop' y zs 
 
 main :: IO ()
 main = hspec $ do
@@ -75,4 +86,4 @@ main = hspec $ do
     it "eliminates consecutive duplicates" $ do
       compress "aaabbbcdddeee" `shouldBe` "abcde"
     it "packs consecutive duplicates into sublists" $ do
-      pack "aaaabbbccd" `shouldBe` ["aaa","bbb","cc","d"]
+      pack "aaaabbbccd" `shouldBe` ["aaaa","bbb","cc","d"]
