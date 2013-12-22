@@ -84,6 +84,9 @@ decodeModified xs = concatMap fromToken xs
     fromToken (Single x) = [x]
     fromToken (Multiple n x) = replicate n x
 
+inverse :: Eq a => [a] -> Bool
+inverse xs = decodeModified (encodeModified xs) == xs
+
 instance Arbitrary a => Arbitrary (CompressToken a) where
   arbitrary = oneof
               [
@@ -130,3 +133,6 @@ main = hspec $ do
                      ,Multiple 3 'b'
                      ,Multiple 2 'c'
                      ,Single     'd'] `shouldBe` "aaaabbbccd"
+{-    it "decode modified and encode modified work the same" $ do
+      property inverse -}
+      
