@@ -57,3 +57,5 @@ main = hspec $ do
       not (isPalindrome [1,2,3])
     it "flattens nested lists" $ do
       flatten (Elem 5) `shouldBe` [5]
+    it "really does flatten lists" $ do
+      flatten (List [List [Elem 5]]) `shouldBe` [5]
