@@ -46,7 +46,8 @@ compress (x:xs) = x : go xs x
     go (x:xs) y
       | x == y    = go xs y
       | otherwise = x : go xs x
-    
+
+pack = undefined
 
 main :: IO ()
 main = hspec $ do
@@ -73,3 +74,5 @@ main = hspec $ do
       flatten (List [List [Elem 5]]) `shouldBe` [5]
     it "eliminates consecutive duplicates" $ do
       compress "aaabbbcdddeee" `shouldBe` "abcde"
+    it "packs consecutive duplicates into sublists" $ do
+      pack "aaaabbbccd" `shouldBe` ["aaa","bbb","cc","d"]
