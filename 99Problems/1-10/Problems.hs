@@ -20,8 +20,12 @@ myLength [] = 0
 myLength (_:xs) = 1 + myLength xs 
 
 myReverse :: [a] -> [a]
-myReverse [] = []
-myReverse (x:xs) = myReverse xs ++ [x]
+myReverse xs = go xs []
+  where
+    go xs ys
+      | null xs   = ys
+      | otherwise = go (tail xs) (head xs:ys)  
+
 
 main :: IO ()
 main = hspec $ do
