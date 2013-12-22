@@ -38,6 +38,7 @@ flatten (Elem a)      = [a]
 flatten (List [])     = []
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
+compress :: [a] -> [a]
 compress = undefined
 
 main :: IO ()
