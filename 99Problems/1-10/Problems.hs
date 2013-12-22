@@ -19,7 +19,9 @@ myLength :: [a] -> Int
 myLength [] = 0
 myLength (_:xs) = 1 + myLength xs 
 
-myReverse = undefined
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (x:xs) = myReverse xs ++ [x]
 
 main :: IO ()
 main = hspec $ do
