@@ -60,6 +60,7 @@ pack (x:xs) = take' x xs : pack (drop' x xs)
       | y /= z    = z:zs
       | otherwise = drop' y zs 
 
+encode :: Eq a => [a] => [(Int,a)]
 encode = undefined
 
 main :: IO ()
