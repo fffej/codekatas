@@ -60,6 +60,8 @@ pack (x:xs) = take' x xs : pack (drop' x xs)
       | y /= z    = z:zs
       | otherwise = drop' y zs 
 
+encode = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -87,3 +89,5 @@ main = hspec $ do
       compress "aaabbbcdddeee" `shouldBe` "abcde"
     it "packs consecutive duplicates into sublists" $ do
       pack "aaaabbbccd" `shouldBe` ["aaaa","bbb","cc","d"]
+    it "performs run length encoding" $ do
+      encode "aaaabbbccd" `shouldBe` [(4,'a'),(3,'b'),(2,'c'),(1,'d')]
