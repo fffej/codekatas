@@ -60,7 +60,9 @@ pack (x:xs) = take' x xs : pack (drop' x xs)
       | y /= z    = z:zs
       | otherwise = drop' y zs 
 
-encode :: Eq a => [a] => [(Int,a)]
+-- Open question; why does this parse in ghci and not hlint?
+-- encode :: Eq a => [a] => [(Int,a)]
+encode :: Eq a => [a] -> [(Int,a)]
 encode xs = go (pack xs)
   where
     go [] = []
