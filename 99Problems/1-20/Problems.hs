@@ -179,3 +179,5 @@ main = hspec $ do
       dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
     it "split" $ do
       split "abcdefghik" 3 `shouldBe` ("abc", "defghik")
+    it "split is equivalent to splitAt" $ property $
+      \xs n -> splitAt n xs == split (xs :: [Char]) (n :: Int)
