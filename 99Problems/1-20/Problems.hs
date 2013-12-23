@@ -117,7 +117,11 @@ dropEvery xs n = go xs n 1
       | otherwise      = go xs n (c + 1)
 
 split :: [a] -> Int -> ([a],[a])
-split = undefined
+split []     _     = ([],[])
+split (x:xs) 0     = ([],x:xs)
+split (x:xs) n     = (x:a,b)
+  where
+    (a,b) = split xs (n - 1) 
 
 main :: IO ()
 main = hspec $ do
