@@ -115,7 +115,8 @@ dropEvery xs n = go xs n 1
     go (x:xs) n c
       | c `mod` n /= 0 = x : go xs n (c + 1)
       | otherwise      = go xs n (c + 1)
-      
+
+split = undefined
 
 main :: IO ()
 main = hspec $ do
@@ -171,3 +172,5 @@ main = hspec $ do
       repli [1,2,3] 3 `shouldBe` [1,1,1,2,2,2,3,3,3]
     it "dropEvery" $ do
       dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
+    it "split" $ do
+      split "abcdefghik" 3 `shouldBe` ("abc", "defghik")
