@@ -97,7 +97,7 @@ decodeModified = concatMap fromToken
     fromToken (Single x) = [x]
     fromToken (Multiple n x) = replicate n x
 
-duplicate :: [a] => [a]
+duplicate :: [a] -> [a]
 duplicate [] = []
 duplicate (x:xs) = x : x : duplicate xs
 
@@ -139,7 +139,7 @@ rotate xs n = go (endless xs) offset
     go (x:xs) 0 = take len (x:xs)
     go (x:xs) n = go xs (n - 1)
     len = length xs
-    offset = if n > 0 then n else (len - n)
+    offset = if n > 0 then n else (len + n)
     endless xs = xs ++ endless xs
     
 
