@@ -132,6 +132,8 @@ slice xs s e = go xs 1
       | c >= s && c <= e = x : go xs (c + 1)
       | otherwise        = []
 
+rotate = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -192,3 +194,7 @@ main = hspec $ do
       \xs n -> splitAt n xs == split (xs :: [Char]) (n :: Int)
     it "slice" $ do
       slice ['a','b','c','d','e','f','g','h','i','k'] 3 7 `shouldBe` "cdefg"
+    it "rotate 1" $ do
+      rotate ['a','b','c','d','e','f','g','h'] 3 `shouldBe` "defghabc"
+    it "rotate 2" $ do
+      rotate ['a','b','c','d','e','f','g','h'] (-2) `shouldBe` "ghabcdef"
