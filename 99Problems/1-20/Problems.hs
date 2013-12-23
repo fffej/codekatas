@@ -81,7 +81,15 @@ encodeModified xs = map toToken (pack xs)
 
 encodeDirect :: Eq a => [a] -> [CompressToken a]
 encodeDirect []     = []
-encodeDirect (x:xs) = Single x : encodeDirect xs 
+encodeDirect (x:xs) = (makeToken count x) : encodeDirect rest
+  where
+    makeToken 1 c = Single c
+    makeToken n c = Multiple n c
+    (count,rest) = go x xs 1
+    go x []     acc = (acc,[])
+    go x (y:ys) acc 
+      | x /= y = (acc,y:ys)
+      | x == y = go x ys (acc + 1)
 
 decodeModified :: Eq a => [CompressToken a] -> [a]
 decodeModified xs = concatMap fromToken xs
