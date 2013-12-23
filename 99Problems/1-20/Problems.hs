@@ -101,7 +101,12 @@ duplicate :: [a] => [a]
 duplicate [] = []
 duplicate (x:xs) = x : x : duplicate xs
 
-repli = undefined
+repli :: [a] -> Int -> [a]
+repli [] _     = []
+repli (x:xs) n = go n ++ repli xs n
+  where
+    go 0 = []
+    go a = x : go (a - 1)
 
 main :: IO ()
 main = hspec $ do
