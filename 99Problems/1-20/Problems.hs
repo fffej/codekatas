@@ -79,7 +79,9 @@ encodeModified xs = map toToken (pack xs)
     toToken (x:[]) = Single x
     toToken xs = Multiple (length xs) (head xs)
 
-encodeDirect = undefined
+encodeDirect :: Eq a => [a] -> [CompressToken a]
+encodeDirect []     = []
+encodeDirect (x:xs) = Single x : encodeDirect xs 
 
 decodeModified :: Eq a => [CompressToken a] -> [a]
 decodeModified xs = concatMap fromToken xs
