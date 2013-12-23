@@ -5,6 +5,7 @@ import Test.QuickCheck
 
 import Control.Monad
 import Control.Arrow ((&&&))
+import Control.Applicative
 
 myLast :: [a] -> a
 myLast (x:[]) = x
@@ -88,7 +89,7 @@ instance (Arbitrary a) => Arbitrary (CompressToken a) where
   arbitrary = oneof
               [
                liftM Single arbitrary
-              ,liftM2 Multiple arbitrary arbitrary
+              ,liftM2 Multiple (elements [2..100]) arbitrary
               ]
 
 main :: IO ()
