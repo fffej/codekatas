@@ -109,7 +109,13 @@ repli (x:xs) n = go n ++ repli xs n
     go a = x : go (a - 1)
 
 dropEvery :: [a] -> Int -> [a]
-dropEvery = undefined
+dropEvery xs n = go xs n 1
+  where
+    go [] _ _ = []
+    go (x:xs) n c
+      | c `mod` n /= 0 = x : go xs n (c + 1)
+      | otherwise      = go xs n (c + 1)
+      
 
 main :: IO ()
 main = hspec $ do
