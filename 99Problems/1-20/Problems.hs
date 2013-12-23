@@ -108,6 +108,8 @@ repli (x:xs) n = go n ++ repli xs n
     go 0 = []
     go a = x : go (a - 1)
 
+dropEvery = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -160,3 +162,5 @@ main = hspec $ do
       \xs -> length (duplicate xs) == 2 * length (xs :: [Int])
     it "replicate elements" $ do
       repli [1,2,3] 3 `shouldBe` [1,1,1,2,2,2,3,3,3]
+    it "dropEvery" $ do
+      dropEvery "abcdefghik" 3 `shouldBe` "abdeghk"
