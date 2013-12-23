@@ -132,4 +132,5 @@ main = hspec $ do
                      ,Single     'd'] `shouldBe` "aaaabbbccd"
     it "decode modified and encode modified work the same" $ property $
       \xs -> decodeModified (encodeModified xs) == (xs :: [Int])
-      
+    it "encode modified and decode modifed work the same" $ property $
+      \xs -> encodeModified (decodeModified xs) == (xs :: [CompressToken Char])
