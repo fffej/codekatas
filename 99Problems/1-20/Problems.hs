@@ -133,7 +133,15 @@ slice xs s e = go xs 1
       | otherwise        = []
 
 rotate :: [a] -> Int -> [a]
-rotate = undefined
+rotate xs n = go (endless xs) offset
+  where
+    go []     _ = []
+    go (x:xs) 0 = take len (x:xs)
+    go (x:xs) n = go xs (n - 1)
+    len = length xs
+    offset = if n > 0 then n else (len - n)
+    endless xs = xs ++ endless xs
+    
 
 main :: IO ()
 main = hspec $ do
