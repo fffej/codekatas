@@ -97,6 +97,8 @@ decodeModified = concatMap fromToken
     fromToken (Single x) = [x]
     fromToken (Multiple n x) = replicate n x
 
+duplicate = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -143,3 +145,5 @@ main = hspec $ do
                                            ,Multiple 3 'b'
                                            ,Multiple 2 'c'
                                            ,Single     'd']
+    it "duplicate the items in a list" $ do
+      duplicate [1,2,3] `shouldBe` [1,1,2,2,3,3]
