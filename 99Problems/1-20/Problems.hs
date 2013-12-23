@@ -97,7 +97,9 @@ decodeModified = concatMap fromToken
     fromToken (Single x) = [x]
     fromToken (Multiple n x) = replicate n x
 
-duplicate = undefined
+duplicate :: [a] => [a]
+duplicate [] = []
+duplicate (x:xs) = x : x : duplicate xs
 
 main :: IO ()
 main = hspec $ do
@@ -147,3 +149,5 @@ main = hspec $ do
                                            ,Single     'd']
     it "duplicate the items in a list" $ do
       duplicate [1,2,3] `shouldBe` [1,1,2,2,3,3]
+    it "duplicate doubles the length" $ property $
+      \xs -> length (duplicate xs) == 2 * length (xs :: [Int])
