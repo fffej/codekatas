@@ -132,6 +132,7 @@ slice xs s e = go xs 1
       | c >= s && c <= e = x : go xs (c + 1)
       | otherwise        = []
 
+rotate :: [a] -> Int -> [a]
 rotate = undefined
 
 main :: IO ()
