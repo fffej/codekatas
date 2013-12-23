@@ -77,7 +77,9 @@ encodeModified :: Eq a => [a] -> [CompressToken a]
 encodeModified xs = map toToken (pack xs)
   where
     toToken (x:[]) = Single x
-    toToken xs = Multiple (length xs) (head xs) 
+    toToken xs = Multiple (length xs) (head xs)
+
+encodeDirect = undefined
 
 decodeModified :: Eq a => [CompressToken a] -> [a]
 decodeModified xs = concatMap fromToken xs
@@ -126,3 +128,8 @@ main = hspec $ do
                      ,Single     'd'] `shouldBe` "aaaabbbccd"
     it "decode modified and encode modified work the same" $ property $
       \xs -> decodeModified (encodeModified xs) == (xs :: [Int])
+    it "eliminates redundancy during compress (efficient)" $ do
+      encodeDirect "aaaabbbccd" `shouldBe` [Multiple 4 'a'
+                                           ,Multiple 3 'b'
+                                           ,Multiple 2 'c'
+                                           ,Single     'd']
