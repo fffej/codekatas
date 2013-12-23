@@ -101,6 +101,8 @@ duplicate :: [a] => [a]
 duplicate [] = []
 duplicate (x:xs) = x : x : duplicate xs
 
+repli = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -151,3 +153,5 @@ main = hspec $ do
       duplicate [1,2,3] `shouldBe` [1,1,2,2,3,3]
     it "duplicate doubles the length" $ property $
       \xs -> length (duplicate xs) == 2 * length (xs :: [Int])
+    it "replicate elements" $ do
+      repli [1,2,3] 3 `shouldBe` [1,1,1,2,2,2,3,3,3]
