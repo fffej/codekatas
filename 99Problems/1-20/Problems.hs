@@ -108,6 +108,7 @@ repli (x:xs) n = go n ++ repli xs n
     go 0 = []
     go a = x : go (a - 1)
 
+dropEvery :: [a] -> Int -> [a]
 dropEvery = undefined
 
 main :: IO ()
