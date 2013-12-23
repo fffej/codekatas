@@ -125,7 +125,12 @@ split (x:xs) n
     (a,b) = split xs (n - 1) 
 
 slice :: [a] -> Int -> Int -> [a]
-slice = undefined
+slice xs s e = go xs 1
+  where
+    go (x:xs) c
+      | c < s            = go xs (c + 1) 
+      | c >= s && c <= e = x : go xs (c + 1)
+      | otherwise        = []
 
 main :: IO ()
 main = hspec $ do
