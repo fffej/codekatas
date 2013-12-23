@@ -124,6 +124,8 @@ split (x:xs) n
   where
     (a,b) = split xs (n - 1) 
 
+slice = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "List functions" $ do
@@ -182,3 +184,5 @@ main = hspec $ do
       split "abcdefghik" 3 `shouldBe` ("abc", "defghik")
     it "split is equivalent to splitAt" $ property $
       \xs n -> splitAt n xs == split (xs :: [Char]) (n :: Int)
+    it "slice" $ do
+      slice ['a','b','c','d','e','f','g','h','i','k'] 3 7 `shouldBe` "cdefg"
