@@ -116,6 +116,7 @@ dropEvery xs n = go xs n 1
       | c `mod` n /= 0 = x : go xs n (c + 1)
       | otherwise      = go xs n (c + 1)
 
+split :: [a] -> Int -> ([a],[a])
 split = undefined
 
 main :: IO ()
