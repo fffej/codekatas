@@ -124,6 +124,7 @@ split (x:xs) n
   where
     (a,b) = split xs (n - 1) 
 
+slice :: [a] -> Int -> Int -> [a]
 slice = undefined
 
 main :: IO ()
