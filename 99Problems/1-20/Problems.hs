@@ -118,8 +118,9 @@ dropEvery xs n = go xs n 1
 
 split :: [a] -> Int -> ([a],[a])
 split []     _     = ([],[])
-split (x:xs) 0     = ([],x:xs)
-split (x:xs) n     = (x:a,b)
+split (x:xs) n
+  | n <= 0    = ([],x:xs)
+  | otherwise =  (x:a,b)
   where
     (a,b) = split xs (n - 1) 
 
