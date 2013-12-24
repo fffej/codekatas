@@ -46,7 +46,6 @@ combinations 0 _  = [ [] ]
 combinations n xs = [ y:ys | y:xs' <- tails xs
                            , ys <- combinations (n-1) xs']
  
-
 main = hspec $ do
   describe "99 problems" $ do
     it "should insert at" $ do
