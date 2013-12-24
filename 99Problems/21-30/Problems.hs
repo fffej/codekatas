@@ -3,6 +3,7 @@ module Problems where
 import Test.Hspec
 import Test.QuickCheck
 
+insertAt :: a -> [a] -> Int -> [a]
 insertAt = undefined
 
 main = hspec $ do
