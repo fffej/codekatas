@@ -45,7 +45,8 @@ goldbach :: Integer -> (Integer,Integer)
 goldbach n = head [ (x,y) | x <- primeNums, y <- primeNums, x + y == n ]
   where
     primeNums = primesR 1 n
-  
+
+goldbachList :: Integer -> Integer -> [(Integer,Integer)]
 goldbachList = undefined
 
 
