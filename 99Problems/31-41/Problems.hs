@@ -12,7 +12,7 @@ gcd' a b
   | otherwise  = gcd' b (a `rem` b)
 
 coPrime :: Integer -> Integer -> Bool
-coPrime = undefined
+coPrime x y = gcd x y == 1
 
 main :: IO ()
 main = hspec $ do
