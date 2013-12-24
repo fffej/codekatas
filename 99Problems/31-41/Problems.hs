@@ -41,10 +41,14 @@ effTotient n = product mp
 primesR :: Integer -> Integer -> [Integer]
 primesR s e = filter isPrime [s..e]
 
-goldbach :: Integer -> (Integer,Integer)
-goldbach n = head [ (x,y) | x <- primeNums, y <- primeNums, x + y == n ]
+goldbachs :: Integer -> [(Integer,Integer)]
+goldbachs n = [ (x,y) | x <- primeNums, y <- primeNums, x + y == n ]
   where
     primeNums = primesR 2 n
+
+
+goldbach :: Integer -> (Integer,Integer)
+goldbach n = head (goldbachs n)
 
 goldbachList :: Integer -> Integer -> [(Integer,Integer)]
 goldbachList s e = map goldbach evens
