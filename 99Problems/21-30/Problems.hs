@@ -8,7 +8,11 @@ insertAt e xs 1      = e:xs
 insertAt e (x:xs) n  = x : insertAt e xs (n - 1)
 
 range :: Int -> Int -> [Int]
-range = undefined
+range s e = go s
+  where
+    go n
+      | n >= s && n <= e = n : go (n + 1)
+      | otherwise        = []
 
 main = hspec $ do
   describe "99 problems" $ do
