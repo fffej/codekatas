@@ -32,7 +32,10 @@ primeFactorsMult :: Integral a => a -> [(a,Int)]
 primeFactorsMult n = map (\x -> (head x, length x)) $ group (primeFactors n)
 
 effTotient :: Integer -> Integer
-effTotient = undefined
+effTotient n = product mp
+  where
+    pf = primeFactorsMult n
+    mp = map (\(p,m) -> p - 1 * p ^ (m - 1)) pf
 
 main :: IO ()
 main = hspec $ do
