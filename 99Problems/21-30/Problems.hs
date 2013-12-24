@@ -4,7 +4,6 @@ import Test.Hspec
 import Test.QuickCheck
 
 import System.Random
-import Data.Array.MArray hiding (range)
 import Data.Array.IO hiding (range)
 
 insertAt :: a -> [a] -> Int -> [a]
@@ -20,6 +19,11 @@ range s e = go s
 
 rnd_select :: [a] -> Int -> IO [a]
 rnd_select xs n = undefined
+
+shuffle :: [a] -> IO (IOArray Int a)
+shuffle xs = do
+  x <- newListArray (0,length xs) xs
+  return x
 
 main = hspec $ do
   describe "99 problems" $ do
