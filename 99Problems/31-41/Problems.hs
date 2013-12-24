@@ -38,8 +38,9 @@ effTotient n = product mp
     pf = primeFactorsMult n
     mp = map (\(p,m) -> p - 1 * p ^ (m - 1)) pf
 
-primesR :: Integer -> Integer -> [Integer]
-primesR s e = filter isPrime [s..e]
+primesR :: Integral a => a -> a -> [a]
+primesR a b = takeWhile (<= b) $ dropWhile (< a) $ sieve [2..]
+  where sieve (n:ns) = n:sieve [ m | m <- ns, m `mod` n /= 0 ]
 
 goldbachs :: Integer -> [(Integer,Integer)]
 goldbachs n = [ (x,y) | x <- primeNums, y <- primeNums, x + y == n ]
@@ -55,8 +56,9 @@ goldbachList s e = map goldbach evens
      evens = [ x | x <- [s .. e], x `rem` 2 == 0 ]
 
 goldbachList' :: Integer -> Integer -> Integer -> [(Integer,Integer)]
-goldbachList' s e m = map (firstGreaterThan . goldbachs) evens
+goldbachList' s e m = filter (\(x,y) -> x > m) $ map head gbs
   where
+    gbs = map goldbachs evens
     evens = [ x | x <- [s .. e], x `rem` 2 == 0 ]
     firstGreaterThan xs = head (filter (\(x,y) -> x > m) xs)
 
