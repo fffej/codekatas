@@ -14,6 +14,9 @@ gcd' a b
 coPrime :: Integer -> Integer -> Bool
 coPrime x y = gcd x y == 1
 
+totient :: Integer -> Integer
+totient n = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "Arithmetic" $ do
@@ -25,3 +28,5 @@ main = hspec $ do
       [gcd' 36 63, gcd' (-3) (-6), gcd' (-3) 6] `shouldBe` [9,3,3]
     it "co prime (positive)" $ do
       coPrime 35 64
+    it "totient function" $ do
+      map totient [1,10] `shouldBe` [1,4]
