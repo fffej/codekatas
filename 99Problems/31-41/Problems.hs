@@ -39,7 +39,7 @@ effTotient n = product mp
     mp = map (\(p,m) -> p - 1 * p ^ (m - 1)) pf
 
 primesR :: Integer -> Integer -> [Integer]
-primesR s e = undefined
+primesR s e = filter isPrime [s..e]
 
 main :: IO ()
 main = hspec $ do
