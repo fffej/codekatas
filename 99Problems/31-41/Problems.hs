@@ -26,6 +26,8 @@ primeFactors n
     divisors = filter (\x -> n `mod` x == 0) [2..n]
     divisor  = head divisors
 
+primeFactorsMult = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "Arithmetic" $ do
@@ -41,3 +43,5 @@ main = hspec $ do
       map totient [1,10] `shouldBe` [1,4]
     it "prime factors" $ do
       primeFactors 315 `shouldBe` [3,3,5,7]
+    it "prime factors and multiplicity" $ do
+      primeFactorsMult 315 `shouldBe` [(3,2),(5,1),(7,1)]
