@@ -1,6 +1,7 @@
 module Problems where
 
 import Data.List (group)
+import Control.Arrow ((&&&))
 
 import Test.Hspec
 import Test.QuickCheck
@@ -29,7 +30,7 @@ primeFactors n
     divisor  = head divisors
 
 primeFactorsMult :: Integral a => a -> [(a,Int)]
-primeFactorsMult n = map (\x -> (head x, length x)) $ group (primeFactors n)
+primeFactorsMult n = map (head &&& length) $ group (primeFactors n)
 
 effTotient :: Integer -> Integer
 effTotient n = product mp
