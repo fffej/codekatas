@@ -46,9 +46,20 @@ combinations 0 _  = [ [] ]
 combinations n xs = [ y:ys | y:xs' <- tails xs
                            , ys <- combinations (n-1) xs']
 
-group :: [Int] -> [a] -> [[a]]
-group [] _ = [[]]
-                    
+combination :: Int -> [a] -> [([a],[a])]
+combination 0 xs     = [([],xs)]
+combination n []     = []
+combination n (x:xs) = ts ++ ds
+  where
+    ts = [ (x:ys,zs) | (ys,zs) <- combination (n-1) xs ]
+    ds = [ (ys,x:zs) | (ys,zs) <- combination  n    xs ]
+
+group :: [Int] -> [a] -> [[[a]]]
+group [] xs = [[]]
+group (g:gs) xs = concatMap helper $ combination g xs
+  where
+    helper (as, bs) = map (as:) (group gs bs)
+             
 main = hspec $ do
   describe "99 problems" $ do
     it "should insert at" $ do
