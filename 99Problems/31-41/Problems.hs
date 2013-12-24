@@ -42,7 +42,10 @@ primesR :: Integer -> Integer -> [Integer]
 primesR s e = filter isPrime [s..e]
 
 goldbach :: Integer -> (Integer,Integer)
-goldbach = undefined
+goldbach n = head [ (x,y) | x <- primeNums, y <- primeNums, x + y == n ]
+  where
+    primeNums = primesR 1 n
+  
 
 main :: IO ()
 main = hspec $ do
