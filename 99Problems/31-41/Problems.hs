@@ -46,6 +46,8 @@ goldbach n = head [ (x,y) | x <- primeNums, y <- primeNums, x + y == n ]
   where
     primeNums = primesR 1 n
   
+goldbachList = undefined
+
 
 main :: IO ()
 main = hspec $ do
@@ -70,3 +72,6 @@ main = hspec $ do
       primesR 10 20 `shouldBe` [11,13,17,19]
     it "goldbach conjecture" $ do
       goldbach 28 `shouldBe` (5,23)
+    it "goldbachList (1)" $ do
+      goldbachList 9 20 `shouldBe` [(3,7),(5,7),(3,11),(3,13),(5,13),(3,17)]
+        
