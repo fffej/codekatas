@@ -41,6 +41,9 @@ effTotient n = product mp
 primesR :: Integer -> Integer -> [Integer]
 primesR s e = filter isPrime [s..e]
 
+goldbach :: Integer -> (Integer,Integer)
+goldbach = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "Arithmetic" $ do
@@ -62,3 +65,5 @@ main = hspec $ do
       map effTotient [1,10] `shouldBe` [1,4]
     it "randoms in a range" $ do
       primesR 10 20 `shouldBe` [11,13,17,19]
+    it "goldbach conjecture" $ do
+      goldbach 28 `shouldBe` (5,23)
