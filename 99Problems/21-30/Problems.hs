@@ -59,7 +59,9 @@ group [] xs = [[]]
 group (g:gs) xs = concatMap helper $ combination g xs
   where
     helper (as, bs) = map (as:) (group gs bs)
-             
+
+lsort = undefined
+                      
 main = hspec $ do
   describe "99 problems" $ do
     it "should insert at" $ do
@@ -76,5 +78,6 @@ main = hspec $ do
       combinations 2 "abc" `shouldBe` ["ab","ac","bc"]
     it "grouping" $ do
       group [2,3,4] ["aldo","beat","carla","david","evi","flip","gary","hugo","ida"] `shouldSatisfy` (\x -> length x == 1260)
-
+    it "sorting" $ do
+      lsort ["abc","de","fgh","de","ijkl","mn","o"] `shouldBe` ["o","de","de","mn","abc","fgh","ijkl"]
 
