@@ -142,6 +142,7 @@ rotate xs n = go (endless xs) offset
     offset = if n > 0 then n else (len + n)
     endless xs = xs ++ endless xs
 
+removeAt :: Int -> [a] -> (a,[a])
 removeAt = undefined
 
 main :: IO ()
