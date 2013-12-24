@@ -11,6 +11,9 @@ gcd' a b
   | b == 0     = abs a
   | otherwise  = gcd' b (a `rem` b)
 
+coPrime :: Integer -> Integer -> Bool
+coPrime = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "Arithmetic" $ do
@@ -20,3 +23,5 @@ main = hspec $ do
       not (isPrime 345)
     it "can do gcd" $ do
       [gcd' 36 63, gcd' (-3) (-6), gcd' (-3) 6] `shouldBe` [9,3,3]
+    it "co prime (positive)" $ do
+      coPrime 35 64
