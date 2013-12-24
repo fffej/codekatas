@@ -1,5 +1,7 @@
 module Problems where
 
+import Data.List (group)
+
 import Test.Hspec
 import Test.QuickCheck
 
@@ -27,7 +29,7 @@ primeFactors n
     divisor  = head divisors
 
 primeFactorsMult :: Integer -> [(Integer,Integer)]
-primeFactorsMult = undefined
+primeFactorsMult n = map (\x -> (head x, fromIntegral $ length x)) $ group (primeFactors n)
 
 main :: IO ()
 main = hspec $ do
