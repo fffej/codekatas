@@ -68,7 +68,9 @@ lsort (x:xs) = lsort (lessThan xs) ++ [x] ++ lsort (greaterThan xs)
     n = length x
     lessThan xs = filter (\x -> length x < n) xs
     greaterThan xs = filter (\x -> length x >= n) xs
-                      
+
+lfsort = undefined
+                     
 main = hspec $ do
   describe "99 problems" $ do
     it "should insert at" $ do
@@ -87,4 +89,5 @@ main = hspec $ do
       group [2,3,4] ["aldo","beat","carla","david","evi","flip","gary","hugo","ida"] `shouldSatisfy` (\x -> length x == 1260)
     it "sorting" $ do
       lsort ["abc","de","fgh","de","ijkl","mn","o"] `shouldBe` ["o","de","de","mn","abc","fgh","ijkl"]
-
+    it "sorted by length frequency" $ do
+      lfsort ["abc", "de", "fgh", "de", "ijkl", "mn", "o"] `shouldBe` ["ijkl","o","abc","fgh","de","de","mn"]
