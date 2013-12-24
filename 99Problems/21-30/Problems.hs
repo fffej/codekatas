@@ -22,7 +22,7 @@ rndSelect :: [a] -> Int -> IO [a]
 rndSelect xs n = liftM (take n) (shuffle xs)
 
 diffSelect :: Int -> Int -> IO [Int]
-diffSelect = undefined
+diffSelect n r = rndSelect (range 1 r) n
 
 shuffle :: [a] -> IO [a]
 shuffle xs = do
