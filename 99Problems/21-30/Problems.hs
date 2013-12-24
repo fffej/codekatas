@@ -14,9 +14,14 @@ range s e = go s
       | n >= s && n <= e = n : go (succ n)
       | otherwise        = []
 
+rnd_select :: [a] -> Int -> IO [a]
+rnd_select = undefined
+
 main = hspec $ do
   describe "99 problems" $ do
     it "should insert at" $ do
       insertAt 'X' "abcd" 2 `shouldBe` "aXbcd"
     it "should define range" $ do
       range 4 9 `shouldBe` [4,5,6,7,8,9]
+    it "should implement rnd-select" $ do
+      rnd_select "abcdefgh" 3 >>= (`shouldSatisfy` (\x -> length x == 3))
