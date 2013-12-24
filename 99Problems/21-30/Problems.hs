@@ -6,7 +6,9 @@ import Test.QuickCheck
 import System.Random
 import Data.Array.IO hiding (range)
 import Control.Monad
+
 import Data.List (sort,tails)
+import Data.Ord (comparing)
 
 insertAt :: a -> [a] -> Int -> [a]
 insertAt e xs 1      = e:xs
@@ -60,14 +62,16 @@ group (g:gs) xs = concatMap helper $ combination g xs
   where
     helper (as, bs) = map (as:) (group gs bs)
 
-lsort :: [[a]] -> [[a]]
-lsort []     = []
-lsort (x:[]) = [x]
-lsort (x:xs) = lsort (lessThan xs) ++ [x] ++ lsort (greaterThan xs)
+sort' :: [a] -> (a -> a -> Ordering) -> [a]
+sort' []     f = []
+sort' (x:[]) f = [x]
+sort' (x:xs) f = sort' lessThan f ++ [x] ++ sort' moreThan f
   where
-    n = length x
-    lessThan xs = filter (\x -> length x < n) xs
-    greaterThan xs = filter (\x -> length x >= n) xs
+    lessThan = filter (\n -> f n x == LT) xs
+    moreThan = filter (\n -> f n x /= LT) xs
+    
+lsort :: [[a]] -> [[a]]
+lsort xs = sort' xs (comparing length)
 
 lfsort = undefined
                      
