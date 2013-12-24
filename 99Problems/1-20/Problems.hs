@@ -143,7 +143,12 @@ rotate xs n = go (endless xs) offset
     endless xs = xs ++ endless xs
 
 removeAt :: Int -> [a] -> (a,[a])
-removeAt = undefined
+removeAt _ []     = undefined
+removeAt n (x:xs)
+  | n <= 1    = (x,xs)
+  | otherwise = (e,x:r)
+    where
+      (e,r) = removeAt (n - 1) xs
 
 main :: IO ()
 main = hspec $ do
