@@ -26,6 +26,7 @@ primeFactors n
     divisors = filter (\x -> n `mod` x == 0) [2..n]
     divisor  = head divisors
 
+primeFactorsMult :: Integer -> [(Integer,Integer)]
 primeFactorsMult = undefined
 
 main :: IO ()
