@@ -6,6 +6,7 @@ import Test.QuickCheck
 import System.Random
 import Data.Array.IO hiding (range)
 import Control.Monad
+import Data.List (sort)
 
 insertAt :: a -> [a] -> Int -> [a]
 insertAt e xs 1      = e:xs
@@ -50,4 +51,6 @@ main = hspec $ do
       rndSelect "abcdefgh" 3 >>= (`shouldSatisfy` (\x -> length x == 3))
     it "diff select" $ do
       diffSelect 6 49 >>= (`shouldSatisfy` (\x -> length x == 6))
+    it "random permutation" $ do
+      shuffle [1..100] >>= (`shouldSatisfy` (\x -> sort x == [1..100]))
     
