@@ -41,6 +41,7 @@ shuffle xs = do
     arrayFromList :: Int -> [a] -> IO (IOArray Int a)
     arrayFromList n = newListArray (0,n-1)
 
+combinations :: Int -> [a] -> [[a]]
 combinations = undefined
 
 main = hspec $ do
