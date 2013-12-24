@@ -7,7 +7,8 @@ import System.Random
 import Data.Array.IO hiding (range)
 import Control.Monad
 
-import Data.List (sort,tails)
+import Data.Maybe
+import Data.List (sort,tails,elemIndex)
 import Data.Ord (comparing)
 
 insertAt :: a -> [a] -> Int -> [a]
@@ -74,7 +75,9 @@ lsort :: [[a]] -> [[a]]
 lsort xs = sort' xs (comparing length)
 
 lfsort :: [[a]] -> [[a]]
-lfsort = undefined
+lfsort xs = sort' xs (comparing (\x -> length $ filter (\y -> y == (length x)) lens))
+  where
+    lens = map length xs
                      
 main = hspec $ do
   describe "99 problems" $ do
