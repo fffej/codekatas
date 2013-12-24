@@ -75,7 +75,7 @@ lsort :: [[a]] -> [[a]]
 lsort xs = sort' xs (comparing length)
 
 lfsort :: [[a]] -> [[a]]
-lfsort xs = sort' xs (comparing (\x -> length $ filter (\y -> y == (length x)) lens))
+lfsort xs = sort' xs (comparing (\x -> length $ filter (\y -> y == length x) lens))
   where
     lens = map length xs
                      
