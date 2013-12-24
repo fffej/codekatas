@@ -44,11 +44,15 @@ primesR s e = filter isPrime [s..e]
 goldbach :: Integer -> (Integer,Integer)
 goldbach n = head [ (x,y) | x <- primeNums, y <- primeNums, x + y == n ]
   where
-    primeNums = primesR 1 n
+    primeNums = primesR 2 n
 
 goldbachList :: Integer -> Integer -> [(Integer,Integer)]
-goldbachList = undefined
+goldbachList s e = map goldbach evens
+  where
+    evens = [ x | x <- [s .. e], x `rem` 2 == 0 ]
 
+goldbachList' :: Integer -> Integer -> Integer -> [(Integer,Integer)]
+goldbachList' = undefined
 
 main :: IO ()
 main = hspec $ do
@@ -75,4 +79,6 @@ main = hspec $ do
       goldbach 28 `shouldBe` (5,23)
     it "goldbachList (1)" $ do
       goldbachList 9 20 `shouldBe` [(3,7),(5,7),(3,11),(3,13),(5,13),(3,17)]
+    it "goldbachList (2)" $ do
+      goldbachList' 4 2000 50 `shouldBe` [(73,919),(61,1321),(67,1789),(61,1867)]
         
