@@ -38,6 +38,9 @@ effTotient n = product mp
     pf = primeFactorsMult n
     mp = map (\(p,m) -> p - 1 * p ^ (m - 1)) pf
 
+primesR :: Integer -> Integer -> [Integer]
+primesR s e = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "Arithmetic" $ do
@@ -57,3 +60,5 @@ main = hspec $ do
       primeFactorsMult 315 `shouldBe` [(3,2),(5,1),(7,1)]
     it "efficient totient function" $ do
       map effTotient [1,10] `shouldBe` [1,4]
+    it "randoms in a range" $ do
+      primesR 10 20 `shouldBe` [11,13,17,19]
