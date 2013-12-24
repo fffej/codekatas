@@ -19,7 +19,7 @@ coPrime x y = gcd x y == 1
 totient :: Integer -> Integer
 totient n = fromIntegral $ length (filter (coPrime n) [1..n])
 
-primeFactors :: Integer -> [Integer]
+primeFactors :: Integral a => a -> [a]
 primeFactors 0 = []
 primeFactors n
   | not (null divisors) = divisor : primeFactors (n `div` divisor)
@@ -28,8 +28,8 @@ primeFactors n
     divisors = filter (\x -> n `mod` x == 0) [2..n]
     divisor  = head divisors
 
-primeFactorsMult :: Integer -> [(Integer,Integer)]
-primeFactorsMult n = map (\x -> (head x, fromIntegral $ length x)) $ group (primeFactors n)
+primeFactorsMult :: Integral a => a -> [(a,Int)]
+primeFactorsMult n = map (\x -> (head x, length x)) $ group (primeFactors n)
 
 main :: IO ()
 main = hspec $ do
