@@ -15,7 +15,8 @@ range s e = go s
       | otherwise        = []
 
 rnd_select :: [a] -> Int -> IO [a]
-rnd_select xs n = return (take 3 xs)
+rnd_select xs 0 = return []
+rnd_select xs n = undefined
 
 main = hspec $ do
   describe "99 problems" $ do
