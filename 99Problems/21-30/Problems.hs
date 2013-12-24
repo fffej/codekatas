@@ -19,7 +19,9 @@ range s e = go s
       | otherwise        = []
 
 rnd_select :: [a] -> Int -> IO [a]
-rnd_select xs n = undefined
+rnd_select xs n = do
+  shuffled <- shuffle xs
+  return (take n shuffled)
 
 shuffle :: [a] -> IO [a]
 shuffle xs = do
