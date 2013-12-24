@@ -41,6 +41,8 @@ shuffle xs = do
     arrayFromList :: Int -> [a] -> IO (IOArray Int a)
     arrayFromList n = newListArray (0,n-1)
 
+combinations = undefined
+
 main = hspec $ do
   describe "99 problems" $ do
     it "should insert at" $ do
@@ -53,4 +55,6 @@ main = hspec $ do
       diffSelect 6 49 >>= (`shouldSatisfy` (\x -> length x == 6))
     it "random permutation" $ do
       shuffle [1..100] >>= (`shouldSatisfy` (\x -> sort x == [1..100]))
+    it "combinations" $ do
+      combinations 2 "abc" `shouldBe` ["ab","ac","bc"]
     
