@@ -25,8 +25,13 @@ shuffle :: [a] -> IO (IOArray Int a)
 shuffle xs = do
   let n = length xs
   x <- newListArray (0,n) xs
-  forM_ [n,n-1..0] $ \i ->
-    return i
+  forM_ [n,n-1..0] $ \i -> do
+    j <- getStdRandom (randomR (0,i))
+    tempJ <- readArray x j -- read from j
+    tempI <- readArray x i -- read from i
+    writeArray x j tempI
+    writeArray x i tempJ
+    return ()
   return x
 
 main = hspec $ do
