@@ -141,7 +141,8 @@ rotate xs n = go (endless xs) offset
     len = length xs
     offset = if n > 0 then n else (len + n)
     endless xs = xs ++ endless xs
-    
+
+removeAt = undefined
 
 main :: IO ()
 main = hspec $ do
@@ -207,3 +208,5 @@ main = hspec $ do
       rotate ['a','b','c','d','e','f','g','h'] 3 `shouldBe` "defghabc"
     it "rotate 2" $ do
       rotate ['a','b','c','d','e','f','g','h'] (-2) `shouldBe` "ghabcdef"
+    it "remove at" $ do
+      removeAt 2 "abcd" `shouldBe` ('b',"acd")
