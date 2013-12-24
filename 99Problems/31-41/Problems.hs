@@ -6,7 +6,10 @@ import Test.QuickCheck
 isPrime :: Integer -> Bool
 isPrime n = null [ x | x <- [2.. n-1], n `mod` x == 0]
 
-gcd' = undefined
+gcd' :: Integer -> Integer -> Integer
+gcd' a b
+  | b == 0     = abs a
+  | otherwise  = gcd' b (a `rem` b)
 
 main :: IO ()
 main = hspec $ do
