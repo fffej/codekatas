@@ -17,7 +17,14 @@ coPrime x y = gcd x y == 1
 totient :: Integer -> Integer
 totient n = fromIntegral $ length (filter (coPrime n) [1..n])
 
-primeFactors = undefined
+primeFactors :: Integer -> [Integer]
+primeFactors 0 = []
+primeFactors n
+  | not (null divisors) = divisor : primeFactors (n `div` divisor)
+  | otherwise           = []
+  where
+    divisors = filter (\x -> n `mod` x == 0) [2..n]
+    divisor  = head divisors
 
 main :: IO ()
 main = hspec $ do
