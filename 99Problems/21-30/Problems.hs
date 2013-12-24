@@ -6,7 +6,7 @@ import Test.QuickCheck
 import System.Random
 import Data.Array.IO hiding (range)
 import Control.Monad
-import Data.List (sort)
+import Data.List (sort,tails)
 
 insertAt :: a -> [a] -> Int -> [a]
 insertAt e xs 1      = e:xs
@@ -42,7 +42,10 @@ shuffle xs = do
     arrayFromList n = newListArray (0,n-1)
 
 combinations :: Int -> [a] -> [[a]]
-combinations = undefined
+combinations 0 _  = [ [] ]
+combinations n xs = [ y:ys | y:xs' <- tails xs
+                           , ys <- combinations (n-1) xs']
+ 
 
 main = hspec $ do
   describe "99 problems" $ do
