@@ -21,18 +21,17 @@ range s e = go s
 rnd_select :: [a] -> Int -> IO [a]
 rnd_select xs n = undefined
 
-shuffle :: [a] -> IO (IOArray Int a)
+shuffle :: [Char] -> IO [Char]
 shuffle xs = do
   let n = length xs
-  x <- newListArray (0,n) xs
-  forM_ [n,n-1..0] $ \i -> do
+  x <- newListArray (0,n - 1) xs :: IO (IOArray Int Char)
+  forM_ [n-1,n-2..1] $ \i -> do
     j <- getStdRandom (randomR (0,i))
     tempJ <- readArray x j -- read from j
     tempI <- readArray x i -- read from i
     writeArray x j tempI
     writeArray x i tempJ
-    return ()
-  return x
+  getElems x
 
 main = hspec $ do
   describe "99 problems" $ do
