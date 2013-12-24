@@ -31,6 +31,9 @@ primeFactors n
 primeFactorsMult :: Integral a => a -> [(a,Int)]
 primeFactorsMult n = map (\x -> (head x, length x)) $ group (primeFactors n)
 
+effTotient :: Integer -> Integer
+effTotient = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "Arithmetic" $ do
@@ -48,3 +51,5 @@ main = hspec $ do
       primeFactors 315 `shouldBe` [3,3,5,7]
     it "prime factors and multiplicity" $ do
       primeFactorsMult 315 `shouldBe` [(3,2),(5,1),(7,1)]
+    it "efficient totient function" $ do
+      map effTotient [1,10] `shouldBe` [1,4]
