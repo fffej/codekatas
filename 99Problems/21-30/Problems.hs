@@ -73,6 +73,7 @@ sort' (x:xs) f = sort' lessThan f ++ [x] ++ sort' moreThan f
 lsort :: [[a]] -> [[a]]
 lsort xs = sort' xs (comparing length)
 
+lfsort :: [[a]] -> [[a]]
 lfsort = undefined
                      
 main = hspec $ do
