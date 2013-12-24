@@ -21,10 +21,9 @@ range s e = go s
 rnd_select :: [a] -> Int -> IO [a]
 rnd_select xs n = undefined
 
-shuffle :: [Char] -> IO [Char]
+shuffle :: [a] -> IO [a]
 shuffle xs = do
-  let n = length xs
-  x <- newListArray (0,n - 1) xs :: IO (IOArray Int Char)
+  x <- arrayFromList (length xs) xs
   forM_ [n-1,n-2..1] $ \i -> do
     j <- getStdRandom (randomR (0,i))
     tempJ <- readArray x j -- read from j
@@ -32,6 +31,10 @@ shuffle xs = do
     writeArray x j tempI
     writeArray x i tempJ
   getElems x
+  where
+    n = length xs
+    arrayFromList :: Int -> [a] -> IO (IOArray Int a)
+    arrayFromList n xs = newListArray (0,n-1) xs 
 
 main = hspec $ do
   describe "99 problems" $ do
@@ -41,3 +44,4 @@ main = hspec $ do
       range 4 9 `shouldBe` [4,5,6,7,8,9]
     it "should implement rnd-select" $ do
       rnd_select "abcdefgh" 3 >>= (`shouldSatisfy` (\x -> length x == 3))
+    
