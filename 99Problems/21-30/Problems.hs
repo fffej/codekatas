@@ -36,7 +36,7 @@ shuffle xs = do
   where
     n = length xs
     arrayFromList :: Int -> [a] -> IO (IOArray Int a)
-    arrayFromList n xs = newListArray (0,n-1) xs 
+    arrayFromList n = newListArray (0,n-1)
 
 main = hspec $ do
   describe "99 problems" $ do
