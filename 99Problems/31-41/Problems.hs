@@ -46,17 +46,19 @@ goldbachs n = [ (x,y) | x <- primeNums, y <- primeNums, x + y == n ]
   where
     primeNums = primesR 2 n
 
-
 goldbach :: Integer -> (Integer,Integer)
 goldbach n = head (goldbachs n)
 
 goldbachList :: Integer -> Integer -> [(Integer,Integer)]
 goldbachList s e = map goldbach evens
   where
-    evens = [ x | x <- [s .. e], x `rem` 2 == 0 ]
+     evens = [ x | x <- [s .. e], x `rem` 2 == 0 ]
 
 goldbachList' :: Integer -> Integer -> Integer -> [(Integer,Integer)]
-goldbachList' = undefined
+goldbachList' s e m = map (firstGreaterThan . goldbachs) evens
+  where
+    evens = [ x | x <- [s .. e], x `rem` 2 == 0 ]
+    firstGreaterThan xs = head (filter (\(x,y) -> x > m) xs)
 
 main :: IO ()
 main = hspec $ do
