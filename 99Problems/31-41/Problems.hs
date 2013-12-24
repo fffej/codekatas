@@ -62,6 +62,7 @@ goldbachList' s e m = filter (\(x,y) -> x > m) $ map head gbs
     evens = [ x | x <- [s .. e], x `rem` 2 == 0 ]
     firstGreaterThan xs = head (filter (\(x,y) -> x > m) xs)
 
+-- TODO this is a very inefficient use of primes!
 main :: IO ()
 main = hspec $ do
   describe "Arithmetic" $ do
