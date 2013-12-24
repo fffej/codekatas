@@ -4,7 +4,8 @@ import Test.Hspec
 import Test.QuickCheck
 
 insertAt :: a -> [a] -> Int -> [a]
-insertAt = undefined
+insertAt e xs 1      = e:xs
+insertAt e (x:xs) n  = x : insertAt e xs (n - 1)
 
 main = hspec $ do
   describe "99 problems" $ do
