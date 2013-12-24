@@ -3,6 +3,10 @@ module Problems where
 import Test.Hspec
 import Test.QuickCheck
 
+import System.Random
+import Data.Array.MArray hiding (range)
+import Data.Array.IO hiding (range)
+
 insertAt :: a -> [a] -> Int -> [a]
 insertAt e xs 1      = e:xs
 insertAt e (x:xs) n  = x : insertAt e xs (n - 1)
@@ -15,7 +19,6 @@ range s e = go s
       | otherwise        = []
 
 rnd_select :: [a] -> Int -> IO [a]
-rnd_select xs 0 = return []
 rnd_select xs n = undefined
 
 main = hspec $ do
