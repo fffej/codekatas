@@ -11,7 +11,7 @@ range :: Int -> Int -> [Int]
 range s e = go s
   where
     go n
-      | n >= s && n <= e = n : go (n + 1)
+      | n >= s && n <= e = n : go (succ n)
       | otherwise        = []
 
 main = hspec $ do
