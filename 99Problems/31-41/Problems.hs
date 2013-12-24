@@ -4,7 +4,7 @@ import Test.Hspec
 import Test.QuickCheck
 
 isPrime :: Integer -> Bool
-isPrime = undefined
+isPrime n = null [ x | x <- [2.. n-1], n `mod` x == 0]
 
 main :: IO ()
 main = hspec $ do
