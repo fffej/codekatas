@@ -21,6 +21,9 @@ range s e = go s
 rndSelect :: [a] -> Int -> IO [a]
 rndSelect xs n = liftM (take n) (shuffle xs)
 
+diffSelect :: Int -> Int -> IO [Int]
+diffSelect = undefined
+
 shuffle :: [a] -> IO [a]
 shuffle xs = do
   x <- arrayFromList (length xs) xs
@@ -44,4 +47,6 @@ main = hspec $ do
       range 4 9 `shouldBe` [4,5,6,7,8,9]
     it "should implement rnd-select" $ do
       rndSelect "abcdefgh" 3 >>= (`shouldSatisfy` (\x -> length x == 3))
+    it "diff select" $ do
+      diffSelect 6 49 >>= (`shouldSatisfy` (\x -> length x == 6))
     
