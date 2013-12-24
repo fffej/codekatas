@@ -5,6 +5,7 @@ import Test.QuickCheck
 
 import System.Random
 import Data.Array.IO hiding (range)
+import Control.Monad
 
 insertAt :: a -> [a] -> Int -> [a]
 insertAt e xs 1      = e:xs
@@ -22,7 +23,10 @@ rnd_select xs n = undefined
 
 shuffle :: [a] -> IO (IOArray Int a)
 shuffle xs = do
-  x <- newListArray (0,length xs) xs
+  let n = length xs
+  x <- newListArray (0,n) xs
+  forM_ [n,n-1..0] $ \i ->
+    return i
   return x
 
 main = hspec $ do
