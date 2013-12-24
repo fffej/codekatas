@@ -17,6 +17,8 @@ coPrime x y = gcd x y == 1
 totient :: Integer -> Integer
 totient n = fromIntegral $ length (filter (coPrime n) [1..n])
 
+primeFactors = undefined
+
 main :: IO ()
 main = hspec $ do
   describe "Arithmetic" $ do
@@ -30,3 +32,5 @@ main = hspec $ do
       coPrime 35 64
     it "totient function" $ do
       map totient [1,10] `shouldBe` [1,4]
+    it "prime factors" $ do
+      primeFactors 315 `shouldBe` [3,3,5,7]
