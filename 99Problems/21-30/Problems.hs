@@ -11,6 +11,7 @@ insertAt :: a -> [a] -> Int -> [a]
 insertAt e xs 1      = e:xs
 insertAt e (x:xs) n  = x : insertAt e xs (n - 1)
 
+-- [s .. e] probably would be cheating!
 range :: (Ord a, Enum a) => a -> a -> [a]
 range s e = go s
   where
