@@ -47,7 +47,7 @@ combinations n xs = [ y:ys | y:xs' <- tails xs
                            , ys <- combinations (n-1) xs']
 
 group :: [Int] -> [a] -> [[a]]
-group = undefined
+group [] _ = [[]]
                     
 main = hspec $ do
   describe "99 problems" $ do
