@@ -18,8 +18,8 @@ range s e = go s
       | n >= s && n <= e = n : go (succ n)
       | otherwise        = []
 
-rnd_select :: [a] -> Int -> IO [a]
-rnd_select xs n = liftM (take n) (shuffle xs)
+rndSelect :: [a] -> Int -> IO [a]
+rndSelect xs n = liftM (take n) (shuffle xs)
 
 shuffle :: [a] -> IO [a]
 shuffle xs = do
@@ -43,5 +43,5 @@ main = hspec $ do
     it "should define range" $ do
       range 4 9 `shouldBe` [4,5,6,7,8,9]
     it "should implement rnd-select" $ do
-      rnd_select "abcdefgh" 3 >>= (`shouldSatisfy` (\x -> length x == 3))
+      rndSelect "abcdefgh" 3 >>= (`shouldSatisfy` (\x -> length x == 3))
     
