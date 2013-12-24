@@ -45,7 +45,10 @@ combinations :: Int -> [a] -> [[a]]
 combinations 0 _  = [ [] ]
 combinations n xs = [ y:ys | y:xs' <- tails xs
                            , ys <- combinations (n-1) xs']
- 
+
+group :: [Int] -> [a] -> [[a]]
+group = undefined
+                    
 main = hspec $ do
   describe "99 problems" $ do
     it "should insert at" $ do
@@ -60,4 +63,7 @@ main = hspec $ do
       shuffle [1..100] >>= (`shouldSatisfy` (\x -> sort x == [1..100]))
     it "combinations" $ do
       combinations 2 "abc" `shouldBe` ["ab","ac","bc"]
-    
+    it "grouping" $ do
+      group [2,3,4] ["aldo","beat","carla","david","evi","flip","gary","hugo","ida"] `shouldSatisfy` (\x -> length x == 1260)
+
+
