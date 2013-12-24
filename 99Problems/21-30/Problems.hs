@@ -61,7 +61,7 @@ group (g:gs) xs = concatMap helper $ combination g xs
     helper (as, bs) = map (as:) (group gs bs)
 
 lsort :: [a] -> [a]
-lsort xs = undefined
+lsort xs = xs
                       
 main = hspec $ do
   describe "99 problems" $ do
