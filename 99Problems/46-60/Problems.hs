@@ -18,9 +18,10 @@ table f = zipWith (\(x,y) z -> (x,y,z)) inputs outputs
 table2 = table
 
 tablen :: Int -> ([Bool] -> Bool) -> [[Bool]]
-tablen n f = undefined
+tablen n f = zipWith (\i o -> i ++ [o]) ins out
   where
     ins = genTruthTable n
+    out = map f ins
 
 genTruthTable :: Int -> [[Bool]]
 genTruthTable 1 = [[True],[False]]
