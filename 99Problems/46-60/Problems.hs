@@ -18,7 +18,7 @@ table f = zipWith (\(x,y) z -> (x,y,z)) inputs outputs
 table2 = table
 
 tablen :: Int -> ([Bool] -> Bool) -> [[Bool]]
-tablen n bs = undefined
+tablen n f = undefined
   where
     ins = genTruthTable n
 
