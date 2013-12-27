@@ -39,6 +39,7 @@ gray n = map ('0' : ) x ++  map ('1' :) rx
     x  = gray (n - 1)
     rx = reverse x
 
+huffman :: [(Char,Int)] -> [(Char,String)]
 huffman = undefined
     
 truthTable :: [[Bool]]
