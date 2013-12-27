@@ -5,8 +5,8 @@ import Test.QuickCheck
 
 import Data.List
 
-and'  = undefined
-or'   = undefined
+and'  = (&&)
+or'   = (||)
 
 table :: (Bool -> Bool -> Bool) -> [(Bool,Bool,Bool)]
 table f = zipWith (\(x,y) z -> (x,y,z)) inputs outputs
