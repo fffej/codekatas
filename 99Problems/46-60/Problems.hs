@@ -31,6 +31,9 @@ genTruthTable 1 = [[True],[False]]
 genTruthTable n = map (True :) rest ++ map (False :) rest
   where
     rest = genTruthTable (n - 1)
+
+gray :: Int -> [String]
+gray = undefined
     
 truthTable :: [[Bool]]
 truthTable = [[True,  True,  True,  True]
@@ -57,3 +60,5 @@ main = hspec $ do
                                                            ,(False,False,False)]
     it "should support arbitrary expressions" $ do
       tablen 3 (\[a,b,c] -> (a `and'` (b `or'` c)) `equ'` (a `and'` b `or'` a `and'` c)) `shouldBe` truthTable
+    it "gray codes" $ do
+      gray 3 `shouldBe` ["000","001","011","010","110","111","101","100"]
