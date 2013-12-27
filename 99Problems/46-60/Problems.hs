@@ -7,6 +7,7 @@ import Data.List
 
 and'  = (&&)
 or'   = (||)
+equ'  = (==)
 
 table :: (Bool -> Bool -> Bool) -> [(Bool,Bool,Bool)]
 table f = zipWith (\(x,y) z -> (x,y,z)) inputs outputs
@@ -15,6 +16,18 @@ table f = zipWith (\(x,y) z -> (x,y,z)) inputs outputs
     outputs = map (uncurry f) inputs
 
 table2 = table
+
+tablen = undefined
+
+truthTable :: [(Bool, Bool, Bool, Bool)]
+truthTable = [(True,  True,  True,  True)
+             ,(True,  True,  False, True)
+             ,(True,  False, True,  True)
+             ,(True,  False, False, True)
+             ,(False, True,  True,  True)
+             ,(False, True,  False, True)
+             ,(False, False, True,  True)
+             ,(False, False, False, True)]
 
 main :: IO ()
 main = hspec $ do
@@ -29,3 +42,8 @@ main = hspec $ do
                                                            ,(True,False,True)
                                                            ,(False,True,False)
                                                            ,(False,False,False)]
+    it "should support arbitrary expressions" $ do
+      tablen 3 (\[a,b,c] -> a `and'` (b `or'` c) `equ'` a `and'` b `or'` a `and'` c) `shouldBe` truthTable
+      
+
+
