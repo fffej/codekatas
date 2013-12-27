@@ -33,7 +33,11 @@ genTruthTable n = map (True :) rest ++ map (False :) rest
     rest = genTruthTable (n - 1)
 
 gray :: Int -> [String]
-gray = undefined
+gray 2 = ["00","01","11","10"]
+gray n = map ('0' : ) x ++  map ('1' :) rx
+  where
+    x  = gray (n - 1)
+    rx = reverse x
     
 truthTable :: [[Bool]]
 truthTable = [[True,  True,  True,  True]
