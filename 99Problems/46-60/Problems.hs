@@ -4,6 +4,7 @@ import Test.Hspec
 import Test.QuickCheck
 
 import Data.List
+import Data.Ord
 
 infixl 3 `equ'`
 
@@ -40,7 +41,17 @@ gray n = map ('0' : ) x ++  map ('1' :) rx
     rx = reverse x
 
 huffman :: [(Char,Int)] -> [(Char,String)]
-huffman = undefined
+huffman xs = undefined
+  where
+    q = sortBy (comparing snd) xs
+
+data HuffmanTree = Branch HuffmanTree HuffmanTree Int
+                 | Leaf Char Int
+                   deriving (Show,Eq)
+
+buildTree :: [(Char,Int)] -> HuffmanTree
+buildTree xs = undefined
+
     
 truthTable :: [[Bool]]
 truthTable = [[True,  True,  True,  True]
