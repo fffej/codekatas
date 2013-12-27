@@ -34,7 +34,7 @@ genTruthTable n = map (True :) rest ++ map (False :) rest
     
 truthTable :: [[Bool]]
 truthTable = [[True,  True,  True,  True]
-             ,[True,  True,  False, True]
+             ,[True,  True,  False, False]
              ,[True,  False, True,  True]
              ,[True,  False, False, True]
              ,[False, True,  True,  True]
@@ -56,4 +56,4 @@ main = hspec $ do
                                                            ,(False,True,False)
                                                            ,(False,False,False)]
     it "should support arbitrary expressions" $ do
-      tablen 3 (\[a,b,c] -> a `and'` (b `or'` c) `equ'` a `and'` b `or'` a `and'` c) `shouldBe` truthTable
+      tablen 3 (\[a,b,c] -> (a `and'` (b `or'` c)) `equ'` (a `and'` b `or'` a `and'` c)) `shouldBe` truthTable
