@@ -5,10 +5,15 @@ import Test.Hspec
 
 import Data.Array
 import Data.Char (isDigit)
+import Data.Maybe
 
 data Cell = Unknown [Int]
           | Known Int
             deriving (Show,Eq)
+
+knownValue :: Cell -> Maybe Int
+knownValue (Known n) = Just n
+knownValue _         = Nothing
 
 type Grid = Array (Int,Int) Cell
 
@@ -39,11 +44,7 @@ solve :: Grid -> Grid
 solve = undefined
 
 known :: [Cell] -> [Int]
-known xs = map value $ filter isKnown xs
-  where
-    value   (Known x) = x
-    isKnown (Known x) = True
-    isKnown _       = False
+known = mapMaybe knownValue
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
