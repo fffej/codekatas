@@ -43,7 +43,6 @@ gray n = map ('0' : ) x ++  map ('1' :) rx
 huffman :: [(Char,Int)] -> [(Char,String)]
 huffman = sortBy (comparing fst) . inOrder . buildTree
 
-
 data HuffmanTree = Branch HuffmanTree HuffmanTree Int
                  | Leaf Char Int
                    deriving (Show,Eq)
