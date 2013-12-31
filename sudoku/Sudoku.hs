@@ -43,6 +43,9 @@ subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
     isInSubGrid ((x,y),_) = r `div` 3 == x `div` 3 &&
                             c `div` 3 == y `div` 3 
 
+step :: Grid -> (Int,Int) -> Cell
+step g p = g ! p
+
 solve :: Grid -> Grid
 solve = undefined
 
@@ -74,3 +77,5 @@ main = hspec $ do
       known (col (buildGrid veryEasy) 1) `shouldBe` [1,5,9,8,4]
     it "subgrid 7,7" $ do
       known (subgrid (buildGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
+    it "eliminates possibilities" $ do
+      step (buildGrid veryEasy) (0,8) `shouldBe` (Unknown [1,2,3,4,5,6,7,8,9])
