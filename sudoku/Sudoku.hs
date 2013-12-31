@@ -8,9 +8,15 @@ import Data.Char (isDigit)
 import Data.Maybe
 import Data.List
 
+import Data.List.Split
+
 data Cell = Unknown [Int]
           | Known Int
-            deriving (Show,Eq)
+            deriving (Eq)
+
+instance Show Cell where
+  show (Known n)   = show n
+  show (Unknown _) = "_"
 
 knownValue :: Cell -> Maybe Int
 knownValue (Known n) = Just n
@@ -23,6 +29,9 @@ buildGrid s = listArray bounds (map toCell s)
   where
     bounds :: ((Int,Int),(Int,Int))
     bounds = ((0,0),(8,8))
+
+display :: Grid -> String
+display g = unlines $ chunksOf 9 $ concatMap show (elems g)
 
 at :: Grid -> (Int,Int) -> Cell
 at g p = g ! p
@@ -63,7 +72,7 @@ stepGrid grid = array bounds (map (\(x,e) -> (x,stepCell grid x)) (assocs grid))
     bounds = ((0,0),(8,8))
 
 solve :: Grid -> Grid
-solve = undefined
+solve g = head $ dropWhile (not . solved) (iterate stepGrid g)
 
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
