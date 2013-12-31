@@ -29,4 +29,15 @@ subgrid g (r,c) = undefined
 solve :: Grid -> Grid
 solve = undefined
 
+veryEasy :: String
+veryEasy = "6185___2_" ++
+           "_5__17_63" ++
+           "__326__95" ++
+           "8_1_5_74_" ++
+           "5__6_13_9" ++
+           "_9782_5__" ++
+           "286_45___" ++
+           "1____26_4" ++
+           "_4_1_6258"
+
 main = undefined
