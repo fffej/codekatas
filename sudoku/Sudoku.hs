@@ -6,6 +6,7 @@ import Test.Hspec
 import Data.Array
 import Data.Char (isDigit)
 import Data.Maybe
+import Data.List
 
 data Cell = Unknown [Int]
           | Known Int
@@ -44,7 +45,13 @@ subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
                             c `div` 3 == y `div` 3 
 
 step :: Grid -> (Int,Int) -> Cell
-step g p = g ! p
+step g p@(r,c) =  case value of
+  (Known n) -> value
+  (Unknown ps) -> Unknown (ps \\ surroundingCells)
+  where
+    value = at g p
+    surroundingCells :: [Int]
+    surroundingCells = known (row g r ++ col g c ++ subgrid g p)
 
 solve :: Grid -> Grid
 solve = undefined
@@ -78,4 +85,4 @@ main = hspec $ do
     it "subgrid 7,7" $ do
       known (subgrid (buildGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
     it "eliminates possibilities" $ do
-      step (buildGrid veryEasy) (0,8) `shouldBe` (Unknown [1,2,3,4,5,6,7,8,9])
+      step (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
