@@ -52,7 +52,13 @@ data HuffmanTree = Branch HuffmanTree HuffmanTree Int
 buildTree :: [(Char,Int)] -> HuffmanTree
 buildTree xs = undefined
 
-    
+prob :: HuffmanTree -> Int
+prob (Leaf _ n) = n
+prob (Branch _ _ n) = n
+
+mergeTree :: HuffmanTree -> HuffmanTree -> HuffmanTree
+mergeTree l r = Branch l r (prob l + prob r)
+               
 truthTable :: [[Bool]]
 truthTable = [[True,  True,  True,  True]
              ,[True,  True,  False, False]
