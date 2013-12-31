@@ -50,7 +50,16 @@ data HuffmanTree = Branch HuffmanTree HuffmanTree Int
                    deriving (Show,Eq)
 
 buildTree :: [(Char,Int)] -> HuffmanTree
-buildTree xs = undefined
+buildTree xs = buildFromLeaves leaves
+  where
+    rawLeaves = map (uncurry Leaf) xs
+    leaves = sortBy (comparing prob) rawLeaves
+
+buildFromLeaves :: [HuffmanTree] -> HuffmanTree
+buildFromLeaves (x:[]) = x
+buildFromLeaves (x:y:xs) = buildFromLeaves newLeaves
+  where
+    newLeaves = sortBy (comparing prob) (mergeTree x y : xs)
 
 prob :: HuffmanTree -> Int
 prob (Leaf _ n) = n
@@ -58,7 +67,7 @@ prob (Branch _ _ n) = n
 
 mergeTree :: HuffmanTree -> HuffmanTree -> HuffmanTree
 mergeTree l r = Branch l r (prob l + prob r)
-               
+                
 truthTable :: [[Bool]]
 truthTable = [[True,  True,  True,  True]
              ,[True,  True,  False, False]
@@ -68,6 +77,9 @@ truthTable = [[True,  True,  True,  True]
              ,[False, True,  False, True]
              ,[False, False, True,  True]
              ,[False, False, False, True]]
+
+sampleFrequencies :: [(Char,Int)]
+sampleFrequencies = [('a',45),('b',13),('c',12),('d',16),('e',9), ('f',5)]
 
 main :: IO ()
 main = hspec $ do
@@ -87,4 +99,4 @@ main = hspec $ do
     it "gray codes" $ do
       gray 3 `shouldBe` ["000","001","011","010","110","111","101","100"]
     it "huffman encoding" $ do
-      huffman [('a',45),('b',13),('c',12),('d',16),('e',9), ('f',5)] `shouldBe` [('a',"0"),('b',"101"),('c',"100"),('d',"111"),('e',"1101"),('f',"1100")]
+      huffman sampleFrequencies `shouldBe` [('a',"0"),('b',"101"),('c',"100"),('d',"111"),('e',"1101"),('f',"1100")]
