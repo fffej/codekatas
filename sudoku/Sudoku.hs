@@ -38,7 +38,10 @@ col :: Grid -> Int -> [Cell]
 col g c = map snd (filter (\((x,y),e) -> y == c) (assocs g))
 
 subgrid :: Grid -> (Int,Int) -> [Cell]
-subgrid g (r,c) = undefined
+subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
+  where
+    isInSubGrid ((x,y),_) = r `div` 3 == x `div` 3 &&
+                            c `div` 3 == y `div` 3 
 
 solve :: Grid -> Grid
 solve = undefined
