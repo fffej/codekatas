@@ -35,7 +35,7 @@ row :: Grid -> Int -> [Cell]
 row g r = map snd (filter (\((x,y),e) -> x == r) (assocs g))
 
 col :: Grid -> Int -> [Cell]
-col g c = undefined
+col g c = map snd (filter (\((x,y),e) -> y == c) (assocs g))
 
 subgrid :: Grid -> (Int,Int) -> [Cell]
 subgrid g (r,c) = undefined
@@ -68,4 +68,4 @@ main = hspec $ do
     it "row 0" $ do
       known (row (buildGrid veryEasy) 0) `shouldBe` [6,1,8,5,2]
     it "col 1" $ do
-      known (col (buildGrid veryEasy) 1) `shouldBe` [5,1,7,6,3]
+      known (col (buildGrid veryEasy) 1) `shouldBe` [1,5,9,8,4]
