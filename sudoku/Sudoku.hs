@@ -26,4 +26,7 @@ col g (r,c) = undefined
 subgrid :: Grid -> (Int,Int) -> [Cell]
 subgrid g (r,c) = undefined
 
+solve :: Grid -> Grid
+solve = undefined
+
 main = undefined
