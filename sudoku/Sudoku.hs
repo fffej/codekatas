@@ -57,12 +57,22 @@ stepCell' (Unknown ys) xs
   where
     rest = ys \\ xs
 
+stepGrid :: Grid -> Grid
+stepGrid grid = array bounds (map (\(x,e) -> (x,stepCell grid x)) (assocs grid))
+  where
+    bounds = ((0,0),(8,8))
 
 solve :: Grid -> Grid
 solve = undefined
 
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
+
+solved :: Grid -> Bool
+solved g = all isKnown (elems g)
+  where
+    isKnown (Known _) = True
+    isKnown _         = False
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
@@ -91,3 +101,5 @@ main = hspec $ do
       known (subgrid (buildGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
     it "eliminates possibilities" $ do
       stepCell (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
+    it "a grid is solved if all of the cells are known" $ do
+      solved (buildGrid veryEasy) `shouldBe` False
