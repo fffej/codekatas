@@ -45,13 +45,18 @@ subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
                             c `div` 3 == y `div` 3 
 
 step :: Grid -> (Int,Int) -> Cell
-step g p@(r,c) =  case value of
-  (Known n) -> value
-  (Unknown ps) -> Unknown (ps \\ surroundingCells)
+step g p@(r,c) = step' (g ! p) surroundingCells
   where
-    value = at g p
-    surroundingCells :: [Int]
-    surroundingCells = known (row g r ++ col g c ++ subgrid g p)
+    surroundingCells = known $ row g r ++ col g c ++ subgrid g p
+    
+step' :: Cell -> [Int] -> Cell
+step' (Known x) _     = Known x
+step' (Unknown ys) xs
+  | length rest == 1  = Known (head rest)
+  | otherwise         = Unknown rest
+  where
+    rest = ys \\ xs
+
 
 solve :: Grid -> Grid
 solve = undefined
