@@ -26,17 +26,20 @@ toCell c
   | isDigit c = Known (read [c])
   | otherwise = Unknown [1..9]
 
-row :: Grid -> (Int,Int) -> [Cell]
-row g (r,c) = undefined
+row :: Grid -> Int -> [Cell]
+row g r = undefined
 
-col :: Grid -> (Int,Int) -> [Cell]
-col g (r,c) = undefined
+col :: Grid -> Int -> [Cell]
+col g c = undefined
 
 subgrid :: Grid -> (Int,Int) -> [Cell]
 subgrid g (r,c) = undefined
 
 solve :: Grid -> Grid
 solve = undefined
+
+known :: [Cell] -> [Int]
+known = undefined
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
@@ -57,3 +60,5 @@ main = hspec $ do
       at (buildGrid veryEasy) (8,8) `shouldBe` (Known 8)
     it "can read from string (3)" $ do
       at (buildGrid veryEasy) (0,7) `shouldBe` (Known 2)
+    it "row 0" $ do
+      known (row (buildGrid veryEasy) 0) `shouldBe` [6,1,8,5,2]
