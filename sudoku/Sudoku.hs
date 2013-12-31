@@ -1,21 +1,30 @@
 module Sudoku where
 
-import Test.QuickCheck
+import Test.QuickCheck 
 import Test.Hspec
 
 import Data.Array
+import Data.Char (isDigit)
 
 data Cell = Unknown [Int]
-          | Fixed Int
+          | Known Int
             deriving (Show,Eq)
 
 type Grid = Array (Int,Int) Cell
 
-grid :: Grid
-grid = listArray bounds (repeat $ Unknown [1..9])
+buildGrid :: String -> Grid
+buildGrid s = listArray bounds (map toCell s)
   where
     bounds :: ((Int,Int),(Int,Int))
     bounds = ((0,0),(8,8))
+
+at :: Grid -> (Int,Int) -> Cell
+at g p = g ! p
+
+toCell :: Char -> Cell
+toCell c
+  | isDigit c = Known (read [c])
+  | otherwise = Unknown [1..9]
 
 row :: Grid -> (Int,Int) -> [Cell]
 row g (r,c) = undefined
@@ -40,4 +49,11 @@ veryEasy = "6185___2_" ++
            "1____26_4" ++
            "_4_1_6258"
 
-main = undefined
+main = hspec $ do
+  describe "Sudoku" $ do
+    it "can read from string (1)" $ do
+      at (buildGrid veryEasy) (0,0) `shouldBe` (Known 6)
+    it "can read from string (2)" $ do
+      at (buildGrid veryEasy) (8,8) `shouldBe` (Known 8)
+    it "can read from string (3)" $ do
+      at (buildGrid veryEasy) (0,7) `shouldBe` (Known 2)
