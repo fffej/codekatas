@@ -41,7 +41,7 @@ gray n = map ('0' : ) x ++  map ('1' :) rx
     rx = reverse x
 
 huffman :: [(Char,Int)] -> [(Char,String)]
-huffman = inOrder . buildTree
+huffman = sortBy (comparing fst) . inOrder . buildTree
 
 
 data HuffmanTree = Branch HuffmanTree HuffmanTree Int
