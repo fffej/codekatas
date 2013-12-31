@@ -43,6 +43,7 @@ gray n = map ('0' : ) x ++  map ('1' :) rx
 huffman :: [(Char,Int)] -> [(Char,String)]
 huffman = inOrder . buildTree
 
+
 data HuffmanTree = Branch HuffmanTree HuffmanTree Int
                  | Leaf Char Int
                    deriving (Show,Eq)
@@ -58,6 +59,13 @@ buildFromLeaves (x:[]) = x
 buildFromLeaves (x:y:xs) = buildFromLeaves newLeaves
   where
     newLeaves = sortBy (comparing prob) (mergeTree x y : xs)
+
+inOrder :: HuffmanTree -> [(Char,String)]
+inOrder tree = inOrder' tree ""
+  where
+    inOrder' (Branch l r _) prefix = inOrder' l (prefix ++ "0") ++
+                                     inOrder' r (prefix ++ "1")
+    inOrder' (Leaf c _)     prefix = [(c, prefix)]
 
 prob :: HuffmanTree -> Int
 prob (Leaf _ n) = n
@@ -78,13 +86,6 @@ truthTable = [[True,  True,  True,  True]
 
 sampleFrequencies :: [(Char,Int)]
 sampleFrequencies = [('a',45),('b',13),('c',12),('d',16),('e',9), ('f',5)]
-
-inOrder :: HuffmanTree -> [(Char,String)]
-inOrder tree = inOrder' tree ""
-  where
-    inOrder' (Branch l r _) prefix = inOrder' l ('0' : prefix) ++
-                                     inOrder' r ('1' : prefix)
-    inOrder' (Leaf c _)     prefix = [(c, prefix)]
 
 main :: IO ()
 main = hspec $ do
