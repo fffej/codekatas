@@ -44,14 +44,14 @@ subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
     isInSubGrid ((x,y),_) = r `div` 3 == x `div` 3 &&
                             c `div` 3 == y `div` 3 
 
-step :: Grid -> (Int,Int) -> Cell
-step g p@(r,c) = step' (g ! p) surroundingCells
+stepCell :: Grid -> (Int,Int) -> Cell
+stepCell g p@(r,c) = stepCell' (g ! p) surroundingCells
   where
     surroundingCells = known $ row g r ++ col g c ++ subgrid g p
     
-step' :: Cell -> [Int] -> Cell
-step' (Known x) _     = Known x
-step' (Unknown ys) xs
+stepCell' :: Cell -> [Int] -> Cell
+stepCell' (Known x) _     = Known x
+stepCell' (Unknown ys) xs
   | length rest == 1  = Known (head rest)
   | otherwise         = Unknown rest
   where
@@ -90,4 +90,4 @@ main = hspec $ do
     it "subgrid 7,7" $ do
       known (subgrid (buildGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
     it "eliminates possibilities" $ do
-      step (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
+      stepCell (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
