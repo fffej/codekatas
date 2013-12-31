@@ -94,6 +94,17 @@ veryEasy = "6185___2_" ++
            "1____26_4" ++
            "_4_1_6258"
 
+veryEasySolution :: String
+veryEasySolution = "618593427\n" ++
+                   "952417863\n" ++
+                   "473268195\n" ++
+                   "861359742\n" ++
+                   "524671389\n" ++
+                   "397824516\n" ++
+                   "286745931\n" ++
+                   "135982674\n" ++
+                   "749136258\n"
+                   
 main = hspec $ do
   describe "Sudoku" $ do
     it "can read from string (1)" $ do
@@ -112,3 +123,5 @@ main = hspec $ do
       stepCell (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
     it "a grid is solved if all of the cells are known" $ do
       solved (buildGrid veryEasy) `shouldBe` False
+    it "solves simple examples" $ do
+      display (solve (buildGrid veryEasy)) `shouldBe` veryEasySolution
