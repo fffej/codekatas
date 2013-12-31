@@ -67,3 +67,5 @@ main = hspec $ do
       at (buildGrid veryEasy) (0,7) `shouldBe` (Known 2)
     it "row 0" $ do
       known (row (buildGrid veryEasy) 0) `shouldBe` [6,1,8,5,2]
+    it "col 1" $ do
+      known (col (buildGrid veryEasy) 1) `shouldBe` [5,1,7,6,3]
