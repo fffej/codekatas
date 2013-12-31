@@ -41,9 +41,7 @@ gray n = map ('0' : ) x ++  map ('1' :) rx
     rx = reverse x
 
 huffman :: [(Char,Int)] -> [(Char,String)]
-huffman xs = undefined
-  where
-    q = sortBy (comparing snd) xs
+huffman = inOrder . buildTree
 
 data HuffmanTree = Branch HuffmanTree HuffmanTree Int
                  | Leaf Char Int
@@ -80,6 +78,13 @@ truthTable = [[True,  True,  True,  True]
 
 sampleFrequencies :: [(Char,Int)]
 sampleFrequencies = [('a',45),('b',13),('c',12),('d',16),('e',9), ('f',5)]
+
+inOrder :: HuffmanTree -> [(Char,String)]
+inOrder tree = inOrder' tree ""
+  where
+    inOrder' (Branch l r _) prefix = inOrder' l ('0' : prefix) ++
+                                     inOrder' r ('1' : prefix)
+    inOrder' (Leaf c _)     prefix = [(c, prefix)]
 
 main :: IO ()
 main = hspec $ do
