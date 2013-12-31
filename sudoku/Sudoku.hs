@@ -27,7 +27,7 @@ toCell c
   | otherwise = Unknown [1..9]
 
 row :: Grid -> Int -> [Cell]
-row g r = undefined
+row g r = map snd (filter (\((x,y),e) -> x == r) (assocs g))
 
 col :: Grid -> Int -> [Cell]
 col g c = undefined
@@ -39,7 +39,11 @@ solve :: Grid -> Grid
 solve = undefined
 
 known :: [Cell] -> [Int]
-known = undefined
+known xs = map value $ filter isKnown xs
+  where
+    value   (Known x) = x
+    isKnown (Known x) = True
+    isKnown _       = False
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
