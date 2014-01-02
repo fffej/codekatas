@@ -145,3 +145,5 @@ main = hspec $ do
       solved (buildGrid veryEasy) `shouldBe` False
     it "solves simple examples" $ do
       display (solve (buildGrid veryEasy)) `shouldBe` veryEasySolution
+    it "solves an example that requires back-tracking" $ do
+      display (solve (buildGrid veryHard)) `shouldBe` veryEasySolution
