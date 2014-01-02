@@ -9,6 +9,7 @@ import Data.Maybe
 import Data.List
 
 import Data.List.Split
+import Data.Function
 
 data Cell = Unknown [Int]
           | Known Int
