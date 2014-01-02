@@ -72,7 +72,11 @@ stepGrid grid = array bounds (map (\(x,e) -> (x,stepCell grid x)) (assocs grid))
     bounds = ((0,0),(8,8))
 
 solve :: Grid -> Grid
-solve g = head $ dropWhile (not . solved) (iterate stepGrid g)
+solve g 
+    | next == g = g
+    | otherwise = solve next 
+    where
+      next = stepGrid g
 
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
