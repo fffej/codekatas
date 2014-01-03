@@ -63,15 +63,12 @@ eliminatePossibilities' (Unknown ys) xs
   where
     rest = ys \\ xs
 
-stepGrid :: Grid -> Grid
-stepGrid grid = array bounds (map (\(x,e) -> (x,eliminatePossibilities grid x)) (assocs grid))
-
 eliminateConstraints :: Grid -> Grid
 eliminateConstraints g 
     | next == g = g
     | otherwise = eliminateConstraints next 
     where
-      next = stepGrid g
+      next = array bounds (map (\(x,e) -> (x,eliminatePossibilities g x)) (assocs g))
 
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
