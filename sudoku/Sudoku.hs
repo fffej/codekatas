@@ -41,8 +41,11 @@ cellStates g = map snd (cells g)
 bounds :: ((Int,Int),(Int,Int))
 bounds = ((0,0),(8,8))
 
-buildGrid :: String -> RawGrid
-buildGrid s = listArray bounds (map toCell s)
+buildRawGrid :: String -> RawGrid
+buildRawGrid s = listArray bounds (map toCell s)
+
+buildGrid :: String -> Grid
+buildGrid s = Grid (applyConstraints $ buildRawGrid s)
 
 display :: Grid -> String
 display g = unlines $ chunksOf 9 $ concatMap show (cellStates g)
@@ -64,10 +67,10 @@ subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
     isInSubGrid ((x,y),_) = r `div` 3 == x `div` 3 &&
                             c `div` 3 == y `div` 3 
 
-eliminatePossibilities :: Grid -> (Int,Int) -> Cell
-eliminatePossibilities g@(Grid raw)  p@(r,c) = eliminatePossibilities' (g `at` p) surroundingCells
+eliminatePossibilities :: RawGrid -> (Int,Int) -> Cell
+eliminatePossibilities g p@(r,c) = eliminatePossibilities' (g ! p) surroundingCells
   where
-    surroundingCells = known $ row raw r ++ col raw c ++ subgrid raw p
+    surroundingCells = known $ row g r ++ col g c ++ subgrid g p
     
 eliminatePossibilities' :: Cell -> [Int] -> Cell
 eliminatePossibilities' (Known x) _     = Known x
@@ -77,27 +80,27 @@ eliminatePossibilities' (Unknown ys) xs
   where
     rest = ys \\ xs
 
-applyConstraints :: Grid -> Grid
+applyConstraints :: RawGrid -> RawGrid
 applyConstraints g 
     | next == g = g
     | otherwise = applyConstraints next 
     where
-      next = Grid $ array bounds (map (\(x,e) -> (x,eliminatePossibilities g x)) (cells g))
+      next = array bounds (map (\(x,e) -> (x,eliminatePossibilities g x)) (assocs g))
 
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
 
-isSolved :: Grid -> Bool
-isSolved g = all isKnown (cellStates g)
+isSolved :: RawGrid -> Bool
+isSolved g = all isKnown (map snd (assocs g))
   where
     isKnown (Known _) = True
     isKnown _         = False
 
 isValid :: Grid -> Bool
-isValid g = isSolved g' || all choiceRemains (cellStates g')
+isValid (Grid raw) = isSolved raw || all choiceRemains (map snd (assocs raw))
     where
       -- TODO this is a code smell
-      g' = applyConstraints g
+--      g' = applyConstraints g
       choiceRemains (Known _) = True
       choiceRemains (Unknown xs) = (not . null) xs
 
@@ -164,19 +167,19 @@ invalidGrid = "6185___2_" ++
 main = hspec $ do
   describe "Sudoku" $ do
     it "row 0" $ do
-      known (row (buildGrid veryEasy) 0) `shouldBe` [6,1,8,5,2]
+      known (row (buildRawGrid veryEasy) 0) `shouldBe` [6,1,8,5,2]
     it "col 1" $ do
-      known (col (buildGrid veryEasy) 1) `shouldBe` [1,5,9,8,4]
+      known (col (buildRawGrid veryEasy) 1) `shouldBe` [1,5,9,8,4]
     it "subgrid 7,7" $ do
-      known (subgrid (buildGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
+      known (subgrid (buildRawGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
     it "eliminates possibilities" $ do
-      eliminatePossibilities (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
+      eliminatePossibilities (buildRawGrid veryEasy) (0,8) `shouldBe` (Known 7)
     it "a grid is solved if all of the cells are known" $ do
-      isSolved (buildGrid veryEasy) `shouldBe` False
+      isSolved (buildRawGrid veryEasy) `shouldBe` False
     it "applyConstraints simple examples" $ do
-      display (applyConstraints (buildGrid veryEasy)) `shouldBe` veryEasySolution
+      display (buildGrid veryEasy) `shouldBe` veryEasySolution
     it "applyConstraints an example that requires back-tracking" $ do
-      display (applyConstraints (buildGrid veryHard)) `shouldBe` veryEasySolution
+      display (buildGrid veryHard) `shouldBe` veryHardSolution
     it "will guess a constrained cell" $ do
       choices (Unknown [1..9]) `shouldBe` map Known [1..9]
     it "has a predicate to determine invalid state" $ do
