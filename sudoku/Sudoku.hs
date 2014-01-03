@@ -80,7 +80,10 @@ isSolved g = all isKnown (elems g)
     isKnown _         = False
 
 isValid :: Grid -> Bool
-isValid = undefined
+isValid g = isSolved g || all choiceRemains (elems g)
+    where
+      choiceRemains (Known _) = True
+      choiceRemains (Unknown xs) = (not . null) xs
 
 choices :: Cell -> [Cell]
 choices k@(Known n) = [k]
