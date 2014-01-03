@@ -33,9 +33,6 @@ buildGrid s = listArray bounds (map toCell s)
 display :: Grid -> String
 display g = unlines $ chunksOf 9 $ concatMap show (elems g)
 
-at :: Grid -> (Int,Int) -> Cell
-at g p = g ! p
-
 toCell :: Char -> Cell
 toCell c
   | isDigit c = Known (read [c])
@@ -133,12 +130,6 @@ veryHardSolution = "854219763\n" ++
                    
 main = hspec $ do
   describe "Sudoku" $ do
-    it "can read from string (1)" $ do
-      at (buildGrid veryEasy) (0,0) `shouldBe` (Known 6)
-    it "can read from string (2)" $ do
-      at (buildGrid veryEasy) (8,8) `shouldBe` (Known 8)
-    it "can read from string (3)" $ do
-      at (buildGrid veryEasy) (0,7) `shouldBe` (Known 2)
     it "row 0" $ do
       known (row (buildGrid veryEasy) 0) `shouldBe` [6,1,8,5,2]
     it "col 1" $ do
