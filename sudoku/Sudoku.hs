@@ -79,6 +79,9 @@ isSolved g = all isKnown (elems g)
     isKnown (Known _) = True
     isKnown _         = False
 
+isValid :: Grid -> Bool
+isValid = undefined
+
 choices :: Cell -> [Cell]
 choices k@(Known n) = [k]
 choices (Unknown ns)= map Known ns
@@ -126,6 +129,9 @@ veryHardSolution = "854219763\n" ++
                    "926384517\n" ++
                    "513792648\n" ++
                    "478651239\n"
+
+invalidGrid :: String
+invalidGrid = undefined
                    
 main = hspec $ do
   describe "Sudoku" $ do
@@ -145,3 +151,5 @@ main = hspec $ do
       display (applyConstraints (buildGrid veryHard)) `shouldBe` veryEasySolution
     it "will guess a constrained cell" $ do
       choices (Unknown [1..9]) `shouldBe` map Known [1..9]
+    it "has a predicate to determine invalid state" $ do
+      isValid (buildGrid invalidGrid) `shouldBe` False
