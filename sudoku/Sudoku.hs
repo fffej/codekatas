@@ -68,18 +68,18 @@ stepGrid grid = array bounds (map (\(x,e) -> (x,stepCell grid x)) (assocs grid))
   where
     bounds = ((0,0),(8,8))
 
-solve :: Grid -> Grid
-solve g 
+eliminateConstraints :: Grid -> Grid
+eliminateConstraints g 
     | next == g = g
-    | otherwise = solve next 
+    | otherwise = eliminateConstraints next 
     where
       next = stepGrid g
 
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
 
-solved :: Grid -> Bool
-solved g = all isKnown (elems g)
+eliminateConstraintsd :: Grid -> Bool
+eliminateConstraintsd g = all isKnown (elems g)
   where
     isKnown (Known _) = True
     isKnown _         = False
@@ -138,9 +138,9 @@ main = hspec $ do
       known (subgrid (buildGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
     it "eliminates possibilities" $ do
       stepCell (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
-    it "a grid is solved if all of the cells are known" $ do
-      solved (buildGrid veryEasy) `shouldBe` False
-    it "solves simple examples" $ do
-      display (solve (buildGrid veryEasy)) `shouldBe` veryEasySolution
-    it "solves an example that requires back-tracking" $ do
-      display (solve (buildGrid veryHard)) `shouldBe` veryEasySolution
+    it "a grid is eliminateConstraints if all of the cells are known" $ do
+      eliminateConstraintsd (buildGrid veryEasy) `shouldBe` False
+    it "eliminateConstraints simple examples" $ do
+      display (eliminateConstraints (buildGrid veryEasy)) `shouldBe` veryEasySolution
+    it "eliminateConstraints an example that requires back-tracking" $ do
+      display (eliminateConstraints (buildGrid veryHard)) `shouldBe` veryEasySolution
