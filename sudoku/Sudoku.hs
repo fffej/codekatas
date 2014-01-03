@@ -41,8 +41,8 @@ cellStates g = map snd (cells g)
 bounds :: ((Int,Int),(Int,Int))
 bounds = ((0,0),(8,8))
 
-buildGrid :: String -> Grid
-buildGrid s = Grid $ listArray bounds (map toCell s)
+buildGrid :: String -> RawGrid
+buildGrid s = applyConstraints  Grid $ listArray bounds (map toCell s)
 
 display :: Grid -> String
 display g = unlines $ chunksOf 9 $ concatMap show (cellStates g)
