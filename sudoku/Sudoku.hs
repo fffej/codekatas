@@ -131,7 +131,16 @@ veryHardSolution = "854219763\n" ++
                    "478651239\n"
 
 invalidGrid :: String
-invalidGrid = undefined
+invalidGrid = "6185___2_" ++
+              "_5__17_63" ++
+              "__326__95" ++
+              "8_1_5_74_" ++
+              "5__6913_9" ++ -- the middle 9 is invalid
+              "_9782_5__" ++
+              "286_45___" ++
+              "1____26_4" ++
+              "_4_1_6258"
+
                    
 main = hspec $ do
   describe "Sudoku" $ do
