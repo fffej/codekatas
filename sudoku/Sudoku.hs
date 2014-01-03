@@ -22,16 +22,30 @@ knownValue :: Cell -> Maybe Int
 knownValue (Known n) = Just n
 knownValue _         = Nothing
 
-type Grid = Array (Int,Int) Cell
+type RawGrid = Array (Int,Int) Cell
+
+data Grid = Grid RawGrid deriving (Eq)
+
+instance Show Grid where
+    show = display
+
+cells :: Grid -> [((Int,Int),Cell)]
+cells (Grid g) = assocs g
+
+at :: Grid -> (Int,Int) -> Cell
+at (Grid g) p = g ! p 
+
+cellStates :: Grid -> [Cell]
+cellStates g = map snd (cells g)
 
 bounds :: ((Int,Int),(Int,Int))
 bounds = ((0,0),(8,8))
 
 buildGrid :: String -> Grid
-buildGrid s = listArray bounds (map toCell s)
+buildGrid s = Grid $ listArray bounds (map toCell s)
 
 display :: Grid -> String
-display g = unlines $ chunksOf 9 $ concatMap show (elems g)
+display g = unlines $ chunksOf 9 $ concatMap show (cellStates g)
 
 toCell :: Char -> Cell
 toCell c
@@ -39,19 +53,19 @@ toCell c
   | otherwise = Unknown [1..9]
 
 row :: Grid -> Int -> [Cell]
-row g r = map snd (filter (\((x,y),e) -> x == r) (assocs g))
+row g r = map snd (filter (\((x,y),e) -> x == r) (cells g))
 
 col :: Grid -> Int -> [Cell]
-col g c = map snd (filter (\((x,y),e) -> y == c) (assocs g))
+col g c = map snd (filter (\((x,y),e) -> y == c) (cells g))
 
 subgrid :: Grid -> (Int,Int) -> [Cell]
-subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
+subgrid g (r,c) = map snd (filter isInSubGrid (cells g))
   where
     isInSubGrid ((x,y),_) = r `div` 3 == x `div` 3 &&
                             c `div` 3 == y `div` 3 
 
 eliminatePossibilities :: Grid -> (Int,Int) -> Cell
-eliminatePossibilities g p@(r,c) = eliminatePossibilities' (g ! p) surroundingCells
+eliminatePossibilities g p@(r,c) = eliminatePossibilities' (g `at` p) surroundingCells
   where
     surroundingCells = known $ row g r ++ col g c ++ subgrid g p
     
@@ -68,19 +82,19 @@ applyConstraints g
     | next == g = g
     | otherwise = applyConstraints next 
     where
-      next = array bounds (map (\(x,e) -> (x,eliminatePossibilities g x)) (assocs g))
+      next = Grid $ array bounds (map (\(x,e) -> (x,eliminatePossibilities g x)) (cells g))
 
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
 
 isSolved :: Grid -> Bool
-isSolved g = all isKnown (elems g)
+isSolved g = all isKnown (cellStates g)
   where
     isKnown (Known _) = True
     isKnown _         = False
 
 isValid :: Grid -> Bool
-isValid g = isSolved g' || all choiceRemains (elems g')
+isValid g = isSolved g' || all choiceRemains (cellStates g')
     where
       -- TODO this is a code smell
       g' = applyConstraints g
