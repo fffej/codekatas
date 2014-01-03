@@ -167,6 +167,8 @@ invalidGrid = "6185___2_" ++
               "1____26_4" ++
               "_4_1_6258"
 
+
+-- Next steps I want to do are build the graph of all solutions and traverse it
                    
 main = hspec $ do
   describe "Sudoku" $ do
