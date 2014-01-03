@@ -45,7 +45,11 @@ buildRawGrid :: String -> RawGrid
 buildRawGrid s = listArray bounds (map toCell s)
 
 buildGrid :: String -> Maybe Grid
-buildGrid s = Just $ Grid (applyConstraints $ buildRawGrid s)
+buildGrid s 
+    | isValid g = Just (Grid g)
+    | otherwise = Nothing
+    where
+      g = applyConstraints $ buildRawGrid s
 
 display :: Grid -> String
 display g = unlines $ chunksOf 9 $ concatMap show (cellStates g)
@@ -96,8 +100,8 @@ isSolved g = all isKnown (map snd (assocs g))
     isKnown (Known _) = True
     isKnown _         = False
 
-isValid :: Grid -> Bool
-isValid (Grid raw) = isSolved raw || all choiceRemains (map snd (assocs raw))
+isValid :: RawGrid -> Bool
+isValid raw = isSolved raw || all choiceRemains (map snd (assocs raw))
     where
       -- TODO this is a code smell
 --      g' = applyConstraints g
