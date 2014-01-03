@@ -84,6 +84,9 @@ eliminateConstraintsd g = all isKnown (elems g)
     isKnown (Known _) = True
     isKnown _         = False
 
+choices :: Cell -> [Cell]
+choices = undefined
+
 veryEasy :: String
 veryEasy = "6185___2_" ++
            "_5__17_63" ++
@@ -144,3 +147,5 @@ main = hspec $ do
       display (eliminateConstraints (buildGrid veryEasy)) `shouldBe` veryEasySolution
     it "eliminateConstraints an example that requires back-tracking" $ do
       display (eliminateConstraints (buildGrid veryHard)) `shouldBe` veryEasySolution
+    it "will guess a constrained cell" $ do
+      choices (Unknown [1..9]) `shouldBe` map Known [1..9]
