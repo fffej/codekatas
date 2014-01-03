@@ -63,10 +63,10 @@ eliminatePossibilities' (Unknown ys) xs
   where
     rest = ys \\ xs
 
-eliminateConstraints :: Grid -> Grid
-eliminateConstraints g 
+applyConstraints :: Grid -> Grid
+applyConstraints g 
     | next == g = g
-    | otherwise = eliminateConstraints next 
+    | otherwise = applyConstraints next 
     where
       next = array bounds (map (\(x,e) -> (x,eliminatePossibilities g x)) (assocs g))
 
@@ -139,9 +139,9 @@ main = hspec $ do
       eliminatePossibilities (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
     it "a grid is solved if all of the cells are known" $ do
       isSolved (buildGrid veryEasy) `shouldBe` False
-    it "eliminateConstraints simple examples" $ do
-      display (eliminateConstraints (buildGrid veryEasy)) `shouldBe` veryEasySolution
-    it "eliminateConstraints an example that requires back-tracking" $ do
-      display (eliminateConstraints (buildGrid veryHard)) `shouldBe` veryEasySolution
+    it "applyConstraints simple examples" $ do
+      display (applyConstraints (buildGrid veryEasy)) `shouldBe` veryEasySolution
+    it "applyConstraints an example that requires back-tracking" $ do
+      display (applyConstraints (buildGrid veryHard)) `shouldBe` veryEasySolution
     it "will guess a constrained cell" $ do
       choices (Unknown [1..9]) `shouldBe` map Known [1..9]
