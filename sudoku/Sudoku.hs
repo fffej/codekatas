@@ -82,6 +82,7 @@ isSolved g = all isKnown (elems g)
 isValid :: Grid -> Bool
 isValid g = isSolved g' || all choiceRemains (elems g')
     where
+      -- TODO this is a code smell
       g' = applyConstraints g
       choiceRemains (Known _) = True
       choiceRemains (Unknown xs) = (not . null) xs
