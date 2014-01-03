@@ -78,8 +78,8 @@ eliminateConstraints g
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
 
-eliminateConstraintsd :: Grid -> Bool
-eliminateConstraintsd g = all isKnown (elems g)
+isSolved :: Grid -> Bool
+isSolved g = all isKnown (elems g)
   where
     isKnown (Known _) = True
     isKnown _         = False
@@ -142,8 +142,8 @@ main = hspec $ do
       known (subgrid (buildGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
     it "eliminates possibilities" $ do
       stepCell (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
-    it "a grid is eliminateConstraints if all of the cells are known" $ do
-      eliminateConstraintsd (buildGrid veryEasy) `shouldBe` False
+    it "a grid is solved if all of the cells are known" $ do
+      isSolved (buildGrid veryEasy) `shouldBe` False
     it "eliminateConstraints simple examples" $ do
       display (eliminateConstraints (buildGrid veryEasy)) `shouldBe` veryEasySolution
     it "eliminateConstraints an example that requires back-tracking" $ do
