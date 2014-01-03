@@ -44,8 +44,8 @@ bounds = ((0,0),(8,8))
 buildRawGrid :: String -> RawGrid
 buildRawGrid s = listArray bounds (map toCell s)
 
-buildGrid :: String -> Grid
-buildGrid s = Grid (applyConstraints $ buildRawGrid s)
+buildGrid :: String -> Maybe Grid
+buildGrid s = Just $ Grid (applyConstraints $ buildRawGrid s)
 
 display :: Grid -> String
 display g = unlines $ chunksOf 9 $ concatMap show (cellStates g)
@@ -177,10 +177,10 @@ main = hspec $ do
     it "a grid is solved if all of the cells are known" $ do
       isSolved (buildRawGrid veryEasy) `shouldBe` False
     it "applyConstraints simple examples" $ do
-      display (buildGrid veryEasy) `shouldBe` veryEasySolution
+      maybe "" display (buildGrid veryEasy) `shouldBe` veryEasySolution
     it "applyConstraints an example that requires back-tracking" $ do
-      display (buildGrid veryHard) `shouldBe` veryHardSolution
+      maybe "" display (buildGrid veryHard) `shouldBe` veryHardSolution
     it "will guess a constrained cell" $ do
       choices (Unknown [1..9]) `shouldBe` map Known [1..9]
     it "has a predicate to determine invalid state" $ do
-      isValid (buildGrid invalidGrid) `shouldBe` False
+      buildGrid invalidGrid `shouldBe` Nothing
