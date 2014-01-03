@@ -3,7 +3,7 @@ module Sudoku where
 import Test.QuickCheck 
 import Test.Hspec
 
-import Data.Array
+import Data.Array hiding (bounds)
 import Data.Char (isDigit)
 import Data.Maybe
 import Data.List
@@ -24,11 +24,11 @@ knownValue _         = Nothing
 
 type Grid = Array (Int,Int) Cell
 
+bounds :: ((Int,Int),(Int,Int))
+bounds = ((0,0),(8,8))
+
 buildGrid :: String -> Grid
 buildGrid s = listArray bounds (map toCell s)
-  where
-    bounds :: ((Int,Int),(Int,Int))
-    bounds = ((0,0),(8,8))
 
 display :: Grid -> String
 display g = unlines $ chunksOf 9 $ concatMap show (elems g)
@@ -65,8 +65,6 @@ eliminatePossibilities' (Unknown ys) xs
 
 stepGrid :: Grid -> Grid
 stepGrid grid = array bounds (map (\(x,e) -> (x,eliminatePossibilities grid x)) (assocs grid))
-  where
-    bounds = ((0,0),(8,8))
 
 eliminateConstraints :: Grid -> Grid
 eliminateConstraints g 
