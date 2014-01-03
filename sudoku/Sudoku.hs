@@ -85,7 +85,8 @@ eliminateConstraintsd g = all isKnown (elems g)
     isKnown _         = False
 
 choices :: Cell -> [Cell]
-choices = undefined
+choices k@(Known n) = [k]
+choices (Unknown ns)= map Known ns
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
