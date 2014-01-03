@@ -50,21 +50,21 @@ subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
     isInSubGrid ((x,y),_) = r `div` 3 == x `div` 3 &&
                             c `div` 3 == y `div` 3 
 
-stepCell :: Grid -> (Int,Int) -> Cell
-stepCell g p@(r,c) = stepCell' (g ! p) surroundingCells
+eliminatePossibilities :: Grid -> (Int,Int) -> Cell
+eliminatePossibilities g p@(r,c) = eliminatePossibilities' (g ! p) surroundingCells
   where
     surroundingCells = known $ row g r ++ col g c ++ subgrid g p
     
-stepCell' :: Cell -> [Int] -> Cell
-stepCell' (Known x) _     = Known x
-stepCell' (Unknown ys) xs
+eliminatePossibilities' :: Cell -> [Int] -> Cell
+eliminatePossibilities' (Known x) _     = Known x
+eliminatePossibilities' (Unknown ys) xs
   | length rest == 1  = Known (head rest)
   | otherwise         = Unknown rest
   where
     rest = ys \\ xs
 
 stepGrid :: Grid -> Grid
-stepGrid grid = array bounds (map (\(x,e) -> (x,stepCell grid x)) (assocs grid))
+stepGrid grid = array bounds (map (\(x,e) -> (x,eliminatePossibilities grid x)) (assocs grid))
   where
     bounds = ((0,0),(8,8))
 
@@ -141,7 +141,7 @@ main = hspec $ do
     it "subgrid 7,7" $ do
       known (subgrid (buildGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
     it "eliminates possibilities" $ do
-      stepCell (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
+      eliminatePossibilities (buildGrid veryEasy) (0,8) `shouldBe` (Known 7)
     it "a grid is solved if all of the cells are known" $ do
       isSolved (buildGrid veryEasy) `shouldBe` False
     it "eliminateConstraints simple examples" $ do
