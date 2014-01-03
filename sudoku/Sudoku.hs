@@ -42,7 +42,7 @@ bounds :: ((Int,Int),(Int,Int))
 bounds = ((0,0),(8,8))
 
 buildGrid :: String -> RawGrid
-buildGrid s = applyConstraints  Grid $ listArray bounds (map toCell s)
+buildGrid s = listArray bounds (map toCell s)
 
 display :: Grid -> String
 display g = unlines $ chunksOf 9 $ concatMap show (cellStates g)
@@ -52,22 +52,22 @@ toCell c
   | isDigit c = Known (read [c])
   | otherwise = Unknown [1..9]
 
-row :: Grid -> Int -> [Cell]
-row g r = map snd (filter (\((x,y),e) -> x == r) (cells g))
+row :: RawGrid -> Int -> [Cell]
+row g r = map snd (filter (\((x,y),e) -> x == r) (assocs g))
 
-col :: Grid -> Int -> [Cell]
-col g c = map snd (filter (\((x,y),e) -> y == c) (cells g))
+col :: RawGrid -> Int -> [Cell]
+col g c = map snd (filter (\((x,y),e) -> y == c) (assocs g))
 
-subgrid :: Grid -> (Int,Int) -> [Cell]
-subgrid g (r,c) = map snd (filter isInSubGrid (cells g))
+subgrid :: RawGrid -> (Int,Int) -> [Cell]
+subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
   where
     isInSubGrid ((x,y),_) = r `div` 3 == x `div` 3 &&
                             c `div` 3 == y `div` 3 
 
 eliminatePossibilities :: Grid -> (Int,Int) -> Cell
-eliminatePossibilities g p@(r,c) = eliminatePossibilities' (g `at` p) surroundingCells
+eliminatePossibilities g@(Grid raw)  p@(r,c) = eliminatePossibilities' (g `at` p) surroundingCells
   where
-    surroundingCells = known $ row g r ++ col g c ++ subgrid g p
+    surroundingCells = known $ row raw r ++ col raw c ++ subgrid raw p
     
 eliminatePossibilities' :: Cell -> [Int] -> Cell
 eliminatePossibilities' (Known x) _     = Known x
