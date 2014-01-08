@@ -8,6 +8,8 @@ import Data.Char (isDigit)
 import Data.Maybe
 import Data.List
 
+import Control.Monad
+
 import Data.List.Split
 
 data Cell = Unknown [Int]
@@ -193,3 +195,5 @@ main = hspec $ do
       choices (Unknown [1..9]) `shouldBe` map Known [1..9]
     it "has a predicate to determine invalid state" $ do
       buildGrid invalidGrid `shouldBe` Nothing
+    it "builds a graph for an easy solution" $ do
+      liftM buildGraph (buildGrid veryEasy) `shouldBe` liftM Solved (buildGrid veryEasy)
