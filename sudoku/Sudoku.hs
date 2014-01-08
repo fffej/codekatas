@@ -103,8 +103,6 @@ isSolved g = all isKnown (map snd (assocs g))
 isValid :: RawGrid -> Bool
 isValid raw = isSolved raw || all choiceRemains (map snd (assocs raw))
     where
-      -- TODO this is a code smell
---      g' = applyConstraints g
       choiceRemains (Known _) = True
       choiceRemains (Unknown xs) = (not . null) xs
 
