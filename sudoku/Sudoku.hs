@@ -96,6 +96,9 @@ applyConstraints g
 known :: [Cell] -> [Int]
 known = mapMaybe knownValue
 
+isSolvedGrid :: Grid -> Bool
+isSolvedGrid (Grid r) = isSolved r
+
 isSolved :: RawGrid -> Bool
 isSolved g = all isKnown (map snd (assocs g))
   where
@@ -117,7 +120,9 @@ data GridGraph = Solved Grid
                deriving (Show,Eq)
 
 buildGraph :: Grid -> GridGraph
-buildGraph = undefined
+buildGraph g
+  | isSolvedGrid g = Solved g
+  | otherwise      = undefined
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
