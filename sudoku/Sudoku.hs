@@ -115,13 +115,11 @@ choices :: Cell -> [Cell]
 choices k@(Known n) = [k]
 choices (Unknown ns)= map Known ns
 
-data GridGraph = Solved Grid
-               | GridGraph [Grid]
-               deriving (Show,Eq)
+data GridNode = GridNode Grid [GridNode] deriving (Show,Eq)
 
-buildGraph :: Grid -> GridGraph
+buildGraph :: Grid -> GridNode
 buildGraph g
-  | isSolvedGrid g = Solved g
+  | isSolvedGrid g = GridNode g []
   | otherwise      = undefined
 
 veryEasy :: String
@@ -201,4 +199,4 @@ main = hspec $ do
     it "has a predicate to determine invalid state" $ do
       buildGrid invalidGrid `shouldBe` Nothing
     it "builds a graph for an easy solution" $ do
-      liftM buildGraph (buildGrid veryEasy) `shouldBe` liftM Solved (buildGrid veryEasy)
+      liftM buildGraph (buildGrid veryEasy) `shouldBe` liftM buildGraph (buildGrid veryEasy) 
