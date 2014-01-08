@@ -125,7 +125,8 @@ buildGraph g@(Grid r)
   | isSolvedGrid g = GridNode g []
   | otherwise      = GridNode g (map buildGraph validChildren)
   where
-    validChildren = mapMaybe buildGridFromRawGrid (possibleNextSteps r)
+    nextGrids = mapMaybe buildGridFromRawGrid (possibleNextSteps r)
+    validChildren = delete g $ nub $ nextGrids
 
 possibleNextSteps :: RawGrid -> [RawGrid]
 possibleNextSteps g = concatMap (\(p,c) -> updateGrid p c) (assocs g)
