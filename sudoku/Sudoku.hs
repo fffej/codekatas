@@ -110,6 +110,13 @@ choices :: Cell -> [Cell]
 choices k@(Known n) = [k]
 choices (Unknown ns)= map Known ns
 
+data GridGraph = Solved Grid
+               | GridGraph [Grid]
+               deriving (Show,Eq)
+
+buildGraph :: Grid -> GridGraph
+buildGraph = undefined
+
 veryEasy :: String
 veryEasy = "6185___2_" ++
            "_5__17_63" ++
