@@ -121,11 +121,11 @@ choices (Unknown ns)= map Known ns
 data GridNode = GridNode Grid [GridNode] deriving (Show,Eq)
 
 buildGraph :: Grid -> GridNode
-buildGraph g
+buildGraph g@(Grid r)
   | isSolvedGrid g = GridNode g []
-  | otherwise      = GridNode g validChildren
+  | otherwise      = GridNode g (map buildGraph validChildren)
   where
-    validChildren = undefined
+    validChildren = mapMaybe buildGridFromRawGrid (possibleNextSteps r)
 
 possibleNextSteps :: RawGrid -> [RawGrid]
 possibleNextSteps g = undefined
