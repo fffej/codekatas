@@ -127,6 +127,9 @@ buildGraph g@(Grid r)
   where
     validChildren = mapMaybe buildGridFromRawGrid (possibleNextSteps r)
 
+{-
+For every cell, I need to create a new raw grid with all those choices
+-}
 possibleNextSteps :: RawGrid -> [RawGrid]
 possibleNextSteps g = undefined
 
