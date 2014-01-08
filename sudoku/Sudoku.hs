@@ -127,11 +127,10 @@ buildGraph g@(Grid r)
   where
     validChildren = mapMaybe buildGridFromRawGrid (possibleNextSteps r)
 
-{-
-For every cell, I need to create a new raw grid with all those choices
--}
 possibleNextSteps :: RawGrid -> [RawGrid]
-possibleNextSteps g = undefined
+possibleNextSteps g = concatMap (\(p,c) -> updateGrid p c) (assocs g)
+  where
+    updateGrid p c = map (\c' -> g // [(p,c')]) (choices c)
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
