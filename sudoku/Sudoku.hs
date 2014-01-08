@@ -46,12 +46,15 @@ bounds = ((0,0),(8,8))
 buildRawGrid :: String -> RawGrid
 buildRawGrid s = listArray bounds (map toCell s)
 
+buildGridFromRawGrid :: RawGrid -> Maybe Grid
+buildGridFromRawGrid r
+  | isValid g = Just (Grid g)
+  | otherwise = Nothing
+  where
+    g = applyConstraints r
+
 buildGrid :: String -> Maybe Grid
-buildGrid s 
-    | isValid g = Just (Grid g)
-    | otherwise = Nothing
-    where
-      g = applyConstraints $ buildRawGrid s
+buildGrid = buildGridFromRawGrid . buildRawGrid
 
 display :: Grid -> String
 display g = unlines $ chunksOf 9 $ concatMap show (cellStates g)
@@ -123,6 +126,9 @@ buildGraph g
   | otherwise      = GridNode g validChildren
   where
     validChildren = undefined
+
+possibleNextSteps :: RawGrid -> [RawGrid]
+possibleNextSteps g = undefined
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
