@@ -120,7 +120,9 @@ data GridNode = GridNode Grid [GridNode] deriving (Show,Eq)
 buildGraph :: Grid -> GridNode
 buildGraph g
   | isSolvedGrid g = GridNode g []
-  | otherwise      = undefined
+  | otherwise      = GridNode g validChildren
+  where
+    validChildren = undefined
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
