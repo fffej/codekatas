@@ -132,6 +132,12 @@ choices (Unknown ns)= map Known ns
 
 data GridNode = GridNode Grid [GridNode] deriving (Show,Eq)
 
+search :: GridNode -> (Grid -> Bool) -> Maybe Grid
+search (GridNode x rest) f
+  | f x         = Just x
+  | null rest   = Nothing
+  | otherwise   = listToMaybe $ mapMaybe (\x -> search x f) rest
+
 buildGraph :: Grid -> GridNode
 buildGraph g@(Grid r)
   | isSolvedGrid g = GridNode g []
