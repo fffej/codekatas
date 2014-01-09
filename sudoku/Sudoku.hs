@@ -71,10 +71,10 @@ col :: RawGrid -> Int -> [Cell]
 col g c = map snd (filter (\((x,y),e) -> y == c) (assocs g))
 
 subgrid :: RawGrid -> (Int,Int) -> [Cell]
-subgrid g (r,c) = map snd (filter isInSubGrid (assocs g))
-  where
-    isInSubGrid ((x,y),_) = r `div` 3 == x `div` 3 &&
-                            c `div` 3 == y `div` 3 
+subgrid g (r,c) = map snd (filter (isInSubGrid (r,c)) (assocs g))
+
+isInSubGrid (r,c) ((x,y),_) = r `div` 3 == x `div` 3 &&
+                              c `div` 3 == y `div` 3 
 
 eliminatePossibilities :: RawGrid -> (Int,Int) -> Cell
 eliminatePossibilities g p@(r,c) = eliminatePossibilities' (g ! p) surroundingCells
@@ -198,7 +198,7 @@ main = hspec $ do
     it "subgrid 7,7" $ do
       known (subgrid (buildRawGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
     it "subgrid 1,1" $ do
-      known (subgrid (buildRawGrid invalidGrid) (1,1)) `shouldBe` [6,1,8,4,3]
+      known (subgrid (buildRawGrid invalidGrid) (1,1)) `shouldBe` [6,1,8,5,3]
     it "eliminates possibilities" $ do
       eliminatePossibilities (buildRawGrid veryEasy) (0,8) `shouldBe` (Known 7)
     it "a grid is solved if all of the cells are known" $ do
