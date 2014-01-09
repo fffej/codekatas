@@ -108,11 +108,15 @@ isSolved g = all isKnown (map snd (assocs g))
     isKnown _         = False
 
 isValid :: RawGrid -> Bool
-isValid raw = isSolved raw || all choiceRemains (map snd (assocs raw))
+isValid raw = (isSolved raw || all choiceRemains (map snd (assocs raw))) &&
+              all uniq vals
   where
     choiceRemains (Known _) = True
     choiceRemains (Unknown xs) = (not . null) xs
     uniq xs = length xs == length (nub xs)
+    vals = map (known . row raw) [0..8] ++
+           map (known . col raw) [0..8] ++
+           map (known . subgrid raw) [(0,0),(3,3),(6,6)]
     
 
 surroundingCells :: RawGrid -> (Int,Int) -> [Cell]
@@ -163,27 +167,29 @@ veryEasySolution = "618593427\n" ++
                    "135982674\n" ++
                    "749136258\n"
 
+-- Hardest problem
+-- http://www.telegraph.co.uk/science/science-news/9359579/Worlds-hardest-sudoku-can-you-crack-it.html
 veryHard :: String
-veryHard = "___2___63" ++
-           "3____54_1" ++
-           "_______9_" ++
-           "__1__398_" ++
-           "___538___" ++
-           "_3_______" ++
-           "_263__5__" ++
-           "5_37____8" ++
-           "47___1___"
+veryHard = "8________" ++
+           "__36_____" ++
+           "_7__9_2__" ++
+           "_5___7___" ++
+           "____457__" ++
+           "___1___3_" ++
+           "__1____68" ++
+           "__85___1_" ++
+           "_9____4__"
 
 veryHardSolution :: String
-veryHardSolution = "854219763\n" ++
-                   "397865421\n" ++
-                   "261473985\n" ++
-                   "785126394\n" ++
-                   "649538172\n" ++
-                   "132947856\n" ++
-                   "926384517\n" ++
-                   "513792648\n" ++
-                   "478651239\n"
+veryHardSolution = "812753649\n" ++
+                   "943682175\n" ++
+                   "675491283\n" ++
+                   "154237896\n" ++
+                   "369845721\n" ++
+                   "287169534\n" ++
+                   "521974368\n" ++
+                   "438526917\n" ++
+                   "796318452\n"
 
 invalidGrid :: String
 invalidGrid = "6185___2_" ++
