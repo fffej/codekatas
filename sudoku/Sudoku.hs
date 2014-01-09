@@ -75,13 +75,10 @@ subgrid g (r,c) = map snd (filter (isInSubGrid (r,c)) (assocs g))
 
 isInSubGrid :: (Int,Int) -> ((Int,Int),a) -> Bool
 isInSubGrid (r,c) ((x,y),_) = r `div` 3 == x `div` 3 &&
-                              c `div` 3 == y `div` 3 
-
--- TODO this doesn't enforce uniqueness!!!
+                              c `div` 3 == y `div` 3
+                              
 eliminatePossibilities :: RawGrid -> (Int,Int) -> Cell
-eliminatePossibilities g p@(r,c) = eliminatePossibilities' (g ! p) surroundingCells
-  where
-    surroundingCells = known $ row g r ++ col g c ++ subgrid g p
+eliminatePossibilities g p = eliminatePossibilities' (g ! p) (known $ surroundingCells g p)
     
 eliminatePossibilities' :: Cell -> [Int] -> Cell
 eliminatePossibilities' (Known x) _     = Known x
