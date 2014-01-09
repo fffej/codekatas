@@ -73,6 +73,7 @@ col g c = map snd (filter (\((x,y),e) -> y == c) (assocs g))
 subgrid :: RawGrid -> (Int,Int) -> [Cell]
 subgrid g (r,c) = map snd (filter (isInSubGrid (r,c)) (assocs g))
 
+isInSubGrid :: (Int,Int) -> ((Int,Int),a) -> Bool
 isInSubGrid (r,c) ((x,y),_) = r `div` 3 == x `div` 3 &&
                               c `div` 3 == y `div` 3 
 
