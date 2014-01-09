@@ -197,6 +197,8 @@ main = hspec $ do
       known (col (buildRawGrid veryEasy) 1) `shouldBe` [1,5,9,8,4]
     it "subgrid 7,7" $ do
       known (subgrid (buildRawGrid veryEasy) (7,7)) `shouldBe` [6,4,2,5,8]
+    it "subgrid 1,1" $ do
+      known (subgrid (buildRawGrid invalidGrid) (1,1)) `shouldBe` [6,1,8,4,3]
     it "eliminates possibilities" $ do
       eliminatePossibilities (buildRawGrid veryEasy) (0,8) `shouldBe` (Known 7)
     it "a grid is solved if all of the cells are known" $ do
