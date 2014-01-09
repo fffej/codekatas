@@ -112,9 +112,12 @@ isSolved g = all isKnown (map snd (assocs g))
 
 isValid :: RawGrid -> Bool
 isValid raw = isSolved raw || all choiceRemains (map snd (assocs raw))
-    where
-      choiceRemains (Known _) = True
-      choiceRemains (Unknown xs) = (not . null) xs
+  where
+    choiceRemains (Known _) = True
+    choiceRemains (Unknown xs) = (not . null) xs
+
+surroundingCells :: RawGrid -> (Int,Int) -> [Cell]
+surroundingCells g p@(r,c) = row g r ++ col g c ++ subgrid g p
 
 choices :: Cell -> [Cell]
 choices k@(Known n) = [k]
