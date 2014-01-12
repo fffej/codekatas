@@ -7,6 +7,7 @@ import Data.Array hiding (bounds)
 import Data.Char (isDigit)
 import Data.Maybe
 import Data.List
+import qualified Data.Set as S
 
 import Control.Monad
 
@@ -137,6 +138,9 @@ search (GridNode x rest) f
   | f x         = Just x
   | null rest   = Nothing
   | otherwise   = listToMaybe $ mapMaybe (`search` f) rest
+
+search' :: S.Set Grid -> GridNode -> (Grid -> Bool) -> Maybe Grid
+search' seen (GridNode x rest) f = undefined
 
 buildGraph :: Grid -> GridNode
 buildGraph g@(Grid r)
