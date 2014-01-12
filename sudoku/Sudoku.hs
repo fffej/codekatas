@@ -136,7 +136,7 @@ search :: GridNode -> (Grid -> Bool) -> Maybe Grid
 search (GridNode x rest) f
   | f x         = Just x
   | null rest   = Nothing
-  | otherwise   = listToMaybe $ mapMaybe (\x -> search x f) rest
+  | otherwise   = listToMaybe $ mapMaybe (`search` f) rest
 
 buildGraph :: Grid -> GridNode
 buildGraph g@(Grid r)
@@ -144,10 +144,10 @@ buildGraph g@(Grid r)
   | otherwise      = GridNode g (map buildGraph validChildren)
   where
     nextGrids = mapMaybe buildGridFromRawGrid (possibleNextSteps r)
-    validChildren = delete g $ nub $ nextGrids
+    validChildren = delete g $ nub nextGrids
 
 possibleNextSteps :: RawGrid -> [RawGrid]
-possibleNextSteps g = concatMap (\(p,c) -> updateGrid p c) (assocs g)
+possibleNextSteps g = concatMap (uncurry updateGrid) (assocs g)
   where
     updateGrid p c = map (\c' -> g // [(p,c')]) (choices c)
 
@@ -155,7 +155,7 @@ solve :: String -> Maybe Grid
 solve s = graph >>= st
   where
     graph = fmap buildGraph (buildGrid s)
-    st = (flip search) isSolvedGrid
+    st = flip search isSolvedGrid
     
 
 veryEasy :: String
@@ -230,9 +230,9 @@ main = hspec $ do
       eliminatePossibilities (buildRawGrid veryEasy) (0,8) `shouldBe` (Known 7)
     it "a grid is solved if all of the cells are known" $ do
       isSolved (buildRawGrid veryEasy) `shouldBe` False
-    it "applyConstraints simple examples" $ do
+    it "solve simple examples" $ do
       maybe "" display (solve veryEasy) `shouldBe` veryEasySolution
-    it "applyConstraints an example that requires back-tracking" $ do
+    it "solve an example that requires back-tracking" $ do
       maybe "" display (solve veryHard) `shouldBe` veryHardSolution
     it "will guess a constrained cell" $ do
       choices (Unknown [1..9]) `shouldBe` map Known [1..9]
