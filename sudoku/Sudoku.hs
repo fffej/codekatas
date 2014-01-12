@@ -15,7 +15,7 @@ import Data.List.Split
 
 data Cell = Unknown [Int]
           | Known Int
-            deriving (Eq)
+            deriving (Eq,Ord)
 
 instance Show Cell where
   show (Known n)   = show n
@@ -27,16 +27,13 @@ knownValue _         = Nothing
 
 type RawGrid = Array (Int,Int) Cell
 
-data Grid = Grid RawGrid deriving (Eq)
+data Grid = Grid RawGrid deriving (Eq,Ord)
 
 instance Show Grid where
     show = display
 
 cells :: Grid -> [((Int,Int),Cell)]
 cells (Grid g) = assocs g
-
-at :: Grid -> (Int,Int) -> Cell
-at (Grid g) p = g ! p 
 
 cellStates :: Grid -> [Cell]
 cellStates g = map snd (cells g)
@@ -134,13 +131,16 @@ choices (Unknown ns)= map Known ns
 data GridNode = GridNode Grid [GridNode] deriving (Show,Eq)
 
 search :: GridNode -> (Grid -> Bool) -> Maybe Grid
-search (GridNode x rest) f
-  | f x         = Just x
-  | null rest   = Nothing
-  | otherwise   = listToMaybe $ mapMaybe (`search` f) rest
+search = search' S.empty
 
 search' :: S.Set Grid -> GridNode -> (Grid -> Bool) -> Maybe Grid
-search' seen (GridNode x rest) f = undefined
+search' seen (GridNode x rest) f
+  | x `S.member` seen = Nothing
+  | f x               = Just x
+  | null rest         = Nothing
+  | otherwise         = listToMaybe $ mapMaybe (\z -> search' seen' z f) rest
+  where
+    seen' = S.insert x seen
 
 buildGraph :: Grid -> GridNode
 buildGraph g@(Grid r)
@@ -148,7 +148,7 @@ buildGraph g@(Grid r)
   | otherwise      = GridNode g (map buildGraph validChildren)
   where
     nextGrids = mapMaybe buildGridFromRawGrid (possibleNextSteps r)
-    validChildren = delete g $ nub nextGrids
+    validChildren = delete g $ nextGrids
 
 possibleNextSteps :: RawGrid -> [RawGrid]
 possibleNextSteps g = concatMap (uncurry updateGrid) (assocs g)
