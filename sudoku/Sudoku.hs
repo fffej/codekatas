@@ -152,7 +152,11 @@ possibleNextSteps g = concatMap (\(p,c) -> updateGrid p c) (assocs g)
     updateGrid p c = map (\c' -> g // [(p,c')]) (choices c)
 
 solve :: String -> Maybe Grid
-solve = undefined
+solve s = graph >>= st
+  where
+    graph = fmap buildGraph (buildGrid s)
+    st = (flip search) isSolvedGrid
+    
 
 veryEasy :: String
 veryEasy = "6185___2_" ++
