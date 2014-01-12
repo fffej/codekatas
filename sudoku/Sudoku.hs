@@ -151,6 +151,9 @@ possibleNextSteps g = concatMap (\(p,c) -> updateGrid p c) (assocs g)
   where
     updateGrid p c = map (\c' -> g // [(p,c')]) (choices c)
 
+solve :: String -> Maybe Grid
+solve = undefined
+
 veryEasy :: String
 veryEasy = "6185___2_" ++
            "_5__17_63" ++
@@ -224,9 +227,9 @@ main = hspec $ do
     it "a grid is solved if all of the cells are known" $ do
       isSolved (buildRawGrid veryEasy) `shouldBe` False
     it "applyConstraints simple examples" $ do
-      maybe "" display (buildGrid veryEasy) `shouldBe` veryEasySolution
+      maybe "" display (solve veryEasy) `shouldBe` veryEasySolution
     it "applyConstraints an example that requires back-tracking" $ do
-      maybe "" display (buildGrid veryHard) `shouldBe` veryHardSolution
+      maybe "" display (solve veryHard) `shouldBe` veryHardSolution
     it "will guess a constrained cell" $ do
       choices (Unknown [1..9]) `shouldBe` map Known [1..9]
     it "has a predicate to determine invalid state" $ do
